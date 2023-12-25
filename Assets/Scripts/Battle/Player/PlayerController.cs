@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace Battle.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IAbilityCaster
     {
         [Serializable]
         private struct CursorMapping
@@ -27,7 +27,7 @@ namespace Battle.Player
             SetCursor(CursorType.Normal);
         }
 
-        public async UniTask<TargetResult> GetPoint()
+        public async UniTask<TargetResult> GetTarget()
         {
             _onClickResult = new UniTaskCompletionSource<TargetResult>();
             _isChoosing = true;

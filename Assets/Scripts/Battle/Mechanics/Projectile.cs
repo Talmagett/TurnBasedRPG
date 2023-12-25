@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Components;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -9,11 +10,20 @@ namespace Battle.Mechanics
     {
         private UniTaskCompletionSource<Health> _onHitSource;
         private float _speed;
-        public async UniTask<Health> Shoot(float speed)
+        private Transform _owner;
+        public async UniTask<Health> Shoot(float speed, float lifeTime, Transform owner)
         {
-            _onHitSource = new UniTaskCompletionSource<Health>();/**/
+            _onHitSource = new UniTaskCompletionSource<Health>();
             _speed = speed;
+            _owner = owner;
+            LifeTime(lifeTime,new CancellationTokenSource()).Forget();
             return await _onHitSource.Task;
+        }
+
+        private async UniTask LifeTime(float lifeTime,CancellationTokenSource cts)
+        {
+            await UniTask.WaitForSeconds(lifeTime);
+            _onHitSource.TrySetResult(null);
         }
 
         private void Update()
@@ -23,11 +33,11 @@ namespace Battle.Mechanics
 
         private void OnTriggerEnter(Collider other)
         {
-            print(other.name+" was hit by projectile");
-            if (other.transform.TryGetComponent(out Health health))
-            {
-                _onHitSource.TrySetResult(health);
-            }
+            if (other.transform == _owner)
+                return;
+            if (!other.transform.TryGetComponent(out Health health)) return;
+            
+            _onHitSource.TrySetResult(health);
         }
     }
 }

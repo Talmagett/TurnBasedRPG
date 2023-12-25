@@ -1,22 +1,17 @@
-using System;
 using Battle.Core;
 using Battle.Player;
-using UnityEngine;
 
 namespace Battle.Abilities
 {
-    [Serializable]
-    public abstract class Ability : MonoBehaviour
+    public abstract class Ability
     {
-        [field: SerializeField] public string Name { get; private set; }
-        [field: SerializeField] public int Usage { get; private set; }
         protected BattleUnit BattleUnit;
-        protected PlayerController PlayerController;
+        protected IAbilityCaster Caster;
 
-        public void Init(BattleUnit battleUnit, PlayerController playerController)
+        public Ability(BattleUnit battleUnit, IAbilityCaster caster)
         {
             BattleUnit = battleUnit;
-            PlayerController = playerController;
+            Caster = caster;
         }
 
         public abstract void StartAbility();

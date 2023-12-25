@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Tools;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = System.Random;
 
 namespace Battle.Core
@@ -12,7 +10,9 @@ namespace Battle.Core
     {
         [SerializeField] private bool shuffle;
 
-        private List<BattleUnit> _units = new();
+        public List<BattleUnit> Units {get;private set;}
+        
+        public BattleUnit[] PlayerUnits => Units.Where(t => t.IsPlayer()).ToArray();
         private readonly List<BattleUnit> _movingUnits = new();
 
         private BattleUnit _currentMovingUnit;
@@ -24,7 +24,7 @@ namespace Battle.Core
 
         private void Awake()
         {
-            _units = GetComponentsInChildren<BattleUnit>().ToList();
+            Units = GetComponentsInChildren<BattleUnit>().ToList();
         }
 
         private void Start()
@@ -40,11 +40,11 @@ namespace Battle.Core
         private void AddUnits()
         {
             _currentMovingUnit = null;
-            _units.ToList().RemoveAll(t => t == null);
+            Units.ToList().RemoveAll(t => t == null);
             if (shuffle)
-                _randomizer.Shuffle(_units.ToArray());
+                _randomizer.Shuffle(Units.ToArray());
 
-            foreach (var item in _units)
+            foreach (var item in Units)
             {
                 if (item == null)
                     continue;

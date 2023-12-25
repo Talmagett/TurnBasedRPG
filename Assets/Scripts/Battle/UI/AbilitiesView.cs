@@ -1,5 +1,6 @@
 using System;
 using Battle.Abilities;
+using Battle.AbilityContainers;
 using Battle.Core;
 using UnityEngine;
 
@@ -30,14 +31,14 @@ namespace Battle.UI
             if (!team.IsPlayer) 
                 return;
             
-            BuildAbilities(selectedUnit.Abilities);
+            BuildAbilities(selectedUnit.AbilityContainers,selectedUnit.Abilities.ToArray());
         }
 
-        private void BuildAbilities(Ability[] abilities)
+        private void BuildAbilities(AbilityContainer[] abilityContainers,Ability[] abilities)
         {
-            foreach (var ability in abilities)
+            for (int i = 0; i < abilityContainers.Length; i++)
             {
-                Instantiate(abilityHolder,container).SetData(ability);
+                Instantiate(abilityHolder,container).SetData(abilityContainers[i],abilities[i]);
             }
         }
 

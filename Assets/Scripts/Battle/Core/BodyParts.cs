@@ -6,6 +6,8 @@ namespace Battle.Core
     [Serializable]
     public class BodyParts
     {
+        [field: SerializeField] public Transform Root { get; private set; }
+
         [field: SerializeField] public Transform Head { get; private set; }
         [field: SerializeField] public Transform RightHand { get; private set; }
         [field: SerializeField] public Transform RightWeapon { get; private set; }

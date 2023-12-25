@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7442339204519414289}
   - component: {fileID: -7389174043086041456}
   m_Layer: 0
-  m_Name: ArrowAttack
+  m_Name: ProjectileShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,8 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: ArrowAttack
   <Usage>k__BackingField: 1
-  baseDamage: 10
-  baseArrowSpeed: 10
-  projectile: {fileID: 3002551657950093780, guid: 82d6ea31eb1b56f4594d816bd2876165,
-    type: 3}
-  onHitParticle: {fileID: 0}
+  data:
+    <Damage>k__BackingField: 10
+    <ArrowSpeed>k__BackingField: 10
+    <LifeTime>k__BackingField: 3
+    <Projectile>k__BackingField: {fileID: 3002551657950093780, guid: 82d6ea31eb1b56f4594d816bd2876165,
+      type: 3}
+    <OnHitParticle>k__BackingField: {fileID: 0}

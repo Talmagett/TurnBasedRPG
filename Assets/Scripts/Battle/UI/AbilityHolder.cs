@@ -1,4 +1,5 @@
 using Battle.Abilities;
+using Battle.AbilityContainers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,12 +13,12 @@ namespace Battle.UI
         [SerializeField] private Image[] usagesImages;
         [SerializeField] private Button button;
         
-        public void SetData(Ability ability)
+        public void SetData(AbilityContainer abilityContainer,Ability ability)
         {
-            title.text = ability.Name;
-            for (int i = 0; i < ability.Usage; i++)
+            title.text = abilityContainer.Name;
+            for (int i = 0; i < abilityContainer.Usage; i++)
             {
-                usagesImages[i].gameObject.SetActive(i<ability.Usage);
+                usagesImages[i].gameObject.SetActive(i<abilityContainer.Usage);
             }
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(ability.StartAbility);
