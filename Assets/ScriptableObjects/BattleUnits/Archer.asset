@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Archer
-  <Icon>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 804479e27237b1c46a5d4d62ea591281,
+    type: 3}
   <AbilityContainers>k__BackingField:
   - {fileID: 2623800182925687904, guid: 6eb4339d62070ef4cae8e4ad554fcf26, type: 3}
   - {fileID: -7389174043086041456, guid: 3bf6e694317ba554ebf9b4fe32811297, type: 3}

@@ -24,7 +24,9 @@ namespace Battle.Abilities
         {
             var targetResult = await Caster.GetTarget();
             if (targetResult == null) return;
-
+            
+            BattleUnit.transform.LookAt(targetResult.Target);
+            await UniTask.WaitForSeconds(0.5f);
             var shotProjectile = GameObject.Instantiate(_dto.Projectile, BattleUnit.BodyParts.ShootPoint.transform.position,Quaternion.identity);
             
             var targetDir = (targetResult.Point);
@@ -32,9 +34,11 @@ namespace Battle.Abilities
             shotProjectile.transform.LookAt(targetDir);
             
             var hitTarget = await shotProjectile.Shoot(_dto.ArrowSpeed,_dto.LifeTime,BattleUnit);
+            GameObject.Instantiate(_dto.OnHitParticle, shotProjectile.transform.position, Quaternion.identity);
             GameObject.Destroy(shotProjectile.gameObject);
             if(hitTarget)
                 hitTarget.TakeDamage(_dto.Damage);
+            await UniTask.WaitForSeconds(1);
             BattleUnit.EndTurn();
         }
     }

@@ -15,7 +15,8 @@ namespace Battle.AI
         {
             if (selected != BattleUnit)
                 return;
-            
+            UniTask.WaitForSeconds(1);
+
             var arrowAttackAbility = selected.Abilities.FirstOrDefault(t => t is ProjectileShootAbility);
             if (arrowAttackAbility == null)
                 throw new Exception($"Arrow Caster {gameObject.name} has no ability");
