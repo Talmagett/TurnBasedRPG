@@ -3,14 +3,16 @@ using Battle.Abilities;
 using Battle.AbilityContainers;
 using Battle.Core;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Battle.UI
 {
     public class AbilitiesView:MonoBehaviour
     {
         [SerializeField] private AbilityHolder abilityHolder;
+        [SerializeField] private GameObject view;
         [SerializeField] private Transform container;
-
+        [SerializeField] private Image unitIcon;
         private void OnEnable()
         {
             BattleUnit.OnSelected += UpdateVisual;
@@ -27,18 +29,19 @@ namespace Battle.UI
                 throw new Exception($"{selectedUnit.name} unit has no Team");
             
             CleanUp();
-            
+            view.gameObject.SetActive(team.IsPlayer);
             if (!team.IsPlayer) 
                 return;
             
-            BuildAbilities(selectedUnit.AbilityContainers,selectedUnit.Abilities.ToArray());
+            BuildAbilities(selectedUnit);
         }
 
-        private void BuildAbilities(AbilityContainer[] abilityContainers,Ability[] abilities)
+        private void BuildAbilities(BattleUnit battleUnit)
         {
-            for (int i = 0; i < abilityContainers.Length; i++)
+            unitIcon.sprite = battleUnit.Data.Icon;
+            for (int i = 0; i < battleUnit.Data.AbilityContainers.Length; i++)
             {
-                Instantiate(abilityHolder,container).SetData(abilityContainers[i],abilities[i]);
+                Instantiate(abilityHolder,container).SetData(battleUnit.Data.AbilityContainers[i],battleUnit.Abilities[i]);
             }
         }
 

@@ -31,7 +31,7 @@ namespace Battle.Abilities
             targetDir.y = shotProjectile.transform.position.y;
             shotProjectile.transform.LookAt(targetDir);
             
-            var hitTarget = await shotProjectile.Shoot(_dto.ArrowSpeed,_dto.LifeTime,BattleUnit.transform);
+            var hitTarget = await shotProjectile.Shoot(_dto.ArrowSpeed,_dto.LifeTime,BattleUnit);
             GameObject.Destroy(shotProjectile.gameObject);
             if(hitTarget)
                 hitTarget.TakeDamage(_dto.Damage);

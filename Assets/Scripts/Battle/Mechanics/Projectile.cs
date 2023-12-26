@@ -1,17 +1,18 @@
 using System;
 using System.Threading;
+using Battle.Core;
 using Components;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Battle.Mechanics
 {
-    public class Projectile:MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
         private UniTaskCompletionSource<Health> _onHitSource;
         private float _speed;
-        private Transform _owner;
-        public async UniTask<Health> Shoot(float speed, float lifeTime, Transform owner)
+        private BattleUnit _owner;
+        public async UniTask<Health> Shoot(float speed, float lifeTime, BattleUnit owner)
         {
             _onHitSource = new UniTaskCompletionSource<Health>();
             _speed = speed;
@@ -33,9 +34,14 @@ namespace Battle.Mechanics
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform == _owner)
+            if (other.transform == _owner.transform)
                 return;
-            if (!other.transform.TryGetComponent(out Health health)) return;
+            if (!other.transform.TryGetComponent(out Team team)) 
+                return;
+            if (_owner.IsPlayer() == team.IsPlayer)
+                return;
+            if (!other.transform.TryGetComponent(out Health health)) 
+                return;
             
             _onHitSource.TrySetResult(health);
         }
