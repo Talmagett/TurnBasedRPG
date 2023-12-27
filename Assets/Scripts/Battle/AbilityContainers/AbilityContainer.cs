@@ -11,7 +11,8 @@ namespace Battle.AbilityContainers
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public int Usage { get; private set; }
-
+        [field: SerializeField] public int MaxLevel { get; private set; } = 1;
+        [field: SerializeField] public int CurrentLevel { get; private set; } = 1;
         public abstract Ability CreateAbility(BattleUnit owner, IAbilityCaster casterType);
     }
 }

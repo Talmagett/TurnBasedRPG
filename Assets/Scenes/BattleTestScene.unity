@@ -441,6 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449116609}
   - component: {fileID: 449116610}
+  - component: {fileID: 449116611}
   m_Layer: 0
   m_Name: UIController
   m_TagString: Untagged
@@ -480,6 +481,19 @@ MonoBehaviour:
   view: {fileID: 2087786768}
   container: {fileID: 611951517}
   unitIcon: {fileID: 1600181280}
+--- !u!114 &449116611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449116608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6075724e520d4e3896f4af485bde9dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 704223837}
 --- !u!1 &611951516
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +667,6 @@ GameObject:
   - component: {fileID: 704223839}
   - component: {fileID: 704223838}
   - component: {fileID: 704223837}
-  - component: {fileID: 704223840}
   m_Layer: 5
   m_Name: End Turn
   m_TagString: Untagged
@@ -764,19 +777,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704223835}
   m_CullTransparentMesh: 1
---- !u!114 &704223840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704223835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6075724e520d4e3896f4af485bde9dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 704223837}
 --- !u!1 &1066961155
 GameObject:
   m_ObjectHideFlags: 0

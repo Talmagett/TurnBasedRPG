@@ -8,7 +8,7 @@ namespace Battle.AbilityContainers
 {
     public class SelfHealAbilityContainer : AbilityContainer
     {
-        [SerializeField] private Data data;
+        [SerializeField] private Data[] data;
 
         [Serializable]
         public class Data
@@ -19,7 +19,7 @@ namespace Battle.AbilityContainers
 
         public override Ability CreateAbility(BattleUnit owner, IAbilityCaster casterType)
         {
-            return new SelfHealAbility(data, owner, casterType);
+            return new SelfHealAbility(data[CurrentLevel], owner, casterType);
         }
     }
 }

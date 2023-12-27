@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Self heal
   <Usage>k__BackingField: 1
+  <MaxLevel>k__BackingField: 1
+  <CurrentLevel>k__BackingField: 1
   data:
-    <BaseHeal>k__BackingField: 15
-    <HealEffect>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
-      type: 3}
+  - <BaseHeal>k__BackingField: 15
+    <HealEffect>k__BackingField: {fileID: 0}

@@ -8,7 +8,7 @@ namespace Battle.AbilityContainers
 {
     public class ProjectileShootContainer : AbilityContainer
     {
-        [SerializeField] private Data data;
+        [SerializeField] private Data[] data;
 
         [System.Serializable]
         public class Data
@@ -22,7 +22,7 @@ namespace Battle.AbilityContainers
 
         public override Ability CreateAbility(BattleUnit owner, IAbilityCaster casterType)
         {
-            return new ProjectileShootAbility(data,owner,casterType);
+            return new ProjectileShootAbility(data[CurrentLevel],owner,casterType);
         }
     }
 }
