@@ -36,8 +36,8 @@ namespace Battle.Abilities
             var hitTarget = await shotProjectile.Shoot(_dto.ArrowSpeed,_dto.LifeTime,BattleUnit);
             GameObject.Instantiate(_dto.OnHitParticle, shotProjectile.transform.position, Quaternion.identity);
             GameObject.Destroy(shotProjectile.gameObject);
-            if(hitTarget)
-                hitTarget.TakeDamage(_dto.Damage);
+            /*if(hitTarget)
+                hitTarget.TakeDamage(_dto.Damage);*/
             await UniTask.WaitForSeconds(1);
             BattleUnit.EndTurn();
         }

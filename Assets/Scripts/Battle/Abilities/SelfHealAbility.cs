@@ -2,6 +2,7 @@ using Battle.AbilityContainers;
 using Battle.Core;
 using Battle.Player;
 using Components;
+using Components.Stats;
 using UnityEngine;
 
 namespace Battle.Abilities
@@ -18,7 +19,7 @@ namespace Battle.Abilities
         {
             if (BattleUnit.TryGetComponent(out Health health))
             {
-                health.Heal(_data.BaseHeal+health.GetMaxHealth()*0.15f);
+                //health.Heal(_data.BaseHeal+health.GetMaxHealth()*0.15f);
                 GameObject.Instantiate(_data.HealEffect, BattleUnit.BodyParts.Chest.transform.position,Quaternion.identity);
             }
 

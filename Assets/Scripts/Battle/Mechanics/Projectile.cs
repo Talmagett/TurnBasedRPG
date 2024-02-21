@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Battle.Core;
 using Components;
+using Components.Stats;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
