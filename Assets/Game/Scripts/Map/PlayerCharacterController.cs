@@ -1,17 +1,26 @@
+using MapInput;
 using UnityEngine;
+using UnityEngine.AI;
+using Zenject;
 
 namespace Map
 {
     public class PlayerCharacterController : MonoBehaviour
     {
-        [SerializeField] private CharacterController characterController;
+        [SerializeField] private NavMeshAgent agent;
         [SerializeField] private float speed;
-        
-        void Update()
+
+        private PlayerMapInput _playerMapInput;
+
+        [Inject]
+        public void Construct(PlayerMapInput playerMapInput)
         {
-            var hor = Input.GetAxis("Horizontal");
-            var ver = Input.GetAxis("Vertical");
-            characterController.Move(new Vector3(hor,0,ver)*speed*Time.deltaTime);
+            _playerMapInput = playerMapInput;
+        }
+
+        private void Update()
+        {
+            agent.Move(_playerMapInput.MoveDir * speed * Time.deltaTime);
         }
     }
 }
