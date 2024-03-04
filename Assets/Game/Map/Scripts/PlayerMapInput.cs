@@ -9,12 +9,26 @@ namespace Game.Map.Scripts
     public class PlayerMapInput : ITickable
     {
         public Vector3 MoveDir { get; private set; }
+        public event Action<int> OnCharacterChosed; 
         public event Action OnInteract;
 
         public void Tick()
         {
             Move();
             Interact();
+            ChooseCharacter();
+        }
+
+        private void ChooseCharacter()
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+                OnCharacterChosed?.Invoke(1);
+            else if(Input.GetKeyDown(KeyCode.Alpha2))
+                OnCharacterChosed?.Invoke(2);
+            else if(Input.GetKeyDown(KeyCode.Alpha3))
+                OnCharacterChosed?.Invoke(3);
+            else if(Input.GetKeyDown(KeyCode.Alpha4))
+                OnCharacterChosed?.Invoke(4);
         }
 
         private void Interact()

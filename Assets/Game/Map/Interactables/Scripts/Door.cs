@@ -2,6 +2,7 @@ using System;
 using Components;
 using Entities;
 using Game.Map.Interactables.Scripts;
+using Game.Scripts.Components;
 using UnityEngine;
 
 namespace Map.Interactables
@@ -15,8 +16,11 @@ namespace Map.Interactables
         
         public void Interact(IEntity entity)
         {
+            if (!entity.TryGet(out Component_CharacterController characterController)) return;
             if (!entity.TryGet(out Transform teleportingTransform)) return;
-            
+
+            //var dist = teleportPlace.position - teleportingTransform.position;
+            //characterController.CharacterController.SimpleMove(dist);
             teleportingTransform.position = teleportPlace.position;
             teleportingTransform.rotation = teleportPlace.rotation;
         }
