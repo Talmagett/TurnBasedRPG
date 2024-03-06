@@ -11,12 +11,20 @@ namespace Game.Map.Scripts
         public Vector3 MoveDir { get; private set; }
         public event Action<int> OnCharacterChosed; 
         public event Action OnInteract;
-
+        public event Action OnAttack;
+        
         public void Tick()
         {
             Move();
             Interact();
             ChooseCharacter();
+            Attack();
+        }
+
+        private void Attack()
+        {
+            if(Input.GetMouseButtonDown(0))
+                OnAttack?.Invoke();
         }
 
         private void ChooseCharacter()

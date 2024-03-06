@@ -1,3 +1,4 @@
+using System;
 using Entities;
 using Game.Map.Interactables.Scripts;
 using UnityEngine;
@@ -14,19 +15,33 @@ namespace Game.Map.Scripts
         [SerializeField] private PlayerCharacter[] playerCharacter;
         
         private PlayerMapInput _playerMapInput;
-
+        private PlayerCharacter _currentCharacter;
+        
         [Inject]
         public void Construct(PlayerMapInput playerMapInput)
         {
             _playerMapInput = playerMapInput;
             _playerMapInput.OnInteract += Interact;
             _playerMapInput.OnCharacterChosed += ChangeCharacter;
+            _playerMapInput.OnAttack += Attack;
         }
+
 
         private void OnDestroy()
         {
             _playerMapInput.OnInteract -= Interact;
             _playerMapInput.OnCharacterChosed -= ChangeCharacter;
+            _playerMapInput.OnAttack -= Attack;
+        }
+
+        private void Attack()
+        {
+            _currentCharacter.GetWeapon().Attack();
+        }
+
+        private void Awake()
+        {
+            _currentCharacter = playerCharacter[0];
         }
 
         private void ChangeCharacter(int index)
@@ -39,13 +54,16 @@ namespace Game.Map.Scripts
                 if (i != index)
                     playerCharacter[i].Deactivate();
                 else
+                {
                     playerCharacter[i].Activate();
+                    _currentCharacter = playerCharacter[i];
+                }
             }
         }
         
         private void Interact()
         {
-            var hits =Physics.OverlapSphere(transform.position, interactRadius);
+            var hits = Physics.OverlapSphere(transform.position, interactRadius);
             foreach (var hit in hits)
             {
                 if (hit.TryGetComponent(out IInteractable interactable))
