@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c365bb021b140cd8e1341e4096d4750, type: 3}
   m_Name: Daugther
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 42
+  Stats:
+    Health: 45
+    Mana: 0
+    Damage: 0
+    MagicPower: 0
+    Defense: 0
+    AttackSpeed: 0
+    Evasion: 0
+    CriticalChance: 0
+    CriticalRate: 0
