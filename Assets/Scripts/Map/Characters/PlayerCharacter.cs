@@ -1,3 +1,4 @@
+using Map.Characters.Interactions.Environment;
 using UnityEngine;
 
 namespace Map.Characters
