@@ -9,7 +9,6 @@ namespace Map.Characters.Interactions.Environment
         
         public bool CanAttack(WeaponType characterWeaponType, int characterWeaponLevel)
         {
-            print("checking");
             return weaponType == characterWeaponType && level <= characterWeaponLevel;
         }
 

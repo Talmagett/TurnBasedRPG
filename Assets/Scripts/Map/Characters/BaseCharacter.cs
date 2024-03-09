@@ -9,10 +9,10 @@ namespace Map.Characters
     {
         [SerializeField] private CharacterConfig characterConfig;
         [field:SerializeField] public Animator Animator { get; private set; }
-        
         public ReactiveProperty<int> MaxHealth { get; private set; } = new();
         public ReactiveProperty<int> Health { get; private set; } = new();
 
+        public CharacterConfig GetConfig() => characterConfig;
         private void Awake()
         {
             MaxHealth.Value = characterConfig.Stats.Health;

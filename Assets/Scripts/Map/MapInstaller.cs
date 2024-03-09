@@ -1,12 +1,16 @@
+using Map.Characters;
+using UnityEngine;
 using Zenject;
 
-namespace Map.Characters
+namespace Map
 {
     public class MapInstaller : MonoInstaller
     {
+        [SerializeField] private PlayerCharacterController playerCharacter;
+        
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<PlayerMapInput>().AsSingle().NonLazy();
+            Container.BindInstance(playerCharacter).AsSingle();
         }
     }
 }

@@ -1,44 +1,52 @@
+using System;
 using Battle;
 using Data;
+using Map;
 using UnityEngine;
+using Zenject;
+using Environment = Battle.Environment;
+using Random = UnityEngine.Random;
 
 namespace Game
 {
     public class GameController : MonoBehaviour
     {
-        [SerializeField] private Transform battleParent;
-        [SerializeField] private GameObject mainCamera;
-        [SerializeField] private GameObject battleCamera;
+        [SerializeField] private MapController map;
+        [SerializeField] private BattleController battle;
         
         public bool IsBattle { get; private set; }
 
-        private Environment _currentEnvironment;
+        private void Awake()
+        {
+            map.EnterState();
+            battle.ExitState();
+        }
         
         public void EnterBattle(EnemyRiftConfig enemyRiftConfig)
         {
             IsBattle = true;
-            ChangeCamera();
-            _currentEnvironment=Instantiate(enemyRiftConfig.Environment,battleParent);
-            foreach (var enemy in enemyRiftConfig.Enemies)
-            {
-                Instantiate(enemy, battleParent.position+Random.insideUnitSphere*5,Quaternion.identity,battleParent);
-            }
+            battle.Setup(enemyRiftConfig);
+            ChangeState();
         }
-
+        
         public void ExitBattle()
         {
             IsBattle = false;
-            ChangeCamera();
-            while (battleParent.childCount > 0)
-            {
-                DestroyImmediate(battleParent.GetChild(0).gameObject);
-            }
+            ChangeState();
         }
 
-        private void ChangeCamera()
+        private void ChangeState()
         {
-            mainCamera.SetActive(!IsBattle);
-            battleCamera.SetActive(IsBattle);
+            if (IsBattle)
+            {
+                map.ExitState();
+                battle.EnterState();
+            }
+            else
+            {
+                map.EnterState();
+                battle.ExitState();
+            }
         }
     }
 }

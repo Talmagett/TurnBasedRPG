@@ -47,8 +47,44 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""e38a223b-4433-40c0-b5fb-f31511dbecbf"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChooseFirst"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ad75454-90cb-4cb9-8d3e-7a27c35cfb05"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChooseSecond"",
+                    ""type"": ""Button"",
+                    ""id"": ""f913a0b9-4ff5-4b63-a3fc-6881c4ec67e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChooseThird"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8f8bd2c-864d-4e4b-81c3-7139a7a532fa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChooseFourth"",
+                    ""type"": ""Button"",
+                    ""id"": ""84085015-b99f-437c-99ef-bba361a9abe8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -79,9 +115,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""X Axis"",
-                    ""id"": ""69668cb5-ad85-438b-8fe9-2a81e4d37a06"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""de56900f-3cb7-4f58-8dfc-6f8ec0556877"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -90,9 +126,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""6fcb5a88-4aef-4a09-9f45-c5fb3605bfbc"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""name"": ""Up"",
+                    ""id"": ""1e8a388c-ceec-40e2-b88e-2fe9339d70a1"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -101,30 +137,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""f2665e5d-5f47-45a8-8369-11b8ed58bdf0"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Y Axis"",
-                    ""id"": ""7b03f868-c108-4eef-9a7b-c62b10ec01a7"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""e6037e64-45cc-49b7-8f64-d1fea611aa30"",
+                    ""name"": ""Down"",
+                    ""id"": ""f4514b30-2e35-45c5-ae02-0785d97a70a8"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -134,17 +148,84 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""b2033c97-26bf-42a7-ad98-10e112d5aca9"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""name"": ""Left"",
+                    ""id"": ""9889d99f-9d9a-4206-a317-e73546eb5e4c"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""0d635a55-bbcb-4416-ac27-fd6d8c1730a0"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d7ba7273-5312-497f-b50b-f42b0072dd23"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseFirst"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9346bcdd-d99b-4803-a4fc-1bc0c0d26041"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseSecond"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de0ea20b-bf2b-4dbd-82af-30f4949fe99e"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseThird"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97a3b9db-f61b-4676-b361-4e597067f5f7"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseFourth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Battle"",
+            ""id"": ""1e39abb9-5de9-4c7a-a49a-f1edc2fc3ac4"",
+            ""actions"": [],
+            ""bindings"": []
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""d10b5675-7f35-4ccb-b621-38f2b20c3141"",
+            ""actions"": [],
+            ""bindings"": []
         }
     ],
     ""controlSchemes"": []
@@ -154,6 +235,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Map_Interact = m_Map.FindAction("Interact", throwIfNotFound: true);
         m_Map_Attack = m_Map.FindAction("Attack", throwIfNotFound: true);
         m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
+        m_Map_ChooseFirst = m_Map.FindAction("ChooseFirst", throwIfNotFound: true);
+        m_Map_ChooseSecond = m_Map.FindAction("ChooseSecond", throwIfNotFound: true);
+        m_Map_ChooseThird = m_Map.FindAction("ChooseThird", throwIfNotFound: true);
+        m_Map_ChooseFourth = m_Map.FindAction("ChooseFourth", throwIfNotFound: true);
+        // Battle
+        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -218,6 +307,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Map_Interact;
     private readonly InputAction m_Map_Attack;
     private readonly InputAction m_Map_Move;
+    private readonly InputAction m_Map_ChooseFirst;
+    private readonly InputAction m_Map_ChooseSecond;
+    private readonly InputAction m_Map_ChooseThird;
+    private readonly InputAction m_Map_ChooseFourth;
     public struct MapActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -225,6 +318,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Map_Interact;
         public InputAction @Attack => m_Wrapper.m_Map_Attack;
         public InputAction @Move => m_Wrapper.m_Map_Move;
+        public InputAction @ChooseFirst => m_Wrapper.m_Map_ChooseFirst;
+        public InputAction @ChooseSecond => m_Wrapper.m_Map_ChooseSecond;
+        public InputAction @ChooseThird => m_Wrapper.m_Map_ChooseThird;
+        public InputAction @ChooseFourth => m_Wrapper.m_Map_ChooseFourth;
         public InputActionMap Get() { return m_Wrapper.m_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -243,6 +340,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @ChooseFirst.started += instance.OnChooseFirst;
+            @ChooseFirst.performed += instance.OnChooseFirst;
+            @ChooseFirst.canceled += instance.OnChooseFirst;
+            @ChooseSecond.started += instance.OnChooseSecond;
+            @ChooseSecond.performed += instance.OnChooseSecond;
+            @ChooseSecond.canceled += instance.OnChooseSecond;
+            @ChooseThird.started += instance.OnChooseThird;
+            @ChooseThird.performed += instance.OnChooseThird;
+            @ChooseThird.canceled += instance.OnChooseThird;
+            @ChooseFourth.started += instance.OnChooseFourth;
+            @ChooseFourth.performed += instance.OnChooseFourth;
+            @ChooseFourth.canceled += instance.OnChooseFourth;
         }
 
         private void UnregisterCallbacks(IMapActions instance)
@@ -256,6 +365,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @ChooseFirst.started -= instance.OnChooseFirst;
+            @ChooseFirst.performed -= instance.OnChooseFirst;
+            @ChooseFirst.canceled -= instance.OnChooseFirst;
+            @ChooseSecond.started -= instance.OnChooseSecond;
+            @ChooseSecond.performed -= instance.OnChooseSecond;
+            @ChooseSecond.canceled -= instance.OnChooseSecond;
+            @ChooseThird.started -= instance.OnChooseThird;
+            @ChooseThird.performed -= instance.OnChooseThird;
+            @ChooseThird.canceled -= instance.OnChooseThird;
+            @ChooseFourth.started -= instance.OnChooseFourth;
+            @ChooseFourth.performed -= instance.OnChooseFourth;
+            @ChooseFourth.canceled -= instance.OnChooseFourth;
         }
 
         public void RemoveCallbacks(IMapActions instance)
@@ -273,10 +394,96 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public MapActions @Map => new MapActions(this);
+
+    // Battle
+    private readonly InputActionMap m_Battle;
+    private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
+    public struct BattleActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public BattleActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputActionMap Get() { return m_Wrapper.m_Battle; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
+        public void AddCallbacks(IBattleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
+        }
+
+        private void UnregisterCallbacks(IBattleActions instance)
+        {
+        }
+
+        public void RemoveCallbacks(IBattleActions instance)
+        {
+            if (m_Wrapper.m_BattleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBattleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BattleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BattleActions @Battle => new BattleActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    public struct UIActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public UIActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+        }
+
+        private void UnregisterCallbacks(IUIActions instance)
+        {
+        }
+
+        public void RemoveCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IMapActions
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnChooseFirst(InputAction.CallbackContext context);
+        void OnChooseSecond(InputAction.CallbackContext context);
+        void OnChooseThird(InputAction.CallbackContext context);
+        void OnChooseFourth(InputAction.CallbackContext context);
+    }
+    public interface IBattleActions
+    {
+    }
+    public interface IUIActions
+    {
     }
 }

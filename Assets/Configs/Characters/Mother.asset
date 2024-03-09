@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c365bb021b140cd8e1341e4096d4750, type: 3}
   m_Name: Mother
   m_EditorClassIdentifier: 
+  Name: 
+  Icon: {fileID: 21300000, guid: ff52d1d9b1adb9f4db852f9ccbff7752, type: 3}
   Stats:
     Health: 55
     Mana: 0

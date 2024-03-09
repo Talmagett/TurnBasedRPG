@@ -1,3 +1,4 @@
+using Tools;
 using UnityEngine;
 
 namespace Map.Characters.Interactions.Environment
@@ -8,15 +9,13 @@ namespace Map.Characters.Interactions.Environment
         [SerializeField] private int level;
         [SerializeField] private float range;
 
-        private readonly RaycastHit[] _results=null;
         public void Attack()
         {
-            var size = Physics.SphereCastNonAlloc(transform.position, 1, transform.forward, _results, range);
-            print(size);
-            
-            for (var i = 0; i < size; i++)
+            var hits = Physics.SphereCastAll(transform.position,1, transform.forward,range, Layers.Interactables);
+
+            foreach (var hit in hits)
             {
-                if (!_results[i].collider.TryGetComponent(out AttackableInteraction attackableInteraction)) continue;
+                if (!hit.collider.TryGetComponent(out AttackableInteraction attackableInteraction)) continue;
                 
                 if(attackableInteraction.CanAttack(weaponType,level))
                     attackableInteraction.Destroy();

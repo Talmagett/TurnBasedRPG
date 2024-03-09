@@ -1,27 +1,38 @@
+using Data;
+using Game;
 using SystemCode;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Battle
 {
-    public class BattleController : MonoBehaviour
+    public class BattleController : GameStateController
     {
-        private PriorityQueue<string, int> _unitsOrder;
+        [SerializeField] private Transform battleParent;
 
-        private void Awake()
+        public override void EnterState()
         {
-            _unitsOrder = new PriorityQueue<string, int>();
+            base.EnterState();
+            PlayerInputActions.Battle.Enable();
         }
-
-        private void Update()
+        
+        public override void ExitState()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-                print(_unitsOrder.Dequeue());
-            if (Input.GetKeyDown(KeyCode.A))
+            base.ExitState();
+            PlayerInputActions.Battle.Disable();
+            
+            while (battleParent.childCount > 0)
             {
-                int rand =Random.Range(0, 10);
-                print(rand);
-                _unitsOrder.Enqueue($"{rand}+sss",rand);
+                DestroyImmediate(battleParent.GetChild(0).gameObject);
+            }
+        }
+        
+        public void Setup(EnemyRiftConfig enemyRiftConfig)
+        {
+            Instantiate(enemyRiftConfig.Environment, battleParent);
+            foreach (var enemy in enemyRiftConfig.Enemies)
+            {
+                Instantiate(enemy, battleParent.position+Random.insideUnitSphere*5,Quaternion.identity,battleParent);
             }
         }
     }

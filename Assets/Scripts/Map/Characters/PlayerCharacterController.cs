@@ -1,7 +1,6 @@
 using Entities;
 using Map.Interactables;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -15,33 +14,54 @@ namespace Map.Characters
         
         [SerializeField] private float interactRadius;
         [SerializeField] private MonoEntity entity;
+
+        public bool IsMoving { get; private set; } = false;
+
+        private PlayerInputActions _playerInput;
+        private InputAction.CallbackContext _context;
         
-        private PlayerInputActions _playerMapInput;
-        private PlayerInput _playerInput;
         [Inject]
-        public void Construct(PlayerInput playerInput)
+        public void Construct(PlayerInputActions playerInput)
         {
-            _playerMapInput.Map.Interact.performed += Interact;
-            _playerMapInput.Map.Move.performed += Move;
-            _playerInput.currentActionMap.actionTriggered += OnTriggered;
-        }
-
-        private void OnTriggered(InputAction.CallbackContext obj)
-        {
-        }
-
-        private void Move(InputAction.CallbackContext obj)
-        {
-            //obj.ReadValue<float>().
+            _playerInput = playerInput;
+            _playerInput.Map.Interact.performed += Interact;
+            _playerInput.Map.Move.performed += StartMove;
+            _playerInput.Map.Move.canceled += StopMove;
         }
 
         private void OnDestroy()
         {
-            _playerMapInput.Map.Interact.performed -= Interact;
+            _playerInput.Map.Interact.performed -= Interact;
+            _playerInput.Map.Move.performed -= StartMove;
+            _playerInput.Map.Move.canceled -= StopMove;
+        }
+
+        private void StartMove(InputAction.CallbackContext obj)
+        {
+            IsMoving = true;
+            _context = obj;
+        }
+
+        private void StopMove(InputAction.CallbackContext obj)
+        {
+            IsMoving = false;
+        }
+        
+        private void Move(InputAction.CallbackContext context)
+        {
+            var moveDirection2D = context.ReadValue<Vector2>();
+            var moveDirection = new Vector3(moveDirection2D.x, 0, moveDirection2D.y);
+            
+            characterController.Move(moveDirection * (moveSpeed * Time.deltaTime));
+            
+            var targetRotation = Quaternion.LookRotation(moveDirection,Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation,targetRotation,Time.deltaTime*rotationSpeed);
         }
 
         private void Interact(InputAction.CallbackContext obj)
         {
+            print("interact");
+            return;
             var hits = Physics.OverlapSphere(transform.position, interactRadius);
             foreach (var hit in hits)
             {
@@ -51,16 +71,13 @@ namespace Map.Characters
                 }
             }
         }
-
+        
         private void Update()
         {
-            /*
-            if (_playerMapInput.MoveDir != Vector3.zero)
+            if (IsMoving)
             {
-                characterController.Move(_playerMapInput.MoveDir * (moveSpeed * Time.deltaTime));
-                var targetRotation = Quaternion.LookRotation(_playerMapInput.MoveDir,Vector3.up);
-                transform.rotation = Quaternion.Lerp(transform.rotation,targetRotation,Time.deltaTime*rotationSpeed); 
-            }*/
+                Move(_context);
+            }
         }
     }
 }
