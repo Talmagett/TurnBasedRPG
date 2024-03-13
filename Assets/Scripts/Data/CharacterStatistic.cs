@@ -8,7 +8,7 @@ namespace Components
         public int Damage;
         public int MagicPower;
         public int Defense;
-        public int AttackSpeed;
+        public float AttackSpeed;
         public float Evasion;
         public float CriticalChance;
         public float CriticalRate;

@@ -9,7 +9,8 @@ namespace Battle
     public class Side
     {
         [field: SerializeField] public Transform Parent { get; private set; }
-
+        private const float deltaPosition=2; 
+        
         public IEnumerable<BaseCharacter> GetAllCharacters() => _units;
         
         private List<BaseCharacter> _units=new List<BaseCharacter>();
@@ -25,15 +26,13 @@ namespace Battle
         public void SpawnUnits(BaseCharacter[] enemiesConfig)
         {
             var len = enemiesConfig.Length;
-            var deltaPos = 2;
-            var minPos = len - 1;
-            var index = 0;
-            for (float pos = -minPos; pos <= minPos; pos+=deltaPos)
+            var pos = -(len - 1)/2f*deltaPosition;
+            for (var i = 0; i < len; i++)
             {
-                var unit = Object.Instantiate(enemiesConfig[index], Parent.position+Vector3.forward*pos,Parent.rotation,Parent);
+                var unit = Object.Instantiate(enemiesConfig[i], Parent.position+Vector3.forward*pos,Parent.rotation,Parent);
                 _units.Add(unit);
                 unit.gameObject.SetActive(true);
-                index++;
+                pos += deltaPosition;
             }
         }
     }

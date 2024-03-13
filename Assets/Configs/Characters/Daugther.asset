@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: a20c0db525a77534e97ef23028366b63, type: 3}
   Stats:
     Health: 45
-    Mana: 0
+    Mana: 20
     Damage: 0
     MagicPower: 0
     Defense: 0

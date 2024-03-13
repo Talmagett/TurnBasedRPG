@@ -7,20 +7,21 @@ namespace Map.UI
 {
     public class MapHeroPresenter : MonoBehaviour
     {
-        [SerializeField] private MapHeroView mapHeroViewPrefab;
+        [SerializeField] private HeroView heroViewPrefab;
         [SerializeField] private Transform parent;
         [SerializeField] private PartyController partyController;
 
-        private MapHeroView[] _mapHeroViews;
+        private HeroView[] _mapHeroViews;
         private void Start()
         {
-            _mapHeroViews = new MapHeroView[partyController.GetHeroes().Length];
+            _mapHeroViews = new HeroView[partyController.GetHeroes().Length];
             int index = 0;
             foreach (var playerCharacter in partyController.GetHeroes())
             {
-                _mapHeroViews[index] = Instantiate(mapHeroViewPrefab, parent);
-                _mapHeroViews[index].SetCharacterIcon(playerCharacter.GetConfig().Icon);
-                _mapHeroViews[index].SetCharacterHealth((float)playerCharacter.Health.Value/playerCharacter.MaxHealth.Value);
+                _mapHeroViews[index] = Instantiate(heroViewPrefab, parent);
+                _mapHeroViews[index].SetIcon(playerCharacter.GetConfig().Icon);
+                _mapHeroViews[index].SetHealth((float)playerCharacter.Stats.Health.Value/playerCharacter.Stats.MaxHealth.Value);
+                _mapHeroViews[index].SetMana((float)playerCharacter.Stats.Mana.Value/playerCharacter.Stats.MaxMana.Value);
                 index++;
             }
         }

@@ -1,10 +1,8 @@
 using Data;
 using Game;
 using Map.Characters;
-using SystemCode;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace Battle
 {
