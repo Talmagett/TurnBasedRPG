@@ -8,7 +8,7 @@ namespace Map
     {
         [SerializeField] private PlayerCharacterController playerCharacter;
         [SerializeField] private PartyController partyController;
-        
+
         public override void InstallBindings()
         {
             Container.BindInstance(playerCharacter).AsSingle();

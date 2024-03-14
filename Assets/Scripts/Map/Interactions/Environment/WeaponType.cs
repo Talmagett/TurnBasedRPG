@@ -1,4 +1,4 @@
-namespace Map.Characters.Interactions.Environment
+namespace Map.Interactions.Environment
 {
     public enum WeaponType
     {
@@ -9,6 +9,6 @@ namespace Map.Characters.Interactions.Environment
         Hit,
         Lightning,
         Recovery,
-        Beam,
+        Beam
     }
 }

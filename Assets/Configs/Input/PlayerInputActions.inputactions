@@ -33,7 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ChooseFirst",
+                    "name": "PreviousHero",
                     "type": "Button",
                     "id": "7ad75454-90cb-4cb9-8d3e-7a27c35cfb05",
                     "expectedControlType": "Button",
@@ -42,27 +42,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChooseSecond",
+                    "name": "NextHero",
                     "type": "Button",
                     "id": "f913a0b9-4ff5-4b63-a3fc-6881c4ec67e1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChooseThird",
-                    "type": "Button",
-                    "id": "b8f8bd2c-864d-4e4b-81c3-7139a7a532fa",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChooseFourth",
-                    "type": "Button",
-                    "id": "84085015-b99f-437c-99ef-bba361a9abe8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -73,7 +55,7 @@
                 {
                     "name": "",
                     "id": "c2bfc736-965f-4998-9c30-a0cfa5e45796",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -150,44 +132,22 @@
                 {
                     "name": "",
                     "id": "d7ba7273-5312-497f-b50b-f42b0072dd23",
-                    "path": "<Keyboard>/1",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseFirst",
+                    "action": "PreviousHero",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "9346bcdd-d99b-4803-a4fc-1bc0c0d26041",
-                    "path": "<Keyboard>/2",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseSecond",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "de0ea20b-bf2b-4dbd-82af-30f4949fe99e",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChooseThird",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "97a3b9db-f61b-4676-b361-4e597067f5f7",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChooseFourth",
+                    "action": "NextHero",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,7 +1,7 @@
 using System;
 using Entities;
 
-namespace Map.Interactables
+namespace Map.Interactions.Environment
 {
     public interface IInteractable
     {

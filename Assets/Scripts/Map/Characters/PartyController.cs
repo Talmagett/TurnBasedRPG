@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -7,88 +6,84 @@ namespace Map.Characters
 {
     public class PartyController : MonoBehaviour
     {
+        private static readonly int isMoving = Animator.StringToHash("IsMoving");
         [SerializeField] private PlayerCharacter[] heroes;
         [SerializeField] private ParticleSystem changeVFX;
 
-        private PlayerInputActions _playerMapInput;
         private PlayerCharacter _currentCharacter;
-        private static readonly int isMoving = Animator.StringToHash("IsMoving");
-
+        private int _currentCharacterIndex;
         private PlayerCharacterController _playerCharacterController;
-        public PlayerCharacter[] GetHeroes() => heroes;
-        [Inject]
-        public void Construct(PlayerInputActions playerInput,PlayerCharacterController playerCharacterController)
-        {
-            _playerCharacterController = playerCharacterController;
-            _playerMapInput = playerInput;
-            _playerMapInput.Map.ChooseFirst.performed += ChooseFirstCharacter;
-            _playerMapInput.Map.ChooseSecond.performed += ChooseSecondCharacter;
-            _playerMapInput.Map.ChooseThird.performed += ChooseThirdCharacter;
-            _playerMapInput.Map.ChooseFourth.performed += ChooseFourthCharacter;
-            _playerMapInput.Map.Attack.performed += Attack;
-        }
-
-        private void OnDestroy()
-        {
-            _playerMapInput.Map.ChooseFirst.performed -= ChooseFirstCharacter;
-            _playerMapInput.Map.ChooseSecond.performed -= ChooseSecondCharacter;
-            _playerMapInput.Map.ChooseThird.performed -= ChooseThirdCharacter;
-            _playerMapInput.Map.ChooseFourth.performed -= ChooseFourthCharacter;
-            _playerMapInput.Map.Attack.performed -= Attack;
-        }
-        
-        private void Attack(InputAction.CallbackContext obj)
-        {
-            _currentCharacter.GetWeapon().Attack();
-        }
+        private PlayerInputActions _playerMapInput;
 
         private void Start()
         {
-            //_currentCharacter = heroes[0];
-            ChangeCharacter(1);
+            ChangeCharacter();
         }
 
         private void Update()
         {
-            _currentCharacter.Animator.SetBool(isMoving,_playerCharacterController.IsMoving);
+            _currentCharacter.Animator.SetBool(isMoving, _playerCharacterController.IsMoving);
         }
 
-        private void ChooseFirstCharacter(InputAction.CallbackContext obj)
+        private void OnDestroy()
         {
-            ChangeCharacter(1);
+            _playerMapInput.Map.PreviousHero.performed -= ChoosePrevCharacter;
+            _playerMapInput.Map.NextHero.performed -= ChooseNextCharacter;
+            _playerMapInput.Map.Attack.performed -= Attack;
         }
-        private void ChooseSecondCharacter(InputAction.CallbackContext obj)
+
+        [Inject]
+        public void Construct(PlayerInputActions playerInput, PlayerCharacterController playerCharacterController)
         {
-            ChangeCharacter(2);
+            _playerCharacterController = playerCharacterController;
+            _playerMapInput = playerInput;
+            _playerMapInput.Map.PreviousHero.performed += ChoosePrevCharacter;
+            _playerMapInput.Map.NextHero.performed += ChooseNextCharacter;
+            _playerMapInput.Map.Attack.performed += Attack;
         }
-        private void ChooseThirdCharacter(InputAction.CallbackContext obj)
+
+
+        public PlayerCharacter[] GetHeroes()
         {
-            ChangeCharacter(3);
+            return heroes;
         }
-        private void ChooseFourthCharacter(InputAction.CallbackContext obj)
+
+        private void Attack(InputAction.CallbackContext context)
         {
-            ChangeCharacter(4);
+            _currentCharacter.GetWeapon().Attack();
         }
-        
-        private void ChangeCharacter(int index)
+
+        private void ChoosePrevCharacter(InputAction.CallbackContext obj)
         {
-            var checkingCharacter = _currentCharacter;
-            index--;
-            if (index > heroes.Length-1 || index < 0)
+            _currentCharacterIndex = (_currentCharacterIndex - 1) % heroes.Length;
+            if (_currentCharacterIndex < 0)
+                _currentCharacterIndex += heroes.Length;
+
+            ChangeCharacter();
+        }
+
+        private void ChooseNextCharacter(InputAction.CallbackContext obj)
+        {
+            _currentCharacterIndex = (_currentCharacterIndex + 1) % heroes.Length;
+            ChangeCharacter();
+        }
+
+        private void ChangeCharacter()
+        {
+            if (heroes[_currentCharacterIndex] == _currentCharacter)
                 return;
+
             for (var i = 0; i < heroes.Length; i++)
-            {
-                if (i != index)
+                if (i != _currentCharacterIndex)
+                {
                     heroes[i].Deactivate();
+                }
                 else
                 {
                     heroes[i].Activate();
                     _currentCharacter = heroes[i];
                 }
-            }
 
-            if (checkingCharacter == _currentCharacter)
-                return;
             changeVFX.Play();
         }
     }

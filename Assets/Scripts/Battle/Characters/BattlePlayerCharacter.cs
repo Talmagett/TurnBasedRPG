@@ -1,7 +1,6 @@
-namespace Battle.Characters 
+namespace Battle.Characters
 {
     public class BattlePlayerCharacter : BattleBaseCharacter
     {
-        
     }
 }

@@ -1,4 +1,3 @@
-using Components;
 using UnityEngine;
 
 namespace Data

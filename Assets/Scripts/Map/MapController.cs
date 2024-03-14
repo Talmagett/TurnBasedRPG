@@ -1,6 +1,4 @@
-using System;
 using Game;
-using UnityEngine;
 
 namespace Map
 {
@@ -11,7 +9,7 @@ namespace Map
             base.EnterState();
             PlayerInputActions.Map.Enable();
         }
-        
+
         public override void ExitState()
         {
             base.ExitState();

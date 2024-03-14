@@ -20,7 +20,7 @@ MonoBehaviour:
     Damage: 0
     MagicPower: 0
     Defense: 0
-    AttackSpeed: 34
+    AttackSpeed: 4.9
     Evasion: 0
     CriticalChance: 0
     CriticalRate: 1

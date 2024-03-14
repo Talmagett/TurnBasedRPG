@@ -1,28 +1,28 @@
+using System;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
-namespace Components
+namespace Data
 {
-    [System.Serializable]
+    [Serializable]
     public class CharacterStatistic
     {
-        [MinValue(0)]
-        public int Health;
-        [MinValue(0)]
-        public int Mana;
-        [MinValue(0)]
-        public int Damage;
-        [MinValue(0)]
-        public int MagicPower;
+        [MinValue(0)] public int Health;
+
+        [MinValue(0)] public int Mana;
+
+        [MinValue(0)] public int Damage;
+
+        [MinValue(0)] public int MagicPower;
+
         public int Defense;
-        [PropertyRange(1,80)]
-        public float AttackSpeed;
-        [PropertyRange(0,1)]
-        public float Evasion;
-        [PropertyRange(0,1)]
-        public float CriticalChance;
-        [PropertyRange(0.1f,10)]
-        public float CriticalRate;
+
+        [PropertyRange(0.1f, 10f)] public float AttackSpeed;
+
+        [PropertyRange(0, 1)] public float Evasion;
+
+        [PropertyRange(0, 1)] public float CriticalChance;
+
+        [PropertyRange(0.1f, 10)] public float CriticalRate;
     }
 }
 

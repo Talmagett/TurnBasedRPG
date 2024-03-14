@@ -1,4 +1,4 @@
-using Map.Characters.Interactions.Environment;
+using Map.Interactions.Environment;
 using UnityEngine;
 
 namespace Map.Characters
@@ -6,8 +6,12 @@ namespace Map.Characters
     public class PlayerCharacter : BaseCharacter
     {
         [SerializeField] private Weapon weapon;
-        public Weapon GetWeapon() => weapon;
-        
+
+        public Weapon GetWeapon()
+        {
+            return weapon;
+        }
+
         public void Deactivate()
         {
             gameObject.SetActive(false);

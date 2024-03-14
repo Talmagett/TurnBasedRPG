@@ -55,7 +55,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ChooseFirst"",
+                    ""name"": ""PreviousHero"",
                     ""type"": ""Button"",
                     ""id"": ""7ad75454-90cb-4cb9-8d3e-7a27c35cfb05"",
                     ""expectedControlType"": ""Button"",
@@ -64,27 +64,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ChooseSecond"",
+                    ""name"": ""NextHero"",
                     ""type"": ""Button"",
                     ""id"": ""f913a0b9-4ff5-4b63-a3fc-6881c4ec67e1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChooseThird"",
-                    ""type"": ""Button"",
-                    ""id"": ""b8f8bd2c-864d-4e4b-81c3-7139a7a532fa"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChooseFourth"",
-                    ""type"": ""Button"",
-                    ""id"": ""84085015-b99f-437c-99ef-bba361a9abe8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -95,7 +77,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c2bfc736-965f-4998-9c30-a0cfa5e45796"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -172,44 +154,22 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d7ba7273-5312-497f-b50b-f42b0072dd23"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseFirst"",
+                    ""action"": ""PreviousHero"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""9346bcdd-d99b-4803-a4fc-1bc0c0d26041"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseSecond"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""de0ea20b-bf2b-4dbd-82af-30f4949fe99e"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChooseThird"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""97a3b9db-f61b-4676-b361-4e597067f5f7"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChooseFourth"",
+                    ""action"": ""NextHero"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -235,10 +195,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Map_Interact = m_Map.FindAction("Interact", throwIfNotFound: true);
         m_Map_Attack = m_Map.FindAction("Attack", throwIfNotFound: true);
         m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
-        m_Map_ChooseFirst = m_Map.FindAction("ChooseFirst", throwIfNotFound: true);
-        m_Map_ChooseSecond = m_Map.FindAction("ChooseSecond", throwIfNotFound: true);
-        m_Map_ChooseThird = m_Map.FindAction("ChooseThird", throwIfNotFound: true);
-        m_Map_ChooseFourth = m_Map.FindAction("ChooseFourth", throwIfNotFound: true);
+        m_Map_PreviousHero = m_Map.FindAction("PreviousHero", throwIfNotFound: true);
+        m_Map_NextHero = m_Map.FindAction("NextHero", throwIfNotFound: true);
         // Battle
         m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
         // UI
@@ -307,10 +265,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Map_Interact;
     private readonly InputAction m_Map_Attack;
     private readonly InputAction m_Map_Move;
-    private readonly InputAction m_Map_ChooseFirst;
-    private readonly InputAction m_Map_ChooseSecond;
-    private readonly InputAction m_Map_ChooseThird;
-    private readonly InputAction m_Map_ChooseFourth;
+    private readonly InputAction m_Map_PreviousHero;
+    private readonly InputAction m_Map_NextHero;
     public struct MapActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -318,10 +274,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Map_Interact;
         public InputAction @Attack => m_Wrapper.m_Map_Attack;
         public InputAction @Move => m_Wrapper.m_Map_Move;
-        public InputAction @ChooseFirst => m_Wrapper.m_Map_ChooseFirst;
-        public InputAction @ChooseSecond => m_Wrapper.m_Map_ChooseSecond;
-        public InputAction @ChooseThird => m_Wrapper.m_Map_ChooseThird;
-        public InputAction @ChooseFourth => m_Wrapper.m_Map_ChooseFourth;
+        public InputAction @PreviousHero => m_Wrapper.m_Map_PreviousHero;
+        public InputAction @NextHero => m_Wrapper.m_Map_NextHero;
         public InputActionMap Get() { return m_Wrapper.m_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -340,18 +294,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @ChooseFirst.started += instance.OnChooseFirst;
-            @ChooseFirst.performed += instance.OnChooseFirst;
-            @ChooseFirst.canceled += instance.OnChooseFirst;
-            @ChooseSecond.started += instance.OnChooseSecond;
-            @ChooseSecond.performed += instance.OnChooseSecond;
-            @ChooseSecond.canceled += instance.OnChooseSecond;
-            @ChooseThird.started += instance.OnChooseThird;
-            @ChooseThird.performed += instance.OnChooseThird;
-            @ChooseThird.canceled += instance.OnChooseThird;
-            @ChooseFourth.started += instance.OnChooseFourth;
-            @ChooseFourth.performed += instance.OnChooseFourth;
-            @ChooseFourth.canceled += instance.OnChooseFourth;
+            @PreviousHero.started += instance.OnPreviousHero;
+            @PreviousHero.performed += instance.OnPreviousHero;
+            @PreviousHero.canceled += instance.OnPreviousHero;
+            @NextHero.started += instance.OnNextHero;
+            @NextHero.performed += instance.OnNextHero;
+            @NextHero.canceled += instance.OnNextHero;
         }
 
         private void UnregisterCallbacks(IMapActions instance)
@@ -365,18 +313,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @ChooseFirst.started -= instance.OnChooseFirst;
-            @ChooseFirst.performed -= instance.OnChooseFirst;
-            @ChooseFirst.canceled -= instance.OnChooseFirst;
-            @ChooseSecond.started -= instance.OnChooseSecond;
-            @ChooseSecond.performed -= instance.OnChooseSecond;
-            @ChooseSecond.canceled -= instance.OnChooseSecond;
-            @ChooseThird.started -= instance.OnChooseThird;
-            @ChooseThird.performed -= instance.OnChooseThird;
-            @ChooseThird.canceled -= instance.OnChooseThird;
-            @ChooseFourth.started -= instance.OnChooseFourth;
-            @ChooseFourth.performed -= instance.OnChooseFourth;
-            @ChooseFourth.canceled -= instance.OnChooseFourth;
+            @PreviousHero.started -= instance.OnPreviousHero;
+            @PreviousHero.performed -= instance.OnPreviousHero;
+            @PreviousHero.canceled -= instance.OnPreviousHero;
+            @NextHero.started -= instance.OnNextHero;
+            @NextHero.performed -= instance.OnNextHero;
+            @NextHero.canceled -= instance.OnNextHero;
         }
 
         public void RemoveCallbacks(IMapActions instance)
@@ -475,10 +417,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnChooseFirst(InputAction.CallbackContext context);
-        void OnChooseSecond(InputAction.CallbackContext context);
-        void OnChooseThird(InputAction.CallbackContext context);
-        void OnChooseFourth(InputAction.CallbackContext context);
+        void OnPreviousHero(InputAction.CallbackContext context);
+        void OnNextHero(InputAction.CallbackContext context);
     }
     public interface IBattleActions
     {

@@ -1,6 +1,5 @@
 using Battle;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
 namespace Game
@@ -9,7 +8,7 @@ namespace Game
     {
         [SerializeField] private GameController gameController;
         [SerializeField] private BattleController battleController;
-        
+
         public override void InstallBindings()
         {
             Container.BindInstance(gameController).AsSingle();

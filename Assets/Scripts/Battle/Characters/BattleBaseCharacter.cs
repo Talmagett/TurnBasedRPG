@@ -9,6 +9,7 @@ namespace Battle.Characters
         [field: SerializeField] public BaseCharacter Character { get; private set; }
 
         protected BattleController BattleController;
+
         [Inject]
         public void Construct(BattleController battleController)
         {

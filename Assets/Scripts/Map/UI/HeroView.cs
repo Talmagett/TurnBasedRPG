@@ -1,4 +1,5 @@
 using UnityEngine;
+using View;
 
 namespace Map.UI
 {
@@ -7,6 +8,7 @@ namespace Map.UI
         [SerializeField] private CharacterIconView iconView;
         [SerializeField] private SliderView healthView;
         [SerializeField] private SliderView manaView;
+
         public void SetIcon(Sprite icon)
         {
             iconView.SetIcon(icon);
@@ -14,7 +16,7 @@ namespace Map.UI
 
         public void SetHealth(float value)
         {
-          healthView.SetFill(value);  
+            healthView.SetFill(value);
         }
 
         public void SetMana(float value)

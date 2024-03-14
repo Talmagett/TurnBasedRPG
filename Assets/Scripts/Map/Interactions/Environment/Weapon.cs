@@ -1,7 +1,7 @@
 using Tools;
 using UnityEngine;
 
-namespace Map.Characters.Interactions.Environment
+namespace Map.Interactions.Environment
 {
     public class Weapon : MonoBehaviour
     {
@@ -11,13 +11,13 @@ namespace Map.Characters.Interactions.Environment
 
         public void Attack()
         {
-            var hits = Physics.SphereCastAll(transform.position,1, transform.forward,range, Layers.Interactables);
+            var hits = Physics.SphereCastAll(transform.position, 1, transform.forward, range, Layers.Interactables);
 
             foreach (var hit in hits)
             {
                 if (!hit.collider.TryGetComponent(out AttackableInteraction attackableInteraction)) continue;
-                
-                if(attackableInteraction.CanAttack(weaponType,level))
+
+                if (attackableInteraction.CanAttack(weaponType, level))
                     attackableInteraction.Destroy();
             }
         }

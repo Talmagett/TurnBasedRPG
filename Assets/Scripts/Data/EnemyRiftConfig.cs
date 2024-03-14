@@ -8,6 +8,7 @@ namespace Data
     public class EnemyRiftConfig : ScriptableObject
     {
         public Environment Environment;
+
         public BaseCharacter[] Enemies;
         //loot
     }

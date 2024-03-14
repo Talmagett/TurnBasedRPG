@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -7,24 +6,26 @@ namespace Battle.UI
     public class BattleQueuePresenter : MonoBehaviour
     {
         [SerializeField] private BattleQueueView battleQueueView;
-        private const float QueueViewTime=50;
+
         private BattleController _battleController;
-        
-        [Inject]
-        public void Construct(BattleController battleController)
+
+        private void OnEnable()
         {
-            _battleController = battleController;
-            _battleController.BattleQueue.OnQueueChanged += UpdateView;
+            if (_battleController.BattleQueue != null)
+                _battleController.BattleQueue.OnQueueChanged += UpdateView;
         }
 
         private void OnDisable()
         {
             battleQueueView.Clear();
+            if (_battleController.BattleQueue != null)
+                _battleController.BattleQueue.OnQueueChanged -= UpdateView;
         }
 
-        private void OnDestroy()
+        [Inject]
+        public void Construct(BattleController battleController)
         {
-            _battleController.BattleQueue.OnQueueChanged -= UpdateView;
+            _battleController = battleController;
         }
 
         private void UpdateView()
@@ -33,10 +34,10 @@ namespace Battle.UI
             battleQueueView.SetCurrentTurnView(_battleController.BattleQueue.CurrentCharacter.GetConfig().Icon);
             foreach (var unitTimes in _battleController.BattleQueue.GetUnitTimes())
             {
-                if (unitTimes.time > _battleController.BattleQueue.CurrentTime+QueueViewTime)
+                if (unitTimes.time > _battleController.BattleQueue.CurrentTime + BattleQueue.QueueTime)
                     continue;
-                var percent = (unitTimes.time - _battleController.BattleQueue.CurrentTime)/QueueViewTime;
-                battleQueueView.SpawnIcon(unitTimes.character.GetConfig().Icon,percent);
+                var percent = (unitTimes.time - _battleController.BattleQueue.CurrentTime) / BattleQueue.QueueTime;
+                battleQueueView.SpawnIcon(unitTimes.character.GetConfig().Icon, percent);
             }
         }
     }

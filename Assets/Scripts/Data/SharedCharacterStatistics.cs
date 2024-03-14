@@ -1,4 +1,3 @@
-using Components;
 using UniRx;
 
 namespace Data
@@ -6,22 +5,22 @@ namespace Data
     public class SharedCharacterStatistics
     {
         private readonly CharacterStatistic _stats;
-        
-        public ReactiveProperty<int> MaxHealth;
-        public ReactiveProperty<int> Health;
-        
-        public ReactiveProperty<int> MaxMana;
-        public ReactiveProperty<int> Mana;
-        
-        public ReactiveProperty<int> Damage;
-        public ReactiveProperty<int> MagicPower;
-        
-        public ReactiveProperty<int> Defense;
         public ReactiveProperty<float> AttackSpeed;
-        public ReactiveProperty<float> Evasion;
         public ReactiveProperty<float> CriticalChance;
         public ReactiveProperty<float> CriticalRate;
-        
+
+        public ReactiveProperty<int> Damage;
+
+        public ReactiveProperty<int> Defense;
+        public ReactiveProperty<float> Evasion;
+        public ReactiveProperty<int> Health;
+        public ReactiveProperty<int> MagicPower;
+        public ReactiveProperty<int> Mana;
+
+        public ReactiveProperty<int> MaxHealth;
+
+        public ReactiveProperty<int> MaxMana;
+
         public SharedCharacterStatistics(CharacterStatistic stats)
         {
             _stats = stats;

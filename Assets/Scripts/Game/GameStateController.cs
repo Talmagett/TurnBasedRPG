@@ -19,7 +19,7 @@ namespace Game
         public virtual void EnterState()
         {
             canvas.SetActive(true);
-            stateCamera.gameObject.SetActive(true);   
+            stateCamera.gameObject.SetActive(true);
         }
 
         public virtual void ExitState()
