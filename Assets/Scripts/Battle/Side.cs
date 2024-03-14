@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Data;
 using Map.Characters;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Battle
 {
@@ -9,8 +11,8 @@ namespace Battle
     public class Side
     {
         [field: SerializeField] public Transform Parent { get; private set; }
-        private const float deltaPosition=2; 
-        
+        private const float deltaPosition=2;
+        public event Action OnUnitsCleared; 
         public IEnumerable<BaseCharacter> GetAllCharacters() => _units;
         
         private List<BaseCharacter> _units=new List<BaseCharacter>();
@@ -35,6 +37,12 @@ namespace Battle
                 unit.gameObject.SetActive(true);
                 pos += deltaPosition;
             }
+        }
+
+        public void DespawnUnit(BaseCharacter baseCharacter)
+        {
+            _units.Remove(baseCharacter);
+            baseCharacter.DestroySelf();
         }
     }
 }

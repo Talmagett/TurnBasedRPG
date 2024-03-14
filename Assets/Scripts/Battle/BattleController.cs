@@ -10,14 +10,47 @@ namespace Battle
 {
     public class BattleController : GameStateController
     {
-        public event Action OnNextTurn;
-        
         [SerializeField] private Transform environmentParent;
         
         [field:SerializeField] public Side PlayerSide { get; private set; }
         [field:SerializeField] public Side EnemiesSide { get; private set; }
-
+        
+        [ReadOnly]
+        [ShowInInspector]
         public BattleQueue BattleQueue { get; private set; }
+
+        private GameController _gameController;
+        
+        [Inject]
+        public void Construct(GameController gameController)
+        {
+            _gameController = gameController;
+        }
+        
+        private void OnEnable()
+        {
+            PlayerSide.OnUnitsCleared += GameOver;
+            EnemiesSide.OnUnitsCleared += FinishBattle;
+        }
+
+        private void OnDisable()
+        {
+            PlayerSide.OnUnitsCleared -= GameOver;
+            EnemiesSide.OnUnitsCleared -= FinishBattle;
+        }
+        
+
+        private void GameOver()
+        {
+            _gameController.ExitBattle();
+            print("gameOver");
+        }
+        
+        private void FinishBattle()
+        {
+            _gameController.ExitBattle();
+            print("finish");
+        }
 
         private void Update()
         {
@@ -26,11 +59,25 @@ namespace Battle
                 NextTurn();
             }
         }
+        
+        [Button]
+        public void DestroyEnemy(bool isPlayer, BaseCharacter unit)
+        {
+            if (isPlayer)
+            {
+                PlayerSide.DespawnUnit(unit);
+            }
+            else
+            {
+                EnemiesSide.DespawnUnit(unit);
+            }
+            BattleQueue.RemoveUnit(unit);
+            BattleQueue.UpdateTime();
+        }
 
         public void NextTurn()
         {
             BattleQueue.NextTurn();
-            OnNextTurn?.Invoke();
         }
 
         public override void EnterState()
