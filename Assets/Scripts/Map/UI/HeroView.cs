@@ -4,7 +4,7 @@ namespace Map.UI
 {
     public class HeroView : MonoBehaviour
     {
-        [SerializeField] private ImageIconView iconView;
+        [SerializeField] private CharacterIconView iconView;
         [SerializeField] private SliderView healthView;
         [SerializeField] private SliderView manaView;
         public void SetIcon(Sprite icon)

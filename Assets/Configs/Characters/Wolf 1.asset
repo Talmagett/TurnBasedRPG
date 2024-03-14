@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Wolf 1
   m_EditorClassIdentifier: 
   Name: Wolf
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300104, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   Stats:
     Health: 55
     Mana: 0
     Damage: 12
     MagicPower: 0
     Defense: 0
-    AttackSpeed: 0
+    AttackSpeed: 30
     Evasion: 0
     CriticalChance: 0
-    CriticalRate: 0
+    CriticalRate: 1

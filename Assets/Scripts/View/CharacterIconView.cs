@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Map.UI
 {
-    public class ImageIconView : MonoBehaviour
+    public class CharacterIconView : MonoBehaviour
     {
         [SerializeField] private Image characterIcon;
 

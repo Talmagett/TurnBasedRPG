@@ -30,7 +30,7 @@ namespace Data
             MaxMana = new ReactiveProperty<int>(stats.Mana);
             Mana = new ReactiveProperty<int>(stats.Mana);
             Damage = new ReactiveProperty<int>(stats.Damage);
-            MagicPower = new ReactiveProperty<int>(stats.Mana);
+            MagicPower = new ReactiveProperty<int>(stats.MagicPower);
             Defense = new ReactiveProperty<int>(stats.Defense);
 
             AttackSpeed = new ReactiveProperty<float>(stats.AttackSpeed);

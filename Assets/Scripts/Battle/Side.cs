@@ -17,6 +17,7 @@ namespace Battle
 
         public void ClearField()
         {
+            _units.Clear();
             while (Parent.childCount > 0)
             {
                 Object.DestroyImmediate(Parent.GetChild(0).gameObject);
