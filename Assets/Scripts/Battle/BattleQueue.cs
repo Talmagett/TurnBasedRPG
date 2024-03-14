@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Map.Characters;
 using SystemCode;
+using Random = UnityEngine.Random;
 
 namespace Battle
 {
@@ -15,7 +16,7 @@ namespace Battle
         
         private readonly List<BaseCharacter> _unitList = new();
         private readonly PriorityQueue<BaseCharacter, float> _queues = new();
-
+        private bool _isInit=true;
         public List<UnitTimes> GetUnitTimes()
         {
             var unitTimesArray = new List<UnitTimes>();
@@ -47,7 +48,7 @@ namespace Battle
             var lastTime = !unitTimes.Any() ? CurrentTime : unitTimes.Max(t => t.Priority);
             while (lastTime + unit.Stats.AttackSpeed.Value < CurrentTime + QueueTime)
             {
-                lastTime += unit.Stats.AttackSpeed.Value;
+                lastTime += unit.Stats.AttackSpeed.Value+(_isInit?Random.Range(0f,10):0);
                 _queues.Enqueue(unit, lastTime);
             }
         }
@@ -60,6 +61,7 @@ namespace Battle
                 return;
             if (baseCharacter == null)
                 NextTurn();
+            _isInit = false;
             
             CurrentCharacter = baseCharacter;
             

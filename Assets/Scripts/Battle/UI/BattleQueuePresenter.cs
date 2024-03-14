@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +17,16 @@ namespace Battle.UI
             _battleController.OnNextTurn += UpdateView;
         }
 
+        private void OnDisable()
+        {
+            battleQueueView.Clear();
+        }
+
+        private void OnDestroy()
+        {
+            _battleController.OnNextTurn -= UpdateView;
+        }
+
         private void UpdateView()
         {
             battleQueueView.Clear();
@@ -25,7 +36,7 @@ namespace Battle.UI
                 if (unitTimes.Time > _battleController.BattleQueue.CurrentTime+QueueViewTime)
                     continue;
                 var percent = (unitTimes.Time - _battleController.BattleQueue.CurrentTime)/QueueViewTime;
-                battleQueueView.SetIcon(unitTimes.Character.GetConfig().Icon,percent);
+                battleQueueView.SpawnIcon(unitTimes.Character.GetConfig().Icon,percent);
             }
         }
     }

@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 33346878}
   - component: {fileID: 33346877}
   - component: {fileID: 33346880}
-  - component: {fileID: 33346879}
+  - component: {fileID: 33346881}
   m_Layer: 5
   m_Name: battleQueuePanel
   m_TagString: Untagged
@@ -274,19 +274,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33346875}
   m_CullTransparentMesh: 1
---- !u!114 &33346879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33346875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f349c92968b844ef90ae5f3c9c2575b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleQueueView: {fileID: 33346880}
 --- !u!114 &33346880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +290,19 @@ MonoBehaviour:
     type: 3}
   currentIconView: {fileID: 372434945}
   parent: {fileID: 2121021635}
+--- !u!114 &33346881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33346875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f349c92968b844ef90ae5f3c9c2575b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleQueueView: {fileID: 33346880}
 --- !u!1 &45037892
 GameObject:
   m_ObjectHideFlags: 0

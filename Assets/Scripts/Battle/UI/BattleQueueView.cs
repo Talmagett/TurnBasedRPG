@@ -1,3 +1,4 @@
+using System;
 using Map.UI;
 using UnityEngine;
 
@@ -9,12 +10,22 @@ namespace Battle.UI
         [SerializeField] private CharacterIconView currentIconView;
         
         [SerializeField] private RectTransform parent;
+        private float minX;
+        private float maxX;
         
+        private void Awake()
+        {
+            var corners = new Vector3[4];
+            parent.GetLocalCorners(corners);
+            minX = corners[0].x;
+            maxX = corners[2].x;
+        }
+
         public void Clear()
         {
-            while (parent.childCount>0)
+            while (parent.transform.childCount>0)
             {
-                DestroyImmediate(parent.GetChild(0).gameObject);
+                DestroyImmediate(parent.transform.GetChild(0).gameObject);
             }
         }
 
@@ -23,12 +34,12 @@ namespace Battle.UI
             currentIconView.SetIcon(icon);
         }
         
-        public void SetIcon(Sprite icon, float percent)
+        public void SpawnIcon(Sprite icon, float percent)
         {
-            var corners = new Vector3[4];
-            parent.GetLocalCorners(corners);
-            var xPos = (corners[2].x - corners[0].x) * percent;
-            var characterIconView = Instantiate(iconViewPrefab,new Vector2(parent.position.x+corners[0].x+xPos,parent.position.y),Quaternion.identity, parent);
+            var xPos = (maxX - minX) * percent;
+            var position = parent.position;
+            var characterIconView = 
+                Instantiate(iconViewPrefab,new Vector2(position.x+minX+xPos,position.y),Quaternion.identity, parent);
             characterIconView.SetIcon(icon);
         }
     }
