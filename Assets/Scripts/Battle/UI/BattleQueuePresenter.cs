@@ -31,13 +31,13 @@ namespace Battle.UI
         private void UpdateView()
         {
             battleQueueView.Clear();
-            battleQueueView.SetCurrentTurnView(_battleController.BattleQueue.CurrentCharacter.GetConfig().Icon);
+            battleQueueView.SetCurrentTurnView(_battleController.BattleQueue.CurrentCharacter.CharacterConfig.Icon);
             foreach (var unitTimes in _battleController.BattleQueue.GetUnitTimes())
             {
                 if (unitTimes.time > _battleController.BattleQueue.CurrentTime + BattleQueue.QueueTime)
                     continue;
                 var percent = (unitTimes.time - _battleController.BattleQueue.CurrentTime) / BattleQueue.QueueTime;
-                battleQueueView.SpawnIcon(unitTimes.character.GetConfig().Icon, percent);
+                battleQueueView.SpawnIcon(unitTimes.character.CharacterConfig.Icon, percent);
             }
         }
     }

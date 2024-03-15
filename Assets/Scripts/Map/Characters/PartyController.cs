@@ -1,3 +1,4 @@
+using Map.Interactions.Environment;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -7,10 +8,12 @@ namespace Map.Characters
     public class PartyController : MonoBehaviour
     {
         private static readonly int isMoving = Animator.StringToHash("IsMoving");
-        [SerializeField] private PlayerCharacter[] heroes;
+        [SerializeField] private BaseCharacter[] heroes;
         [SerializeField] private ParticleSystem changeVFX;
 
-        private PlayerCharacter _currentCharacter;
+        private BaseCharacter _currentCharacter;
+        private Weapon _currentWeapon;
+        
         private int _currentCharacterIndex;
         private PlayerCharacterController _playerCharacterController;
         private PlayerInputActions _playerMapInput;
@@ -43,20 +46,21 @@ namespace Map.Characters
         }
 
 
-        public PlayerCharacter[] GetHeroes()
+        public BaseCharacter[] GetHeroes()
         {
             return heroes;
         }
 
         private void Attack(InputAction.CallbackContext context)
         {
-            _currentCharacter.GetWeapon().Attack();
+            _currentWeapon.Attack();
         }
 
         private void ChoosePrevCharacter(InputAction.CallbackContext obj)
         {
-            _currentCharacterIndex = (_currentCharacterIndex - 1) % heroes.Length;
-            if (_currentCharacterIndex < 0)
+            _currentCharacterIndex--;
+            
+            if(_currentCharacterIndex<0)
                 _currentCharacterIndex += heroes.Length;
 
             ChangeCharacter();
@@ -64,7 +68,8 @@ namespace Map.Characters
 
         private void ChooseNextCharacter(InputAction.CallbackContext obj)
         {
-            _currentCharacterIndex = (_currentCharacterIndex + 1) % heroes.Length;
+            _currentCharacterIndex++;
+            _currentCharacterIndex %= heroes.Length;
             ChangeCharacter();
         }
 
@@ -76,14 +81,15 @@ namespace Map.Characters
             for (var i = 0; i < heroes.Length; i++)
                 if (i != _currentCharacterIndex)
                 {
-                    heroes[i].Deactivate();
+                    heroes[i].gameObject.SetActive(false);
                 }
                 else
                 {
-                    heroes[i].Activate();
+                    heroes[i].gameObject.SetActive(true);
                     _currentCharacter = heroes[i];
                 }
 
+            _currentWeapon = _currentCharacter.GetComponent<Weapon>();
             changeVFX.Play();
         }
     }

@@ -37,6 +37,7 @@ namespace Battle.UI
                 Instantiate(iconViewPrefab, new Vector2(position.x + minX + xPos, position.y), Quaternion.identity,
                     parent);
             characterIconView.SetIcon(icon);
+            characterIconView.transform.SetAsFirstSibling();
             return characterIconView;
         }
     }

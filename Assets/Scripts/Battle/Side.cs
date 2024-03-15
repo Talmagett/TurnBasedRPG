@@ -26,14 +26,14 @@ namespace Battle
             while (Parent.childCount > 0) Object.DestroyImmediate(Parent.GetChild(0).gameObject);
         }
 
-        public void SpawnUnits(BaseCharacter[] enemiesConfig)
+        public void SpawnUnits(BaseCharacter[] enemiesConfig, BattleController battleController)
         {
             var len = enemiesConfig.Length;
             var pos = -(len - 1) / 2f * deltaPosition;
             for (var i = 0; i < len; i++)
             {
-                var unit = Object.Instantiate(enemiesConfig[i], Parent.position + Vector3.forward * pos,
-                    Parent.rotation, Parent);
+                var unit = battleController.SpawnUnit(enemiesConfig[i], Parent);
+                unit.transform.SetPositionAndRotation(Parent.position + Vector3.forward * pos, Parent.rotation);
                 _units.Add(unit);
                 unit.gameObject.SetActive(true);
                 pos += deltaPosition;

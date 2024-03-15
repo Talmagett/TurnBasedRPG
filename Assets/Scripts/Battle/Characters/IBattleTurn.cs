@@ -1,9 +1,11 @@
+using Cysharp.Threading.Tasks;
+using Map.Characters;
+
 namespace Battle.Characters
 {
     public interface IBattleTurn
     {
-        void StartTurn();
-        bool HasFinished();
-        void EndTurn();
+        void Init(BaseCharacter character);
+        UniTask Run();
     }
 }

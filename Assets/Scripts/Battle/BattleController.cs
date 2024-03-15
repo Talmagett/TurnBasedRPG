@@ -15,9 +15,16 @@ namespace Battle
         [field: SerializeField] public Side EnemiesSide { get; private set; }
 
         private GameController _gameController;
-
+        private DiContainer _diContainer;
         [ReadOnly] [ShowInInspector] public BattleQueue BattleQueue { get; private set; }
 
+        [Inject]
+        public void Construct(GameController gameController, DiContainer diContainer)
+        {
+            _gameController = gameController;
+            _diContainer = diContainer;
+        }
+        
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space)) NextTurn();
@@ -33,12 +40,6 @@ namespace Battle
         {
             PlayerSide.OnUnitsCleared -= GameOver;
             EnemiesSide.OnUnitsCleared -= FinishBattle;
-        }
-
-        [Inject]
-        public void Construct(GameController gameController)
-        {
-            _gameController = gameController;
         }
 
 
@@ -65,9 +66,13 @@ namespace Battle
             BattleQueue.UpdateTime();
         }
 
-        public void NextTurn()
+        public async void NextTurn()
         {
-            BattleQueue.NextTurn();
+            while (true)
+            {
+                BattleQueue.NextTurn();
+                await BattleQueue.CurrentCharacter.BattleTurn.Run();
+            }
         }
 
         public override void EnterState()
@@ -86,7 +91,7 @@ namespace Battle
             EnemiesSide.ClearField();
         }
 
-        public void Setup(PlayerCharacter[] playerCharacters, EnemyRiftConfig enemyRiftConfig)
+        public void Setup(BaseCharacter[] playerCharacters, EnemyRiftConfig enemyRiftConfig)
         {
             BattleQueue = new BattleQueue();
 
@@ -99,14 +104,20 @@ namespace Battle
         {
             if (isPlayer)
             {
-                PlayerSide.SpawnUnits(characters);
+                PlayerSide.SpawnUnits(characters,this);
                 BattleQueue.AddUnits(PlayerSide.GetAllCharacters());
             }
             else
             {
-                EnemiesSide.SpawnUnits(characters);
+                EnemiesSide.SpawnUnits(characters,this);
                 BattleQueue.AddUnits(EnemiesSide.GetAllCharacters());
             }
+        }
+
+        public BaseCharacter SpawnUnit(BaseCharacter character,Transform parent)
+        {
+            var createdObject = _diContainer.InstantiatePrefab(character, parent);
+            return createdObject.GetComponent<BaseCharacter>();
         }
     }
 }

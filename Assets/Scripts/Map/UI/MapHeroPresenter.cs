@@ -18,7 +18,7 @@ namespace Map.UI
             foreach (var playerCharacter in partyController.GetHeroes())
             {
                 _mapHeroViews[index] = Instantiate(heroViewPrefab, parent);
-                _mapHeroViews[index].SetIcon(playerCharacter.GetConfig().Icon);
+                _mapHeroViews[index].SetIcon(playerCharacter.CharacterConfig.Icon);
                 _mapHeroViews[index]
                     .SetHealth((float)playerCharacter.Stats.Health.Value / playerCharacter.Stats.MaxHealth.Value);
                 _mapHeroViews[index]
