@@ -1,41 +1,40 @@
-using UniRx;
+using System;
+using Atomic.Elements;
 
 namespace Data
 {
+    [Serializable]
     public class SharedCharacterStatistics
     {
-        private readonly CharacterStatistic _stats;
-        public ReactiveProperty<float> AttackSpeed;
-        public ReactiveProperty<float> CriticalChance;
-        public ReactiveProperty<float> CriticalRate;
+        private CharacterStatistic _stats;
+        public AtomicVariable<int> maxHealth;
+        public AtomicVariable<int> health;
+        public AtomicVariable<int> maxMana;
+        public AtomicVariable<int> mana;
+        
+        public AtomicVariable<float> attackSpeed;
+        public AtomicVariable<float> criticalChance;
+        public AtomicVariable<float> criticalRate;
 
-        public ReactiveProperty<int> Damage;
+        public AtomicVariable<int> physicalPower;
+        public AtomicVariable<int> magicPower;
+        public AtomicVariable<int> defense;
+        public AtomicVariable<float> evasion;
 
-        public ReactiveProperty<int> Defense;
-        public ReactiveProperty<float> Evasion;
-        public ReactiveProperty<int> Health;
-        public ReactiveProperty<int> MagicPower;
-        public ReactiveProperty<int> Mana;
-
-        public ReactiveProperty<int> MaxHealth;
-
-        public ReactiveProperty<int> MaxMana;
-
-        public SharedCharacterStatistics(CharacterStatistic stats)
+        public void Init(CharacterStatistic stats)
         {
             _stats = stats;
-            MaxHealth = new ReactiveProperty<int>(stats.Health);
-            Health = new ReactiveProperty<int>(stats.Health);
-            MaxMana = new ReactiveProperty<int>(stats.Mana);
-            Mana = new ReactiveProperty<int>(stats.Mana);
-            Damage = new ReactiveProperty<int>(stats.Damage);
-            MagicPower = new ReactiveProperty<int>(stats.MagicPower);
-            Defense = new ReactiveProperty<int>(stats.Defense);
-
-            AttackSpeed = new ReactiveProperty<float>(stats.AttackSpeed);
-            Evasion = new ReactiveProperty<float>(stats.Evasion);
-            CriticalChance = new ReactiveProperty<float>(stats.CriticalChance);
-            CriticalRate = new ReactiveProperty<float>(stats.CriticalRate);
+            maxHealth.Value = stats.Health;
+            health.Value = stats.Health;
+            maxMana.Value = stats.Mana;
+            mana.Value = stats.Mana;
+            physicalPower.Value = stats.PhysicalPower;
+            magicPower.Value = stats.MagicPower;
+            defense.Value = stats.Defense;
+            attackSpeed.Value = stats.AttackSpeed;
+            evasion.Value = stats.Evasion;
+            criticalChance.Value = stats.CriticalChance;
+            criticalRate.Value = stats.CriticalRate;
         }
     }
 }

@@ -12845,9 +12845,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c80687c67b457f953a61240194c683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CharacterConfig>k__BackingField: {fileID: 11400000, guid: 6cd89a9914282784b90e688336ab59f6,
-    type: 2}
-  <Animator>k__BackingField: {fileID: 67806769}
+  animator:
+    value: {fileID: 67806769}
+  characterConfig:
+    value: {fileID: 11400000, guid: 6cd89a9914282784b90e688336ab59f6, type: 2}
+  stats:
+    value:
+      maxHealth:
+        value: 0
+      health:
+        value: 0
+      maxMana:
+        value: 0
+      mana:
+        value: 0
+      attackSpeed:
+        value: 0
+      criticalChance:
+        value: 0
+      criticalRate:
+        value: 0
+      physicalPower:
+        value: 0
+      magicPower:
+        value: 0
+      defense:
+        value: 0
+      evasion:
+        value: 0
+  collisionRadius:
+    value: 3
 --- !u!114 &677122705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23217,6 +23244,74 @@ Transform:
   - {fileID: 1370177930}
   m_Father: {fileID: 1603804795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1384227495
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.7835078
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.9192085
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189423163493111017, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490576218605913385, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8,
+        type: 3}
+      propertyPath: m_Name
+      value: BurnableBush
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a6bef14d1e919f4c858f5b3dbb74eb8, type: 3}
 --- !u!1001 &1384920646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25182,7 +25277,7 @@ MonoBehaviour:
   moveSpeed: 5
   rotationSpeed: 10
   interactRadius: 1
-  entity: {fileID: 0}
+  partyController: {fileID: 1361706131}
   GroundLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -25566,9 +25661,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c80687c67b457f953a61240194c683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CharacterConfig>k__BackingField: {fileID: 11400000, guid: 6a4ef622fa64f5548b0321d7ba4f575b,
-    type: 2}
-  <Animator>k__BackingField: {fileID: 310589032}
+  animator:
+    value: {fileID: 310589032}
+  characterConfig:
+    value: {fileID: 11400000, guid: 6a4ef622fa64f5548b0321d7ba4f575b, type: 2}
+  stats:
+    value:
+      maxHealth:
+        value: 0
+      health:
+        value: 0
+      maxMana:
+        value: 0
+      mana:
+        value: 0
+      attackSpeed:
+        value: 0
+      criticalChance:
+        value: 0
+      criticalRate:
+        value: 0
+      physicalPower:
+        value: 0
+      magicPower:
+        value: 0
+      defense:
+        value: 0
+      evasion:
+        value: 0
+  collisionRadius:
+    value: 5
 --- !u!114 &1651295062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26108,9 +26230,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c80687c67b457f953a61240194c683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CharacterConfig>k__BackingField: {fileID: 11400000, guid: 515fd35132481d9448d3ed80f43a407c,
-    type: 2}
-  <Animator>k__BackingField: {fileID: 1273541764523005388}
+  animator:
+    value: {fileID: 1273541764523005388}
+  characterConfig:
+    value: {fileID: 11400000, guid: 515fd35132481d9448d3ed80f43a407c, type: 2}
+  stats:
+    value:
+      maxHealth:
+        value: 0
+      health:
+        value: 0
+      maxMana:
+        value: 0
+      mana:
+        value: 0
+      attackSpeed:
+        value: 0
+      criticalChance:
+        value: 0
+      criticalRate:
+        value: 0
+      physicalPower:
+        value: 0
+      magicPower:
+        value: 0
+      defense:
+        value: 0
+      evasion:
+        value: 0
+  collisionRadius:
+    value: 4
 --- !u!114 &1699933918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28019,7 +28168,7 @@ PrefabInstance:
     - target: {fileID: 8546667876596061420, guid: add889265daf90b4e8fece35b56f50b9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30234,9 +30383,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c80687c67b457f953a61240194c683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CharacterConfig>k__BackingField: {fileID: 11400000, guid: 3b365d7638c908a4e94fe36bb50b4eaa,
-    type: 2}
-  <Animator>k__BackingField: {fileID: 1229486200}
+  animator:
+    value: {fileID: 1229486200}
+  characterConfig:
+    value: {fileID: 11400000, guid: 3b365d7638c908a4e94fe36bb50b4eaa, type: 2}
+  stats:
+    value:
+      maxHealth:
+        value: 0
+      health:
+        value: 0
+      maxMana:
+        value: 0
+      mana:
+        value: 0
+      attackSpeed:
+        value: 0
+      criticalChance:
+        value: 0
+      criticalRate:
+        value: 0
+      physicalPower:
+        value: 0
+      magicPower:
+        value: 0
+      defense:
+        value: 0
+      evasion:
+        value: 0
+  collisionRadius:
+    value: 2
 --- !u!114 &2006488943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34735,3 +34911,4 @@ SceneRoots:
   - {fileID: 1045534317}
   - {fileID: 388057629}
   - {fileID: 538784084}
+  - {fileID: 1384227495}

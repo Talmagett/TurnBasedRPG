@@ -18,11 +18,11 @@ namespace Map.UI
             foreach (var playerCharacter in partyController.GetHeroes())
             {
                 _mapHeroViews[index] = Instantiate(heroViewPrefab, parent);
-                _mapHeroViews[index].SetIcon(playerCharacter.CharacterConfig.Icon);
+                _mapHeroViews[index].SetIcon(playerCharacter.characterConfig.Value.Icon);
                 _mapHeroViews[index]
-                    .SetHealth((float)playerCharacter.Stats.Health.Value / playerCharacter.Stats.MaxHealth.Value);
+                    .SetHealth((float)playerCharacter.stats.Value.health.Value / playerCharacter.stats.Value.maxHealth.Value);
                 _mapHeroViews[index]
-                    .SetMana((float)playerCharacter.Stats.Mana.Value / playerCharacter.Stats.MaxMana.Value);
+                    .SetMana((float)playerCharacter.stats.Value.mana.Value / playerCharacter.stats.Value.maxMana.Value);
                 index++;
             }
         }

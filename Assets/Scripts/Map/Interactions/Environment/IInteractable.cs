@@ -1,4 +1,5 @@
 using System;
+using Atomic.Objects;
 using Entities;
 
 namespace Map.Interactions.Environment
@@ -8,6 +9,6 @@ namespace Map.Interactions.Environment
         event Action OnEnter;
         event Action OnExit;
 
-        void Interact(IEntity entity);
+        void Interact(IAtomicObject entity);
     }
 }

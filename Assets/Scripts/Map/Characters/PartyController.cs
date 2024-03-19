@@ -1,3 +1,4 @@
+using Atomic.Elements;
 using Map.Interactions.Environment;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,7 +12,7 @@ namespace Map.Characters
         [SerializeField] private BaseCharacter[] heroes;
         [SerializeField] private ParticleSystem changeVFX;
 
-        private BaseCharacter _currentCharacter;
+        public BaseCharacter CurrentCharacter { get; private set; }
         private Weapon _currentWeapon;
         
         private int _currentCharacterIndex;
@@ -25,7 +26,7 @@ namespace Map.Characters
 
         private void Update()
         {
-            _currentCharacter.Animator.SetBool(isMoving, _playerCharacterController.IsMoving);
+            CurrentCharacter.animator.Value.SetBool(isMoving, _playerCharacterController.IsMoving);
         }
 
         private void OnDestroy()
@@ -75,7 +76,7 @@ namespace Map.Characters
 
         private void ChangeCharacter()
         {
-            if (heroes[_currentCharacterIndex] == _currentCharacter)
+            if (heroes[_currentCharacterIndex] == CurrentCharacter)
                 return;
 
             for (var i = 0; i < heroes.Length; i++)
@@ -86,10 +87,10 @@ namespace Map.Characters
                 else
                 {
                     heroes[i].gameObject.SetActive(true);
-                    _currentCharacter = heroes[i];
+                    CurrentCharacter = heroes[i];
                 }
 
-            _currentWeapon = _currentCharacter.GetComponent<Weapon>();
+            _currentWeapon = CurrentCharacter.GetComponent<Weapon>();
             changeVFX.Play();
         }
     }

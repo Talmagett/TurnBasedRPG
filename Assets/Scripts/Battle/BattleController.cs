@@ -24,11 +24,6 @@ namespace Battle
             _gameController = gameController;
             _diContainer = diContainer;
         }
-        
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) NextTurn();
-        }
 
         private void OnEnable()
         {
@@ -41,7 +36,6 @@ namespace Battle
             PlayerSide.OnUnitsCleared -= GameOver;
             EnemiesSide.OnUnitsCleared -= FinishBattle;
         }
-
 
         private void GameOver()
         {
@@ -68,7 +62,7 @@ namespace Battle
 
         public async void NextTurn()
         {
-            while (true)
+            while (_gameController.IsBattle)
             {
                 BattleQueue.NextTurn();
                 await BattleQueue.CurrentCharacter.BattleTurn.Run();

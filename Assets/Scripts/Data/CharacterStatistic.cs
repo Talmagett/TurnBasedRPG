@@ -10,12 +10,14 @@ namespace Data
 
         [MinValue(0)] public int Mana;
 
-        [MinValue(0)] public int Damage;
+        [MinValue(0)] public int PhysicalPower;
 
         [MinValue(0)] public int MagicPower;
 
         public int Defense;
-
+        
+        [PropertyRange(0.1f, 10f)] public float AttackRange;
+        
         [PropertyRange(0.1f, 10f)] public float AttackSpeed;
 
         [PropertyRange(0, 1)] public float Evasion;

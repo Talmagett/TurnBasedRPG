@@ -23,9 +23,6 @@ namespace Battle.Characters
             Character = GetComponent<BaseCharacter>();
         }
 
-        public async UniTask Run()
-        {
-            await UniTask.Delay(1000);
-        }
+        public abstract UniTask Run();
     }
 }

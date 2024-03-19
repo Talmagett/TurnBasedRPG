@@ -1,3 +1,5 @@
+using System;
+using Atomic.Objects;
 using Entities;
 using Map.Interactions.Environment;
 using UnityEngine;
@@ -13,7 +15,7 @@ namespace Map.Characters
         [SerializeField] private float rotationSpeed;
 
         [SerializeField] private float interactRadius;
-        [SerializeField] private MonoEntity entity;
+        [SerializeField] private PartyController partyController;
 
         public LayerMask GroundLayers;
         public float FallTimeout = 0.15f;
@@ -32,6 +34,14 @@ namespace Map.Characters
         private float _verticalVelocity;
 
         public bool IsMoving { get; private set; }
+
+        private void Awake()
+        {
+            foreach (var hero in partyController.GetHeroes())
+            {
+                hero.AddProperty("PlayerTag", this);
+            }
+        }
 
         private void Start()
         {
@@ -108,12 +118,10 @@ namespace Map.Characters
 
         private void Interact(InputAction.CallbackContext obj)
         {
-            print("interact");
-            return;
             var hits = Physics.OverlapSphere(transform.position, interactRadius);
             foreach (var hit in hits)
                 if (hit.TryGetComponent(out IInteractable interactable))
-                    interactable.Interact(entity);
+                    interactable.Interact(partyController.CurrentCharacter);
         }
 
         private void GroundedCheck()

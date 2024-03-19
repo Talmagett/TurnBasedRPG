@@ -17,9 +17,10 @@ MonoBehaviour:
   Stats:
     Health: 33
     Mana: 34
-    Damage: 0
+    PhysicalPower: 0
     MagicPower: 0
     Defense: 0
+    AttackRange: 10
     AttackSpeed: 5.1
     Evasion: 0
     CriticalChance: 0
