@@ -19,6 +19,16 @@ namespace Map.Characters
             BattleTurn.Init(this);
         }
 
+        public void Select()
+        {
+            transform.localScale=Vector3.one*1.2f;
+        }
+
+        public void Deselect()
+        {
+            transform.localScale=Vector3.one;
+        }
+        
         public void DestroySelf()
         {
             //baseCharacter.Animator.SetTrigger("Death");

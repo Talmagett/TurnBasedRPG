@@ -78,9 +78,11 @@ namespace Battle
             _isInit = false;
 
             var unitTime = _queue.Dequeue();
-
+            if(CurrentCharacter!=null)
+                CurrentCharacter.Deselect();
             CurrentCharacter = unitTime.character;
             CurrentTime = unitTime.time;
+            CurrentCharacter.Select();
             UpdateTime();
             OnQueueChanged?.Invoke();
         }
