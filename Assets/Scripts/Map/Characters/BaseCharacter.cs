@@ -1,8 +1,5 @@
 using Atomic.Elements;
 using Atomic.Objects;
-using Atomic;
-using Atomic.Behaviours;
-using Atomic.Extensions;
 using Battle.Characters;
 using Data;
 using Sirenix.OdinInspector;

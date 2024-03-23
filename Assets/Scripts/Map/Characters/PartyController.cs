@@ -1,7 +1,9 @@
 using Atomic.Elements;
+using Atomic.Objects;
 using Map.Interactions.Environment;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Visual;
 using Zenject;
 
 namespace Map.Characters
@@ -9,10 +11,10 @@ namespace Map.Characters
     public class PartyController : MonoBehaviour
     {
         private static readonly int isMoving = Animator.StringToHash("IsMoving");
-        [SerializeField] private BaseCharacter[] heroes;
+        [SerializeField] private Actor[] heroes;
         [SerializeField] private ParticleSystem changeVFX;
 
-        public BaseCharacter CurrentCharacter { get; private set; }
+        public Actor CurrentCharacter { get; private set; }
         private Weapon _currentWeapon;
         
         private int _currentCharacterIndex;
@@ -26,7 +28,8 @@ namespace Map.Characters
 
         private void Update()
         {
-            CurrentCharacter.animator.Value.SetBool(isMoving, _playerCharacterController.IsMoving);
+            if(CurrentCharacter.TryGet("Animator",out AtomicVariable<Animator> animator))
+                animator.Value.SetBool(isMoving, _playerCharacterController.IsMoving);
         }
 
         private void OnDestroy()
@@ -47,7 +50,7 @@ namespace Map.Characters
         }
 
 
-        public BaseCharacter[] GetHeroes()
+        public Actor[] GetHeroes()
         {
             return heroes;
         }

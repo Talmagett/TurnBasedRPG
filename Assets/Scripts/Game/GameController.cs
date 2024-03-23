@@ -31,7 +31,7 @@ namespace Game
         public void EnterBattle(EnemyRiftConfig enemyRiftConfig)
         {
             IsBattle = true;
-            battle.Setup(_partyController.GetHeroes(), enemyRiftConfig);
+            //battle.Setup(_partyController.GetHeroes(), enemyRiftConfig);
             ChangeState();
         }
 
