@@ -1,5 +1,4 @@
 using Actors;
-using Atomic.Elements;
 using Atomic.Extensions;
 using Cysharp.Threading.Tasks;
 using PrimeTween;
@@ -8,8 +7,10 @@ namespace Battle.Characters
 {
     public class Wolf : BattleActor
     {
+        //attack
         public override async UniTask Run()
         {
+            //raise event, attack
             var target = BattleController.PlayerSide.GetRandom();
             var basePosition = transform.position;
             var targetPosition = target.transform.position;

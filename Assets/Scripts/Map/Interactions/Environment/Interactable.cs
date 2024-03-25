@@ -8,18 +8,10 @@ using UnityEngine;
 
 namespace Map.Interactions.Environment
 {
-    public abstract class Interactable : Entity
+    public abstract class Interactable : MonoBehaviour
     {
-        [SerializeField] private AtomicVariable<CollisionTag> collisionTag;
-        
         public event Action OnEnter;
         public event Action OnExit;
-
-        public override void Awake()
-        {
-            base.Awake();
-            AddProperty("CollisionTag", collisionTag);
-        }
         
         private void OnTriggerEnter(Collider other)
         {

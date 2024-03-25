@@ -1,45 +1,43 @@
-using Atomic.Elements;
 using Battle;
+using Battle.Characters;
 using Cysharp.Threading.Tasks;
-using Data;
 using UnityEngine;
 using Zenject;
 
 namespace Actors
 {
-    public abstract class BattleActor: Entity
-    {        
-        [SerializeField] private AtomicVariable<Animator> animator;
-        public AtomicVariable<SharedCharacterStatistics> stats;
-        
+    public class BattleActor : CharacterActor
+    {
+        public Actor Actor { get; private set; }
         protected BattleController BattleController;
-
         private UniTaskCompletionSource<bool> _hasFinished;
-            
+
         [Inject]
         public void Construct(BattleController battleController)
         {
             BattleController = battleController;
         }
-        
-        public override void Awake() 
+
+        public void Init(Actor actor)
         {
-            base.Awake();
-            AddProperty("Animator", animator);
+            Actor = actor;
         }
-        
+
         public void Select()
         {
-            transform.localScale=Vector3.one*1.2f;
+            transform.localScale = Vector3.one * 1.2f;
         }
 
         public void Deselect()
         {
-            transform.localScale=Vector3.one;
+            transform.localScale = Vector3.one;
         }
 
-        public abstract UniTask Run();
-        
+        public virtual async UniTask Run()
+        {
+            await UniTask.Delay(1000);
+        }
+
         public void DestroySelf()
         {
             Destroy(gameObject);

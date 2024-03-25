@@ -11,10 +11,10 @@ namespace Map.Characters
     public class PartyController : MonoBehaviour
     {
         private static readonly int isMoving = Animator.StringToHash("IsMoving");
-        [SerializeField] private MapActor[] heroes;
+        [SerializeField] private CharacterActor[] heroes;
         [SerializeField] private ParticleSystem changeVFX;
 
-        public MapActor CurrentCharacter { get; private set; }
+        public CharacterActor CurrentCharacter { get; private set; }
         
         private int _currentCharacterIndex;
         private PlayerCharacterController _playerCharacterController;
@@ -47,7 +47,7 @@ namespace Map.Characters
         }
 
 
-        public MapActor[] GetHeroes()
+        public CharacterActor[] GetHeroes()
         {
             return heroes;
         }

@@ -16,8 +16,7 @@ namespace Data
         public AtomicVariable<float> criticalChance;
         public AtomicVariable<float> criticalRate;
 
-        public AtomicVariable<int> physicalPower;
-        public AtomicVariable<int> magicPower;
+        public AtomicVariable<int> attackPower;
         public AtomicVariable<int> defense;
         public AtomicVariable<float> evasion;
 
@@ -28,8 +27,7 @@ namespace Data
             health.Value = stats.Health;
             maxMana.Value = stats.Mana;
             mana.Value = stats.Mana;
-            physicalPower.Value = stats.PhysicalPower;
-            magicPower.Value = stats.MagicPower;
+            attackPower.Value = stats.AttackPower;
             defense.Value = stats.Defense;
             attackSpeed.Value = stats.AttackSpeed;
             evasion.Value = stats.Evasion;

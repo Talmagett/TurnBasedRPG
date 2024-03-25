@@ -1,4 +1,5 @@
 using Actors;
+using Cysharp.Threading.Tasks;
 using Data;
 using Game;
 using Map.Characters;
@@ -70,10 +71,11 @@ namespace Battle
             }
         }
 
-        public override void EnterState()
+        public override async void EnterState()
         {
             base.EnterState();
             PlayerInputActions.Battle.Enable();
+            await UniTask.Delay(1000);
             NextTurn();
         }
 
@@ -86,13 +88,13 @@ namespace Battle
             EnemiesSide.ClearField();
         }
 
-        public void Setup(BattleActor[] playerCharacters, EnemyRiftConfig enemyRiftConfig)
+        public void Setup(BattleActor[] heroes, BattleActor[] enemies, Environment environment)
         {
             BattleQueue = new BattleQueue();
 
-            Instantiate(enemyRiftConfig.Environment, environmentParent);
-            SpawnUnit(true, playerCharacters);
-            SpawnUnit(false, enemyRiftConfig.Enemies);
+            Instantiate(environment, environmentParent);
+            SpawnUnit(true, heroes);
+            SpawnUnit(false, enemies);
         }
 
         public void SpawnUnit(bool isPlayer, params BattleActor[] characters)

@@ -1,9 +1,8 @@
+using Actors;
 using Battle;
 using Data;
 using Map;
-using Map.Characters;
 using UnityEngine;
-using Zenject;
 
 namespace Game
 {
@@ -11,9 +10,8 @@ namespace Game
     {
         [SerializeField] private MapController map;
         [SerializeField] private BattleController battle;
-
-        private PartyController _partyController;
-
+        [SerializeField] private BattleActor[] heroes;
+        
         public bool IsBattle { get; private set; }
 
         private void Awake()
@@ -22,16 +20,10 @@ namespace Game
             battle.ExitState();
         }
 
-        [Inject]
-        public void Construct(PartyController partyController)
-        {
-            _partyController = partyController;
-        }
-
         public void EnterBattle(EnemyRiftConfig enemyRiftConfig)
         {
             IsBattle = true;
-            //battle.Setup(_partyController.GetHeroes(), enemyRiftConfig);
+            battle.Setup(heroes, enemyRiftConfig.Enemies,enemyRiftConfig.Environment);
             ChangeState();
         }
 
