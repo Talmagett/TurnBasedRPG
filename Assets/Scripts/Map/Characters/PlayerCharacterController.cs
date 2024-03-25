@@ -1,6 +1,3 @@
-using System;
-using Atomic.Objects;
-using Entities;
 using Map.Interactions.Environment;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -32,7 +29,6 @@ namespace Map.Characters
         private Vector3 _targetDirection;
 
         private float _verticalVelocity;
-
         public bool IsMoving { get; private set; }
 
         private void Awake()
@@ -118,9 +114,9 @@ namespace Map.Characters
 
         private void Interact(InputAction.CallbackContext obj)
         {
-            var hits = Physics.OverlapSphere(transform.position, interactRadius);
+            var hits =Physics.OverlapSphere(transform.position, interactRadius);
             foreach (var hit in hits)
-                if (hit.TryGetComponent(out IInteractable interactable))
+                if (hit.TryGetComponent(out Interactable interactable))
                     interactable.Interact(partyController.CurrentCharacter);
         }
 

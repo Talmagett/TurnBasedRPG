@@ -12,16 +12,16 @@ namespace Map.Interactions.Enemies
 
         private GameController _gameController;
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.TryGetComponent(out PlayerCharacterController characterController))
-                _gameController.EnterBattle(enemyRiftConfig);
-        }
-
         [Inject]
         public void Construct(GameController gameController)
         {
             _gameController = gameController;
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out PlayerCharacterController characterController))
+                _gameController.EnterBattle(enemyRiftConfig);
         }
     }
 }

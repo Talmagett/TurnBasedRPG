@@ -1,12 +1,12 @@
 using System;
-using Map.Characters;
+using Actors;
 
 namespace Battle
 {
     [Serializable]
     public class UnitTime
     {
-        public BaseCharacter character;
+        public BattleActor character;
         public float time;
     }
 }

@@ -1,3 +1,4 @@
+using Actors;
 using Data;
 using Game;
 using Map.Characters;
@@ -50,7 +51,7 @@ namespace Battle
         }
 
         [Button]
-        public void DestroyEnemy(bool isPlayer, BaseCharacter unit)
+        public void DestroyEnemy(bool isPlayer, BattleActor unit)
         {
             if (isPlayer)
                 PlayerSide.DespawnUnit(unit);
@@ -65,7 +66,7 @@ namespace Battle
             while (_gameController.IsBattle)
             {
                 BattleQueue.NextTurn();
-                await BattleQueue.CurrentCharacter.BattleTurn.Run();
+                await BattleQueue.CurrentCharacter.Run();
             }
         }
 
@@ -85,7 +86,7 @@ namespace Battle
             EnemiesSide.ClearField();
         }
 
-        public void Setup(BaseCharacter[] playerCharacters, EnemyRiftConfig enemyRiftConfig)
+        public void Setup(BattleActor[] playerCharacters, EnemyRiftConfig enemyRiftConfig)
         {
             BattleQueue = new BattleQueue();
 
@@ -94,7 +95,7 @@ namespace Battle
             SpawnUnit(false, enemyRiftConfig.Enemies);
         }
 
-        public void SpawnUnit(bool isPlayer, params BaseCharacter[] characters)
+        public void SpawnUnit(bool isPlayer, params BattleActor[] characters)
         {
             if (isPlayer)
             {
@@ -108,10 +109,10 @@ namespace Battle
             }
         }
 
-        public BaseCharacter SpawnUnit(BaseCharacter character,Transform parent)
+        public BattleActor SpawnUnit(BattleActor character,Transform parent)
         {
             var createdObject = _diContainer.InstantiatePrefab(character, parent);
-            return createdObject.GetComponent<BaseCharacter>();
+            return createdObject.GetComponent<BattleActor>();
         }
     }
 }

@@ -1,20 +1,21 @@
+using Atomic.Objects;
 using UnityEngine;
 
 namespace Map.Interactions.Environment
 {
-    public class AttackableInteraction : MonoBehaviour
+    public class AttackableInteraction : Interactable
     {
-        [SerializeField] private WeaponType weaponType;
+        [SerializeField] private string requiredSkill;
         [SerializeField] private int level;
 
-        public bool CanAttack(WeaponType characterWeaponType, int characterWeaponLevel)
-        {
-            return weaponType == characterWeaponType && level <= characterWeaponLevel;
-        }
-
-        public void Destroy()
+        public void DestroySelf()
         {
             gameObject.SetActive(false);
+        }
+
+        public override void Interact(IAtomicObject entity)
+        {
+            DestroySelf();
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Actors;
 using Map.Characters;
 using Sirenix.OdinInspector;
 
@@ -34,13 +35,13 @@ namespace Battle
             return first;
         }
 
-        public UnitTime GetLatestUnitTime(BaseCharacter unit)
+        public UnitTime GetLatestUnitTime(BattleActor unit)
         {
             var unitTimes = _queue.Where(t => t.character == unit).ToArray();
             return unitTimes.LastOrDefault();
         }
 
-        public void RemoveUnit(BaseCharacter unit)
+        public void RemoveUnit(BattleActor unit)
         {
             var unitTimes = _queue.Where(t => t.character == unit).ToArray();
             foreach (var unitTime in unitTimes) _queue.Remove(unitTime);

@@ -1,9 +1,9 @@
+using Actors;
 using Atomic.Elements;
 using Atomic.Objects;
 using Map.Interactions.Environment;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Visual;
 using Zenject;
 
 namespace Map.Characters
@@ -11,11 +11,10 @@ namespace Map.Characters
     public class PartyController : MonoBehaviour
     {
         private static readonly int isMoving = Animator.StringToHash("IsMoving");
-        [SerializeField] private Actor[] heroes;
+        [SerializeField] private MapActor[] heroes;
         [SerializeField] private ParticleSystem changeVFX;
 
-        public Actor CurrentCharacter { get; private set; }
-        private Weapon _currentWeapon;
+        public MapActor CurrentCharacter { get; private set; }
         
         private int _currentCharacterIndex;
         private PlayerCharacterController _playerCharacterController;
@@ -36,7 +35,6 @@ namespace Map.Characters
         {
             _playerMapInput.Map.PreviousHero.performed -= ChoosePrevCharacter;
             _playerMapInput.Map.NextHero.performed -= ChooseNextCharacter;
-            _playerMapInput.Map.Attack.performed -= Attack;
         }
 
         [Inject]
@@ -46,19 +44,14 @@ namespace Map.Characters
             _playerMapInput = playerInput;
             _playerMapInput.Map.PreviousHero.performed += ChoosePrevCharacter;
             _playerMapInput.Map.NextHero.performed += ChooseNextCharacter;
-            _playerMapInput.Map.Attack.performed += Attack;
         }
 
 
-        public Actor[] GetHeroes()
+        public MapActor[] GetHeroes()
         {
             return heroes;
         }
 
-        private void Attack(InputAction.CallbackContext context)
-        {
-            _currentWeapon.Attack();
-        }
 
         private void ChoosePrevCharacter(InputAction.CallbackContext obj)
         {
@@ -93,7 +86,6 @@ namespace Map.Characters
                     CurrentCharacter = heroes[i];
                 }
 
-            _currentWeapon = CurrentCharacter.GetComponent<Weapon>();
             changeVFX.Play();
         }
     }

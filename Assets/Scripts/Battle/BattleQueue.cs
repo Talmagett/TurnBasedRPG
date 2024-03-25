@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Actors;
 using Cysharp.Threading.Tasks;
 using Map.Characters;
 using Sirenix.OdinInspector;
@@ -14,13 +15,13 @@ namespace Battle
 
         [ReadOnly] [ShowInInspector] private readonly PriorityQueue _queue = new();
 
-        [ReadOnly] [ShowInInspector] private readonly List<BaseCharacter> _unitList = new();
+        [ReadOnly] [ShowInInspector] private readonly List<BattleActor> _unitList = new();
 
         private bool _isInit = true;
 
         [ReadOnly] [ShowInInspector] public float CurrentTime { get; private set; }
 
-        public BaseCharacter CurrentCharacter { get; private set; }
+        public BattleActor CurrentCharacter { get; private set; }
         public event Action OnQueueChanged;
 
         public UnitTime[] GetUnitTimes()
@@ -28,20 +29,20 @@ namespace Battle
             return _queue.GetUnitTimes();
         }
 
-        public void AddUnits(IEnumerable<BaseCharacter> units)
+        public void AddUnits(IEnumerable<BattleActor> units)
         {
             foreach (var unit in units) AddUnit(unit);
 
             OnQueueChanged?.Invoke();
         }
 
-        public void AddUnit(BaseCharacter unit)
+        public void AddUnit(BattleActor unit)
         {
             _unitList.Add(unit);
             AddUnitToQueue(unit);
         }
 
-        public void RemoveUnit(BaseCharacter unit)
+        public void RemoveUnit(BattleActor unit)
         {
             _unitList.Remove(unit);
             RemoveUnitFromQueue(unit);
@@ -53,7 +54,7 @@ namespace Battle
             foreach (var unit in _unitList) AddUnitToQueue(unit);
         }
 
-        private void AddUnitToQueue(BaseCharacter unit)
+        private void AddUnitToQueue(BattleActor unit)
         {
             var lastUnitTime = _queue.GetLatestUnitTime(unit);
             var lastTime = lastUnitTime?.time ?? CurrentTime;
@@ -65,7 +66,7 @@ namespace Battle
             }
         }
 
-        private void RemoveUnitFromQueue(BaseCharacter unit)
+        private void RemoveUnitFromQueue(BattleActor unit)
         {
             _queue.RemoveUnit(unit);
         }
