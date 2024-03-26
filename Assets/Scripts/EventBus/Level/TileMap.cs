@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Lessons.Level
+namespace EventBus.Level
 {
     public sealed class TileMap : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System;
-using Lessons.Utils;
+using EventBus.Utils;
 
-namespace Lessons.Entities.Common.Model
+namespace EventBus.Entities.Common.Model
 {
     [Serializable]
     public sealed class Life

@@ -1,7 +1,7 @@
 using System;
-using Lessons.Utils;
+using EventBus.Utils;
 
-namespace Lessons.Entities.Common.Components
+namespace EventBus.Entities.Common.Components
 {
     public sealed class DeathComponent
     {

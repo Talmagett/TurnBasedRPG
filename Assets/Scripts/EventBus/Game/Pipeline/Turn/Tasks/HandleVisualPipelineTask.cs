@@ -1,7 +1,7 @@
-﻿using JetBrains.Annotations;
-using Lessons.Game.Pipeline.Visual;
+﻿using EventBus.Game.Pipeline.Visual;
+using JetBrains.Annotations;
 
-namespace Lessons.Game.Pipeline.Turn.Tasks
+namespace EventBus.Game.Pipeline.Turn.Tasks
 {
     [UsedImplicitly]
     public sealed class HandleVisualPipelineTask : Task

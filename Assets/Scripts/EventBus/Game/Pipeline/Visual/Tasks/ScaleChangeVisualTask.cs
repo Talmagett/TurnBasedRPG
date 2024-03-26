@@ -1,8 +1,8 @@
 ﻿using Entities;
-using Lessons.Entities.Common.Components;
+using EventBus.Entities.Common.Components;
 using UnityEngine;
 
-namespace Lessons.Game.Pipeline.Visual.Tasks
+namespace EventBus.Game.Pipeline.Visual.Tasks
 {
     public sealed class ScaleChangeVisualTask : Task
     {

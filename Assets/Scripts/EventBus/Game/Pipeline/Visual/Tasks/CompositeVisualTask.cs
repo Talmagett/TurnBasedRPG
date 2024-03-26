@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Lessons.Game.Pipeline.Visual.Tasks
+namespace EventBus.Game.Pipeline.Visual.Tasks
 {
     public sealed class CompositeVisualTask : Task
     {

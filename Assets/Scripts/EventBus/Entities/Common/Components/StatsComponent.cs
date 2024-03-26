@@ -1,6 +1,6 @@
-using Lessons.Entities.Common.Model;
+using EventBus.Entities.Common.Model;
 
-namespace Lessons.Entities.Common.Components
+namespace EventBus.Entities.Common.Components
 {
     public sealed class StatsComponent
     {

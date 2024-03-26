@@ -1,10 +1,10 @@
-﻿using JetBrains.Annotations;
-using Lessons.Entities.Common.Components;
-using Lessons.Game.Events;
-using Lessons.Level;
+﻿using EventBus.Entities.Common.Components;
+using EventBus.Game.Events;
+using EventBus.Level;
+using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Lessons.Game.Handlers.Turn
+namespace EventBus.Game.Handlers.Turn
 {
     [UsedImplicitly]
     public sealed class ForceDirectionHandler : BaseHandler<ForceDirectionEvent>

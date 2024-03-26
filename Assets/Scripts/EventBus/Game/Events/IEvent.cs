@@ -1,4 +1,4 @@
-﻿namespace Lessons.Game.Events
+﻿namespace EventBus.Game.Events
 {
     public interface IEvent
     {

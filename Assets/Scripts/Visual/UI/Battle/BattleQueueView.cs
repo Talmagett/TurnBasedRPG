@@ -1,7 +1,7 @@
 using UnityEngine;
 using View;
 
-namespace Battle.UI
+namespace Visual.UI.Battle
 {
     public class BattleQueueView : MonoBehaviour
     {

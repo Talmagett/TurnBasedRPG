@@ -1,7 +1,7 @@
-﻿using Lessons.Game;
-using Lessons.Utils;
+﻿using EventBus.Game;
+using EventBus.Utils;
 
-namespace Lessons.Entities.Common.Components
+namespace EventBus.Entities.Common.Components
 {
     public sealed class WeaponComponent
     {

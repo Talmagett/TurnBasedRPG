@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace Lessons.Level
+namespace EventBus.Level
 {
     [UsedImplicitly]
     public sealed class LevelMap

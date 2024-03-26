@@ -1,7 +1,7 @@
-﻿using JetBrains.Annotations;
-using Lessons.Game.Events;
+﻿using EventBus.Game.Events;
+using JetBrains.Annotations;
 
-namespace Lessons.Game.Handlers.Turn
+namespace EventBus.Game.Handlers.Turn
 {
     [UsedImplicitly]
     public sealed class CollideHandler : BaseHandler<CollideEvent>

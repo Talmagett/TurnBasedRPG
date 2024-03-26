@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Lessons.Entities.Common.Components
+namespace EventBus.Entities.Common.Components
 {
     public sealed class TransformComponent
     {

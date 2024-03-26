@@ -1,6 +1,6 @@
 ﻿using Entities;
 
-namespace Lessons.Game.Events.Effects
+namespace EventBus.Game.Events.Effects
 {
     public interface IEffect : IEvent
     {

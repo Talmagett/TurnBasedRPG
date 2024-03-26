@@ -1,7 +1,7 @@
 using Map.Characters;
 using UnityEngine;
 
-namespace Map.UI
+namespace Visual.UI.Map
 {
     public class MapHeroPresenter : MonoBehaviour
     {

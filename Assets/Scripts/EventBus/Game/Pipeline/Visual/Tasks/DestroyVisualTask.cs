@@ -1,8 +1,7 @@
 ﻿using Entities;
-using Lessons.Entities.Common.Components;
-using UnityEngine;
-using PrimeTween;
-namespace Lessons.Game.Pipeline.Visual.Tasks
+using EventBus.Entities.Common.Components;
+
+namespace EventBus.Game.Pipeline.Visual.Tasks
 {
     public sealed class DestroyVisualTask : Task
     {

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   Effects:
-  - rid: 1268569774458142721
+  - rid: 7406704540639297538
   references:
     version: 2
     RefIds:
-    - rid: 1268569774458142721
-      type: {class: DealDamageEffectEvent, ns: Lessons.Game.Events.Effects, asm: Assets}
+    - rid: 7406704540639297538
+      type: {class: DealDamageEffectEvent, ns: Lessons.Game.Events.Effects, asm: Assembly-CSharp}
       data:
-        <ExtraDamage>k__BackingField: 1
+        <ExtraDamage>k__BackingField: 10

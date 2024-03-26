@@ -1,7 +1,7 @@
 ﻿using Entities;
 using UnityEngine;
 
-namespace Lessons.Game.Services
+namespace EventBus.Game.Services
 {
     public sealed class PlayerService : MonoBehaviour
     {

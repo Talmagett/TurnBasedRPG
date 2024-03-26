@@ -1,6 +1,6 @@
-﻿using Lessons.Game.Pipeline.Visual;
+﻿using EventBus.Game.Pipeline.Visual;
 
-namespace Lessons.Game.Handlers
+namespace EventBus.Game.Handlers
 {
     public abstract class BaseVisualHandler<T> : BaseHandler<T>
     {

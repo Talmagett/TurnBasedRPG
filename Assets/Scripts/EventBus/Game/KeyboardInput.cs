@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Lessons.Game
+namespace EventBus.Game
 {
     public sealed class KeyboardInput : MonoBehaviour
     {

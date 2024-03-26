@@ -3,7 +3,7 @@ using Entities;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Lessons.Level
+namespace EventBus.Level
 {
     [UsedImplicitly]
     public sealed class EntityMap

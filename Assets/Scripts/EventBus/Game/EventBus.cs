@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Lessons.Game.Events;
+using EventBus.Game.Events;
 using UnityEngine;
 
-namespace Lessons.Game
+namespace EventBus.Game
 {
     public sealed class EventBus
     {

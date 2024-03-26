@@ -1,15 +1,10 @@
-﻿using Lessons.Entities;
-using Lessons.Game;
-using Lessons.Game.Handlers.Effects;
-using Lessons.Game.Handlers.Turn;
-using Lessons.Game.Handlers.Visual;
-using Lessons.Game.Pipeline.Turn;
-using Lessons.Game.Pipeline.Visual;
-using Lessons.Game.Services;
-using Lessons.Level;
+﻿using EventBus.Game.Handlers.Turn;
+using EventBus.Game.Handlers.Visual;
+using EventBus.Game.Pipeline.Turn;
+using EventBus.Game.Pipeline.Visual;
 using Zenject;
 
-namespace Lessons.Utils
+namespace EventBus.Utils
 {
     public sealed class BattleInstaller : MonoInstaller
     {
@@ -21,7 +16,7 @@ namespace Lessons.Utils
         
         private void ConfigureTurn(DiContainer builder)
         {
-            builder.Bind<EventBus>().AsSingle().NonLazy();
+            builder.Bind<Game.EventBus>().AsSingle().NonLazy();
             
             builder.BindInterfacesAndSelfTo<DealDamageHandler>().AsSingle().NonLazy();
             /*builder.BindInterfacesAndSelfTo<ApplyDirectionHandler>().AsSingle().NonLazy();
@@ -36,7 +31,6 @@ namespace Lessons.Utils
 
             builder.Bind<TurnPipeline>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<TurnPipelineInstaller>().AsSingle().NonLazy();
-            //builder.BindInterfacesAndSelfTo<TurnPipelineRunner>().AsSingle().NonLazy();
         }
         
         private void ConfigureVisual(DiContainer  builder)

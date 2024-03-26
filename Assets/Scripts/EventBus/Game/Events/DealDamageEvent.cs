@@ -1,7 +1,6 @@
 ﻿using Atomic.Objects;
-using Entities;
 
-namespace Lessons.Game.Events
+namespace EventBus.Game.Events
 {
     public readonly struct DealDamageEvent : IEvent
     {

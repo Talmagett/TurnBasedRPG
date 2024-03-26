@@ -1,11 +1,11 @@
-﻿using JetBrains.Annotations;
-using Lessons.Game.Events;
-using Lessons.Game.Pipeline.Visual;
-using Lessons.Game.Pipeline.Visual.Tasks;
-using Lessons.Level;
+﻿using EventBus.Game.Events;
+using EventBus.Game.Pipeline.Visual;
+using EventBus.Game.Pipeline.Visual.Tasks;
+using EventBus.Level;
+using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Lessons.Game.Handlers.Visual
+namespace EventBus.Game.Handlers.Visual
 {
     [UsedImplicitly]
     public sealed class MoveVisualHandler : BaseVisualHandler<MoveEvent>

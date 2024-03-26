@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Actors;
 using Battle.Characters;
-using Lessons.Game;
 using Map.Characters;
 using UnityEngine;
 using Zenject;
@@ -46,7 +45,7 @@ namespace Battle
         {
             var len = actors.Length;
             var pos = -(len - 1) / 2f * DeltaPosition;
-            var eventBus = container.Resolve<EventBus>();
+            var eventBus = container.Resolve<EventBus.Game.EventBus>();
             var battleController = container.Resolve<BattleController>();
             for (var i = 0; i < len; i++)
             {

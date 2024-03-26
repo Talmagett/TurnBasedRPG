@@ -1,7 +1,7 @@
 ﻿using System;
 using Zenject;
 
-namespace Lessons.Game.Handlers
+namespace EventBus.Game.Handlers
 {
     public abstract class BaseHandler<T> : IInitializable, IDisposable
     {

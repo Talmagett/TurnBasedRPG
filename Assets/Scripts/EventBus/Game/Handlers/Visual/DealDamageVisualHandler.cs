@@ -1,11 +1,8 @@
-﻿using JetBrains.Annotations;
-using Lessons.Entities.Common.Components;
-using Lessons.Game.Events;
-using Lessons.Game.Pipeline.Visual;
-using Lessons.Game.Pipeline.Visual.Tasks;
-using UnityEngine;
+﻿using EventBus.Game.Events;
+using EventBus.Game.Pipeline.Visual;
+using JetBrains.Annotations;
 
-namespace Lessons.Game.Handlers.Visual
+namespace EventBus.Game.Handlers.Visual
 {
     [UsedImplicitly]
     public sealed class DealDamageVisualHandler : BaseHandler<DealDamageEvent>

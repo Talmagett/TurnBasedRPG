@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lessons.Game.Pipeline
+namespace EventBus.Game.Pipeline
 {
     public abstract class Task
     {

@@ -2,7 +2,7 @@
 using Entities;
 using UnityEngine;
 
-namespace Lessons.Game.Events.Effects
+namespace EventBus.Game.Events.Effects
 {
     [Serializable]
     public struct DealDamageEffectEvent : IEffect

@@ -1,10 +1,9 @@
 ﻿using Data;
+using EventBus.Game.Events;
 using JetBrains.Annotations;
-using Lessons.Entities.Common.Components;
-using Lessons.Game.Events;
 using UnityEngine;
 
-namespace Lessons.Game.Handlers.Turn
+namespace EventBus.Game.Handlers.Turn
 {
     [UsedImplicitly]
     public sealed class DealDamageHandler : BaseHandler<DealDamageEvent>
@@ -20,7 +19,6 @@ namespace Lessons.Game.Handlers.Turn
             {
                 return;
             }
-            Debug.Log(evt.Source+":"+evt.Target+":"+evt.Damage);
             stats.health.Value -= evt.Damage;
 
             if (stats.health.Value <= 0)

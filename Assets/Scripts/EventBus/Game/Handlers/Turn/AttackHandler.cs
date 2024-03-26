@@ -1,9 +1,9 @@
-﻿using JetBrains.Annotations;
-using Lessons.Entities.Common.Components;
-using Lessons.Game.Events;
-using Lessons.Game.Events.Effects;
+﻿using EventBus.Entities.Common.Components;
+using EventBus.Game.Events;
+using EventBus.Game.Events.Effects;
+using JetBrains.Annotations;
 
-namespace Lessons.Game.Handlers.Turn
+namespace EventBus.Game.Handlers.Turn
 {
     [UsedImplicitly]
     public sealed class AttackHandler : BaseHandler<AttackEvent>

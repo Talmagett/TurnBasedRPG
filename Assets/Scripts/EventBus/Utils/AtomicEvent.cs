@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lessons.Utils
+namespace EventBus.Utils
 {
     public sealed class AtomicEvent
     {

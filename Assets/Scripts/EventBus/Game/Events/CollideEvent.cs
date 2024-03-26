@@ -1,6 +1,6 @@
 ﻿using Entities;
 
-namespace Lessons.Game.Events
+namespace EventBus.Game.Events
 {
     public readonly struct CollideEvent : IEvent
     {

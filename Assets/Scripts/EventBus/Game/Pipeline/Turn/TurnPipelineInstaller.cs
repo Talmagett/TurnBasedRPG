@@ -1,10 +1,10 @@
 ﻿using System;
+using EventBus.Game.Pipeline.Turn.Tasks;
+using EventBus.Game.Pipeline.Visual;
 using JetBrains.Annotations;
-using Lessons.Game.Pipeline.Turn.Tasks;
-using Lessons.Game.Pipeline.Visual;
 using Zenject;
 
-namespace Lessons.Game.Pipeline.Turn
+namespace EventBus.Game.Pipeline.Turn
 {
     [UsedImplicitly]
     public sealed class TurnPipelineInstaller : IInitializable, IDisposable
@@ -23,7 +23,7 @@ namespace Lessons.Game.Pipeline.Turn
             var eventBus = _diContainer.Resolve<EventBus>();
             var visualPipeline = _diContainer.Resolve<VisualPipeline>();
             _turnPipeline.AddTask(new StartTurnTask());
-            _turnPipeline.AddTask(new PlayerTurnTask(eventBus));
+            //_turnPipeline.AddTask(new PlayerTurnTask(eventBus));
             _turnPipeline.AddTask(new HandleVisualPipelineTask(visualPipeline));
             _turnPipeline.AddTask(new FinishTurnTask());
         }

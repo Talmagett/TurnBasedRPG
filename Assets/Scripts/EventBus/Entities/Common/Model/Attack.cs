@@ -1,8 +1,8 @@
 ﻿using System;
-using Lessons.Game;
-using Lessons.Utils;
+using EventBus.Game;
+using EventBus.Utils;
 
-namespace Lessons.Entities.Common.Model
+namespace EventBus.Entities.Common.Model
 {
     [Serializable]
     public sealed class Attack

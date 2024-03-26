@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Lessons.Entities.Common.UI
+namespace EventBus.Entities.Common.UI
 {
     public sealed class TextWidget : MonoBehaviour
     {

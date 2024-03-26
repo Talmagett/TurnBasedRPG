@@ -1,8 +1,8 @@
 ﻿using Entities;
-using Lessons.Entities.Common.Components;
+using EventBus.Entities.Common.Components;
 using UnityEngine;
 
-namespace Lessons.Entities.Common.UI
+namespace EventBus.Entities.Common.UI
 {
     public sealed class TextWidgetHitPointsAdapter : MonoBehaviour
     {

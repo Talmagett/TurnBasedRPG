@@ -1,7 +1,7 @@
-using Cysharp.Threading.Tasks;
+using PrimeTween;
 using UnityEngine;
 
-namespace Lessons.Game.Pipeline.Visual.Tasks
+namespace EventBus.Game.Pipeline.Visual.Tasks
 {
     public class PlayParticleTask : Task
     {
@@ -14,12 +14,15 @@ namespace Lessons.Game.Pipeline.Visual.Tasks
             _particle = particle;
         }
         
-        protected override async void OnRun()
+        protected override void OnRun()
         {
-            var particle = Object.Instantiate(_particle.gameObject, _position, Quaternion.identity);
-            await UniTask.Delay(1000);
-            GameObject.Destroy(particle.gameObject);
+            var particle = GameObject.Instantiate(_particle.gameObject, _position, Quaternion.identity);
+
             Finish();
+            Tween.Delay(duration: 2, () =>
+            {
+                GameObject.Destroy(particle);
+            });
             //_transform.Value.DOMove(_position, _duration).OnComplete(Finish);
         }
     }

@@ -1,8 +1,8 @@
 ﻿using System;
-using Lessons.Utils;
+using EventBus.Utils;
 using UnityEngine;
 
-namespace Lessons.Entities.Common.Model
+namespace EventBus.Entities.Common.Model
 {
     [Serializable]
     public sealed class Position

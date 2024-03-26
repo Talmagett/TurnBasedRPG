@@ -3,6 +3,7 @@ using Actors;
 using Battle.Characters;
 using Cysharp.Threading.Tasks;
 using Data;
+using EventBus.Game.Pipeline.Turn;
 using Game;
 using Map.Characters;
 using Sirenix.OdinInspector;
@@ -22,13 +23,16 @@ namespace Battle
 
         private GameController _gameController;
         private DiContainer _diContainer;
+        private TurnPipeline _turnPipeline;
+
         [ReadOnly] [ShowInInspector] public BattleQueue BattleQueue { get; private set; }
 
         [Inject]
-        public void Construct(GameController gameController, DiContainer diContainer)
+        public void Construct(GameController gameController, DiContainer diContainer,TurnPipeline turnPipeline)
         {
             _gameController = gameController;
             _diContainer = diContainer;
+            _turnPipeline = turnPipeline;
             _sides = new Dictionary<Owner, Side>
             {
                 { Owner.Player, new Side(playerSideParent) },
@@ -68,6 +72,11 @@ namespace Battle
             BattleQueue.UpdateTime();
         }
 
+        public void Run()
+        {
+            _turnPipeline.Run();
+        }
+        
         public async void NextTurn()
         {
             while (_gameController.IsBattle)
@@ -79,7 +88,7 @@ namespace Battle
             }
         }
 
-        public override async void EnterState()
+        public override void EnterState()
         {
             base.EnterState();
             PlayerInputActions.Battle.Enable();

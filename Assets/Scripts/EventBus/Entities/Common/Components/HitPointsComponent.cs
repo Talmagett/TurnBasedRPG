@@ -1,8 +1,8 @@
 ﻿using System;
-using Lessons.Utils;
+using EventBus.Utils;
 using UnityEngine;
 
-namespace Lessons.Entities.Common.Components
+namespace EventBus.Entities.Common.Components
 {
     public sealed class HitPointsComponent
     {

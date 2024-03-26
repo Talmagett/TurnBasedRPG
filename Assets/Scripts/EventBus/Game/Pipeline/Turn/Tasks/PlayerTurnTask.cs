@@ -1,10 +1,9 @@
 ﻿using Entities;
+using EventBus.Game.Events;
 using JetBrains.Annotations;
-using Lessons.Game.Events;
-using Lessons.Game.Services;
 using UnityEngine;
 
-namespace Lessons.Game.Pipeline.Turn.Tasks
+namespace EventBus.Game.Pipeline.Turn.Tasks
 {
     [UsedImplicitly]
     public sealed class PlayerTurnTask : Task

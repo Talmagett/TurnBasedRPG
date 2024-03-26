@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Lessons.Game.Pipeline.Turn
+namespace EventBus.Game.Pipeline.Turn
 {
     public sealed class TurnPipelineRunner : MonoBehaviour
     {

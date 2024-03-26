@@ -4,7 +4,6 @@ using Battle;
 using Battle.Characters;
 using Cysharp.Threading.Tasks;
 using Data;
-using Lessons.Game;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -20,10 +19,10 @@ namespace Actors
         [ReadOnly]
         public SharedCharacterStatistics stats;
         private UniTaskCompletionSource<bool> _hasFinished;
-        protected EventBus EventBus;
+        protected EventBus.Game.EventBus EventBus;
         protected BattleController BattleController;
         
-        public void Init(EventBus eventBus, BattleController battleController,Owner owner)
+        public void Init(EventBus.Game.EventBus eventBus, BattleController battleController,Owner owner)
         {
             EventBus = eventBus;
             BattleController = battleController;

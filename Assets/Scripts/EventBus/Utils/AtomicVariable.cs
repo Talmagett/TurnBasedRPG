@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Lessons.Utils
+namespace EventBus.Utils
 {
     [Serializable]
     public class AtomicVariable<T>

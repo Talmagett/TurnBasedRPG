@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Lessons.Game.Pipeline.Turn.Tasks
+namespace EventBus.Game.Pipeline.Turn.Tasks
 {
     public sealed class FinishTurnTask : Task
     {

@@ -1,11 +1,11 @@
-﻿using JetBrains.Annotations;
-using Lessons.Entities.Common.Components;
-using Lessons.Game.Events;
-using Lessons.Game.Pipeline.Visual;
-using Lessons.Game.Pipeline.Visual.Tasks;
+﻿using EventBus.Entities.Common.Components;
+using EventBus.Game.Events;
+using EventBus.Game.Pipeline.Visual;
+using EventBus.Game.Pipeline.Visual.Tasks;
+using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Lessons.Game.Handlers.Visual
+namespace EventBus.Game.Handlers.Visual
 {
     [UsedImplicitly]
     public sealed class AttackVisualHandler : BaseHandler<AttackEvent>

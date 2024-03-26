@@ -1,7 +1,8 @@
+using Battle;
 using UnityEngine;
 using Zenject;
 
-namespace Battle.UI
+namespace Visual.UI.Battle
 {
     public class BattleQueuePresenter : MonoBehaviour
     {

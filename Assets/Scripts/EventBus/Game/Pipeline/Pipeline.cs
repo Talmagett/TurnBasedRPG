@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lessons.Game.Pipeline
+namespace EventBus.Game.Pipeline
 {
     public class Pipeline
     {

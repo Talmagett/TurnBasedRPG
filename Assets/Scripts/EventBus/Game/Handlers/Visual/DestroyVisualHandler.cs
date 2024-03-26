@@ -1,9 +1,9 @@
-﻿using JetBrains.Annotations;
-using Lessons.Game.Events;
-using Lessons.Game.Pipeline.Visual;
-using Lessons.Game.Pipeline.Visual.Tasks;
+﻿using EventBus.Game.Events;
+using EventBus.Game.Pipeline.Visual;
+using EventBus.Game.Pipeline.Visual.Tasks;
+using JetBrains.Annotations;
 
-namespace Lessons.Game.Handlers.Visual
+namespace EventBus.Game.Handlers.Visual
 {
     [UsedImplicitly]
     public sealed class DestroyVisualHandler : BaseHandler<DestroyEvent>

@@ -1,12 +1,12 @@
 ﻿using System;
+using EventBus.Entities.Common.Components;
+using EventBus.Game.Events;
+using EventBus.Game.Events.Effects;
 using JetBrains.Annotations;
-using Lessons.Entities.Common.Components;
-using Lessons.Game.Events;
-using Lessons.Game.Events.Effects;
 using UnityEngine;
 using Zenject;
 
-namespace Lessons.Game.Handlers.Effects
+namespace EventBus.Game.Handlers.Effects
 {
     [UsedImplicitly]
     public sealed class PushEffectHandler : IInitializable, IDisposable
