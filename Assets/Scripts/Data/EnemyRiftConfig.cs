@@ -1,6 +1,5 @@
 using Actors;
 using Battle;
-using Map.Characters;
 using UnityEngine;
 
 namespace Data
@@ -10,7 +9,7 @@ namespace Data
     {
         public Environment Environment;
 
-        public BattleActor[] Enemies;
+        public Actor[] Enemies;
         //loot
     }
 }

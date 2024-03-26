@@ -45,9 +45,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5480b360c70490497d4423830c286be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: wolf
+  <Config>k__BackingField: {fileID: 11400000, guid: 6d4f80cfdadfe384fa10088305501cfd,
+    type: 2}
   animator:
     value: {fileID: 4547310507180773750}
+  stats:
+    maxHealth:
+      value: 0
+    health:
+      value: 0
+    maxMana:
+      value: 0
+    mana:
+      value: 0
+    attackSpeed:
+      value: 0
+    criticalChance:
+      value: 0
+    criticalRate:
+      value: 0
+    attackPower:
+      value: 0
+    defense:
+      value: 0
+    evasion:
+      value: 0
+  biteAttack:
+    hitParticle: {fileID: 19800000, guid: d5ee775b8b5556040a494dbbd2f81e48, type: 3}
 --- !u!1001 &4490041244934630958
 PrefabInstance:
   m_ObjectHideFlags: 0

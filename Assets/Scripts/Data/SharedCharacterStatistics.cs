@@ -7,18 +7,18 @@ namespace Data
     public class SharedCharacterStatistics
     {
         private CharacterStatistic _stats;
-        public AtomicVariable<int> maxHealth;
-        public AtomicVariable<int> health;
-        public AtomicVariable<int> maxMana;
-        public AtomicVariable<int> mana;
+        public AtomicVariable<int> maxHealth=new ();
+        public AtomicVariable<int> health=new ();
+        public AtomicVariable<int> maxMana=new ();
+        public AtomicVariable<int> mana=new ();
         
-        public AtomicVariable<float> attackSpeed;
-        public AtomicVariable<float> criticalChance;
-        public AtomicVariable<float> criticalRate;
+        public AtomicVariable<float> attackSpeed=new ();
+        public AtomicVariable<float> criticalChance=new ();
+        public AtomicVariable<float> criticalRate=new ();
 
-        public AtomicVariable<int> attackPower;
-        public AtomicVariable<int> defense;
-        public AtomicVariable<float> evasion;
+        public AtomicVariable<int> attackPower=new ();
+        public AtomicVariable<int> defense=new ();
+        public AtomicVariable<float> evasion=new ();
 
         public void Init(CharacterStatistic stats)
         {

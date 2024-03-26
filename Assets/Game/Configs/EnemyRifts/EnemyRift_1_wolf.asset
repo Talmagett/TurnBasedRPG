@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebead88993a4b468add36c80e456476, type: 3}
   m_Name: EnemyRift_1_wolf
   m_EditorClassIdentifier: 
-  Enemies:
-  - {fileID: 7903363697003008734, guid: acd23fc5106a83440be2c664000aa1e4, type: 3}
-  - {fileID: 7903363697003008734, guid: acd23fc5106a83440be2c664000aa1e4, type: 3}
-  - {fileID: 7903363697003008734, guid: acd23fc5106a83440be2c664000aa1e4, type: 3}
   Environment: {fileID: 2006802663614620264, guid: 079c97de789523e439e29a2cee1eb6b4,
     type: 3}
+  Enemies:
+  - {fileID: 3598020144336143548, guid: acd23fc5106a83440be2c664000aa1e4, type: 3}
+  - {fileID: 3598020144336143548, guid: acd23fc5106a83440be2c664000aa1e4, type: 3}
+  - {fileID: 3598020144336143548, guid: acd23fc5106a83440be2c664000aa1e4, type: 3}

@@ -6,7 +6,7 @@ namespace Battle
     [Serializable]
     public class UnitTime
     {
-        public BattleActor character;
+        public Actor character;
         public float time;
     }
 }

@@ -1,17 +1,23 @@
 using Actors;
-using Atomic.Extensions;
+using Battle.Components;
 using Cysharp.Threading.Tasks;
-using PrimeTween;
+using Lessons.Game.Events;
+using Lessons.Game.Events.Effects;
+using UnityEngine;
 
 namespace Battle.Characters
 {
-    public class Wolf : BattleActor
+    public class Wolf : Actor
     {
+        [SerializeField] private MeleeAttack biteAttack; 
         //attack
         public override async UniTask Run()
         {
+            EventBus.RaiseEvent(new DealDamageEvent(this,BattleController.GetRandomEnemy(Owner), stats.attackPower.Value));
+            EventBus.RaiseEvent(new VisualParticleEvent(BattleController.GetRandomEnemy(Owner), biteAttack.hitParticle));
+
             //raise event, attack
-            var target = BattleController.PlayerSide.GetRandom();
+            /*var target = BattleController.PlayerSide.GetRandom();
             var basePosition = transform.position;
             var targetPosition = target.transform.position;
             var targetDirection = (targetPosition - basePosition).normalized;
@@ -21,7 +27,7 @@ namespace Battle.Characters
             await UniTask.Delay(500);
             if (this == null)
                 return;
-            await Tween.Position(transform, basePosition, 0.4f,ease:Ease.OutCirc);
+            await Tween.Position(transform, basePosition, 0.4f,ease:Ease.OutCirc);*/
             await UniTask.Delay(500);
         }
     }

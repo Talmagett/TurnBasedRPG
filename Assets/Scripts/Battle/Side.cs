@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Actors;
+using Battle.Characters;
+using Lessons.Game;
 using Map.Characters;
 using UnityEngine;
+using Zenject;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -11,19 +14,24 @@ namespace Battle
     [Serializable]
     public class Side
     {
-        private const float deltaPosition = 2;
-        [field: SerializeField] public Transform Parent { get; private set; }
+        private const float DeltaPosition = 2;
+        private readonly Transform _parent;
 
-        private List<BattleActor> _units = new();
+        private List<Actor> _units = new();
         public event Action OnUnitsCleared;
 
-        public BattleActor GetRandom()
+        public Side(Transform parent)
+        {
+            _parent = parent;
+        }
+        
+        public Actor GetRandom()
         {
             var rand = Random.Range(0, _units.Count);
             return _units[rand];
         }
         
-        public IEnumerable<BattleActor> GetAllCharacters()
+        public IEnumerable<Actor> GetAllCharacters()
         {
             return _units;
         }
@@ -31,25 +39,28 @@ namespace Battle
         public void ClearField()
         {
             _units.Clear();
-            while (Parent.childCount > 0) Object.DestroyImmediate(Parent.GetChild(0).gameObject);
+            while (_parent.childCount > 0) Object.DestroyImmediate(_parent.GetChild(0).gameObject);
         }
 
-        public void SpawnUnits(BattleActor[] enemiesConfig, BattleController battleController)
+        public void SpawnUnits(Actor[] actors, DiContainer container,Owner owner)
         {
-            var len = enemiesConfig.Length;
-            var pos = -(len - 1) / 2f * deltaPosition;
+            var len = actors.Length;
+            var pos = -(len - 1) / 2f * DeltaPosition;
+            var eventBus = container.Resolve<EventBus>();
+            var battleController = container.Resolve<BattleController>();
             for (var i = 0; i < len; i++)
             {
-                var unit = battleController.SpawnUnit(enemiesConfig[i], Parent);
-                //unit.InitStats(enemiesConfig[i].characterConfig.Value.Stats);
-                unit.transform.SetPositionAndRotation(Parent.position + Vector3.forward * pos, Parent.rotation);
+                var unit = container.InstantiatePrefab(actors[i], _parent).GetComponent<Actor>();
+                
+                unit.Init(eventBus,battleController,owner);
+                unit.transform.SetPositionAndRotation(_parent.position + Vector3.forward * pos, _parent.rotation);
                 _units.Add(unit);
                 unit.gameObject.SetActive(true);
-                pos += deltaPosition;
+                pos += DeltaPosition;
             }
         }
 
-        public void DespawnUnit(BattleActor baseCharacter)
+        public void DespawnUnit(Actor baseCharacter)
         {
             _units.Remove(baseCharacter);
             baseCharacter.DestroySelf();

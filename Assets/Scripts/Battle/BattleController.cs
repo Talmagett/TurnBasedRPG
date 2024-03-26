@@ -1,9 +1,12 @@
+using System.Collections.Generic;
 using Actors;
+using Battle.Characters;
 using Cysharp.Threading.Tasks;
 using Data;
 using Game;
 using Map.Characters;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using UnityEngine;
 using Zenject;
 
@@ -12,9 +15,10 @@ namespace Battle
     public class BattleController : GameStateController
     {
         [SerializeField] private Transform environmentParent;
+        [SerializeField] private Transform playerSideParent;
+        [SerializeField] private Transform enemySideParent;
 
-        [field: SerializeField] public Side PlayerSide { get; private set; }
-        [field: SerializeField] public Side EnemiesSide { get; private set; }
+        private Dictionary<Owner, Side> _sides;
 
         private GameController _gameController;
         private DiContainer _diContainer;
@@ -25,18 +29,23 @@ namespace Battle
         {
             _gameController = gameController;
             _diContainer = diContainer;
+            _sides = new Dictionary<Owner, Side>
+            {
+                { Owner.Player, new Side(playerSideParent) },
+                { Owner.Enemy, new Side(enemySideParent) }
+            };
         }
 
         private void OnEnable()
         {
-            PlayerSide.OnUnitsCleared += GameOver;
-            EnemiesSide.OnUnitsCleared += FinishBattle;
+            _sides[Owner.Player].OnUnitsCleared += GameOver;
+            _sides[Owner.Enemy].OnUnitsCleared += FinishBattle;
         }
 
         private void OnDisable()
         {
-            PlayerSide.OnUnitsCleared -= GameOver;
-            EnemiesSide.OnUnitsCleared -= FinishBattle;
+            _sides[Owner.Player].OnUnitsCleared -= GameOver;
+            _sides[Owner.Enemy].OnUnitsCleared -= FinishBattle;
         }
 
         private void GameOver()
@@ -52,12 +61,9 @@ namespace Battle
         }
 
         [Button]
-        public void DestroyEnemy(bool isPlayer, BattleActor unit)
+        public void DestroyEnemy(Actor unit)
         {
-            if (isPlayer)
-                PlayerSide.DespawnUnit(unit);
-            else
-                EnemiesSide.DespawnUnit(unit);
+            _sides[unit.Owner].DespawnUnit(unit);
             BattleQueue.RemoveUnit(unit);
             BattleQueue.UpdateTime();
         }
@@ -66,6 +72,8 @@ namespace Battle
         {
             while (_gameController.IsBattle)
             {
+                await UniTask.Delay(1000);
+
                 BattleQueue.NextTurn();
                 await BattleQueue.CurrentCharacter.Run();
             }
@@ -75,7 +83,7 @@ namespace Battle
         {
             base.EnterState();
             PlayerInputActions.Battle.Enable();
-            await UniTask.Delay(1000);
+            BattleQueue.UpdateTime();
             NextTurn();
         }
 
@@ -84,37 +92,49 @@ namespace Battle
             base.ExitState();
             PlayerInputActions.Battle.Disable();
             while (environmentParent.childCount > 0) DestroyImmediate(environmentParent.GetChild(0).gameObject);
-            PlayerSide.ClearField();
-            EnemiesSide.ClearField();
+            _sides.ForEach(t => t.Value.ClearField());
         }
 
-        public void Setup(BattleActor[] heroes, BattleActor[] enemies, Environment environment)
+        public void SetupEnvironment(Environment environment)
+        {
+            Instantiate(environment, environmentParent);
+        }
+        
+        public void SetupActors(Actor[] heroes, Actor[] enemies)
         {
             BattleQueue = new BattleQueue();
 
-            Instantiate(environment, environmentParent);
-            SpawnUnit(true, heroes);
-            SpawnUnit(false, enemies);
+            SpawnUnit(Owner.Player, heroes);
+            SpawnUnit(Owner.Enemy, enemies);
         }
 
-        public void SpawnUnit(bool isPlayer, params BattleActor[] characters)
+        public void SpawnUnit(Owner owner, params Actor[] characters)
         {
-            if (isPlayer)
-            {
-                PlayerSide.SpawnUnits(characters,this);
-                BattleQueue.AddUnits(PlayerSide.GetAllCharacters());
-            }
-            else
-            {
-                EnemiesSide.SpawnUnits(characters,this);
-                BattleQueue.AddUnits(EnemiesSide.GetAllCharacters());
-            }
+            _sides[owner].SpawnUnits(characters, _diContainer,owner);
+            BattleQueue.AddUnits(_sides[owner].GetAllCharacters());
+        }
+        
+        
+        public IEnumerable<Actor> GetMyAllies(Owner owner)
+        {
+            return _sides[owner].GetAllCharacters();
         }
 
-        public BattleActor SpawnUnit(BattleActor character,Transform parent)
+        public Actor GetRandomAlly(Owner owner)
         {
-            var createdObject = _diContainer.InstantiatePrefab(character, parent);
-            return createdObject.GetComponent<BattleActor>();
+            return _sides[owner].GetRandom();
+        }
+        
+        public IEnumerable<Actor> GetMyEnemies(Owner owner)
+        {
+            owner = owner == Owner.Enemy ? Owner.Player : Owner.Enemy;
+            return _sides[owner].GetAllCharacters();
+        }
+        
+        public Actor GetRandomEnemy(Owner owner)
+        {
+            owner = owner == Owner.Enemy ? Owner.Player : Owner.Enemy;
+            return _sides[owner].GetRandom();
         }
     }
 }
