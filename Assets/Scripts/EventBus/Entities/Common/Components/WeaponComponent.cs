@@ -5,11 +5,11 @@ namespace EventBus.Entities.Common.Components
 {
     public sealed class WeaponComponent
     {
-        public Weapon Value => _weapon;
+        public AbilityConfig Value => _weapon;
         
-        private readonly AtomicVariable<Weapon> _weapon;
+        private readonly AtomicVariable<AbilityConfig> _weapon;
 
-        public WeaponComponent(AtomicVariable<Weapon> weapon)
+        public WeaponComponent(AtomicVariable<AbilityConfig> weapon)
         {
             _weapon = weapon;
         }

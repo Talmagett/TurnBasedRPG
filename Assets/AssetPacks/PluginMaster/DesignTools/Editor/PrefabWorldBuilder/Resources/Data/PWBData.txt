@@ -5,7 +5,7 @@
     "_undoBrushProperties": true,
     "_undoPalette": true,
     "_controlPointSize": 1,
-    "_closeAllWindowsWhenClosingTheToolbar": false,
+    "_closeAllWindowsWhenClosingTheToolbar": true,
     "_selectTheNextPaletteInAlphabeticalOrder": true,
     "_thumbnailLayer": 7,
     "_unsavedChangesAction": 0,
@@ -455,7 +455,9 @@
                     "Player",
                     "GameController",
                     "FxTemporaire",
-                    "CinemachineTarget"
+                    "CinemachineTarget",
+                    "PlayerEyes",
+                    "MAST_Holder"
                 ],
                 "_slopeFilter": {
                     "_v1": 0.0,
@@ -979,7 +981,7 @@
                     "_layer": 0,
                     "_overwriteBrushProperties": false,
                     "_brushSettings": {
-                        "_id": 638464610069018101,
+                        "_id": -1,
                         "_surfaceDistance": 0.0,
                         "_randomSurfaceDistance": false,
                         "_randomSurfaceDistanceRange": {
@@ -1259,7 +1261,7 @@
                     "_layer": 0,
                     "_overwriteBrushProperties": false,
                     "_brushSettings": {
-                        "_id": 638464610069018100,
+                        "_id": -1,
                         "_surfaceDistance": 0.0,
                         "_randomSurfaceDistance": false,
                         "_randomSurfaceDistanceRange": {
@@ -1567,7 +1569,7 @@
                     "_layer": 0,
                     "_overwriteBrushProperties": false,
                     "_brushSettings": {
-                        "_id": 638464610068967924,
+                        "_id": -1,
                         "_surfaceDistance": 0.0,
                         "_randomSurfaceDistance": false,
                         "_randomSurfaceDistanceRange": {
@@ -6924,7 +6926,9 @@
                     "Player",
                     "GameController",
                     "FxTemporaire",
-                    "CinemachineTarget"
+                    "CinemachineTarget",
+                    "PlayerEyes",
+                    "MAST_Holder"
                 ]
             }
         ],

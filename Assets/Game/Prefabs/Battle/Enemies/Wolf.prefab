@@ -71,7 +71,8 @@ MonoBehaviour:
     evasion:
       value: 0
   biteAttack:
-    hitParticle: {fileID: 19800000, guid: d5ee775b8b5556040a494dbbd2f81e48, type: 3}
+    Config: {fileID: 11400000, guid: 08b3359215965fb4b8ff51d844316736, type: 2}
+    HitEffect: {fileID: 19800002, guid: e05640b713279be4ea35ced053857820, type: 3}
 --- !u!1001 &4490041244934630958
 PrefabInstance:
   m_ObjectHideFlags: 0

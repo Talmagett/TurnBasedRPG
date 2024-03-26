@@ -12,5 +12,7 @@ namespace EventBus.Game.Events.Effects
         
         [field:SerializeField]
         public int ExtraDamage { get; private set; }
+        [field:SerializeField]
+        public ParticleSystem HitEffect { get; private set; }
     }
 }

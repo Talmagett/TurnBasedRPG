@@ -8,16 +8,13 @@ namespace Battle.Characters
 {
     public class Hero: Actor
     {
-        [SerializeField] private MeleeAttack biteAttack; 
+        [SerializeField] private DealDamageAbility swordAttack; 
         //attack
         public override async UniTask Run()
         {
             await UniTask.Delay(500);
-            EventBus.RaiseEvent(new VisualParticleEvent(this, biteAttack.hitParticle));
-            BattleController.Run();
-            await UniTask.Delay(1500);
             EventBus.RaiseEvent(new DealDamageEvent(this,BattleController.GetRandomEnemy(Owner), stats.attackPower.Value));
-            EventBus.RaiseEvent(new VisualParticleEvent(BattleController.GetRandomEnemy(Owner), biteAttack.hitParticle));
+            EventBus.RaiseEvent(new VisualParticleEvent(BattleController.GetRandomEnemy(Owner), swordAttack.HitEffect));
             BattleController.Run();
         }
     }
