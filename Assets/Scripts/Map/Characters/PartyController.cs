@@ -10,7 +10,6 @@ namespace Map.Characters
 {
     public class PartyController : MonoBehaviour
     {
-        private static readonly int isMoving = Animator.StringToHash("IsMoving");
         [SerializeField] private Actor[] heroes;
         [SerializeField] private ParticleSystem changeVFX;
 
@@ -27,8 +26,7 @@ namespace Map.Characters
 
         private void Update()
         {
-            if(CurrentCharacter.TryGet("Animator",out AtomicVariable<Animator> animator))
-                animator.Value.SetBool(isMoving, _playerCharacterController.IsMoving);
+            CurrentCharacter.Animator.SetBool(AnimationKeys.GetAnimation(AnimationKeys.Animation.Move), _playerCharacterController.IsMoving);
         }
 
         private void OnDestroy()

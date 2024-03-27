@@ -12370,6 +12370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 2125649970}
   battleController: {fileID: 2086095764}
+  particleStorage: {fileID: 11400000, guid: e8eb550b700f3ba40b91a599e29aa781, type: 2}
 --- !u!1001 &503472400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16082,8 +16083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: 6cd89a9914282784b90e688336ab59f6,
     type: 2}
-  animator:
-    value: {fileID: 1546247337}
+  <Animator>k__BackingField: {fileID: 1546247337}
   stats:
     maxHealth:
       value: 0
@@ -16105,9 +16105,8 @@ MonoBehaviour:
       value: 0
     evasion:
       value: 0
-  swordAttack:
-    Config: {fileID: 11400000, guid: 1915e4eac89cf5f47b6e4b84ec441b20, type: 2}
-    HitEffect: {fileID: 19800000, guid: d5ee775b8b5556040a494dbbd2f81e48, type: 3}
+  swordAttack: {fileID: 11400000, guid: 7144b4fbbcc44784ba4b343dcbb885ec, type: 2}
+  heal: {fileID: 11400000, guid: a0a66519134ee704bb9327303cadcd1f, type: 2}
 --- !u!1001 &678956812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38041,8 +38040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: 6a4ef622fa64f5548b0321d7ba4f575b,
     type: 2}
-  animator:
-    value: {fileID: 290310385}
+  <Animator>k__BackingField: {fileID: 290310385}
   stats:
     maxHealth:
       value: 0
@@ -38064,9 +38062,8 @@ MonoBehaviour:
       value: 0
     evasion:
       value: 0
-  swordAttack:
-    Config: {fileID: 11400000, guid: 1915e4eac89cf5f47b6e4b84ec441b20, type: 2}
-    HitEffect: {fileID: 19800000, guid: d5ee775b8b5556040a494dbbd2f81e48, type: 3}
+  swordAttack: {fileID: 11400000, guid: 7144b4fbbcc44784ba4b343dcbb885ec, type: 2}
+  heal: {fileID: 11400000, guid: a0a66519134ee704bb9327303cadcd1f, type: 2}
 --- !u!1001 &1652315334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39446,8 +39443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: 515fd35132481d9448d3ed80f43a407c,
     type: 2}
-  animator:
-    value: {fileID: 89028517}
+  <Animator>k__BackingField: {fileID: 89028517}
   stats:
     maxHealth:
       value: 0
@@ -39469,9 +39465,8 @@ MonoBehaviour:
       value: 0
     evasion:
       value: 0
-  swordAttack:
-    Config: {fileID: 11400000, guid: 1915e4eac89cf5f47b6e4b84ec441b20, type: 2}
-    HitEffect: {fileID: 19800000, guid: d5ee775b8b5556040a494dbbd2f81e48, type: 3}
+  swordAttack: {fileID: 11400000, guid: 7144b4fbbcc44784ba4b343dcbb885ec, type: 2}
+  heal: {fileID: 11400000, guid: a0a66519134ee704bb9327303cadcd1f, type: 2}
 --- !u!1001 &1700810009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47593,8 +47588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: 3b365d7638c908a4e94fe36bb50b4eaa,
     type: 2}
-  animator:
-    value: {fileID: 1843799337}
+  <Animator>k__BackingField: {fileID: 1843799337}
   stats:
     maxHealth:
       value: 0
@@ -47616,9 +47610,8 @@ MonoBehaviour:
       value: 0
     evasion:
       value: 0
-  swordAttack:
-    Config: {fileID: 11400000, guid: 1915e4eac89cf5f47b6e4b84ec441b20, type: 2}
-    HitEffect: {fileID: 19800000, guid: d5ee775b8b5556040a494dbbd2f81e48, type: 3}
+  swordAttack: {fileID: 11400000, guid: 7144b4fbbcc44784ba4b343dcbb885ec, type: 2}
+  heal: {fileID: 11400000, guid: a0a66519134ee704bb9327303cadcd1f, type: 2}
 --- !u!1001 &2009187039
 PrefabInstance:
   m_ObjectHideFlags: 0

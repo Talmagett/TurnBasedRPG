@@ -1,4 +1,5 @@
 using Atomic.Objects;
+using Data;
 using UnityEngine;
 
 namespace EventBus.Game.Events
@@ -6,13 +7,12 @@ namespace EventBus.Game.Events
     public readonly struct VisualParticleEvent : IEvent
     {
         public readonly IAtomicObject Target;
-        public readonly ParticleSystem Particle;
+        public readonly ParticleStorage.ParticleKeys ParticleKey;
 
-        public VisualParticleEvent(IAtomicObject target, ParticleSystem particle)
+        public VisualParticleEvent(IAtomicObject target, ParticleStorage.ParticleKeys particleKey)
         {
             Target = target;
-            Particle = particle;
+            ParticleKey = particleKey;
         }
-        
     }
 }

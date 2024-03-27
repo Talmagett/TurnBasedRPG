@@ -13,7 +13,7 @@ namespace Actors
     public class Actor : AtomicObject
     {
         [field: SerializeField] public CharacterConfig Config { get; private set; }
-        [SerializeField] private AtomicVariable<Animator> animator;
+        [field: SerializeField] public Animator Animator { get; private set; }
     
         public Owner Owner { get; private set; }
         [ReadOnly]
@@ -34,7 +34,6 @@ namespace Actors
         {
             AddProperty("Transform", transform);
             AddProperty("GameObject", gameObject);
-            AddProperty("Animator", animator);
             AddProperty("Stats", stats);
         }
         
