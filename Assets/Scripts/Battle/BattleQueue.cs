@@ -15,13 +15,13 @@ namespace Battle
 
         [ReadOnly] [ShowInInspector] private readonly PriorityQueue _queue = new();
 
-        [ReadOnly] [ShowInInspector] private readonly List<Actor> _unitList = new();
+        [ReadOnly] [ShowInInspector] private readonly List<ActorData> _unitList = new();
 
         private bool _isInit = true;
 
         [ReadOnly] [ShowInInspector] public float CurrentTime { get; private set; }
 
-        public Actor CurrentCharacter { get; private set; }
+        public ActorData CurrentCharacter { get; private set; }
         public event Action OnQueueChanged;
 
         public UnitTime[] GetUnitTimes()
@@ -29,20 +29,20 @@ namespace Battle
             return _queue.GetUnitTimes();
         }
 
-        public void AddUnits(IEnumerable<Actor> units)
+        public void AddUnits(IEnumerable<ActorData> units)
         {
             foreach (var unit in units) AddUnit(unit);
 
             OnQueueChanged?.Invoke();
         }
 
-        public void AddUnit(Actor unit)
+        public void AddUnit(ActorData unit)
         {
             _unitList.Add(unit);
             AddUnitToQueue(unit);
         }
 
-        public void RemoveUnit(Actor unit)
+        public void RemoveUnit(ActorData unit)
         {
             _unitList.Remove(unit);
             RemoveUnitFromQueue(unit);
@@ -54,7 +54,7 @@ namespace Battle
             foreach (var unit in _unitList) AddUnitToQueue(unit);
         }
 
-        private void AddUnitToQueue(Actor unit)
+        private void AddUnitToQueue(ActorData unit)
         {
             var lastUnitTime = _queue.GetLatestUnitTime(unit);
             var lastTime = lastUnitTime?.time ?? CurrentTime;
@@ -66,7 +66,7 @@ namespace Battle
             }
         }
 
-        private void RemoveUnitFromQueue(Actor unit)
+        private void RemoveUnitFromQueue(ActorData unit)
         {
             _queue.RemoveUnit(unit);
         }

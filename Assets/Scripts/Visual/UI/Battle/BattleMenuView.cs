@@ -9,7 +9,7 @@ namespace Visual.UI.Battle
     {
         [SerializeField] private Button exitBattle;
 
-        private GameController _gameController;
+        private GameStateController _gameStateController;
 
         private void OnEnable()
         {
@@ -22,14 +22,14 @@ namespace Visual.UI.Battle
         }
 
         [Inject]
-        public void Construct(GameController gameController)
+        public void Construct(GameStateController gameStateController)
         {
-            _gameController = gameController;
+            _gameStateController = gameStateController;
         }
 
         private void ExitBattle()
         {
-            _gameController.ExitBattle();
+            _gameStateController.ExitBattle();
         }
     }
 }

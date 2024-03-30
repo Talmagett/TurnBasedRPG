@@ -7,13 +7,11 @@ namespace Visual.UI.Map
     {
         [SerializeField] private HeroView heroViewPrefab;
         [SerializeField] private Transform parent;
-        [SerializeField] private PartyController partyController;
 
         private HeroView[] _mapHeroViews;
 
         private void Start()
         {
-            _mapHeroViews = new HeroView[partyController.GetHeroes().Length];
             var index = 0;
             return;
             /*foreach (var playerCharacter in partyController.GetHeroes())

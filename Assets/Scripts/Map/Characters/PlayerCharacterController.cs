@@ -1,4 +1,6 @@
+using Actors;
 using Map.Interactions.Environment;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -7,20 +9,22 @@ namespace Map.Characters
 {
     public class PlayerCharacterController : MonoBehaviour
     {
+        [SerializeField] private Animator playerAnimator;
+        
         [SerializeField] private CharacterController characterController;
         [SerializeField] private float moveSpeed;
         [SerializeField] private float rotationSpeed;
 
         [SerializeField] private float interactRadius;
-        [SerializeField] private PartyController partyController;
 
-        public LayerMask GroundLayers;
-        public float FallTimeout = 0.15f;
-        public float GroundedOffset = -0.14f;
-        public float GroundedRadius = 0.28f;
-        public float Gravity = -15.0f;
-        public bool Grounded = true;
-        private readonly float _terminalVelocity = 53.0f;
+        [SerializeField] private LayerMask groundLayers;
+        [SerializeField] private float fallTimeout = 0.15f;
+        [SerializeField] private float groundedOffset = -0.14f;
+        [SerializeField] private float groundedRadius = 0.28f;
+        [SerializeField] private float gravity = -15.0f;
+        [ReadOnly] [SerializeField] private bool grounded = true;
+
+        private const float TerminalVelocity = 53.0f;
         private InputAction.CallbackContext _context;
 
         private float _fallTimeoutDelta;
@@ -31,17 +35,9 @@ namespace Map.Characters
         private float _verticalVelocity;
         public bool IsMoving { get; private set; }
 
-        private void Awake()
-        {
-            foreach (var hero in partyController.GetHeroes())
-            {
-                hero.AddProperty("PlayerTag", this);
-            }
-        }
-
         private void Start()
         {
-            _fallTimeoutDelta = FallTimeout;
+            _fallTimeoutDelta = fallTimeout;
             _verticalVelocity = 0;
         }
 
@@ -68,13 +64,13 @@ namespace Map.Characters
             var transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
             var transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
-            if (Grounded) Gizmos.color = transparentGreen;
+            if (grounded) Gizmos.color = transparentGreen;
             else Gizmos.color = transparentRed;
 
             // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
             Gizmos.DrawSphere(
-                new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
-                GroundedRadius);
+                new Vector3(transform.position.x, transform.position.y - groundedOffset, transform.position.z),
+                groundedRadius);
         }
 
         [Inject]
@@ -110,30 +106,31 @@ namespace Map.Characters
         {
             characterController.Move(_targetDirection.normalized * (moveSpeed * Time.deltaTime) +
                                      new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            playerAnimator.SetBool(AnimationKeys.GetAnimation(AnimationKeys.Animation.IsMoving),IsMoving);
         }
 
         private void Interact(InputAction.CallbackContext obj)
         {
             var hits =Physics.OverlapSphere(transform.position, interactRadius);
-            foreach (var hit in hits)
+            /*foreach (var hit in hits)
                 if (hit.TryGetComponent(out Interactable interactable))
-                    interactable.Interact(partyController.CurrentCharacter);
+                    interactable.Interact(partyController.CurrentCharacter);*/
         }
 
         private void GroundedCheck()
         {
-            var spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset,
+            var spherePosition = new Vector3(transform.position.x, transform.position.y - groundedOffset,
                 transform.position.z);
-            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
+            grounded = Physics.CheckSphere(spherePosition, groundedRadius, groundLayers,
                 QueryTriggerInteraction.Ignore);
         }
 
 
         private void JumpAndGravity()
         {
-            if (Grounded)
+            if (grounded)
             {
-                _fallTimeoutDelta = FallTimeout;
+                _fallTimeoutDelta = fallTimeout;
                 if (_verticalVelocity < 0.0f) _verticalVelocity = -2f;
             }
             else
@@ -141,7 +138,7 @@ namespace Map.Characters
                 if (_fallTimeoutDelta >= 0.0f) _fallTimeoutDelta -= Time.deltaTime;
             }
 
-            if (_verticalVelocity < _terminalVelocity) _verticalVelocity += Gravity * Time.deltaTime;
+            if (_verticalVelocity < TerminalVelocity) _verticalVelocity += gravity * Time.deltaTime;
         }
     }
 }

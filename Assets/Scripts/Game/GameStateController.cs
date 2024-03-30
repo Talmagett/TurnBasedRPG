@@ -1,31 +1,35 @@
+using System;
+using Actors;
+using Battle;
+using Data;
+using Map;
+using Map.Characters;
 using UnityEngine;
 using Zenject;
 
 namespace Game
 {
-    public abstract class GameStateController : MonoBehaviour
+    public class GameStateController : MonoBehaviour
     {
-        [SerializeField] private Camera stateCamera;
-        [SerializeField] private GameObject canvas;
-
-        protected PlayerInputActions PlayerInputActions;
-
-        [Inject]
-        public void Construct(PlayerInputActions playerInputActions)
+        public event Action<GameState> OnGameStateChanged;
+        
+        private BattleController _battleController;
+        
+        private void Awake()
         {
-            PlayerInputActions = playerInputActions;
+            OnGameStateChanged?.Invoke(GameState.Map);
         }
 
-        public virtual void EnterState()
+        public void EnterBattle(EnemyRiftConfig enemyRiftConfig)
         {
-            canvas.SetActive(true);
-            stateCamera.gameObject.SetActive(true);
+            OnGameStateChanged?.Invoke(GameState.Battle);
+            //battle.SetupEnvironment(enemyRiftConfig.Environment);
+            //battle.SetupActors(_partyController.GetHeroes(), enemyRiftConfig.Enemies);
         }
 
-        public virtual void ExitState()
+        public void ExitBattle()
         {
-            canvas.SetActive(false);
-            stateCamera.gameObject.SetActive(false);
+            OnGameStateChanged?.Invoke(GameState.Map);
         }
     }
 }

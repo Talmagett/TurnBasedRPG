@@ -37,15 +37,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""9dd8cee6-14ec-4a13-896c-bcc8267b1e3a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""e38a223b-4433-40c0-b5fb-f31511dbecbf"",
@@ -53,24 +44,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""PreviousHero"",
-                    ""type"": ""Button"",
-                    ""id"": ""7ad75454-90cb-4cb9-8d3e-7a27c35cfb05"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""NextHero"",
-                    ""type"": ""Button"",
-                    ""id"": ""f913a0b9-4ff5-4b63-a3fc-6881c4ec67e1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -82,17 +55,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""57080f14-1ff7-4f59-883c-b5ffef140eaf"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -150,28 +112,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d7ba7273-5312-497f-b50b-f42b0072dd23"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PreviousHero"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9346bcdd-d99b-4803-a4fc-1bc0c0d26041"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""NextHero"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -193,10 +133,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Map
         m_Map = asset.FindActionMap("Map", throwIfNotFound: true);
         m_Map_Interact = m_Map.FindAction("Interact", throwIfNotFound: true);
-        m_Map_Attack = m_Map.FindAction("Attack", throwIfNotFound: true);
         m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
-        m_Map_PreviousHero = m_Map.FindAction("PreviousHero", throwIfNotFound: true);
-        m_Map_NextHero = m_Map.FindAction("NextHero", throwIfNotFound: true);
         // Battle
         m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
         // UI
@@ -263,19 +200,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Map;
     private List<IMapActions> m_MapActionsCallbackInterfaces = new List<IMapActions>();
     private readonly InputAction m_Map_Interact;
-    private readonly InputAction m_Map_Attack;
     private readonly InputAction m_Map_Move;
-    private readonly InputAction m_Map_PreviousHero;
-    private readonly InputAction m_Map_NextHero;
     public struct MapActions
     {
         private @PlayerInputActions m_Wrapper;
         public MapActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Map_Interact;
-        public InputAction @Attack => m_Wrapper.m_Map_Attack;
         public InputAction @Move => m_Wrapper.m_Map_Move;
-        public InputAction @PreviousHero => m_Wrapper.m_Map_PreviousHero;
-        public InputAction @NextHero => m_Wrapper.m_Map_NextHero;
         public InputActionMap Get() { return m_Wrapper.m_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -288,18 +219,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @PreviousHero.started += instance.OnPreviousHero;
-            @PreviousHero.performed += instance.OnPreviousHero;
-            @PreviousHero.canceled += instance.OnPreviousHero;
-            @NextHero.started += instance.OnNextHero;
-            @NextHero.performed += instance.OnNextHero;
-            @NextHero.canceled += instance.OnNextHero;
         }
 
         private void UnregisterCallbacks(IMapActions instance)
@@ -307,18 +229,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @PreviousHero.started -= instance.OnPreviousHero;
-            @PreviousHero.performed -= instance.OnPreviousHero;
-            @PreviousHero.canceled -= instance.OnPreviousHero;
-            @NextHero.started -= instance.OnNextHero;
-            @NextHero.performed -= instance.OnNextHero;
-            @NextHero.canceled -= instance.OnNextHero;
         }
 
         public void RemoveCallbacks(IMapActions instance)
@@ -415,10 +328,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IMapActions
     {
         void OnInteract(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnPreviousHero(InputAction.CallbackContext context);
-        void OnNextHero(InputAction.CallbackContext context);
     }
     public interface IBattleActions
     {

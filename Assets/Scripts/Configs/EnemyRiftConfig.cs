@@ -1,0 +1,14 @@
+using Actors;
+using Battle;
+using UnityEngine;
+
+namespace Data
+{
+    [CreateAssetMenu(fileName = "EnemyRift", menuName = "SO/EnemyRift", order = 1)]
+    public class EnemyRiftConfig : ScriptableObject
+    {
+        [field: SerializeField] public Environment Environment {get; private set;}
+        [field: SerializeField] public ActorData[] Enemies {get; private set;}
+        //loot
+    }
+}

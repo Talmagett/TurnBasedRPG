@@ -16,7 +16,7 @@ namespace Battle
         private const float DeltaPosition = 2;
         private readonly Transform _parent;
 
-        private List<Actor> _units = new();
+        private List<ActorData> _units = new();
         public event Action OnUnitsCleared;
 
         public Side(Transform parent)
@@ -24,13 +24,13 @@ namespace Battle
             _parent = parent;
         }
         
-        public Actor GetRandom()
+        public ActorData GetRandom()
         {
             var rand = Random.Range(0, _units.Count);
             return _units[rand];
         }
         
-        public IEnumerable<Actor> GetAllCharacters()
+        public IEnumerable<ActorData> GetAllCharacters()
         {
             return _units;
         }
@@ -41,7 +41,7 @@ namespace Battle
             while (_parent.childCount > 0) Object.DestroyImmediate(_parent.GetChild(0).gameObject);
         }
 
-        public void SpawnUnits(Actor[] actors, DiContainer container,Owner owner)
+        public void SpawnUnits(ActorData[] actors, DiContainer container,Owner owner)
         {
             var len = actors.Length;
             var pos = -(len - 1) / 2f * DeltaPosition;
@@ -49,9 +49,9 @@ namespace Battle
             var battleController = container.Resolve<BattleController>();
             for (var i = 0; i < len; i++)
             {
-                var unit = container.InstantiatePrefab(actors[i], _parent).GetComponent<Actor>();
+                var unit = container.InstantiatePrefab(actors[i], _parent).GetComponent<ActorData>();
                 
-                unit.Init(eventBus,battleController,owner);
+                //unit.SetOwner(eventBus,battleController,owner);
                 unit.transform.SetPositionAndRotation(_parent.position + Vector3.forward * pos, _parent.rotation);
                 _units.Add(unit);
                 unit.gameObject.SetActive(true);
@@ -59,7 +59,7 @@ namespace Battle
             }
         }
 
-        public void DespawnUnit(Actor baseCharacter)
+        public void DespawnUnit(ActorData baseCharacter)
         {
             _units.Remove(baseCharacter);
             baseCharacter.DestroySelf();

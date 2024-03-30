@@ -35,13 +35,13 @@ namespace Battle
             return first;
         }
 
-        public UnitTime GetLatestUnitTime(Actor unit)
+        public UnitTime GetLatestUnitTime(ActorData unit)
         {
             var unitTimes = _queue.Where(t => t.character == unit).ToArray();
             return unitTimes.LastOrDefault();
         }
 
-        public void RemoveUnit(Actor unit)
+        public void RemoveUnit(ActorData unit)
         {
             var unitTimes = _queue.Where(t => t.character == unit).ToArray();
             foreach (var unitTime in unitTimes) _queue.Remove(unitTime);

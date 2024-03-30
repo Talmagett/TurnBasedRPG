@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace Battle.Characters
 {
-    public class Hero: Actor
+    public class Hero: BattleActor
     {
         [SerializeField] private DealDamageAbility swordAttack;
         [SerializeField] private HealAbility heal;
         
-        public override async UniTask Run()
+        /*public override async UniTask Run()
         {
             var rand = Random.Range(0, 2);
             if (rand == 0)
@@ -23,9 +23,9 @@ namespace Battle.Characters
         private async UniTask Heal()
         {
             await UniTask.Delay(300);
-            Animator.SetTrigger(AnimationKeys.GetAnimation(AnimationKeys.Animation.Heal));
+            ActorData.Animator.SetTrigger(AnimationKeys.GetAnimation(AnimationKeys.Animation.Heal));
             await UniTask.Delay(200);
-            var amount = heal.BonusHealth + (int)(heal.MaxHealthPercent * stats.mana.Value);
+            var amount = heal.BonusHealth + (int)(heal.MaxHealthPercent * ActorData.stats.mana.Value);
             EventBus.RaiseEvent(new DealDamageEvent(this, BattleController.GetRandomEnemy(Owner), -amount));
             EventBus.RaiseEvent(new VisualParticleEvent(this, heal.ParticleKey));
             BattleController.Run();
@@ -40,6 +40,6 @@ namespace Battle.Characters
             EventBus.RaiseEvent(new DealDamageEvent(this, BattleController.GetRandomEnemy(Owner), damage));
             EventBus.RaiseEvent(new VisualParticleEvent(BattleController.GetRandomEnemy(Owner), swordAttack.ParticleKey));
             BattleController.Run();
-        }
+        }*/
     }
 }

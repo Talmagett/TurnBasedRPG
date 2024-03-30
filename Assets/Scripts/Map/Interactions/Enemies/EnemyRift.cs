@@ -10,18 +10,18 @@ namespace Map.Interactions.Enemies
     {
         [SerializeField] private EnemyRiftConfig enemyRiftConfig;
 
-        private GameController _gameController;
+        private GameStateController _gameStateController;
 
         [Inject]
-        public void Construct(GameController gameController)
+        public void Construct(GameStateController gameStateController)
         {
-            _gameController = gameController;
+            _gameStateController = gameStateController;
         }
         
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out PlayerCharacterController characterController))
-                _gameController.EnterBattle(enemyRiftConfig);
+                _gameStateController.EnterBattle(enemyRiftConfig);
         }
     }
 }

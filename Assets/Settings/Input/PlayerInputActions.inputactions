@@ -15,15 +15,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "9dd8cee6-14ec-4a13-896c-bcc8267b1e3a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Move",
                     "type": "Value",
                     "id": "e38a223b-4433-40c0-b5fb-f31511dbecbf",
@@ -31,24 +22,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "PreviousHero",
-                    "type": "Button",
-                    "id": "7ad75454-90cb-4cb9-8d3e-7a27c35cfb05",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "NextHero",
-                    "type": "Button",
-                    "id": "f913a0b9-4ff5-4b63-a3fc-6881c4ec67e1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -60,17 +33,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "57080f14-1ff7-4f59-883c-b5ffef140eaf",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -128,28 +90,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "d7ba7273-5312-497f-b50b-f42b0072dd23",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PreviousHero",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9346bcdd-d99b-4803-a4fc-1bc0c0d26041",
-                    "path": "<Keyboard>/c",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextHero",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },

@@ -13,7 +13,7 @@ using Zenject;
 
 namespace Battle
 {
-    public class BattleController : GameStateController
+    public class BattleController : MonoBehaviour
     {
         [SerializeField] private Transform environmentParent;
         [SerializeField] private Transform playerSideParent;
@@ -21,16 +21,16 @@ namespace Battle
 
         private Dictionary<Owner, Side> _sides;
 
-        private GameController _gameController;
+        private GameStateController _gameStateController;
         private DiContainer _diContainer;
         private TurnPipeline _turnPipeline;
 
         [ReadOnly] [ShowInInspector] public BattleQueue BattleQueue { get; private set; }
 
         [Inject]
-        public void Construct(GameController gameController, DiContainer diContainer,TurnPipeline turnPipeline)
+        public void Construct(GameStateController gameStateController, DiContainer diContainer,TurnPipeline turnPipeline)
         {
-            _gameController = gameController;
+            _gameStateController = gameStateController;
             _diContainer = diContainer;
             _turnPipeline = turnPipeline;
             _sides = new Dictionary<Owner, Side>
@@ -54,18 +54,18 @@ namespace Battle
 
         private void GameOver()
         {
-            _gameController.ExitBattle();
+            _gameStateController.ExitBattle();
             print("gameOver");
         }
 
         private void FinishBattle()
         {
-            _gameController.ExitBattle();
+            _gameStateController.ExitBattle();
             print("finish");
         }
 
         [Button]
-        public void DestroyEnemy(Actor unit)
+        public void DestroyEnemy(ActorData unit)
         {
             _sides[unit.Owner].DespawnUnit(unit);
             BattleQueue.RemoveUnit(unit);
@@ -79,15 +79,15 @@ namespace Battle
         
         public async void NextTurn()
         {
-            while (_gameController.IsBattle)
+            /*while (_gameStateController.IsBattle)
             {
                 await UniTask.Delay(1000);
 
                 BattleQueue.NextTurn();
-                await BattleQueue.CurrentCharacter.Run();
-            }
+                //await BattleQueue.CurrentCharacter.Run();
+            }*/
         }
-
+/*
         public override void EnterState()
         {
             base.EnterState();
@@ -103,13 +103,13 @@ namespace Battle
             while (environmentParent.childCount > 0) DestroyImmediate(environmentParent.GetChild(0).gameObject);
             _sides.ForEach(t => t.Value.ClearField());
         }
-
+*/
         public void SetupEnvironment(Environment environment)
         {
             Instantiate(environment, environmentParent);
         }
         
-        public void SetupActors(Actor[] heroes, Actor[] enemies)
+        public void SetupActors(ActorData[] heroes, ActorData[] enemies)
         {
             BattleQueue = new BattleQueue();
 
@@ -117,30 +117,30 @@ namespace Battle
             SpawnUnit(Owner.Enemy, enemies);
         }
 
-        public void SpawnUnit(Owner owner, params Actor[] characters)
+        public void SpawnUnit(Owner owner, params ActorData[] characters)
         {
             _sides[owner].SpawnUnits(characters, _diContainer,owner);
             BattleQueue.AddUnits(_sides[owner].GetAllCharacters());
         }
         
         
-        public IEnumerable<Actor> GetMyAllies(Owner owner)
+        public IEnumerable<ActorData> GetMyAllies(Owner owner)
         {
             return _sides[owner].GetAllCharacters();
         }
 
-        public Actor GetRandomAlly(Owner owner)
+        public ActorData GetRandomAlly(Owner owner)
         {
             return _sides[owner].GetRandom();
         }
         
-        public IEnumerable<Actor> GetMyEnemies(Owner owner)
+        public IEnumerable<ActorData> GetMyEnemies(Owner owner)
         {
             owner = owner == Owner.Enemy ? Owner.Player : Owner.Enemy;
             return _sides[owner].GetAllCharacters();
         }
         
-        public Actor GetRandomEnemy(Owner owner)
+        public ActorData GetRandomEnemy(Owner owner)
         {
             owner = owner == Owner.Enemy ? Owner.Player : Owner.Enemy;
             return _sides[owner].GetRandom();
