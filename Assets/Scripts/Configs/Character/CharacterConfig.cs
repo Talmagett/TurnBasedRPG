@@ -10,6 +10,6 @@ namespace Configs
         [field: SerializeField] public Sprite Icon { get; private set; }
 
         [field: SerializeField] [field: Space] public ActorData Prefab { get; private set; }
-        [field: SerializeField] public CharacterStatistic Stats { get; private set; }
+        [field: SerializeField] public BaseCharacterStatsConfig Stats { get; private set; }
     }
 }

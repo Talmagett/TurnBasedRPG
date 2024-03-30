@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Configs
 {
-    public static class AnimationKeys
+    public static class AnimationKey
     {
         public enum Animation
         {

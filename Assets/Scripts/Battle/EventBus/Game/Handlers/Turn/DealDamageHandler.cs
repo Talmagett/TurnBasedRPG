@@ -14,10 +14,12 @@ namespace Battle.EventBus.Game.Handlers.Turn
 
         protected override void HandleEvent(DealDamageEvent evt)
         {
-            if (!evt.Target.TryGet("Stats", out SharedCharacterStatistics stats)) return;
-            stats.Stats[StatKeys.Health] -= evt.Damage;
+            if (!evt.Target.TryGet("Stats", out SharedCharacterStats stats)) return;
+            var currentHealth = stats.GetStat(StatKey.Health);
+            currentHealth-=evt.Damage;
+            stats.SetStat(StatKey.Health,currentHealth);
 
-            if (stats.Stats[StatKeys.Health] <= 0) Debug.Log(evt.Target + "is Dead");
+            if (stats.GetStat(StatKey.Health) <= 0) Debug.Log(evt.Target + "is Dead");
             //EventBus.RaiseEvent(new DestroyEvent(evt.Entity));
         }
     }

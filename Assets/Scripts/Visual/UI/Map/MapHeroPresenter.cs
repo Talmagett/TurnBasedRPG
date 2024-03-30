@@ -1,4 +1,6 @@
+using Game.Heroes;
 using UnityEngine;
+using Zenject;
 
 namespace Visual.UI.Map
 {
@@ -9,6 +11,13 @@ namespace Visual.UI.Map
 
         private HeroView[] _mapHeroViews;
 
+        private HeroParty _party;
+        [Inject]
+        public void CTOR(HeroParty party)
+        {
+            _party = party;
+            Debug.Log(_party.HeroDataArray[0].ID);
+        }
         private void Start()
         {
             var index = 0;

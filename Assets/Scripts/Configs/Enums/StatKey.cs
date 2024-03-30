@@ -1,6 +1,6 @@
 namespace Configs
 {
-    public enum StatKeys
+    public enum StatKey
     {
         MaxHealth,
         Health,

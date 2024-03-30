@@ -9,7 +9,7 @@ namespace Configs
         [field: SerializeField] public string Description { get; private set; }
         [field: SerializeField] public Sprite Icon { get; private set; }
 
-        [field: SerializeField] public AnimationKeys.Animation Animation { get; private set; }
+        [field: SerializeField] public AnimationKey.Animation Animation { get; private set; }
 
         [SerializeReference] public IEffect[] Effects;
     }

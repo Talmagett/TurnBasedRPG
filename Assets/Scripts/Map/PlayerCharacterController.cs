@@ -107,7 +107,7 @@ namespace Map
         {
             characterController.Move(_targetDirection.normalized * (moveSpeed * Time.deltaTime) +
                                      new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-            playerAnimator.SetBool(AnimationKeys.GetAnimation(AnimationKeys.Animation.IsMoving), _isMoving);
+            playerAnimator.SetBool(AnimationKey.GetAnimation(AnimationKey.Animation.IsMoving), _isMoving);
         }
 
         private void Interact(InputAction.CallbackContext obj)

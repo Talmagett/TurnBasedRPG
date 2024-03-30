@@ -1,37 +1,45 @@
+using System.Collections.Generic;
 using Atomic.Objects;
 using Configs;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Battle.Actors
 {
     public class ActorData : AtomicObject
     {
-        [field: SerializeField] public CharacterConfig Config { get; private set; }
+        public string ID { get; private set; }
+        public Sprite Icon { get; private set; }
+        
         [field: SerializeField] public Animator Animator { get; private set; }
-
-        [ReadOnly] public SharedCharacterStatistics stats;
-
-
+        public SharedCharacterStats SharedStats { get; private set; }
         public Owner Owner { get; private set; }
 
         public virtual void Awake()
         {
             AddProperty("Transform", transform);
             AddProperty("GameObject", gameObject);
-            AddProperty("Stats", stats);
+            AddProperty("Stats", SharedStats);
         }
 
+        public void Setup(CharacterConfig characterConfig)
+        {
+            ID = characterConfig.ID;
+            Icon = characterConfig.Icon;
+        }
+        //From heroData or Character Config
+        public void InitStats(Dictionary<StatKey, float> stats)
+        {
+            SharedStats = new SharedCharacterStats(stats);
+        }
 
         public void SetOwner(Owner owner)
         {
-            stats.Init(Config.Stats);
             Owner = owner;
         }
 
         public void SetCurrentHealth(int value)
         {
-            stats.Stats[StatKeys.Health] = value;
+            SharedStats.SetStat(StatKey.Health, value);
         }
 
         public void Select()

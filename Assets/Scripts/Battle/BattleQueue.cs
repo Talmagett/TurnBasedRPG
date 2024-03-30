@@ -57,7 +57,7 @@ namespace Battle
         {
             var lastUnitTime = _queue.GetLatestUnitTime(unit);
             var lastTime = lastUnitTime?.time ?? CurrentTime;
-            var attackSpeedDelta = unit.stats.Stats[StatKeys.AttackSpeed];
+            var attackSpeedDelta = unit.SharedStats.GetStat(StatKey.AttackSpeed);
             while (lastTime + attackSpeedDelta < CurrentTime + QueueTime)
             {
                 lastTime += attackSpeedDelta + (_isInit ? Random.Range(0f, 10) : 0);
