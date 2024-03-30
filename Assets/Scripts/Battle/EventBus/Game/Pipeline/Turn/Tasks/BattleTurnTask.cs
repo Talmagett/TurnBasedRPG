@@ -1,30 +1,30 @@
-namespace EventBus.Game.Pipeline.Turn.Tasks
+namespace Battle.EventBus.Game.Pipeline.Turn.Tasks
 {
-    public sealed class BattleTurnTask: Task
+    public sealed class BattleTurnTask : Task
     {
-            private readonly EventBus _eventBus;
-        
-            public BattleTurnTask( EventBus eventBus)
-            {
-                _eventBus = eventBus;
-            }
+        private readonly EventBus _eventBus;
 
-            protected override void OnRun()
-            {
-                //player action
-                //ai action
-                //_input.OnMove += OnMovePerformed;
-            }
+        public BattleTurnTask(EventBus eventBus)
+        {
+            _eventBus = eventBus;
+        }
 
-            protected override void OnFinish()
-            {
-            }
+        protected override void OnRun()
+        {
+            //player action
+            //ai action
+            //_input.OnMove += OnMovePerformed;
+        }
 
-            private void OnMovePerformed()
-            {
-                //_eventBus.RaiseEvent(new ApplyDirectionEvent(_player, direction));
-                // use skill
-                Finish();
-            }
+        protected override void OnFinish()
+        {
+        }
+
+        private void OnMovePerformed()
+        {
+            //_eventBus.RaiseEvent(new ApplyDirectionEvent(_player, direction));
+            // use skill
+            Finish();
+        }
     }
 }

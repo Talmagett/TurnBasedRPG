@@ -1,24 +1,20 @@
 using System;
-using Actors;
 using Battle;
-using Data;
-using Map;
-using Map.Characters;
+using Configs;
 using UnityEngine;
-using Zenject;
 
 namespace Game
 {
     public class GameStateController : MonoBehaviour
     {
-        public event Action<GameState> OnGameStateChanged;
-        
         private BattleController _battleController;
-        
+
         private void Awake()
         {
             OnGameStateChanged?.Invoke(GameState.Map);
         }
+
+        public event Action<GameState> OnGameStateChanged;
 
         public void EnterBattle(EnemyRiftConfig enemyRiftConfig)
         {

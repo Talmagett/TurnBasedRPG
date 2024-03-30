@@ -1,9 +1,8 @@
 ﻿using System;
-using Data;
-using EventBus.Game;
-using EventBus.Utils;
+using Battle.EventBus.Utils;
+using Configs;
 
-namespace EventBus.Entities.Common.Model
+namespace Battle.EventBus.Entities.Common.Model
 {
     [Serializable]
     public sealed class Attack

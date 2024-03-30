@@ -1,5 +1,5 @@
 using System;
-using Actors;
+using Battle.Actors;
 
 namespace Battle
 {

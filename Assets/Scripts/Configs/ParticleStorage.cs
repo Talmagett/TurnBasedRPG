@@ -1,14 +1,19 @@
-using System;
-using Battle.Characters;
 using UnityEngine;
 
-namespace Data
+namespace Configs
 {
     [CreateAssetMenu(menuName = "SO/Create ParticleStorage", fileName = "ParticleStorage", order = 0)]
     public class ParticleStorage : ScriptableObject
     {
-        [field: SerializeField] public ParticleSystem HealEffect {get; private set;}
-        [field: SerializeField] public ParticleSystem Hit1Effect {get; private set;}
+        public enum ParticleKeys
+        {
+            Hit1,
+            Hit2,
+            Heal
+        }
+
+        [field: SerializeField] public ParticleSystem HealEffect { get; private set; }
+        [field: SerializeField] public ParticleSystem Hit1Effect { get; private set; }
 
         public ParticleSystem GetParticle(ParticleKeys key)
         {
@@ -19,12 +24,6 @@ namespace Data
                 ParticleKeys.Heal => HealEffect,
                 _ => null
             };
-        }
-        public enum ParticleKeys
-        {
-            Hit1,
-            Hit2,
-            Heal
         }
     }
 }

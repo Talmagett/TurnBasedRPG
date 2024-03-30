@@ -1,14 +1,14 @@
-﻿using Entities;
-using EventBus.Entities.Common.Components;
+﻿using Battle.EventBus.Entities.Common.Components;
+using Entities;
 using UnityEngine;
 
-namespace EventBus.Game.Pipeline.Visual.Tasks
+namespace Battle.EventBus.Game.Pipeline.Visual.Tasks
 {
     public sealed class ScaleChangeVisualTask : Task
     {
-        private readonly TransformComponent _transform;
-        private readonly Vector3 _scale;
         private readonly float _duration;
+        private readonly Vector3 _scale;
+        private readonly TransformComponent _transform;
 
         public ScaleChangeVisualTask(IEntity entity, Vector3 scale, float duration = 0.15f)
         {

@@ -2,32 +2,13 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace EventBus.Utils
+namespace Battle.EventBus.Utils
 {
     [Serializable]
     public class AtomicVariable<T>
     {
-        public AtomicEvent<T> ValueChanged { get; set; } = new();
-
-        public T Value
-        {
-            get => value;
-            set => SetValue(value);
-        }
-
-        [OnValueChanged("OnValueChangedInEditor")]
-        [SerializeField]
+        [OnValueChanged("OnValueChangedInEditor")] [SerializeField]
         private T value;
-
-        public static implicit operator T(AtomicVariable<T> value)
-        {
-            return value.value;
-        }
-
-        public static implicit operator AtomicVariable<T>(T value)
-        {
-            return new AtomicVariable<T>(value);
-        }
 
         public AtomicVariable()
         {
@@ -39,12 +20,30 @@ namespace EventBus.Utils
             this.value = value;
         }
 
+        public AtomicEvent<T> ValueChanged { get; set; } = new();
+
+        public T Value
+        {
+            get => value;
+            set => SetValue(value);
+        }
+
+        public static implicit operator T(AtomicVariable<T> value)
+        {
+            return value.value;
+        }
+
+        public static implicit operator AtomicVariable<T>(T value)
+        {
+            return new AtomicVariable<T>(value);
+        }
+
         protected virtual void SetValue(T value)
         {
             this.value = value;
             ValueChanged?.Invoke(value);
         }
-        
+
 #if UNITY_EDITOR
         private void OnValueChangedInEditor(T _)
         {

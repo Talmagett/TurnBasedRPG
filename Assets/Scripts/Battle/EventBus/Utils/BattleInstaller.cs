@@ -1,10 +1,10 @@
-﻿using EventBus.Game.Handlers.Turn;
-using EventBus.Game.Handlers.Visual;
-using EventBus.Game.Pipeline.Turn;
-using EventBus.Game.Pipeline.Visual;
+﻿using Battle.EventBus.Game.Handlers.Turn;
+using Battle.EventBus.Game.Handlers.Visual;
+using Battle.EventBus.Game.Pipeline.Turn;
+using Battle.EventBus.Game.Pipeline.Visual;
 using Zenject;
 
-namespace EventBus.Utils
+namespace Battle.EventBus.Utils
 {
     public sealed class BattleInstaller : MonoInstaller
     {
@@ -13,11 +13,11 @@ namespace EventBus.Utils
             ConfigureTurn(Container);
             ConfigureVisual(Container);
         }
-        
+
         private void ConfigureTurn(DiContainer builder)
         {
             builder.Bind<Game.EventBus>().AsSingle().NonLazy();
-            
+
             builder.BindInterfacesAndSelfTo<DealDamageHandler>().AsSingle().NonLazy();
             /*builder.BindInterfacesAndSelfTo<ApplyDirectionHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<AttackHandler>().AsSingle().NonLazy();
@@ -25,15 +25,15 @@ namespace EventBus.Utils
             builder.BindInterfacesAndSelfTo<DestroyHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<MoveHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<ForceDirectionHandler>().AsSingle().NonLazy();
-            
+
             builder.BindInterfacesAndSelfTo<DealDamageEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<PushEffectHandler>().AsSingle().NonLazy();*/
 
             builder.Bind<TurnPipeline>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<TurnPipelineInstaller>().AsSingle().NonLazy();
         }
-        
-        private void ConfigureVisual(DiContainer  builder)
+
+        private void ConfigureVisual(DiContainer builder)
         {
             builder.Bind<VisualPipeline>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<VisualParticleHandler>().AsSingle().NonLazy();

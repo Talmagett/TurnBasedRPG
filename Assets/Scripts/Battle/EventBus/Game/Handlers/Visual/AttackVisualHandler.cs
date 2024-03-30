@@ -1,17 +1,16 @@
-﻿using EventBus.Entities.Common.Components;
-using EventBus.Game.Events;
-using EventBus.Game.Pipeline.Visual;
-using EventBus.Game.Pipeline.Visual.Tasks;
+﻿using Battle.EventBus.Entities.Common.Components;
+using Battle.EventBus.Game.Events;
+using Battle.EventBus.Game.Pipeline.Visual;
+using Battle.EventBus.Game.Pipeline.Visual.Tasks;
 using JetBrains.Annotations;
-using UnityEngine;
 
-namespace EventBus.Game.Handlers.Visual
+namespace Battle.EventBus.Game.Handlers.Visual
 {
     [UsedImplicitly]
     public sealed class AttackVisualHandler : BaseHandler<AttackEvent>
     {
         private readonly VisualPipeline _visualPipeline;
-        
+
         public AttackVisualHandler(EventBus eventBus, VisualPipeline visualPipeline) : base(eventBus)
         {
             _visualPipeline = visualPipeline;
@@ -19,11 +18,11 @@ namespace EventBus.Game.Handlers.Visual
 
         protected override void HandleEvent(AttackEvent evt)
         {
-            PositionComponent sourcePosition = evt.Entity.Get<PositionComponent>();
-            PositionComponent targetPosition = evt.Target.Get<PositionComponent>();
+            var sourcePosition = evt.Entity.Get<PositionComponent>();
+            var targetPosition = evt.Target.Get<PositionComponent>();
 
-            Vector3 offset = (targetPosition.Value - sourcePosition.Value) * 0.5f;
-            
+            var offset = (targetPosition.Value - sourcePosition.Value) * 0.5f;
+
             _visualPipeline.AddTask(new MoveVisualTask(evt.Entity, sourcePosition.Value + offset));
             _visualPipeline.AddTask(new MoveVisualTask(evt.Entity, sourcePosition.Value));
         }

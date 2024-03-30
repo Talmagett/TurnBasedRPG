@@ -1,12 +1,11 @@
 ﻿using System;
-using EventBus.Entities.Common.Components;
-using EventBus.Game.Events;
-using EventBus.Game.Events.Effects;
+using Battle.EventBus.Entities.Common.Components;
+using Battle.EventBus.Game.Events;
+using Battle.EventBus.Game.Events.Effects;
 using JetBrains.Annotations;
-using UnityEngine;
 using Zenject;
 
-namespace EventBus.Game.Handlers.Effects
+namespace Battle.EventBus.Game.Handlers.Effects
 {
     [UsedImplicitly]
     public sealed class PushEffectHandler : IInitializable, IDisposable
@@ -18,23 +17,23 @@ namespace EventBus.Game.Handlers.Effects
             _eventBus = eventBus;
         }
 
-        void IInitializable.Initialize()
-        {
-            _eventBus.Subscribe<PushEffectEvent>(OnPush);
-        }
-
         void IDisposable.Dispose()
         {
             _eventBus.Unsubscribe<PushEffectEvent>(OnPush);
         }
 
+        void IInitializable.Initialize()
+        {
+            _eventBus.Subscribe<PushEffectEvent>(OnPush);
+        }
+
         private void OnPush(PushEffectEvent evt)
         {
-            CoordinatesComponent coordinates = evt.Source.Get<CoordinatesComponent>();
-            CoordinatesComponent targetCoordinates = evt.Target.Get<CoordinatesComponent>();
+            var coordinates = evt.Source.Get<CoordinatesComponent>();
+            var targetCoordinates = evt.Target.Get<CoordinatesComponent>();
 
-            Vector2Int direction = targetCoordinates.Value - coordinates.Value;
-            
+            var direction = targetCoordinates.Value - coordinates.Value;
+
             _eventBus.RaiseEvent(new ForceDirectionEvent(evt.Target, direction));
         }
     }

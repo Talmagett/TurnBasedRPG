@@ -1,6 +1,6 @@
-﻿using EventBus.Game.Pipeline.Visual;
+﻿using Battle.EventBus.Game.Pipeline.Visual;
 
-namespace EventBus.Game.Handlers
+namespace Battle.EventBus.Game.Handlers
 {
     public abstract class BaseVisualHandler<T> : BaseHandler<T>
     {
@@ -13,7 +13,6 @@ namespace EventBus.Game.Handlers
 
         protected override void HandleEvent(T evt)
         {
-            
         }
     }
 }

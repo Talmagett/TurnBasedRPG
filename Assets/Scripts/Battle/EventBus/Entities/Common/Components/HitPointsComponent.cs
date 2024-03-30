@@ -1,15 +1,18 @@
 ﻿using System;
-using EventBus.Utils;
+using Battle.EventBus.Utils;
 using UnityEngine;
 
-namespace EventBus.Entities.Common.Components
+namespace Battle.EventBus.Entities.Common.Components
 {
     public sealed class HitPointsComponent
     {
-        public event Action<int> OnValueChanged
+        private readonly AtomicVariable<int> _hitPoints;
+        private readonly AtomicVariable<int> _maxHitPoints;
+
+        public HitPointsComponent(AtomicVariable<int> hitPoints, AtomicVariable<int> maxHitPoints)
         {
-            add => _hitPoints.ValueChanged += value;
-            remove => _hitPoints.ValueChanged -= value;
+            _hitPoints = hitPoints;
+            _maxHitPoints = maxHitPoints;
         }
 
         public int Value
@@ -20,13 +23,10 @@ namespace EventBus.Entities.Common.Components
 
         public int MaxHitPoints => _maxHitPoints;
 
-        private readonly AtomicVariable<int> _hitPoints;
-        private readonly AtomicVariable<int> _maxHitPoints;
-
-        public HitPointsComponent(AtomicVariable<int> hitPoints, AtomicVariable<int> maxHitPoints)
+        public event Action<int> OnValueChanged
         {
-            _hitPoints = hitPoints;
-            _maxHitPoints = maxHitPoints;
+            add => _hitPoints.ValueChanged += value;
+            remove => _hitPoints.ValueChanged -= value;
         }
     }
 }

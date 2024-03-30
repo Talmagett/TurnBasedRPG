@@ -1,10 +1,27 @@
-using System;
 using UnityEngine;
 
-namespace Actors
+namespace Configs
 {
     public static class AnimationKeys
     {
+        public enum Animation
+        {
+            Attack1,
+            Attack2,
+            Heal,
+            Hit,
+            IsMoving,
+            Death
+        }
+
+        private static readonly int Attack1 = Animator.StringToHash("Attack1");
+        private static readonly int Attack2 = Animator.StringToHash("Attack2");
+        private static readonly int Heal = Animator.StringToHash("Heal");
+        private static readonly int Hit = Animator.StringToHash("Hit");
+        private static readonly int Death = Animator.StringToHash("Death");
+        private static readonly int Idle = Animator.StringToHash("Idle");
+        private static readonly int isMoving = Animator.StringToHash("IsMoving");
+
         public static int GetAnimation(Animation animation)
         {
             return animation switch
@@ -17,24 +34,6 @@ namespace Actors
                 Animation.IsMoving => isMoving,
                 _ => Idle
             };
-        }
-        
-        private static readonly int Attack1 = Animator.StringToHash("Attack1");
-        private static readonly int Attack2 = Animator.StringToHash("Attack2");
-        private static readonly int Heal = Animator.StringToHash("Heal");
-        private static readonly int Hit = Animator.StringToHash("Hit");
-        private static readonly int Death = Animator.StringToHash("Death");
-        private static readonly int Idle = Animator.StringToHash("Idle");
-        private static readonly int isMoving = Animator.StringToHash("IsMoving");
-
-        public enum Animation
-        {
-            Attack1,
-            Attack2,
-            Heal,
-            Hit,
-            IsMoving,
-            Death
         }
     }
 }

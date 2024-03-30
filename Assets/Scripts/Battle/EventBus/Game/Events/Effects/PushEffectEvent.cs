@@ -1,7 +1,7 @@
 ﻿using System;
 using Entities;
 
-namespace EventBus.Game.Events.Effects
+namespace Battle.EventBus.Game.Events.Effects
 {
     [Serializable]
     public struct PushEffectEvent : IEffect

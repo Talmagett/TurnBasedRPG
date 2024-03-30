@@ -1,4 +1,3 @@
-using Atomic.Objects;
 using UnityEngine;
 
 namespace Map.Interactions.Environment
@@ -13,7 +12,7 @@ namespace Map.Interactions.Environment
             gameObject.SetActive(false);
         }
 
-        public override void Interact(IAtomicObject entity)
+        public override void Interact(Transform transform)
         {
             DestroySelf();
         }

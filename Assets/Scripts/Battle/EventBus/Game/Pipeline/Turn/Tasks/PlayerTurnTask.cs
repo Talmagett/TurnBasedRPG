@@ -1,17 +1,17 @@
-﻿using Entities;
-using EventBus.Game.Events;
+﻿using Battle.EventBus.Game.Events;
+using Entities;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace EventBus.Game.Pipeline.Turn.Tasks
+namespace Battle.EventBus.Game.Pipeline.Turn.Tasks
 {
     [UsedImplicitly]
     public sealed class PlayerTurnTask : Task
     {
         private readonly EventBus _eventBus;
         private readonly IEntity _player;
-        
-        public PlayerTurnTask( EventBus eventBus)
+
+        public PlayerTurnTask(EventBus eventBus)
         {
             _eventBus = eventBus;
             //_player = playerService.Player;
@@ -30,7 +30,7 @@ namespace EventBus.Game.Pipeline.Turn.Tasks
         private void OnMovePerformed(Vector2Int direction)
         {
             _eventBus.RaiseEvent(new ApplyDirectionEvent(_player, direction));
-            
+
             Finish();
         }
     }

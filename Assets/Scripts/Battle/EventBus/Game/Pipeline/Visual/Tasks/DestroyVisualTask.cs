@@ -1,19 +1,19 @@
-﻿using Entities;
-using EventBus.Entities.Common.Components;
+﻿using Battle.EventBus.Entities.Common.Components;
+using Entities;
 
-namespace EventBus.Game.Pipeline.Visual.Tasks
+namespace Battle.EventBus.Game.Pipeline.Visual.Tasks
 {
     public sealed class DestroyVisualTask : Task
     {
-        private readonly TransformComponent _transform;
         private readonly float _duration;
+        private readonly TransformComponent _transform;
 
         public DestroyVisualTask(IEntity entity, float duration = 0.15f)
         {
             _transform = entity.Get<TransformComponent>();
             _duration = duration;
         }
-        
+
         protected override void OnRun()
         {
             //_transform.Value.DOScale(Vector3.zero, _duration).OnComplete(Finish);

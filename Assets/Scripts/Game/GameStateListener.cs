@@ -9,16 +9,9 @@ namespace Game
     {
         [SerializeField] private StateElements mapState;
         [SerializeField] private StateElements battleState;
-
-        private PlayerInputActions _playerInputActions;
         private GameStateController _gameStateController;
 
-        [Inject]
-        public void Construct(GameStateController gameStateController, PlayerInputActions playerInputActions)
-        {
-            _gameStateController = gameStateController;
-            _playerInputActions = playerInputActions;
-        }
+        private PlayerInputActions _playerInputActions;
 
         private void OnEnable()
         {
@@ -28,6 +21,13 @@ namespace Game
         private void OnDisable()
         {
             _gameStateController.OnGameStateChanged -= ChangeState;
+        }
+
+        [Inject]
+        public void Construct(GameStateController gameStateController, PlayerInputActions playerInputActions)
+        {
+            _gameStateController = gameStateController;
+            _playerInputActions = playerInputActions;
         }
 
         private void ChangeState(GameState state)

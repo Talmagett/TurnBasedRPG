@@ -1,7 +1,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace Data
+namespace Configs
 {
     [Serializable]
     public class CharacterStatistic
@@ -13,14 +13,14 @@ namespace Data
         public int AttackPower;
 
         public int Defense;
-        
-        [PropertyRange(0.1f, 10f)] public float AttackSpeed;
+
+        [PropertyRange(0.1f, 10f)] public float AttackSpeed = 1;
 
         [PropertyRange(0, 1)] public float Evasion;
 
         [PropertyRange(0, 1)] public float CriticalChance;
 
-        [PropertyRange(0.1f, 10)] public float CriticalRate;
+        [PropertyRange(0, 5)] public float CriticalRate = 1.5f;
     }
 }
 

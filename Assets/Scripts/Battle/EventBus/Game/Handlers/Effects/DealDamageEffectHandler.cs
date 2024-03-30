@@ -1,10 +1,10 @@
 ﻿using System;
-using EventBus.Entities.Common.Components;
-using EventBus.Game.Events.Effects;
+using Battle.EventBus.Entities.Common.Components;
+using Battle.EventBus.Game.Events.Effects;
 using JetBrains.Annotations;
 using Zenject;
 
-namespace EventBus.Game.Handlers.Effects
+namespace Battle.EventBus.Game.Handlers.Effects
 {
     [UsedImplicitly]
     public sealed class DealDamageEffectHandler : IInitializable, IDisposable
@@ -16,24 +16,21 @@ namespace EventBus.Game.Handlers.Effects
             _eventBus = eventBus;
         }
 
-        void IInitializable.Initialize()
-        {
-            _eventBus.Subscribe<DealDamageEffectEvent>(OnDealDamage);
-        }
-
         void IDisposable.Dispose()
         {
             _eventBus.Unsubscribe<DealDamageEffectEvent>(OnDealDamage);
         }
 
+        void IInitializable.Initialize()
+        {
+            _eventBus.Subscribe<DealDamageEffectEvent>(OnDealDamage);
+        }
+
         private void OnDealDamage(DealDamageEffectEvent evt)
         {
-            int damage = evt.ExtraDamage;
-            if (evt.Source.TryGet(out StatsComponent statsComponent))
-            {
-                damage += statsComponent.Strength;
-            }
-            
+            var damage = evt.ExtraDamage;
+            if (evt.Source.TryGet(out StatsComponent statsComponent)) damage += statsComponent.Strength;
+
             //_eventBus.RaiseEvent(new DealDamageEvent(evt.Source,evt.Target, damage));
         }
     }

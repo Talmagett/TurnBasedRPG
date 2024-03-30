@@ -1,16 +1,16 @@
-using EventBus.Entities.Common.Model;
+using Battle.EventBus.Entities.Common.Model;
 
-namespace EventBus.Entities.Common.Components
+namespace Battle.EventBus.Entities.Common.Components
 {
     public sealed class StatsComponent
     {
-        public int Strength => _stats.strength;
-        
         private readonly Stats _stats;
-        
+
         public StatsComponent(Stats stats)
         {
             _stats = stats;
         }
+
+        public int Strength => _stats.strength;
     }
 }

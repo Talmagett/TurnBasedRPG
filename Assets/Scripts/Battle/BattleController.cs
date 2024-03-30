@@ -1,13 +1,8 @@
 using System.Collections.Generic;
-using Actors;
-using Battle.Characters;
-using Cysharp.Threading.Tasks;
-using Data;
-using EventBus.Game.Pipeline.Turn;
+using Battle.Actors;
+using Battle.EventBus.Game.Pipeline.Turn;
 using Game;
-using Map.Characters;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using UnityEngine;
 using Zenject;
 
@@ -18,27 +13,14 @@ namespace Battle
         [SerializeField] private Transform environmentParent;
         [SerializeField] private Transform playerSideParent;
         [SerializeField] private Transform enemySideParent;
-
-        private Dictionary<Owner, Side> _sides;
+        private DiContainer _diContainer;
 
         private GameStateController _gameStateController;
-        private DiContainer _diContainer;
+
+        private Dictionary<Owner, Side> _sides;
         private TurnPipeline _turnPipeline;
 
         [ReadOnly] [ShowInInspector] public BattleQueue BattleQueue { get; private set; }
-
-        [Inject]
-        public void Construct(GameStateController gameStateController, DiContainer diContainer,TurnPipeline turnPipeline)
-        {
-            _gameStateController = gameStateController;
-            _diContainer = diContainer;
-            _turnPipeline = turnPipeline;
-            _sides = new Dictionary<Owner, Side>
-            {
-                { Owner.Player, new Side(playerSideParent) },
-                { Owner.Enemy, new Side(enemySideParent) }
-            };
-        }
 
         private void OnEnable()
         {
@@ -50,6 +32,20 @@ namespace Battle
         {
             _sides[Owner.Player].OnUnitsCleared -= GameOver;
             _sides[Owner.Enemy].OnUnitsCleared -= FinishBattle;
+        }
+
+        [Inject]
+        public void Construct(GameStateController gameStateController, DiContainer diContainer,
+            TurnPipeline turnPipeline)
+        {
+            _gameStateController = gameStateController;
+            _diContainer = diContainer;
+            _turnPipeline = turnPipeline;
+            _sides = new Dictionary<Owner, Side>
+            {
+                { Owner.Player, new Side(playerSideParent) },
+                { Owner.Enemy, new Side(enemySideParent) }
+            };
         }
 
         private void GameOver()
@@ -76,7 +72,7 @@ namespace Battle
         {
             _turnPipeline.Run();
         }
-        
+
         public async void NextTurn()
         {
             /*while (_gameStateController.IsBattle)
@@ -87,6 +83,7 @@ namespace Battle
                 //await BattleQueue.CurrentCharacter.Run();
             }*/
         }
+
 /*
         public override void EnterState()
         {
@@ -108,7 +105,7 @@ namespace Battle
         {
             Instantiate(environment, environmentParent);
         }
-        
+
         public void SetupActors(ActorData[] heroes, ActorData[] enemies)
         {
             BattleQueue = new BattleQueue();
@@ -119,11 +116,11 @@ namespace Battle
 
         public void SpawnUnit(Owner owner, params ActorData[] characters)
         {
-            _sides[owner].SpawnUnits(characters, _diContainer,owner);
+            _sides[owner].SpawnUnits(characters, _diContainer, owner);
             BattleQueue.AddUnits(_sides[owner].GetAllCharacters());
         }
-        
-        
+
+
         public IEnumerable<ActorData> GetMyAllies(Owner owner)
         {
             return _sides[owner].GetAllCharacters();
@@ -133,13 +130,13 @@ namespace Battle
         {
             return _sides[owner].GetRandom();
         }
-        
+
         public IEnumerable<ActorData> GetMyEnemies(Owner owner)
         {
             owner = owner == Owner.Enemy ? Owner.Player : Owner.Enemy;
             return _sides[owner].GetAllCharacters();
         }
-        
+
         public ActorData GetRandomEnemy(Owner owner)
         {
             owner = owner == Owner.Enemy ? Owner.Player : Owner.Enemy;

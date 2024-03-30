@@ -1,5 +1,5 @@
 using UnityEngine;
-using View;
+using Visual.UI.View;
 
 namespace Visual.UI.Battle
 {

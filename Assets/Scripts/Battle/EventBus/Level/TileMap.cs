@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace EventBus.Level
+namespace Battle.EventBus.Level
 {
     public sealed class TileMap : MonoBehaviour
     {
+        [SerializeField] private Tilemap tilemap;
+
         private readonly Vector3 _positionOffset = Vector2.one * 0.5f;
-        
-        [SerializeField]
-        private Tilemap tilemap;
 
         public bool IsWalkable(Vector2Int coordinates)
         {

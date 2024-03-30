@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Actors;
-using Map.Characters;
+using Battle.Actors;
 using Sirenix.OdinInspector;
 
 namespace Battle

@@ -1,6 +1,5 @@
-using Data;
+using Configs;
 using Game;
-using Map.Characters;
 using UnityEngine;
 using Zenject;
 
@@ -12,16 +11,16 @@ namespace Map.Interactions.Enemies
 
         private GameStateController _gameStateController;
 
-        [Inject]
-        public void Construct(GameStateController gameStateController)
-        {
-            _gameStateController = gameStateController;
-        }
-        
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out PlayerCharacterController characterController))
                 _gameStateController.EnterBattle(enemyRiftConfig);
+        }
+
+        [Inject]
+        public void Construct(GameStateController gameStateController)
+        {
+            _gameStateController = gameStateController;
         }
     }
 }

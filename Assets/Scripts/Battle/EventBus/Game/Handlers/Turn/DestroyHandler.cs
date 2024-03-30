@@ -1,9 +1,9 @@
-﻿using EventBus.Entities.Common.Components;
-using EventBus.Game.Events;
-using EventBus.Level;
+﻿using Battle.EventBus.Entities.Common.Components;
+using Battle.EventBus.Game.Events;
+using Battle.EventBus.Level;
 using JetBrains.Annotations;
 
-namespace EventBus.Game.Handlers.Turn
+namespace Battle.EventBus.Game.Handlers.Turn
 {
     [UsedImplicitly]
     public sealed class DestroyHandler : BaseHandler<DestroyEvent>
@@ -17,12 +17,9 @@ namespace EventBus.Game.Handlers.Turn
 
         protected override void HandleEvent(DestroyEvent evt)
         {
-            if (evt.Entity.TryGet(out DeathComponent deathComponent))
-            {
-                deathComponent.Die();
-            }
+            if (evt.Entity.TryGet(out DeathComponent deathComponent)) deathComponent.Die();
 
-            CoordinatesComponent coordinates = evt.Entity.Get<CoordinatesComponent>();
+            var coordinates = evt.Entity.Get<CoordinatesComponent>();
             _levelMap.Entities.RemoveEntity(coordinates.Value);
         }
     }

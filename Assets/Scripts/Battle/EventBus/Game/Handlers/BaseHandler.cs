@@ -1,7 +1,7 @@
 ﻿using System;
 using Zenject;
 
-namespace EventBus.Game.Handlers
+namespace Battle.EventBus.Game.Handlers
 {
     public abstract class BaseHandler<T> : IInitializable, IDisposable
     {
@@ -11,15 +11,15 @@ namespace EventBus.Game.Handlers
         {
             EventBus = eventBus;
         }
-        
-        void IInitializable.Initialize()
-        {
-            EventBus.Subscribe<T>(HandleEvent);
-        }
 
         void IDisposable.Dispose()
         {
             EventBus.Unsubscribe<T>(HandleEvent);
+        }
+
+        void IInitializable.Initialize()
+        {
+            EventBus.Subscribe<T>(HandleEvent);
         }
 
         protected abstract void HandleEvent(T evt);

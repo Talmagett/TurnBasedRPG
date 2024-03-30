@@ -2,19 +2,19 @@
 using UnityEngine;
 using Zenject;
 
-namespace EventBus.Game.Pipeline.Turn
+namespace Battle.EventBus.Game.Pipeline.Turn
 {
     public sealed class TurnPipelineRunner : MonoBehaviour
     {
         [SerializeField] private bool runOnStart = true;
         [SerializeField] private bool runOnFinish = true;
-        
+
         private TurnPipeline _turnPipeline;
 
-        [Inject]
-        private void Construct(TurnPipeline turnPipeline)
+        private void Start()
         {
-            _turnPipeline = turnPipeline;
+            if (runOnStart)
+                Run();
         }
 
         private void OnEnable()
@@ -27,10 +27,10 @@ namespace EventBus.Game.Pipeline.Turn
             _turnPipeline.OnFinished -= OnTurnPipelineFinished;
         }
 
-        private void Start()
+        [Inject]
+        private void Construct(TurnPipeline turnPipeline)
         {
-            if (runOnStart)
-                Run();
+            _turnPipeline = turnPipeline;
         }
 
         [Button]
@@ -38,7 +38,7 @@ namespace EventBus.Game.Pipeline.Turn
         {
             _turnPipeline.Run();
         }
-        
+
         private void OnTurnPipelineFinished()
         {
             if (runOnFinish)

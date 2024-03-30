@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using EventBus.Game.Events;
+using Battle.EventBus.Game.Events;
 using UnityEngine;
 
-namespace EventBus.Game
+namespace Battle.EventBus.Game
 {
     public sealed class EventBus
     {
@@ -12,27 +12,21 @@ namespace EventBus.Game
         private readonly Queue<IEvent> _queue = new();
 
         private bool _isRunning;
-        
+
         public void Subscribe<T>(Action<T> handler)
         {
-            Type eventType = typeof(T);
+            var eventType = typeof(T);
 
-            if (!_handlers.ContainsKey(eventType))
-            {
-                _handlers.Add(eventType, new EventHandlerCollection<T>());
-            }
-            
+            if (!_handlers.ContainsKey(eventType)) _handlers.Add(eventType, new EventHandlerCollection<T>());
+
             _handlers[eventType].Subscribe(handler);
         }
 
         public void Unsubscribe<T>(Action<T> handler)
         {
-            Type eventType = typeof(T);
+            var eventType = typeof(T);
 
-            if (_handlers.TryGetValue(eventType, out IEventHandlerCollection handlers))
-            {
-                handlers.Unsubscribe(handler);
-            }
+            if (_handlers.TryGetValue(eventType, out var handlers)) handlers.Unsubscribe(handler);
         }
 
         public void RaiseEvent<T>(T evt) where T : IEvent
@@ -42,10 +36,10 @@ namespace EventBus.Game
                 _queue.Enqueue(evt);
                 return;
             }
-            
+
             _isRunning = true;
-            
-            Type eventType = evt.GetType();
+
+            var eventType = evt.GetType();
             Debug.Log(eventType);
 
             if (!_handlers.TryGetValue(eventType, out var handlers))
@@ -59,18 +53,15 @@ namespace EventBus.Game
 
             _isRunning = false;
 
-            if (_queue.TryDequeue(out var result))
-            {
-                RaiseEvent(result);
-            }
+            if (_queue.TryDequeue(out var result)) RaiseEvent(result);
         }
-        
+
         private interface IEventHandlerCollection
         {
             public void Subscribe(Delegate handler);
-            
+
             public void Unsubscribe(Delegate handler);
-            
+
             public void RaiseEvent<T>(T evt);
         }
 
@@ -87,25 +78,19 @@ namespace EventBus.Game
 
             public void Unsubscribe(Delegate handler)
             {
-                int index = _handlers.IndexOf(handler);
+                var index = _handlers.IndexOf(handler);
                 _handlers.RemoveAt(index);
 
-                if (index <= _currentIndex)
-                {
-                    _currentIndex--;
-                }
+                if (index <= _currentIndex) _currentIndex--;
             }
 
             public void RaiseEvent<TEvent>(TEvent evt)
             {
-                if (evt is not T concreteEvent)
-                {
-                    return;
-                }
-                
+                if (evt is not T concreteEvent) return;
+
                 for (_currentIndex = 0; _currentIndex < _handlers.Count; _currentIndex++)
                 {
-                    Action<T> handler = (Action<T>)_handlers[_currentIndex];
+                    var handler = (Action<T>)_handlers[_currentIndex];
                     handler.Invoke(concreteEvent);
                 }
 

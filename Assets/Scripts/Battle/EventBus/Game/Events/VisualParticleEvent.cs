@@ -1,8 +1,7 @@
 using Atomic.Objects;
-using Data;
-using UnityEngine;
+using Configs;
 
-namespace EventBus.Game.Events
+namespace Battle.EventBus.Game.Events
 {
     public readonly struct VisualParticleEvent : IEvent
     {

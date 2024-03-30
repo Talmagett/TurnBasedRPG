@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Actors;
-using Cysharp.Threading.Tasks;
-using Map.Characters;
+using Battle.Actors;
+using Configs;
 using Sirenix.OdinInspector;
 using Random = UnityEngine.Random;
 
@@ -58,7 +57,7 @@ namespace Battle
         {
             var lastUnitTime = _queue.GetLatestUnitTime(unit);
             var lastTime = lastUnitTime?.time ?? CurrentTime;
-            var attackSpeedDelta = unit.stats.attackSpeed.Value;
+            var attackSpeedDelta = unit.stats.Stats[StatKeys.AttackSpeed];
             while (lastTime + attackSpeedDelta < CurrentTime + QueueTime)
             {
                 lastTime += attackSpeedDelta + (_isInit ? Random.Range(0f, 10) : 0);
@@ -79,7 +78,7 @@ namespace Battle
             _isInit = false;
 
             var unitTime = _queue.Dequeue();
-            if(CurrentCharacter!=null)
+            if (CurrentCharacter != null)
                 CurrentCharacter.Deselect();
             CurrentCharacter = unitTime.character;
             CurrentTime = unitTime.time;

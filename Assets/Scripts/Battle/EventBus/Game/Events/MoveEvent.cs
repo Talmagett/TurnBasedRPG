@@ -1,7 +1,7 @@
 ﻿using Entities;
 using UnityEngine;
 
-namespace EventBus.Game.Events
+namespace Battle.EventBus.Game.Events
 {
     public readonly struct MoveEvent : IEvent
     {

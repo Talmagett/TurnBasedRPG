@@ -1,6 +1,6 @@
 ﻿using Atomic.Objects;
 
-namespace EventBus.Game.Events
+namespace Battle.EventBus.Game.Events
 {
     public readonly struct DealDamageEvent : IEvent
     {
@@ -8,7 +8,7 @@ namespace EventBus.Game.Events
         public readonly IAtomicObject Target;
         public readonly int Damage;
 
-        public DealDamageEvent(IAtomicObject source,IAtomicObject target, int damage)
+        public DealDamageEvent(IAtomicObject source, IAtomicObject target, int damage)
         {
             Source = source;
             Target = target;

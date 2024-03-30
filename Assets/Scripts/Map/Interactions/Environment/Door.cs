@@ -1,4 +1,3 @@
-using Atomic.Objects;
 using UnityEngine;
 
 namespace Map.Interactions.Environment
@@ -6,15 +5,13 @@ namespace Map.Interactions.Environment
     public class Door : Interactable
     {
         [SerializeField] private Transform teleportPlace;
-        public override void Interact(IAtomicObject entity)
-        {
-            if (!entity.Is("PlayerTag")) return;
-            if (!entity.TryGet("Transform",out Transform teleportingTransform)) return;
 
-            //var dist = teleportPlace.position - teleportingTransform.position;
-            //characterController.CharacterController.SimpleMove(dist);
-            teleportingTransform.position = teleportPlace.position;
-            teleportingTransform.rotation = teleportPlace.rotation;
+        public override void Interact(Transform target)
+        {
+            var characterController = target.GetComponent<CharacterController>();
+            var dist = teleportPlace.position - target.position;
+            characterController.Move(dist);
+            target.rotation = teleportPlace.rotation;
         }
     }
 }

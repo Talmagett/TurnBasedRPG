@@ -1,7 +1,7 @@
-﻿using EventBus.Game.Pipeline.Visual;
+﻿using Battle.EventBus.Game.Pipeline.Visual;
 using JetBrains.Annotations;
 
-namespace EventBus.Game.Pipeline.Turn.Tasks
+namespace Battle.EventBus.Game.Pipeline.Turn.Tasks
 {
     [UsedImplicitly]
     public sealed class HandleVisualPipelineTask : Task
@@ -16,7 +16,7 @@ namespace EventBus.Game.Pipeline.Turn.Tasks
         protected override void OnRun()
         {
             _visualPipeline.OnFinished += OnVisualPipelineFinished;
-            
+
             _visualPipeline.Run();
         }
 

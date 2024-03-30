@@ -1,19 +1,15 @@
-using Actors;
-using Cysharp.Threading.Tasks;
-using EventBus.Game;
-using EventBus.Game.Events;
 using UnityEngine;
 
 namespace Battle.Characters
 {
     public class Wolf : BattleActor
     {
-        [SerializeField] private DealDamageAbility biteAttack; 
+        [SerializeField] private DealDamageAbility biteAttack;
         /*public override async UniTask Run()
         {
             await MeleeAttack();
         }
-        
+
         private async UniTask MeleeAttack()
         {
             await UniTask.Delay(400);

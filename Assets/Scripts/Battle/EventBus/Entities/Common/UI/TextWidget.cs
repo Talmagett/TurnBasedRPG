@@ -1,12 +1,11 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace EventBus.Entities.Common.UI
+namespace Battle.EventBus.Entities.Common.UI
 {
     public sealed class TextWidget : MonoBehaviour
     {
-        [SerializeField]
-        private TextMeshProUGUI text;
+        [SerializeField] private TextMeshProUGUI text;
 
         public void SetText(string value)
         {

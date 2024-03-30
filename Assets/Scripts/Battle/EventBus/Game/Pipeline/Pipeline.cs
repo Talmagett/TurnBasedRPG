@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EventBus.Game.Pipeline
+namespace Battle.EventBus.Game.Pipeline
 {
     public class Pipeline
     {
-        public event Action OnFinished;
-
         private readonly List<Task> _tasks = new();
 
         private int _currentIndex;
+        public event Action OnFinished;
 
         public void AddTask(Task task)
         {
@@ -20,7 +19,7 @@ namespace EventBus.Game.Pipeline
         {
             _tasks.Clear();
         }
-        
+
         public void Run()
         {
             _currentIndex = 0;
@@ -34,7 +33,7 @@ namespace EventBus.Game.Pipeline
                 OnFinished?.Invoke();
                 return;
             }
-            
+
             _tasks[_currentIndex].Run(OnTaskFinished);
         }
 

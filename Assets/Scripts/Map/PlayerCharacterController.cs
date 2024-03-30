@@ -1,21 +1,21 @@
-using Actors;
+using Configs;
 using Map.Interactions.Environment;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace Map.Characters
+namespace Map
 {
     public class PlayerCharacterController : MonoBehaviour
     {
+        private const float TerminalVelocity = 53.0f;
         [SerializeField] private Animator playerAnimator;
-        
-        [SerializeField] private CharacterController characterController;
+
+        [Title("Movement")] [SerializeField] private CharacterController characterController;
+
         [SerializeField] private float moveSpeed;
         [SerializeField] private float rotationSpeed;
-
-        [SerializeField] private float interactRadius;
 
         [SerializeField] private LayerMask groundLayers;
         [SerializeField] private float fallTimeout = 0.15f;
@@ -24,16 +24,17 @@ namespace Map.Characters
         [SerializeField] private float gravity = -15.0f;
         [ReadOnly] [SerializeField] private bool grounded = true;
 
-        private const float TerminalVelocity = 53.0f;
+        [Space] [SerializeField] private float interactRadius;
+
         private InputAction.CallbackContext _context;
 
         private float _fallTimeoutDelta;
+        private bool _isMoving;
 
         private PlayerInputActions _playerInput;
         private Vector3 _targetDirection;
 
         private float _verticalVelocity;
-        public bool IsMoving { get; private set; }
 
         private void Start()
         {
@@ -46,7 +47,7 @@ namespace Map.Characters
             JumpAndGravity();
             GroundedCheck();
             Move();
-            if (IsMoving)
+            if (_isMoving)
                 Move(_context);
             else
                 _targetDirection = Vector3.zero;
@@ -84,13 +85,13 @@ namespace Map.Characters
 
         private void StartMove(InputAction.CallbackContext obj)
         {
-            IsMoving = true;
+            _isMoving = true;
             _context = obj;
         }
 
         private void StopMove(InputAction.CallbackContext obj)
         {
-            IsMoving = false;
+            _isMoving = false;
         }
 
         private void Move(InputAction.CallbackContext context)
@@ -106,15 +107,15 @@ namespace Map.Characters
         {
             characterController.Move(_targetDirection.normalized * (moveSpeed * Time.deltaTime) +
                                      new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-            playerAnimator.SetBool(AnimationKeys.GetAnimation(AnimationKeys.Animation.IsMoving),IsMoving);
+            playerAnimator.SetBool(AnimationKeys.GetAnimation(AnimationKeys.Animation.IsMoving), _isMoving);
         }
 
         private void Interact(InputAction.CallbackContext obj)
         {
-            var hits =Physics.OverlapSphere(transform.position, interactRadius);
-            /*foreach (var hit in hits)
+            var hits = Physics.OverlapSphere(transform.position, interactRadius);
+            foreach (var hit in hits)
                 if (hit.TryGetComponent(out Interactable interactable))
-                    interactable.Interact(partyController.CurrentCharacter);*/
+                    interactable.Interact(transform);
         }
 
         private void GroundedCheck()

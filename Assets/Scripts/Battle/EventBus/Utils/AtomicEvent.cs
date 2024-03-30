@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EventBus.Utils
+namespace Battle.EventBus.Utils
 {
     public sealed class AtomicEvent
     {
         private readonly List<Action> _actions = new();
         private int _currentIndex;
-        
-        public static AtomicEvent operator+(AtomicEvent atomicEvent, Action action)
+
+        public static AtomicEvent operator +(AtomicEvent atomicEvent, Action action)
         {
             atomicEvent._actions.Add(action);
             return atomicEvent;
         }
 
-        public static AtomicEvent operator-(AtomicEvent atomicEvent, Action action)
+        public static AtomicEvent operator -(AtomicEvent atomicEvent, Action action)
         {
             var index = atomicEvent._actions.IndexOf(action);
             atomicEvent._actions.RemoveAt(index);
 
-            if (index <= atomicEvent._currentIndex)
-            {
-                --atomicEvent._currentIndex;    
-            }
-            
+            if (index <= atomicEvent._currentIndex) --atomicEvent._currentIndex;
+
             return atomicEvent;
         }
 
@@ -43,23 +40,20 @@ namespace EventBus.Utils
     {
         private readonly List<Action<T>> _actions = new();
         private int _currentIndex;
-        
-        public static AtomicEvent<T> operator+(AtomicEvent<T> atomicEvent, Action<T> action)
+
+        public static AtomicEvent<T> operator +(AtomicEvent<T> atomicEvent, Action<T> action)
         {
             atomicEvent._actions.Add(action);
             return atomicEvent;
         }
 
-        public static AtomicEvent<T> operator-(AtomicEvent<T> atomicEvent, Action<T> action)
+        public static AtomicEvent<T> operator -(AtomicEvent<T> atomicEvent, Action<T> action)
         {
             var index = atomicEvent._actions.IndexOf(action);
             atomicEvent._actions.RemoveAt(index);
 
-            if (index <= atomicEvent._currentIndex)
-            {
-                --atomicEvent._currentIndex;    
-            }
-            
+            if (index <= atomicEvent._currentIndex) --atomicEvent._currentIndex;
+
             return atomicEvent;
         }
 

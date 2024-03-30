@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace View
+namespace Visual.UI.View
 {
     public class CharacterIconView : MonoBehaviour
     {

@@ -1,4 +1,3 @@
-using Map.Characters;
 using UnityEngine;
 
 namespace Visual.UI.Map
@@ -13,7 +12,6 @@ namespace Visual.UI.Map
         private void Start()
         {
             var index = 0;
-            return;
             /*foreach (var playerCharacter in partyController.GetHeroes())
             {
                 _mapHeroViews[index] = Instantiate(heroViewPrefab, parent);

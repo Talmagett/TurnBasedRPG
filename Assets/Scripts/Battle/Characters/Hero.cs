@@ -1,16 +1,12 @@
-using System.Threading.Tasks;
-using Actors;
-using Cysharp.Threading.Tasks;
-using EventBus.Game.Events;
 using UnityEngine;
 
 namespace Battle.Characters
 {
-    public class Hero: BattleActor
+    public class Hero : BattleActor
     {
         [SerializeField] private DealDamageAbility swordAttack;
         [SerializeField] private HealAbility heal;
-        
+
         /*public override async UniTask Run()
         {
             var rand = Random.Range(0, 2);

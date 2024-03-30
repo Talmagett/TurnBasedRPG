@@ -1,7 +1,7 @@
 ﻿using System;
-using EventBus.Utils;
+using Battle.EventBus.Utils;
 
-namespace EventBus.Entities.Common.Model
+namespace Battle.EventBus.Entities.Common.Model
 {
     [Serializable]
     public sealed class Stats

@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace EventBus.Game.Pipeline
+namespace Battle.EventBus.Game.Pipeline
 {
     public abstract class Task
     {
         private event Action Callback;
-        
+
         public void Run(Action callback)
         {
             Callback = callback;
@@ -18,18 +18,17 @@ namespace EventBus.Game.Pipeline
         {
             if (Callback is not null)
             {
-                Action cachedCallback = Callback;
+                var cachedCallback = Callback;
                 Callback = null;
-                
+
                 cachedCallback.Invoke();
             }
-            
+
             OnFinish();
         }
 
         protected virtual void OnFinish()
         {
-            
         }
     }
 }

@@ -1,21 +1,26 @@
 ﻿using System;
-using EventBus.Game.Pipeline.Turn.Tasks;
-using EventBus.Game.Pipeline.Visual;
+using Battle.EventBus.Game.Pipeline.Turn.Tasks;
+using Battle.EventBus.Game.Pipeline.Visual;
 using JetBrains.Annotations;
 using Zenject;
 
-namespace EventBus.Game.Pipeline.Turn
+namespace Battle.EventBus.Game.Pipeline.Turn
 {
     [UsedImplicitly]
     public sealed class TurnPipelineInstaller : IInitializable, IDisposable
     {
-        private readonly TurnPipeline _turnPipeline;
         private readonly DiContainer _diContainer;
+        private readonly TurnPipeline _turnPipeline;
 
-        public TurnPipelineInstaller(TurnPipeline turnPipeline,DiContainer diContainer)
+        public TurnPipelineInstaller(TurnPipeline turnPipeline, DiContainer diContainer)
         {
             _turnPipeline = turnPipeline;
             _diContainer = diContainer;
+        }
+
+        void IDisposable.Dispose()
+        {
+            _turnPipeline.Clear();
         }
 
         void IInitializable.Initialize()
@@ -26,11 +31,6 @@ namespace EventBus.Game.Pipeline.Turn
             //_turnPipeline.AddTask(new PlayerTurnTask(eventBus));
             _turnPipeline.AddTask(new HandleVisualPipelineTask(visualPipeline));
             _turnPipeline.AddTask(new FinishTurnTask());
-        }
-
-        void IDisposable.Dispose()
-        {
-            _turnPipeline.Clear();
         }
     }
 }

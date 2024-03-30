@@ -1,13 +1,12 @@
 ﻿using Entities;
 using UnityEngine;
 
-namespace EventBus.Game.Services
+namespace Battle.EventBus.Game.Services
 {
     public sealed class PlayerService : MonoBehaviour
     {
+        [SerializeField] private MonoEntity player;
+
         public IEntity Player => player;
-        
-        [SerializeField]
-        private MonoEntity player;
     }
 }

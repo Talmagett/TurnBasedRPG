@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Actors;
-using Battle.Characters;
-using Map.Characters;
+using Battle.Actors;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
@@ -17,19 +15,20 @@ namespace Battle
         private readonly Transform _parent;
 
         private List<ActorData> _units = new();
-        public event Action OnUnitsCleared;
 
         public Side(Transform parent)
         {
             _parent = parent;
         }
-        
+
+        public event Action OnUnitsCleared;
+
         public ActorData GetRandom()
         {
             var rand = Random.Range(0, _units.Count);
             return _units[rand];
         }
-        
+
         public IEnumerable<ActorData> GetAllCharacters()
         {
             return _units;
@@ -41,7 +40,7 @@ namespace Battle
             while (_parent.childCount > 0) Object.DestroyImmediate(_parent.GetChild(0).gameObject);
         }
 
-        public void SpawnUnits(ActorData[] actors, DiContainer container,Owner owner)
+        public void SpawnUnits(ActorData[] actors, DiContainer container, Owner owner)
         {
             var len = actors.Length;
             var pos = -(len - 1) / 2f * DeltaPosition;
@@ -50,7 +49,7 @@ namespace Battle
             for (var i = 0; i < len; i++)
             {
                 var unit = container.InstantiatePrefab(actors[i], _parent).GetComponent<ActorData>();
-                
+
                 //unit.SetOwner(eventBus,battleController,owner);
                 unit.transform.SetPositionAndRotation(_parent.position + Vector3.forward * pos, _parent.rotation);
                 _units.Add(unit);

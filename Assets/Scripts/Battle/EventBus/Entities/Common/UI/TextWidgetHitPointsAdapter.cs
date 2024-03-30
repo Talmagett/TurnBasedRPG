@@ -1,24 +1,28 @@
-﻿using Entities;
-using EventBus.Entities.Common.Components;
+﻿using Battle.EventBus.Entities.Common.Components;
+using Entities;
 using UnityEngine;
 
-namespace EventBus.Entities.Common.UI
+namespace Battle.EventBus.Entities.Common.UI
 {
     public sealed class TextWidgetHitPointsAdapter : MonoBehaviour
     {
-        [SerializeField]
-        private TextWidget textWidget;
+        [SerializeField] private TextWidget textWidget;
 
-        [SerializeField]
-        private MonoEntity entity;
+        [SerializeField] private MonoEntity entity;
+
+        private DeathComponent _death;
 
         private HitPointsComponent _hitPoints;
-        private DeathComponent _death;
-        
+
         private void Awake()
         {
             _hitPoints = entity.Get<HitPointsComponent>();
             _death = entity.Get<DeathComponent>();
+        }
+
+        private void Start()
+        {
+            SetHitPoints();
         }
 
         private void OnEnable()
@@ -33,21 +37,16 @@ namespace EventBus.Entities.Common.UI
             _death.OnIsDeadChanged -= OnIsDeadChanged;
         }
 
-        private void Start()
-        {
-            SetHitPoints();
-        }
-
         private void SetHitPoints()
         {
             textWidget.SetText($"{_hitPoints.Value} / {_hitPoints.MaxHitPoints}");
         }
-        
+
         private void OnHitPointsChanged(int _)
         {
             SetHitPoints();
         }
-        
+
         private void OnIsDeadChanged(bool value)
         {
             gameObject.SetActive(!value);

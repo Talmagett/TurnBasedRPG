@@ -3,7 +3,7 @@ using Entities;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace EventBus.Level
+namespace Battle.EventBus.Level
 {
     [UsedImplicitly]
     public sealed class EntityMap
@@ -14,7 +14,7 @@ namespace EventBus.Level
         {
             return _entities.ContainsKey(coordinates);
         }
-        
+
         public bool TryGetEntity(Vector2Int coordinates, out IEntity entity)
         {
             return _entities.TryGetValue(coordinates, out entity);
@@ -29,7 +29,7 @@ namespace EventBus.Level
         {
             _entities.Remove(coordinates);
         }
-        
+
         public void SetEntity(Vector2Int coordinates, IEntity entity)
         {
             _entities[coordinates] = entity;
