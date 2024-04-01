@@ -1,5 +1,7 @@
 using Battle.EventBus.Game.Events;
 using Configs;
+using Configs.Abilities;
+using Configs.Enums;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -8,18 +10,16 @@ namespace Battle.Characters
     public class Female : BattleActor
     {
         [SerializeField] private DealDamageAbility swordAttack;
-        [SerializeField] private HealAbility heal;
+        [SerializeField] private DealDamageAbility heal;
 
         public override async UniTask Run()
         {
-            await base.Run();
-                HealAsync();
-            return;
-            /*
             var rand = Random.Range(0, 2);
             if (rand == 0)
                 MeleeAttackAsync();
-            else*/
+            else
+                HealAsync();
+            await UniTask.Delay(1000);
         }
         
         private void HealAsync()
@@ -30,10 +30,24 @@ namespace Battle.Characters
 
         private void Heal()
         {
-            var amount = heal.BonusHealth + (int)(heal.MaxHealthPercent * ActorData.SharedStats.GetStat(StatKey.Mana));
             var target = BattleController.GetRandomAlly(ActorData.Owner);
-            EventBus.RaiseEvent(new DealDamageEvent(ActorData,target , -amount));
-            EventBus.RaiseEvent(new VisualParticleEvent(target, heal.Particle));
+            heal.Process(EventBus, ActorData, target);
+            ActorData.AnimatorDispatcher.AnimationEvent -= Melee;
+            BattleController.Run();
+        }
+        
+        
+        private void MeleeAttackAsync()
+        {
+            ActorData.AnimatorDispatcher.AnimationEvent += Melee;
+            ActorData.Animator.SetTrigger(AnimationKey.GetAnimation(AnimationKey.Animation.Attack));
+        }
+
+        private void Melee()
+        {
+            var target = BattleController.GetRandomEnemy(ActorData.Owner);
+            swordAttack.Process(EventBus, ActorData, target);
+            ActorData.AnimatorDispatcher.AnimationEvent -= Melee;
             BattleController.Run();
         }
     }

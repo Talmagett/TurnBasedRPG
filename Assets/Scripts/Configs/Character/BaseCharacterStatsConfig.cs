@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Configs.Enums;
 using Sirenix.OdinInspector;
 
-namespace Configs
+namespace Configs.Character
 {
     [Serializable]
     public class BaseCharacterStatsConfig

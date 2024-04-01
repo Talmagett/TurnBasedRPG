@@ -9,19 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf362ba8bf194a0a9c15fd1c1dd7e0b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 249f2725fb6b408da03d0782798a9f8d, type: 3}
   m_Name: Melee Attack
   m_EditorClassIdentifier: 
+  <ID>k__BackingField: 
   <Name>k__BackingField: 'Sword '
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 28dba6ad85f0a454499cfa7f77473f97,
     type: 3}
   <Animation>k__BackingField: 0
   Effects: []
-  <Particle>k__BackingField: {fileID: 2995373718814594992, guid: 97990056e8f14794184d33e11d20b80c,
+  hitEffect: {fileID: 2995373718814594992, guid: 97990056e8f14794184d33e11d20b80c,
     type: 3}
-  <BonusDamage>k__BackingField: 10
-  <AttackPowerMultiplier>k__BackingField: 1
+  bonusDamage:
+    Value: 10
+  attackPowerMultiplier:
+    Stat: 4
+    Multiplier: 1
   references:
     version: 2
     RefIds: []

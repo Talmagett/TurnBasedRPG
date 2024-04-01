@@ -1,6 +1,7 @@
-using Battle.Actors;
 using Battle.EventBus.Game.Events;
 using Configs;
+using Configs.Abilities;
+using Configs.Enums;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -11,11 +12,11 @@ namespace Battle.Characters
         [SerializeField] private DealDamageAbility biteAttack;
         public override async UniTask Run()
         {
-            await base.Run();
-            MeleeAttack();
+            MeleeAttackAsync();
+            await UniTask.Delay(1000);
         }
 
-        private void MeleeAttack()
+        private void MeleeAttackAsync()
         {
             ActorData.AnimatorDispatcher.AnimationEvent += Melee;
             ActorData.Animator.SetTrigger(AnimationKey.GetAnimation(AnimationKey.Animation.Attack));
@@ -23,9 +24,8 @@ namespace Battle.Characters
 
         private void Melee()
         {
-            var damage = biteAttack.BonusDamage + (int)(biteAttack.AttackPowerMultiplier * ActorData.SharedStats.GetStat(StatKey.AttackPower));
-            EventBus.RaiseEvent(new DealDamageEvent(ActorData, BattleController.GetRandomEnemy(ActorData.Owner), damage));
-            EventBus.RaiseEvent(new VisualParticleEvent(BattleController.GetRandomEnemy(ActorData.Owner), biteAttack.Particle));
+            var target = BattleController.GetRandomEnemy(ActorData.Owner);
+            biteAttack.Process(EventBus, ActorData, target);
             ActorData.AnimatorDispatcher.AnimationEvent -= Melee;
             BattleController.Run();
         }

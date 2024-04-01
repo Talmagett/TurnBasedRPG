@@ -1,7 +1,6 @@
 ﻿using Battle.EventBus.Game.Events;
 using Battle.EventBus.Game.Pipeline.Visual;
 using Battle.EventBus.Game.Pipeline.Visual.Tasks;
-using Battle.EventBus.Level;
 using JetBrains.Annotations;
 
 namespace Battle.EventBus.Game.Handlers.Visual
@@ -9,19 +8,16 @@ namespace Battle.EventBus.Game.Handlers.Visual
     [UsedImplicitly]
     public sealed class MoveVisualHandler : BaseVisualHandler<MoveEvent>
     {
-        private readonly LevelMap _levelMap;
-
         public MoveVisualHandler(EventBus eventBus,
-            VisualPipeline visualPipeline, LevelMap levelMap) : base(eventBus, visualPipeline)
+            VisualPipeline visualPipeline) : base(eventBus, visualPipeline)
         {
-            _levelMap = levelMap;
         }
 
         protected override void HandleEvent(MoveEvent evt)
         {
-            var position = _levelMap.Tiles.CoordinatesToPosition(evt.Coordinates);
+            /*var position = _levelMap.Tiles.CoordinatesToPosition(evt.Coordinates);
             VisualPipeline.AddTask(new MoveVisualTask(evt.Entity, position));
-
+*/
             //raise event, attack
             /*var target = BattleController.PlayerSide.GetRandom();
             var basePosition = transform.position;

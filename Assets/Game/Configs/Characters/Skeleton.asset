@@ -22,7 +22,7 @@ MonoBehaviour:
     Mana: 20
     AttackPower: 16
     Defense: 10
-    AttackSpeed: 2.81
+    AttackSpeed: 2
     Evasion: 0
     CriticalChance: 0
     CriticalRate: 0.1

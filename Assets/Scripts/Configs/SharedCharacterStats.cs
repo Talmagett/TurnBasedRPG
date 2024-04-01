@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Configs.Enums;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

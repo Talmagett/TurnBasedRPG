@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Battle.Characters
 {
-    public class BattleActor : MonoBehaviour
+    public abstract class BattleActor : MonoBehaviour
     {
         [field: SerializeField] public ActorData ActorData { get; private set; }
 
@@ -20,9 +20,6 @@ namespace Battle.Characters
             BattleController = battleController;
         }
 
-        public virtual async UniTask Run()
-        {
-            await UniTask.Delay(1000);
-        }
+        public abstract UniTask Run();
     }
 }

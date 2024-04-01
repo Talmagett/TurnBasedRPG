@@ -1,5 +1,6 @@
 ﻿using Battle.EventBus.Game.Events;
 using Configs;
+using Configs.Enums;
 using JetBrains.Annotations;
 using UnityEngine;
 

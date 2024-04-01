@@ -1,5 +1,6 @@
 using System;
 using Configs;
+using Configs.Enums;
 using Map.Interactions.Environment;
 using Sirenix.OdinInspector;
 using UnityEngine;

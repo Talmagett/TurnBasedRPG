@@ -1,4 +1,4 @@
-namespace Configs
+namespace Configs.Enums
 {
     public enum StatKey
     {

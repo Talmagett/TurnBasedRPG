@@ -4,6 +4,7 @@ using Battle.Actors;
 using Battle.Characters;
 using Battle.EventBus.Game.Pipeline.Turn;
 using Configs;
+using Configs.Enums;
 using Cysharp.Threading.Tasks;
 using Game;
 using Game.Heroes;
@@ -101,10 +102,14 @@ namespace Battle
         {
             while (_isBattle)
             {
-                await UniTask.Delay(1000);
+                await UniTask.Delay(500);
 
                 BattleQueue.NextTurn();
                 await BattleQueue.CurrentCharacter.Run();
+                
+                await UniTask.Delay(500);
+                if (BattleQueue.CurrentCharacter != null)
+                    BattleQueue.CurrentCharacter.ActorData.Deselect();
             }
         }
 

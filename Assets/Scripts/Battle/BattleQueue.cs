@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Battle.Actors;
 using Battle.Characters;
 using Configs;
+using Configs.Enums;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;

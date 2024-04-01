@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Battle.Actors;
 using Configs;
+using Configs.Character;
+using Configs.Enums;
 using Entities;
 using UnityEngine;
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Atomic.Objects;
 using Configs;
+using Configs.Enums;
 using UnityEngine;
 
 namespace Battle.Actors

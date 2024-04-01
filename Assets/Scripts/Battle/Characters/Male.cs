@@ -1,5 +1,7 @@
 using Battle.EventBus.Game.Events;
 using Configs;
+using Configs.Abilities;
+using Configs.Enums;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -8,13 +10,13 @@ namespace Battle.Characters
     public class Male : BattleActor
     {
         [SerializeField] private DealDamageAbility swordAttack;
-        [SerializeField] private HealAbility heal;
+        [SerializeField] private Ability heal;
         
         public override async UniTask Run()
         {
-            await base.Run();
-                MeleeAttackAsync();
-            return;
+            MeleeAttackAsync();
+            await UniTask.Delay(1000);
+
             /*var rand = Random.Range(0, 2);
             if (rand == 0)
             else
@@ -29,10 +31,8 @@ namespace Battle.Characters
 
         private void Melee()
         {
-            var damage = swordAttack.BonusDamage + (int)(swordAttack.AttackPowerMultiplier * ActorData.SharedStats.GetStat(StatKey.AttackPower));
             var target = BattleController.GetRandomEnemy(ActorData.Owner);
-            EventBus.RaiseEvent(new DealDamageEvent(ActorData, target, damage));
-            EventBus.RaiseEvent(new VisualParticleEvent(target, swordAttack.Particle));
+            swordAttack.Process(EventBus, ActorData, target);
             ActorData.AnimatorDispatcher.AnimationEvent -= Melee;
             BattleController.Run();
         }

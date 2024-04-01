@@ -1,4 +1,5 @@
 using Configs;
+using Configs.Character;
 using Game.Heroes;
 using UnityEngine;
 using Zenject;
