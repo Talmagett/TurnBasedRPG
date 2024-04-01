@@ -6,13 +6,13 @@ namespace Battle.EventBus.Entities.Common.Components
 {
     public sealed class WeaponComponent
     {
-        private readonly AtomicVariable<Ability> _weapon;
+        private readonly AtomicVariable<AbilityConfig> _weapon;
 
-        public WeaponComponent(AtomicVariable<Ability> weapon)
+        public WeaponComponent(AtomicVariable<AbilityConfig> weapon)
         {
             _weapon = weapon;
         }
 
-        public Ability Value => _weapon;
+        public AbilityConfig Value => _weapon;
     }
 }

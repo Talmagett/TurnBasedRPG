@@ -10,6 +10,12 @@ namespace Visual.UI.Battle
 
         private BattleController _battleController;
 
+        [Inject]
+        public void Construct(BattleController battleController)
+        {
+            _battleController = battleController;
+        }
+
         private void OnEnable()
         {
             if (_battleController.BattleQueue != null)
@@ -21,12 +27,6 @@ namespace Visual.UI.Battle
             battleQueueView.Clear();
             if (_battleController.BattleQueue != null)
                 _battleController.BattleQueue.OnQueueChanged -= UpdateView;
-        }
-
-        [Inject]
-        public void Construct(BattleController battleController)
-        {
-            _battleController = battleController;
         }
 
         private void UpdateView()

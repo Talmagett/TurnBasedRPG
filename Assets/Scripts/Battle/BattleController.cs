@@ -4,6 +4,7 @@ using Battle.Actors;
 using Battle.Characters;
 using Battle.EventBus.Game.Pipeline.Turn;
 using Configs;
+using Configs.Character;
 using Configs.Enums;
 using Cysharp.Threading.Tasks;
 using Game;
@@ -11,6 +12,7 @@ using Game.Heroes;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Battle
@@ -22,6 +24,9 @@ namespace Battle
         [SerializeField] private Transform environmentParent;
         [SerializeField] private Transform playerSideParent;
         [SerializeField] private Transform enemySideParent;
+        
+        [Space] [SerializeField] private HeroAbilitiesPresenter heroAbilitiesPresenter;
+        
         private DiContainer _diContainer;
 
         private GameStateController _gameStateController;
@@ -29,7 +34,7 @@ namespace Battle
         
         private Dictionary<Owner, Side> _sides;
         private TurnPipeline _turnPipeline;
-
+        
         private bool _isBattle;
         
         [Inject]
@@ -100,17 +105,17 @@ namespace Battle
 
         public async void NextTurn()
         {
-            while (_isBattle)
-            {
                 await UniTask.Delay(500);
 
                 BattleQueue.NextTurn();
-                await BattleQueue.CurrentCharacter.Run();
+                heroAbilitiesPresenter.Clear();
+
+                if (BattleQueue.CurrentCharacter.ActorData.Owner == Owner.Player)
+                {
+                    heroAbilitiesPresenter.SetHero(BattleQueue.CurrentCharacter.ActorData);
+                }
                 
-                await UniTask.Delay(500);
-                if (BattleQueue.CurrentCharacter != null)
-                    BattleQueue.CurrentCharacter.ActorData.Deselect();
-            }
+                await BattleQueue.CurrentCharacter.Run();
         }
 
         public void Clear()

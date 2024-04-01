@@ -11,6 +11,12 @@ namespace Visual.UI.Battle
 
         private GameStateController _gameStateController;
 
+        [Inject]
+        public void Construct(GameStateController gameStateController)
+        {
+            _gameStateController = gameStateController;
+        }
+        
         private void OnEnable()
         {
             exitBattle.onClick.AddListener(ExitBattle);
@@ -19,12 +25,6 @@ namespace Visual.UI.Battle
         private void OnDisable()
         {
             exitBattle.onClick.RemoveListener(ExitBattle);
-        }
-
-        [Inject]
-        public void Construct(GameStateController gameStateController)
-        {
-            _gameStateController = gameStateController;
         }
 
         private void ExitBattle()

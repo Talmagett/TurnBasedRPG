@@ -9,8 +9,8 @@ namespace Battle.Characters
 {
     public class Female : BattleActor
     {
-        [SerializeField] private DealDamageAbility swordAttack;
-        [SerializeField] private DealDamageAbility heal;
+        [SerializeField] private DealDamageAbilityConfig swordAttack;
+        [SerializeField] private DealDamageAbilityConfig heal;
 
         public override async UniTask Run()
         {

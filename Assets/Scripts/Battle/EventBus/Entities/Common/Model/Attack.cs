@@ -8,6 +8,6 @@ namespace Battle.EventBus.Entities.Common.Model
     [Serializable]
     public sealed class Attack
     {
-        public AtomicVariable<Ability> weapon;
+        public AtomicVariable<AbilityConfig> weapon;
     }
 }
