@@ -15,9 +15,10 @@ MonoBehaviour:
   <Name>k__BackingField: Heal
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 0}
-  <Animation>k__BackingField: 2
+  <Animation>k__BackingField: 3
   Effects: []
-  <ParticleKey>k__BackingField: 2
+  <Particle>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
+    type: 3}
   <MaxHealthPercent>k__BackingField: 0.1
   <BonusHealth>k__BackingField: 25
   references:

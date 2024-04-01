@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d479f6f98b8fe844f80ff88ed17b6891
+guid: 9bf6609dcaae75f4fbc4d694bbd00830
 timeCreated: 1573682134
 licenseType: Store
 NativeFormatImporter:
@@ -8,11 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Swim01
-    - Upwards.controller
-  uploadId: 633227

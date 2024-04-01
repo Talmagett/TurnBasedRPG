@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8ba5db5defcb5864ea0a5a0c382aa801
+guid: 35ba94a2bbf6a93478844ab8071741ba
 timeCreated: 1573751741
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/Prefabs/HighChair.prefab
-  uploadId: 633227

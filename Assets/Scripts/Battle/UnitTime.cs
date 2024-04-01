@@ -1,12 +1,13 @@
 using System;
 using Battle.Actors;
+using Battle.Characters;
 
 namespace Battle
 {
     [Serializable]
     public class UnitTime
     {
-        public ActorData character;
+        public BattleActor character;
         public float time;
     }
 }

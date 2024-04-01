@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 689e4806230f27142a998a729d08ab03
+guid: ded8754636da8a0408e8ce5fbcae5689
 timeCreated: 1573743306
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Clap02.controller
-  uploadId: 633227

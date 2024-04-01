@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4c590ac6dfcb50f4bb316b95c8f008bb
+guid: 88f4e510c5a7c5c4293edd4a29f20de9
 timeCreated: 1568742428
 licenseType: Store
 DefaultImporter:
@@ -7,10 +7,3 @@ DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/Basic Motions - Scene.unity
-  uploadId: 633227

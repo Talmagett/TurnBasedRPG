@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1d0916ec669fd5c4eb05b6ff72d2180a
+guid: 3b57be1b2616ecd41a21d2241f14152b
 timeCreated: 1573682134
 licenseType: Store
 NativeFormatImporter:
@@ -8,11 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Swim01
-    - Backwards Left.controller
-  uploadId: 633227

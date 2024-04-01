@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d793b59a3f2798d44b2d03d0030ccdff
+guid: fc2fb8a96fa7d1b47936b89c6d9f4474
 timeCreated: 1573682134
 licenseType: Store
 NativeFormatImporter:
@@ -8,11 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Walk01
-    - Forwards Right.controller
-  uploadId: 633227

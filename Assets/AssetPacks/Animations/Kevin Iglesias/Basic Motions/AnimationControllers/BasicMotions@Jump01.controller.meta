@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e9b3717a28f8d96469b08270045f2ed3
+guid: 4c9294482cc70e349a6d904b84c51466
 timeCreated: 1573742332
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Jump01.controller
-  uploadId: 633227

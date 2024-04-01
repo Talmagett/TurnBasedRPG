@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1d1655e7d25747c4f9a88829e7e817d0
+guid: 1f75aa54b3d7eb6448d9bdc31e668697
 timeCreated: 1573752140
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/Prefabs/MedChair.prefab
-  uploadId: 633227

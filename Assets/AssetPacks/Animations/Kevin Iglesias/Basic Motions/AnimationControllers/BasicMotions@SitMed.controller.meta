@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23d92ded4a27a464ea0e7b67c321d92c
+guid: d8c8e081fc077844b9a28e8f8e64391b
 timeCreated: 1573743306
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@SitMed.controller
-  uploadId: 633227

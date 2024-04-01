@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2f1cb8d7ac3f1cd468eeea639f8816ea
+guid: 58cd980e5f7326e418b0f0f55f73866c
 timeCreated: 1573682134
 licenseType: Store
 NativeFormatImporter:
@@ -8,11 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Run
-    And Roll01.controller
-  uploadId: 633227

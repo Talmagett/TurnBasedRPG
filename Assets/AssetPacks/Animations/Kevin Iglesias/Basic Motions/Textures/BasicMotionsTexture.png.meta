@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fad9765a35536374695ea4ff22aca373
+guid: aeb552255213eca488d62dc394e43e7c
 timeCreated: 1568740370
 licenseType: Store
 TextureImporter:
@@ -105,10 +105,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/Textures/BasicMotionsTexture.png
-  uploadId: 633227

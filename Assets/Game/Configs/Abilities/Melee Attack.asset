@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   <Animation>k__BackingField: 0
   Effects: []
-  <HitEffect>k__BackingField: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
+  <Particle>k__BackingField: {fileID: 2995373718814594992, guid: 97990056e8f14794184d33e11d20b80c,
     type: 3}
   <BonusDamage>k__BackingField: 10
   <AttackPowerMultiplier>k__BackingField: 1

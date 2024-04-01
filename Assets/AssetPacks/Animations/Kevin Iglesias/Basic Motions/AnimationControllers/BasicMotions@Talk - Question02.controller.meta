@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 02a8487e530822e44b62d07b19f94852
+guid: 4b1db735f4ea11745b2ff2e3181e1be9
 timeCreated: 1573682134
 licenseType: Store
 NativeFormatImporter:
@@ -8,11 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Talk
-    - Question02.controller
-  uploadId: 633227

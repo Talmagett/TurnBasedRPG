@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5e612b81603cd0646a4b07b138d55f3b
+guid: b2f48c694bc10d94091e03f4dfc15dd5
 timeCreated: 1573682134
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Skid01.controller
-  uploadId: 633227

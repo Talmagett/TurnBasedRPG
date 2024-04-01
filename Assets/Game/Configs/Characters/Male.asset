@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c365bb021b140cd8e1341e4096d4750, type: 3}
   m_Name: Male
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Male
+  <ID>k__BackingField: male
   <Icon>k__BackingField: {fileID: 21300000, guid: 97701f4e22a0a6643a86510c70843aff,
     type: 3}
   <Prefab>k__BackingField: {fileID: -6957851831168100096, guid: 4f85242bc2b7ae747979af5ef4f3ff6f,

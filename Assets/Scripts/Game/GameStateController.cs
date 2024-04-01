@@ -1,31 +1,39 @@
 using System;
 using Battle;
 using Configs;
+using Game.Heroes;
 using UnityEngine;
+using Zenject;
 
 namespace Game
 {
     public class GameStateController : MonoBehaviour
     {
+        public event Action<GameState> OnGameStateChanged;
+        
         private BattleController _battleController;
-
+        
+        [Inject]
+        public void Construct(BattleController battleController,HeroParty heroParty)
+        {
+            _battleController = battleController;
+        }
+        
         private void Awake()
         {
             OnGameStateChanged?.Invoke(GameState.Map);
         }
 
-        public event Action<GameState> OnGameStateChanged;
-
         public void EnterBattle(EnemyRiftConfig enemyRiftConfig)
         {
             OnGameStateChanged?.Invoke(GameState.Battle);
-            //battle.SetupEnvironment(enemyRiftConfig.Environment);
-            //battle.SetupActors(_partyController.GetHeroes(), enemyRiftConfig.Enemies);
+            _battleController.Setup(enemyRiftConfig);
         }
 
         public void ExitBattle()
         {
             OnGameStateChanged?.Invoke(GameState.Map);
+            _battleController.Clear();
         }
     }
 }

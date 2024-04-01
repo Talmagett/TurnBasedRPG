@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 02490f38574ec9541a91585b214de9f6
+guid: 3bb6ed37c5d923b4889d4c0521cb11ef
 timeCreated: 1573673199
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/Materials/BasicMotionsFloor.mat
-  uploadId: 633227

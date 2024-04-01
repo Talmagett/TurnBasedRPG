@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6374534f77e33814ab0cdb28cdc30b0a
+guid: 5f23517deeb831b49a70b9655ea175f8
 timeCreated: 1573741979
 licenseType: Store
 NativeFormatImporter:
@@ -8,11 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Swim01
-    - Drowned.controller
-  uploadId: 633227

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3d7bc31b19751374baba94e728f60ce2
+guid: 8a4a9912c38b4354ab91eeb205c9034d
 timeCreated: 1573742332
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Falling01.controller
-  uploadId: 633227

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 82d3bed3f7ce60b439c0142d6cfc1cd2
+guid: a2d10e72a6f49734c8ba1e68e91123ad
 timeCreated: 1573743306
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@SitHigh.controller
-  uploadId: 633227

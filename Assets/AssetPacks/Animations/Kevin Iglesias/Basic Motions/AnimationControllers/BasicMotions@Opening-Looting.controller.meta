@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c66eec6044074e249ac01464bf68db21
+guid: 455deb0d1a9e80f4f8d6521b6791cc55
 timeCreated: 1573682134
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Opening-Looting.controller
-  uploadId: 633227

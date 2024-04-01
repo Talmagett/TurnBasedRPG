@@ -1,17 +1,18 @@
 using Atomic.Objects;
 using Configs;
+using UnityEngine;
 
 namespace Battle.EventBus.Game.Events
 {
     public readonly struct VisualParticleEvent : IEvent
     {
         public readonly IAtomicObject Target;
-        public readonly ParticleStorage.ParticleKeys ParticleKey;
+        public readonly ParticleSystem Particle;
 
-        public VisualParticleEvent(IAtomicObject target, ParticleStorage.ParticleKeys particleKey)
+        public VisualParticleEvent(IAtomicObject target, ParticleSystem particle)
         {
             Target = target;
-            ParticleKey = particleKey;
+            Particle = particle;
         }
     }
 }

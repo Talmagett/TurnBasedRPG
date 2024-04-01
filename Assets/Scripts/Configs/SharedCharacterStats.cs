@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Configs
 {
     [Serializable]
     public class SharedCharacterStats
     {
+        [ReadOnly][SerializeField] private bool check;
         private Dictionary<StatKey, float> _stats;
 
         public SharedCharacterStats(Dictionary<StatKey, float> values)
@@ -32,10 +36,16 @@ namespace Configs
         {
             _stats[key] = newValue;
         }
-        
-        public void Init(BaseCharacterStatsConfig stats)
+
+        public string GetStatsString()
         {
-            
+            StringBuilder stringBuilder = new();
+            foreach (var (key,value) in _stats)
+            {
+                stringBuilder.Append(key + ":"+value+"\n");
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Configs
     {
         public enum Animation
         {
+            Attack,           
             Attack1,
             Attack2,
             Heal,
@@ -13,7 +14,7 @@ namespace Configs
             IsMoving,
             Death
         }
-
+        private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Attack1 = Animator.StringToHash("Attack1");
         private static readonly int Attack2 = Animator.StringToHash("Attack2");
         private static readonly int Heal = Animator.StringToHash("Heal");
@@ -26,6 +27,7 @@ namespace Configs
         {
             return animation switch
             {
+                Animation.Attack =>Attack,
                 Animation.Attack1 => Attack1,
                 Animation.Attack2 => Attack2,
                 Animation.Heal => Heal,

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4bd8e1ee78c70d449a8cc685dfd538f5
+guid: 32e2f3f7c8af0a8489aa8f7cb8a3f25b
 timeCreated: 1573743000
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@TurnAroundLeft02.controller
-  uploadId: 633227

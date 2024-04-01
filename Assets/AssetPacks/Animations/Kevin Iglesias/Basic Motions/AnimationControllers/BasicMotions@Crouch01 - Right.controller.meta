@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 03610f58c8039a34cb4a64bb802bb369
+guid: d382d4cc70926b64a969872b9b7c1a08
 timeCreated: 1573682134
 licenseType: Store
 NativeFormatImporter:
@@ -8,11 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Crouch01
-    - Right.controller
-  uploadId: 633227

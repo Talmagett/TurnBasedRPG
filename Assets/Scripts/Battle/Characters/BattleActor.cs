@@ -1,6 +1,7 @@
 using Battle.Actors;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace Battle.Characters
 {
@@ -12,6 +13,7 @@ namespace Battle.Characters
         protected BattleController BattleController;
         protected EventBus.Game.EventBus EventBus;
 
+        [Inject]
         public void Setup(EventBus.Game.EventBus eventBus, BattleController battleController)
         {
             EventBus = eventBus;

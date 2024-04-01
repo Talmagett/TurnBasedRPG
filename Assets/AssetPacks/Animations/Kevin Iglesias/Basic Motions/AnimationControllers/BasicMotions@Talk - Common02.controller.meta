@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 21adc72120319894eb1482854b1dac91
+guid: fd5686e970f808849b004c18df77adf3
 timeCreated: 1573682134
 licenseType: Store
 NativeFormatImporter:
@@ -8,11 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Talk
-    - Common02.controller
-  uploadId: 633227

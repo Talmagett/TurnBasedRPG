@@ -1,4 +1,6 @@
+using Configs;
 using Game.Heroes;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -9,28 +11,29 @@ namespace Visual.UI.Map
         [SerializeField] private HeroView heroViewPrefab;
         [SerializeField] private Transform parent;
 
-        private HeroView[] _mapHeroViews;
-
         private HeroParty _party;
+        private HeroView[] _mapHeroViews;
+        
         [Inject]
-        public void CTOR(HeroParty party)
+        public void Construct(HeroParty party)
         {
             _party = party;
-            Debug.Log(_party.HeroDataArray[0].ID);
         }
+        
         private void Start()
         {
             var index = 0;
-            /*foreach (var playerCharacter in partyController.GetHeroes())
+            _mapHeroViews = new HeroView[_party.HeroDataArray.Length];
+            foreach (var playerCharacter in _party.HeroDataArray)
             {
                 _mapHeroViews[index] = Instantiate(heroViewPrefab, parent);
-                _mapHeroViews[index].SetIcon(playerCharacter.characterConfig.Value.Icon);
+                _mapHeroViews[index].SetIcon(playerCharacter.Icon);
                 _mapHeroViews[index]
-                    .SetHealth((float)playerCharacter.stats.Value.health.Value / playerCharacter.stats.Value.maxHealth.Value);
+                    .SetHealth(playerCharacter.Stats.GetStat(StatKey.Health) / playerCharacter.Stats.GetStat(StatKey.MaxHealth));
                 _mapHeroViews[index]
-                    .SetMana((float)playerCharacter.stats.Value.mana.Value / playerCharacter.stats.Value.maxMana.Value);
+                    .SetMana(playerCharacter.Stats.GetStat(StatKey.Mana) / playerCharacter.Stats.GetStat(StatKey.MaxMana));
                 index++;
-            }*/
+            }
         }
     }
 }

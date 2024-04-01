@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d5caf5b6b83989a45aaf88ff32712fd2
+guid: 989c614eab8559a4eabc3b82806f696e
 timeCreated: 1573743306
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@SitGround.controller
-  uploadId: 633227

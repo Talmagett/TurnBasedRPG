@@ -11,6 +11,7 @@ namespace Battle.Actors
         public Sprite Icon { get; private set; }
         
         [field: SerializeField] public Animator Animator { get; private set; }
+        public AnimatorDispatcher AnimatorDispatcher { get; private set; }
         public SharedCharacterStats SharedStats { get; private set; }
         public Owner Owner { get; private set; }
 
@@ -18,28 +19,26 @@ namespace Battle.Actors
         {
             AddProperty("Transform", transform);
             AddProperty("GameObject", gameObject);
-            AddProperty("Stats", SharedStats);
+            
+            AnimatorDispatcher = Animator.GetComponent<AnimatorDispatcher>();
         }
 
-        public void Setup(CharacterConfig characterConfig)
+        public void Setup(string id, Sprite icon)
         {
-            ID = characterConfig.ID;
-            Icon = characterConfig.Icon;
+            ID = id;
+            Icon = icon;
         }
+        
         //From heroData or Character Config
         public void InitStats(Dictionary<StatKey, float> stats)
         {
             SharedStats = new SharedCharacterStats(stats);
+            AddProperty("Stats", SharedStats);
         }
 
         public void SetOwner(Owner owner)
         {
             Owner = owner;
-        }
-
-        public void SetCurrentHealth(int value)
-        {
-            SharedStats.SetStat(StatKey.Health, value);
         }
 
         public void Select()
@@ -51,7 +50,6 @@ namespace Battle.Actors
         {
             transform.localScale = Vector3.one;
         }
-
 
         public void DestroySelf()
         {

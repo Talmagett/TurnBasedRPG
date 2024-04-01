@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c6172c3765c258243a135f36fc400f3e
+guid: 53ce2958bc5da5b44aef40e0466042d1
 timeCreated: 1573743306
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@Wave02.controller
-  uploadId: 633227

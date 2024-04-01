@@ -11,6 +11,8 @@ namespace Battle
     [Serializable]
     public class Side
     {
+        public event Action OnUnitsCleared;
+        
         private const float DeltaPosition = 2;
         private readonly Transform _parent;
 
@@ -21,7 +23,6 @@ namespace Battle
             _parent = parent;
         }
 
-        public event Action OnUnitsCleared;
 
         public ActorData GetRandom()
         {
@@ -40,28 +41,20 @@ namespace Battle
             while (_parent.childCount > 0) Object.DestroyImmediate(_parent.GetChild(0).gameObject);
         }
 
-        public void SpawnUnits(ActorData[] actors, DiContainer container, Owner owner)
+        public ActorData SetupUnit(ActorData unit, float position)
         {
-            var len = actors.Length;
-            var pos = -(len - 1) / 2f * DeltaPosition;
-            var eventBus = container.Resolve<EventBus.Game.EventBus>();
-            var battleController = container.Resolve<BattleController>();
-            for (var i = 0; i < len; i++)
-            {
-                var unit = container.InstantiatePrefab(actors[i], _parent).GetComponent<ActorData>();
-
-                //unit.SetOwner(eventBus,battleController,owner);
-                unit.transform.SetPositionAndRotation(_parent.position + Vector3.forward * pos, _parent.rotation);
-                _units.Add(unit);
-                unit.gameObject.SetActive(true);
-                pos += DeltaPosition;
-            }
+            unit.transform.SetParent(_parent);
+            unit.transform.SetPositionAndRotation(_parent.position + Vector3.forward * position*DeltaPosition, _parent.rotation);
+            _units.Add(unit);
+            return unit;
         }
 
         public void DespawnUnit(ActorData baseCharacter)
         {
             _units.Remove(baseCharacter);
             baseCharacter.DestroySelf();
+            if(_units.Count==0)
+                OnUnitsCleared?.Invoke();
         }
     }
 }

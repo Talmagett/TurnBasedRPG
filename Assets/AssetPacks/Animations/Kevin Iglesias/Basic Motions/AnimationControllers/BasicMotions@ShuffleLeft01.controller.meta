@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0e9f0147fdb11a4faa8585fe4c6b4ca
+guid: 13954184ec4927146b7f0f4b66476b93
 timeCreated: 1573743000
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@ShuffleLeft01.controller
-  uploadId: 633227

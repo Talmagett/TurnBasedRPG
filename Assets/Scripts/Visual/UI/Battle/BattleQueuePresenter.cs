@@ -32,13 +32,13 @@ namespace Visual.UI.Battle
         private void UpdateView()
         {
             battleQueueView.Clear();
-            battleQueueView.SetCurrentTurnView(_battleController.BattleQueue.CurrentCharacter.Icon);
+            battleQueueView.SetCurrentTurnView(_battleController.BattleQueue.CurrentCharacter.ActorData.Icon);
             foreach (var unitTimes in _battleController.BattleQueue.GetUnitTimes())
             {
-                if (unitTimes.time > _battleController.BattleQueue.CurrentTime + BattleQueue.QueueTime)
+                if (unitTimes.time > _battleController.BattleQueue.CurrentTime + _battleController.BattleQueue.QueueTime)
                     continue;
-                var percent = (unitTimes.time - _battleController.BattleQueue.CurrentTime) / BattleQueue.QueueTime;
-                battleQueueView.SpawnIcon(unitTimes.character.Icon, percent);
+                var percent = (unitTimes.time - _battleController.BattleQueue.CurrentTime) / _battleController.BattleQueue.QueueTime;
+                battleQueueView.SpawnIcon(unitTimes.character.ActorData.Icon, percent);
             }
         }
     }

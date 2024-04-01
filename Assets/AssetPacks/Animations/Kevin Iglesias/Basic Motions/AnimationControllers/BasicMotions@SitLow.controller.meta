@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 45f3f252a4071a8469be41ad834153bb
+guid: 9ef8a52dd1280de4b9dc903c418fc768
 timeCreated: 1573743306
 licenseType: Store
 NativeFormatImporter:
@@ -8,10 +8,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157744
-  packageName: Basic Motions
-  packageVersion: 1.4
-  assetPath: Assets/Kevin Iglesias/Basic Motions/AnimationControllers/BasicMotions@SitLow.controller
-  uploadId: 633227

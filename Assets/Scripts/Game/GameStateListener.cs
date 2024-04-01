@@ -13,21 +13,17 @@ namespace Game
 
         private PlayerInputActions _playerInputActions;
 
-        private void OnEnable()
-        {
-            _gameStateController.OnGameStateChanged += ChangeState;
-        }
-
-        private void OnDisable()
-        {
-            _gameStateController.OnGameStateChanged -= ChangeState;
-        }
-
         [Inject]
         public void Construct(GameStateController gameStateController, PlayerInputActions playerInputActions)
         {
             _gameStateController = gameStateController;
             _playerInputActions = playerInputActions;
+            _gameStateController.OnGameStateChanged += ChangeState;
+        }
+
+        private void OnDestroy()
+        {
+            _gameStateController.OnGameStateChanged -= ChangeState;
         }
 
         private void ChangeState(GameState state)
