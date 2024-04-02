@@ -1,5 +1,4 @@
 using System;
-using Battle.Actors;
 using Battle.Characters;
 
 namespace Battle

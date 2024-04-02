@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Battle.Actors;
 using Battle.Characters;
-using Configs;
 using Configs.Enums;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -13,18 +11,23 @@ namespace Battle
     [Serializable]
     public class BattleQueue : IDisposable
     {
-        [SerializeField] public float QueueTime = 10;
-
         [ReadOnly] [ShowInInspector] private readonly PriorityQueue _queue = new();
-
         [ReadOnly] [ShowInInspector] private readonly List<BattleActor> _unitList = new();
 
+        [ReadOnly] [ShowInInspector] public readonly float QueueTime = 10;
         private bool _isInit = true;
-
         [ReadOnly] [ShowInInspector] public float CurrentTime { get; private set; }
 
         public BattleActor CurrentCharacter { get; private set; }
+
+        public void Dispose()
+        {
+            _queue.Clear();
+            _unitList.Clear();
+        }
+
         public event Action OnQueueChanged;
+
 
         public UnitTime[] GetUnitTimes()
         {
@@ -33,8 +36,9 @@ namespace Battle
 
         public void AddUnits(IEnumerable<BattleActor> units)
         {
-            foreach (var unit in units) 
+            foreach (var unit in units)
                 AddUnit(unit);
+            Debug.Log("queue");
 
             OnQueueChanged?.Invoke();
         }
@@ -54,8 +58,7 @@ namespace Battle
 
         public void UpdateTime()
         {
-            foreach (var unit in _unitList) 
-                AddUnitToQueue(unit);
+            foreach (var unit in _unitList) AddUnitToQueue(unit);
         }
 
         private void AddUnitToQueue(BattleActor unit)
@@ -90,12 +93,6 @@ namespace Battle
             CurrentCharacter.ActorData.Select();
             UpdateTime();
             OnQueueChanged?.Invoke();
-        }
-
-        public void Dispose()
-        {
-            _queue.Clear();
-            _unitList.Clear();
         }
     }
 }

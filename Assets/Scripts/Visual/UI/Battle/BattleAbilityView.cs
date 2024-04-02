@@ -1,5 +1,4 @@
 using System;
-using Battle.Actors;
 using Configs.Abilities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,15 +9,14 @@ namespace Visual.UI.Battle
     public class BattleAbilityView : MonoBehaviour
     {
         public CharacterIconView CharacterIconView;
-        
+
         [SerializeField] private Button button;
 
         public AbilityConfig AbilityConfig { get; set; }
-        public event Action<AbilityConfig> OnClicked;
 
         public void Start()
         {
-            button.onClick.AddListener(()=>OnClicked?.Invoke(AbilityConfig));
+            button.onClick.AddListener(() => OnClicked?.Invoke(AbilityConfig));
         }
 
         public void OnDestroy()
@@ -26,5 +24,7 @@ namespace Visual.UI.Battle
             button.onClick.RemoveAllListeners();
             OnClicked = null;
         }
+
+        public event Action<AbilityConfig> OnClicked;
     }
 }

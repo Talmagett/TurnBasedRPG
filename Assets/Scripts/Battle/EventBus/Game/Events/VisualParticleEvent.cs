@@ -1,5 +1,4 @@
 using Atomic.Objects;
-using Configs;
 using UnityEngine;
 
 namespace Battle.EventBus.Game.Events

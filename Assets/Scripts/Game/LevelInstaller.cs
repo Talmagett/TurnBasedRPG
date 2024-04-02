@@ -1,5 +1,4 @@
 using Battle;
-using Configs;
 using UnityEngine;
 using Zenject;
 

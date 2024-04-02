@@ -17,8 +17,8 @@ namespace Battle.EventBus.Game.Handlers.Turn
         {
             if (!evt.Target.TryGet("Stats", out SharedCharacterStats stats)) return;
             var currentHealth = stats.GetStat(StatKey.Health);
-            currentHealth-=evt.Damage;
-            stats.SetStat(StatKey.Health,currentHealth);
+            currentHealth -= evt.Damage;
+            stats.SetStat(StatKey.Health, currentHealth);
 
             if (stats.GetStat(StatKey.Health) <= 0) Debug.Log(evt.Target + "is Dead");
             //EventBus.RaiseEvent(new DestroyEvent(evt.Entity));

@@ -8,11 +8,12 @@ namespace Battle.Characters
     public class Skeleton : BattleActor
     {
         [SerializeField] private DealDamageAbilityConfig biteAttack;
+
         public override async UniTask Run()
         {
             var target = ServiceLocator.Instance.BattleController.GetRandomEnemy(ActorData.Owner);
 
-            DealDamageAbility dealDamageAbility = new DealDamageAbility(ActorData, target, biteAttack);
+            var dealDamageAbility = new DealDamageAbility(ActorData, target, biteAttack);
             await UniTask.Delay(1000);
         }
     }

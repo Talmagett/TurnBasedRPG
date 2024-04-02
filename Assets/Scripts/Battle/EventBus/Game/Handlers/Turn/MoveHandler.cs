@@ -7,7 +7,6 @@ namespace Battle.EventBus.Game.Handlers.Turn
     [UsedImplicitly]
     public sealed class MoveHandler : BaseHandler<MoveEvent>
     {
-
         public MoveHandler(EventBus eventBus) : base(eventBus)
         {
         }

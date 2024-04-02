@@ -1,5 +1,3 @@
-using Battle.EventBus.Game.Events;
-using Configs;
 using Configs.Abilities;
 using Configs.Enums;
 using Cysharp.Threading.Tasks;
@@ -11,7 +9,7 @@ namespace Battle.Characters
     {
         [SerializeField] private DealDamageAbilityConfig swordAttack;
         [SerializeField] private AbilityConfig heal;
-        
+
         public override async UniTask Run()
         {
             MeleeAttackAsync();

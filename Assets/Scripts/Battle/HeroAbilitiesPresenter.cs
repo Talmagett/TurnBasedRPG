@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using Battle.Actors;
-using Battle.Characters;
 using Battle.EventBus.Game.Pipeline.Turn;
 using Configs.Abilities;
 using Configs.Character;
@@ -16,16 +15,22 @@ namespace Battle
     {
         [SerializeField] private Transform spellsViewParent;
         [SerializeField] private BattleAbilityView battleAbilityView;
-        
-        private ActorData _hero;
         private AbilitiesStorage _abilitiesStorage;
+        private EventBus.Game.EventBus _eventBus;
+
+        private ActorData _hero;
 
         private bool _isChoosing;
-        private EventBus.Game.EventBus _eventBus;
         private TurnPipeline _turnPipeline;
-        
+
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(1)) _isChoosing = false;
+        }
+
         [Inject]
-        public void Construct(AbilitiesStorage abilitiesStorage, EventBus.Game.EventBus eventBus, TurnPipeline turnPipeline)
+        public void Construct(AbilitiesStorage abilitiesStorage, EventBus.Game.EventBus eventBus,
+            TurnPipeline turnPipeline)
         {
             _abilitiesStorage = abilitiesStorage;
             _eventBus = eventBus;
@@ -39,7 +44,7 @@ namespace Battle
             var heroAbilities = _abilitiesStorage.AbilitiesPacks.FirstOrDefault(t => t.ID == _hero.ID);
             if (heroAbilities == null)
                 throw new NullReferenceException($"No ability pack with this id {_hero.ID}");
-            
+
             foreach (var ability in heroAbilities.Abilities)
             {
                 var abilityView = Instantiate(battleAbilityView, spellsViewParent);
@@ -54,20 +59,12 @@ namespace Battle
             print(abilityConfig.ID);
             if (abilityConfig.TargetType == AbilityTargetType.Self)
             {
-                abilityConfig.Process(_eventBus,_hero,_hero);
+                abilityConfig.Process(_eventBus, _hero, _hero);
                 _turnPipeline.Run();
                 return;
             }
 
             _isChoosing = true;
-        }
-
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                _isChoosing = false;
-            }
         }
 
         public void Clear()

@@ -1,3 +1,4 @@
+using System;
 using Configs.Abilities;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ namespace Configs.Character
     public class AbilitiesStorage : ScriptableObject
     {
         public AbilitiesPack[] AbilitiesPacks;
-        [System.Serializable]
+
+        [Serializable]
         public class AbilitiesPack
         {
             public string ID;

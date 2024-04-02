@@ -1,4 +1,3 @@
-using Configs;
 using Configs.Character;
 using Game.Heroes;
 using UnityEngine;
@@ -8,7 +7,7 @@ public class GameInstaller : MonoInstaller
 {
     [SerializeField] private CharacterConfig[] heroesConfigs;
     [SerializeField] private AbilitiesStorage abilitiesStorage;
-    
+
     public override void InstallBindings()
     {
         Container.Bind<PlayerInputActions>().AsSingle().NonLazy();

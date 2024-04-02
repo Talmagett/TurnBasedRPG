@@ -1,6 +1,5 @@
 ﻿using System;
 using Battle.EventBus.Utils;
-using Configs;
 using Configs.Abilities;
 
 namespace Battle.EventBus.Entities.Common.Model

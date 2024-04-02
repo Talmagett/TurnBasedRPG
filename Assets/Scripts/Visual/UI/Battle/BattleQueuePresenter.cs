@@ -10,12 +10,6 @@ namespace Visual.UI.Battle
 
         private BattleController _battleController;
 
-        [Inject]
-        public void Construct(BattleController battleController)
-        {
-            _battleController = battleController;
-        }
-
         private void OnEnable()
         {
             if (_battleController.BattleQueue != null)
@@ -29,15 +23,27 @@ namespace Visual.UI.Battle
                 _battleController.BattleQueue.OnQueueChanged -= UpdateView;
         }
 
+        [Inject]
+        public void Construct(BattleController battleController)
+        {
+            _battleController = battleController;
+        }
+
         private void UpdateView()
         {
+            print("update View");
+
             battleQueueView.Clear();
             battleQueueView.SetCurrentTurnView(_battleController.BattleQueue.CurrentCharacter.ActorData.Icon);
+            print(_battleController.BattleQueue.CurrentCharacter.ActorData.ID);
+            print(_battleController.BattleQueue.GetUnitTimes().Length);
             foreach (var unitTimes in _battleController.BattleQueue.GetUnitTimes())
             {
-                if (unitTimes.time > _battleController.BattleQueue.CurrentTime + _battleController.BattleQueue.QueueTime)
+                if (unitTimes.time >
+                    _battleController.BattleQueue.CurrentTime + _battleController.BattleQueue.QueueTime)
                     continue;
-                var percent = (unitTimes.time - _battleController.BattleQueue.CurrentTime) / _battleController.BattleQueue.QueueTime;
+                var percent = (unitTimes.time - _battleController.BattleQueue.CurrentTime) /
+                              _battleController.BattleQueue.QueueTime;
                 battleQueueView.SpawnIcon(unitTimes.character.ActorData.Icon, percent);
             }
         }

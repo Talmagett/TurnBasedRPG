@@ -1,5 +1,3 @@
-using Battle.EventBus.Game.Events;
-using Configs;
 using Configs.Abilities;
 using Configs.Enums;
 using Cysharp.Threading.Tasks;
@@ -21,7 +19,7 @@ namespace Battle.Characters
                 HealAsync();
             await UniTask.Delay(1000);
         }
-        
+
         private void HealAsync()
         {
             ActorData.AnimatorDispatcher.AnimationEvent += Heal;
@@ -35,8 +33,8 @@ namespace Battle.Characters
             ActorData.AnimatorDispatcher.AnimationEvent -= Melee;
             BattleController.Run();
         }
-        
-        
+
+
         private void MeleeAttackAsync()
         {
             ActorData.AnimatorDispatcher.AnimationEvent += Melee;

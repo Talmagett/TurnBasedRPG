@@ -8,10 +8,9 @@ namespace Battle.Actors
 {
     public class ActorData : AtomicObject
     {
+        [field: SerializeField] public Animator Animator { get; private set; }
         public string ID { get; private set; }
         public Sprite Icon { get; private set; }
-        
-        [field: SerializeField] public Animator Animator { get; private set; }
         public AnimatorDispatcher AnimatorDispatcher { get; private set; }
         public SharedCharacterStats SharedStats { get; private set; }
         public Owner Owner { get; private set; }
@@ -20,7 +19,7 @@ namespace Battle.Actors
         {
             AddProperty("Transform", transform);
             AddProperty("GameObject", gameObject);
-            
+
             AnimatorDispatcher = Animator.GetComponent<AnimatorDispatcher>();
         }
 
@@ -29,7 +28,7 @@ namespace Battle.Actors
             ID = id;
             Icon = icon;
         }
-        
+
         //From heroData or Character Config
         public void InitStats(Dictionary<StatKey, float> stats)
         {

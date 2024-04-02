@@ -1,5 +1,4 @@
-﻿using System;
-using Battle.Actors;
+﻿using Battle.Actors;
 using Battle.EventBus.Game;
 using Battle.EventBus.Game.Events.Effects;
 using Configs.Enums;
@@ -15,14 +14,13 @@ namespace Configs.Abilities
         [field: SerializeField] public string Description { get; private set; }
         [field: SerializeField] public Sprite Icon { get; private set; }
         [field: SerializeField] public AbilityTargetType TargetType { get; private set; }
-        
+
         [field: SerializeField] public AnimationKey.Animation Animation { get; private set; }
-        
+
         [SerializeReference] public IEffect[] Effects;
 
         public virtual void Process(EventBus eventBus, ActorData source, ActorData target)
         {
-            
         }
     }
 }

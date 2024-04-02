@@ -1,6 +1,8 @@
+using System;
+
 namespace Configs.Abilities.Attributes
 {
-    [System.Serializable]
+    [Serializable]
     public class BaseValue : IAttribute
     {
         public float Value;

@@ -1,4 +1,3 @@
-using Configs;
 using Configs.Character;
 using JetBrains.Annotations;
 

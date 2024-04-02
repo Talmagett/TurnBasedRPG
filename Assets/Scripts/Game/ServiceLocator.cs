@@ -5,9 +5,8 @@ namespace Game
 {
     public class ServiceLocator
     {
-        public static ServiceLocator Instance { get; private set; }
-        public readonly EventBus EventBus;
         public readonly BattleController BattleController;
+        public readonly EventBus EventBus;
 
         public ServiceLocator(EventBus eventBus, BattleController battleController)
         {
@@ -15,5 +14,7 @@ namespace Game
             BattleController = battleController;
             Instance = this;
         }
+
+        public static ServiceLocator Instance { get; private set; }
     }
 }

@@ -1,8 +1,9 @@
+using System;
 using Configs.Enums;
 
 namespace Configs.Abilities.Attributes
 {
-    [System.Serializable]
+    [Serializable]
     public class StatMultiplier : IAttribute
     {
         public StatKey Stat;

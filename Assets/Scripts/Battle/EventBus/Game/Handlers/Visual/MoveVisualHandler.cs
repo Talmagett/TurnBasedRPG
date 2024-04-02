@@ -1,6 +1,5 @@
 ﻿using Battle.EventBus.Game.Events;
 using Battle.EventBus.Game.Pipeline.Visual;
-using Battle.EventBus.Game.Pipeline.Visual.Tasks;
 using JetBrains.Annotations;
 
 namespace Battle.EventBus.Game.Handlers.Visual

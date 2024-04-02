@@ -16,12 +16,12 @@ namespace Configs.Abilities
         [field: SerializeField] public BaseValue BonusDamage { get; private set; }
         [field: SerializeField] public StatMultiplier StatMultiplier { get; private set; }
     }
-    
+
     public class DealDamageAbility
     {
+        private readonly DealDamageAbilityConfig _config;
         private readonly ActorData _source;
         private readonly ActorData _target;
-        private readonly DealDamageAbilityConfig _config;
 
         public DealDamageAbility(ActorData source, ActorData target, DealDamageAbilityConfig config)
         {

@@ -1,7 +1,6 @@
 ﻿using Battle.EventBus.Game.Events;
 using Battle.EventBus.Game.Pipeline.Visual;
 using Battle.EventBus.Game.Pipeline.Visual.Tasks;
-using Configs;
 using JetBrains.Annotations;
 using UnityEngine;
 

@@ -9,19 +9,19 @@ namespace Game
 {
     public class GameStateController : MonoBehaviour
     {
-        public event Action<GameState> OnGameStateChanged;
-        
         private BattleController _battleController;
-        
-        [Inject]
-        public void Construct(BattleController battleController,HeroParty heroParty)
-        {
-            _battleController = battleController;
-        }
-        
+
         private void Awake()
         {
             OnGameStateChanged?.Invoke(GameState.Map);
+        }
+
+        public event Action<GameState> OnGameStateChanged;
+
+        [Inject]
+        public void Construct(BattleController battleController, HeroParty heroParty)
+        {
+            _battleController = battleController;
         }
 
         public void EnterBattle(EnemyRiftConfig enemyRiftConfig)

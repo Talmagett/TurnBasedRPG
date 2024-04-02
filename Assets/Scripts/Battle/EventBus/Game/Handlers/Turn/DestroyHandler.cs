@@ -7,7 +7,6 @@ namespace Battle.EventBus.Game.Handlers.Turn
     [UsedImplicitly]
     public sealed class DestroyHandler : BaseHandler<DestroyEvent>
     {
-
         public DestroyHandler(EventBus eventBus) : base(eventBus)
         {
         }

@@ -7,7 +7,6 @@ namespace Battle.EventBus.Game.Handlers.Turn
     [UsedImplicitly]
     public sealed class ApplyDirectionHandler : BaseHandler<ApplyDirectionEvent>
     {
-
         public ApplyDirectionHandler(EventBus eventBus) : base(eventBus)
         {
         }
