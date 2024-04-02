@@ -5,6 +5,7 @@ using Battle.EventBus.Game.Pipeline.Turn;
 using Configs.Abilities;
 using Configs.Character;
 using Configs.Enums;
+using Game;
 using UnityEngine;
 using Visual.UI.Battle;
 using Zenject;
@@ -57,6 +58,9 @@ namespace Battle
         private void OnAbilityClicked(AbilityConfig abilityConfig)
         {
             print(abilityConfig.ID);
+            _turnPipeline.Run();
+            ServiceLocator.Instance.BattleController.NextTurn();
+            return;
             if (abilityConfig.TargetType == AbilityTargetType.Self)
             {
                 abilityConfig.Process(_eventBus, _hero, _hero);

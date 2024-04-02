@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Battle.Characters;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Battle
 {
     [Serializable]
     public class PriorityQueue
     {
-        [ReadOnly] [ShowInInspector] private List<UnitTime> _queue = new();
+        [ReadOnly] [SerializeField] private List<UnitTime> _queue = new();
 
         public bool IsEmpty => !_queue.Any();
 
@@ -34,9 +35,14 @@ namespace Battle
             return first;
         }
 
+        private UnitTime[] GetUnitTimes(BattleActor unit)
+        {
+            return _queue.Where(t => t.character == unit).ToArray();
+        }
+        
         public UnitTime GetLatestUnitTime(BattleActor unit)
         {
-            var unitTimes = _queue.Where(t => t.character == unit).ToArray();
+            var unitTimes = GetUnitTimes(unit);
             return unitTimes.LastOrDefault();
         }
 
@@ -54,6 +60,21 @@ namespace Battle
         public void Clear()
         {
             _queue.Clear();
+        }
+
+        public void ChangeTime(BattleActor unit, float additiveTime, float finishingTime)
+        {
+            var times = GetUnitTimes(unit);
+            for (int i = 0; i < times.Length; i++)
+            {
+                if (times[i].time > finishingTime)
+                    return;
+
+                for (int j = i; j < times.Length; j++)
+                {
+                    times[j].time += additiveTime;
+                }
+            }
         }
     }
 }

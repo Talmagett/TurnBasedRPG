@@ -22,7 +22,6 @@ namespace Battle
 
         public event Action OnUnitsCleared;
 
-
         public ActorData GetRandom()
         {
             var rand = Random.Range(0, _units.Count);

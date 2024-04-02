@@ -17,7 +17,8 @@ namespace Battle
 {
     public class BattleController : MonoBehaviour
     {
-        [Title("Configs")] [SerializeField] private Transform environmentParent;
+        [Title("Configs")]
+        [SerializeField] private Transform environmentParent;
 
         [SerializeField] private Transform playerSideParent;
         [SerializeField] private Transform enemySideParent;
@@ -52,6 +53,7 @@ namespace Battle
             _gameStateController = _diContainer.Resolve<GameStateController>();
             _turnPipeline = _diContainer.Resolve<TurnPipeline>();
             _heroParty = _diContainer.Resolve<HeroParty>();
+            BattleQueue= new BattleQueue();
             _sides = new Dictionary<Owner, Side>
             {
                 { Owner.Player, new Side(playerSideParent) },
@@ -83,9 +85,15 @@ namespace Battle
             }
 
             print("finish");
-            BattleQueue.Dispose();
+            
+            BattleQueue.Clear();
         }
 
+        [Button]
+        public void ChangeTime(BattleActor unit, float additiveTime,float duration)
+        {
+            BattleQueue.ChangeTime(unit,additiveTime,duration);
+        }
         [Button]
         public void DestroyEnemy(BattleActor unit)
         {
@@ -121,7 +129,6 @@ namespace Battle
         public void Setup(EnemyRiftConfig enemyRiftConfig)
         {
             Instantiate(enemyRiftConfig.Environment, environmentParent);
-            BattleQueue = new BattleQueue();
 
             for (var i = 0; i < _heroParty.HeroDataArray.Length; i++)
             {

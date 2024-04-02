@@ -1,44 +1,25 @@
 using UnityEngine;
-using Visual.UI.View;
+using UnityEngine.UI;
 
 namespace Visual.UI.Battle
 {
     public class BattleQueueView : MonoBehaviour
     {
-        [SerializeField] private CharacterIconView iconViewPrefab;
-        [SerializeField] private RectTransform parent;
-        private float maxX;
-        private float minX;
+        [SerializeField] private Image iconImage;
 
-        private void Awake()
+        public void SetIcon(Sprite icon)
         {
-            var corners = new Vector3[4];
-            parent.GetLocalCorners(corners);
-            minX = corners[0].x;
-            maxX = corners[2].x;
+            iconImage.sprite = icon;
         }
 
-        public void Clear()
+        public void SetPosition(Vector2 position)
         {
-            while (parent.transform.childCount > 0) DestroyImmediate(parent.transform.GetChild(0).gameObject);
+            transform.position = position;
         }
 
-        public void SetCurrentTurnView(Sprite icon)
+        public void SetScale(float value)
         {
-            var characterIconView = SpawnIcon(icon, 0);
-            characterIconView.transform.localScale *= 2;
-        }
-
-        public CharacterIconView SpawnIcon(Sprite icon, float percent)
-        {
-            var xPos = (maxX - minX) * percent;
-            var position = parent.position;
-            var characterIconView =
-                Instantiate(iconViewPrefab, new Vector2(position.x + minX + xPos, position.y), Quaternion.identity,
-                    parent);
-            characterIconView.SetIcon(icon);
-            characterIconView.transform.SetAsFirstSibling();
-            return characterIconView;
+            transform.localScale = Vector3.one * value;
         }
     }
 }
