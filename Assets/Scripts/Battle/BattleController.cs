@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Battle.Actors;
@@ -8,17 +9,18 @@ using Configs.Enums;
 using Cysharp.Threading.Tasks;
 using Game;
 using Game.Heroes;
+using PrimeTween;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
+using Visual.UI;
 using Zenject;
 
 namespace Battle
 {
     public class BattleController : MonoBehaviour
     {
-        [Title("Configs")]
-        [SerializeField] private Transform environmentParent;
+        [Title("Configs")] [SerializeField] private Transform environmentParent;
 
         [SerializeField] private Transform playerSideParent;
         [SerializeField] private Transform enemySideParent;
@@ -31,6 +33,19 @@ namespace Battle
         private Dictionary<Owner, Side> _sides;
         private TurnPipeline _turnPipeline;
         [ReadOnly] [ShowInInspector] public BattleQueue BattleQueue { get; private set; }
+
+        private BattleState _battleState;
+        private UIController _uiController;
+
+        public event Action<BattleState> OnStateChanged;
+        //TODO: add UI to battle state changed
+        public enum BattleState
+        {
+            Going,
+            Exit,
+            Win,
+            Lose
+        }
 
         private void OnEnable()
         {
@@ -51,7 +66,8 @@ namespace Battle
             _gameStateController = _diContainer.Resolve<GameStateController>();
             _turnPipeline = _diContainer.Resolve<TurnPipeline>();
             _heroParty = _diContainer.Resolve<HeroParty>();
-            BattleQueue= new BattleQueue(this);
+            _uiController = _diContainer.Resolve<UIController>();
+            BattleQueue = new BattleQueue(this);
             _sides = new Dictionary<Owner, Side>
             {
                 { Owner.Player, new Side(playerSideParent) },
@@ -61,14 +77,20 @@ namespace Battle
 
         private void WinBattle()
         {
-            print("win");
-            FinishBattle();
+            _battleState = BattleState.Win;
+            OnStateChanged?.Invoke(_battleState);
         }
 
         private void GameOver()
         {
-            print("gameOver");
-            FinishBattle();
+            _battleState = BattleState.Lose;
+            OnStateChanged?.Invoke(_battleState);
+        }
+
+        public void ExitBattle()
+        {
+            _battleState = BattleState.Exit;
+            OnStateChanged?.Invoke(_battleState);
         }
 
         private void FinishBattle()
@@ -78,20 +100,21 @@ namespace Battle
             foreach (var heroActor in _sides[Owner.Player].GetAllCharacters())
             {
                 var heroData = _heroParty.HeroDataArray.FirstOrDefault(t => t.ID == heroActor.ID);
-                heroData.Stats.SetStat(StatKey.Health, Mathf.Max(1, heroActor.SharedStats.GetStat(StatKey.Health)));
-                heroData.Stats.SetStat(StatKey.Mana, heroActor.SharedStats.GetStat(StatKey.Mana));
+                if (heroData == null) continue;
+                
+                heroData.Stats.SetStat(StatKey.Health,
+                    Mathf.Max(1, heroActor.SharedStats.GetStat(StatKey.Health).Value));
+                heroData.Stats.SetStat(StatKey.Mana, heroActor.SharedStats.GetStat(StatKey.Mana).Value);
             }
 
-            print("finish");
-            
             BattleQueue.Clear();
         }
 
         [Button]
-        public void DestroyEnemy(BattleActor unit)
+        public void DestroyEnemy(ActorData unit)
         {
-            _sides[unit.ActorData.Owner].DespawnUnit(unit.ActorData);
-            BattleQueue.RemoveUnit(unit);
+            _sides[unit.Owner].DespawnUnit(unit);
+            BattleQueue.RemoveUnit(unit.GetComponent<BattleActor>());
         }
 
         public void Run()
@@ -102,6 +125,12 @@ namespace Battle
         public async void NextTurn()
         {
             await UniTask.Delay(500);
+            
+            if (_battleState!= BattleState.Going)
+            {
+                FinishBattle();
+                return;
+            }
 
             BattleQueue.NextTurn();
         }
@@ -114,6 +143,8 @@ namespace Battle
 
         public void SetupBattle(EnemyRiftConfig enemyRiftConfig)
         {
+            _battleState = BattleState.Going;
+            OnStateChanged?.Invoke(_battleState);
             Instantiate(enemyRiftConfig.Environment, environmentParent);
 
             for (var i = 0; i < _heroParty.HeroDataArray.Length; i++)
@@ -135,17 +166,21 @@ namespace Battle
             BattleQueue.AddUnits(_sides[Owner.Player].GetAllCharacters().Select(t => t.GetComponent<BattleActor>()));
             BattleQueue.AddUnits(_sides[Owner.Enemy].GetAllCharacters().Select(t => t.GetComponent<BattleActor>()));
 
-            NextTurn();
+            Tween.Delay(1).OnComplete(()=>{
+                _uiController.Close();
+                NextTurn();
+            });
+
         }
 
         private ActorData SpawnUnit(ActorData prefab, Owner owner, string id, Sprite icon,
             Dictionary<StatKey, float> stats, float position)
         {
             var actorData = _diContainer.InstantiatePrefab(prefab).GetComponent<ActorData>();
+            actorData.InitStats(stats);
 
             actorData.SetOwner(owner);
             actorData.Setup(id, icon);
-            actorData.InitStats(stats);
             _sides[owner].SetupUnit(actorData, position);
 
             return actorData;

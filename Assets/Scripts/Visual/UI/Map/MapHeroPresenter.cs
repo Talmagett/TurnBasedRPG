@@ -22,11 +22,11 @@ namespace Visual.UI.Map
                 _mapHeroViews[index] = Instantiate(heroViewPrefab, parent);
                 _mapHeroViews[index].SetIcon(playerCharacter.Icon);
                 _mapHeroViews[index]
-                    .SetHealth(playerCharacter.Stats.GetStat(StatKey.Health) /
-                               playerCharacter.Stats.GetStat(StatKey.MaxHealth));
+                    .SetHealth(playerCharacter.Stats.GetStat(StatKey.Health).Value /
+                               playerCharacter.Stats.GetStat(StatKey.MaxHealth).Value);
                 _mapHeroViews[index]
-                    .SetMana(playerCharacter.Stats.GetStat(StatKey.Mana) /
-                             playerCharacter.Stats.GetStat(StatKey.MaxMana));
+                    .SetMana(playerCharacter.Stats.GetStat(StatKey.Mana).Value /
+                             playerCharacter.Stats.GetStat(StatKey.MaxMana).Value);
                 index++;
             }
         }

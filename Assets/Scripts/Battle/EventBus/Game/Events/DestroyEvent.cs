@@ -1,12 +1,13 @@
-﻿using Entities;
+﻿using Atomic.Objects;
+using Entities;
 
 namespace Battle.EventBus.Game.Events
 {
     public readonly struct DestroyEvent : IEvent
     {
-        public readonly IEntity Entity;
+        public readonly IAtomicObject Entity;
 
-        public DestroyEvent(IEntity entity)
+        public DestroyEvent(IAtomicObject entity)
         {
             Entity = entity;
         }

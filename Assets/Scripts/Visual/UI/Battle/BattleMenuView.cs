@@ -1,3 +1,4 @@
+using Battle;
 using Game;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,15 @@ namespace Visual.UI.Battle
     {
         [SerializeField] private Button exitBattle;
 
-        private GameStateController _gameStateController;
+        private BattleController _battleController;
+        private UIController _uiController;
+        
+        [Inject]
+        public void Construct(BattleController battleController,UIController uiController)
+        {
+            _battleController = battleController;
+            _uiController = uiController;
+        }
 
         private void OnEnable()
         {
@@ -21,15 +30,10 @@ namespace Visual.UI.Battle
             exitBattle.onClick.RemoveListener(ExitBattle);
         }
 
-        [Inject]
-        public void Construct(GameStateController gameStateController)
-        {
-            _gameStateController = gameStateController;
-        }
-
         private void ExitBattle()
         {
-            _gameStateController.ExitBattle();
+            _uiController.Open();
+            _battleController.ExitBattle();
         }
     }
 }

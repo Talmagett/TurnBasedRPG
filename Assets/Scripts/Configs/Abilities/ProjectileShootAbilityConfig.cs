@@ -57,7 +57,7 @@ namespace Configs.Abilities
         private void OnHit()
         {
             var attackPowerStat = _source.SharedStats.GetStat(_config.StatMultiplier.Stat);
-            var damage = (int)(_config.BonusDamage.Value + _config.StatMultiplier.Multiplier * attackPowerStat);
+            var damage = (int)(_config.BonusDamage.Value + _config.StatMultiplier.Multiplier * attackPowerStat.Value);
             
             ServiceLocator.Instance.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
             ServiceLocator.Instance.EventBus.RaiseEvent(new VisualParticleEvent(_target, _config.HitEffect));

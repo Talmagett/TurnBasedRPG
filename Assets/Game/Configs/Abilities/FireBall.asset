@@ -25,10 +25,10 @@ MonoBehaviour:
   <HitEffect>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
     type: 3}
   <BonusDamage>k__BackingField:
-    Value: 10
+    Value: 1
   <StatMultiplier>k__BackingField:
     Stat: 4
-    Multiplier: 1.2
+    Multiplier: 1
   references:
     version: 2
     RefIds: []

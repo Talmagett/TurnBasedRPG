@@ -25,6 +25,7 @@ namespace Battle.Actors
             AddProperty(AtomicPropertyAPI.TransformKey, transform);
             AddProperty(AtomicPropertyAPI.GameObjectKey, gameObject);
             AddProperty(AtomicPropertyAPI.CooldownKey, _cooldown);
+
             Animator = GetComponentInChildren<Animator>();
             AnimatorDispatcher = Animator.GetComponent<AnimatorDispatcher>();
         }
@@ -40,7 +41,7 @@ namespace Battle.Actors
         {
             SharedStats = new SharedCharacterStats(stats);
             AddProperty(AtomicPropertyAPI.StatsKey, SharedStats);
-            var randomTime = Random.Range(1,(int)SharedStats.GetStat(StatKey.ActionRecoverySpeed));
+            var randomTime = Random.Range(1,(int)SharedStats.GetStat(StatKey.ActionRecoverySpeed).Value);
             _cooldown.Value = randomTime;
         }
 
@@ -70,7 +71,7 @@ namespace Battle.Actors
         {
             if (TryGet(AtomicPropertyAPI.CooldownKey, out AtomicVariable<int> cooldownTimer))
             {
-                cooldownTimer.Value = (int)SharedStats.GetStat(StatKey.ActionRecoverySpeed);
+                cooldownTimer.Value = (int)SharedStats.GetStat(StatKey.ActionRecoverySpeed).Value;
             }
         }
     }

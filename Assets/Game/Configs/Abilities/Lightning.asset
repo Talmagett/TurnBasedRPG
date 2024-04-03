@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 249f2725fb6b408da03d0782798a9f8d, type: 3}
-  m_Name: Heal
+  m_Name: Lightning
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: heal
-  <Name>k__BackingField: Heal
+  <ID>k__BackingField: lightning
+  <Name>k__BackingField: Lightning
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 07caf3d1930bab14aa8f6dcdf2db871a,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 070c40f3199269c41b178d71b2cda2e1,
     type: 3}
-  <TargetType>k__BackingField: 1
-  <AnimationKey>k__BackingField: 4
+  <TargetType>k__BackingField: 2
+  <AnimationKey>k__BackingField: 3
   Effects: []
-  <HitEffect>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
+  <HitEffect>k__BackingField: {fileID: 5337203621404181406, guid: 334ccdade87a4194b9f1855c484967dc,
     type: 3}
   <BonusDamage>k__BackingField:
-    Value: -10
+    Value: 0
   <StatMultiplier>k__BackingField:
-    Stat: 0
-    Multiplier: -0.2
+    Stat: 4
+    Multiplier: 1
   references:
     version: 2
     RefIds: []
