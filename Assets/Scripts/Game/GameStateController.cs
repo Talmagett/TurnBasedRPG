@@ -27,13 +27,13 @@ namespace Game
         public void EnterBattle(EnemyRiftConfig enemyRiftConfig)
         {
             OnGameStateChanged?.Invoke(GameState.Battle);
-            _battleController.Setup(enemyRiftConfig);
+            _battleController.SetupBattle(enemyRiftConfig);
         }
 
         public void ExitBattle()
         {
             OnGameStateChanged?.Invoke(GameState.Map);
-            _battleController.Clear();
+            _battleController.ClearBattle();
         }
     }
 }

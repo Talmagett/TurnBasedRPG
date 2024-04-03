@@ -1,5 +1,8 @@
-﻿using Battle.EventBus.Entities.Common.Components;
+﻿using Atomic.Objects;
+using Battle.EventBus.Entities.Common.Components;
+using Configs.Enums;
 using Entities;
+using PrimeTween;
 using UnityEngine;
 
 namespace Battle.EventBus.Game.Pipeline.Visual.Tasks
@@ -8,18 +11,18 @@ namespace Battle.EventBus.Game.Pipeline.Visual.Tasks
     {
         private readonly float _duration;
         private readonly Vector3 _scale;
-        private readonly TransformComponent _transform;
+        private readonly Transform _transform;
 
-        public ScaleChangeVisualTask(IEntity entity, Vector3 scale, float duration = 0.15f)
+        public ScaleChangeVisualTask(IAtomicObject entity, Vector3 scale, float duration = 0.15f)
         {
-            _transform = entity.Get<TransformComponent>();
+            _transform = entity.Get<Transform>(AtomicPropertyAPI.TransformKey);
             _scale = scale;
             _duration = duration;
         }
 
         protected override void OnRun()
         {
-            //_transform.Value.DOScale(_scale, _duration).OnComplete(Finish);
+            Tween.Scale(_transform, _scale, _duration);
         }
     }
 }

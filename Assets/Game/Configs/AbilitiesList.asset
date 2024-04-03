@@ -16,6 +16,7 @@ MonoBehaviour:
   - ID: male
     Abilities:
     - {fileID: 11400000, guid: 7144b4fbbcc44784ba4b343dcbb885ec, type: 2}
+    - {fileID: 11400000, guid: 9a73a9e189f73264c96cb32a5faac781, type: 2}
   - ID: female
     Abilities:
     - {fileID: 11400000, guid: a0a66519134ee704bb9327303cadcd1f, type: 2}

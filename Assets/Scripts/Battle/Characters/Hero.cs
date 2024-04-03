@@ -4,9 +4,9 @@ namespace Battle.Characters
 {
     public class Hero : BattleActor
     {
-        public override async UniTask Run()
+        public override void Run()
         {
-            await UniTask.Delay(1000);
+            
         }
     }
 }

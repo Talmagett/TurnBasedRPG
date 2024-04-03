@@ -23,8 +23,6 @@ namespace Battle
         [SerializeField] private Transform playerSideParent;
         [SerializeField] private Transform enemySideParent;
 
-        [Space] [SerializeField] private HeroAbilitiesPresenter heroAbilitiesPresenter;
-
         private DiContainer _diContainer;
 
         private GameStateController _gameStateController;
@@ -53,7 +51,7 @@ namespace Battle
             _gameStateController = _diContainer.Resolve<GameStateController>();
             _turnPipeline = _diContainer.Resolve<TurnPipeline>();
             _heroParty = _diContainer.Resolve<HeroParty>();
-            BattleQueue= new BattleQueue();
+            BattleQueue= new BattleQueue(this);
             _sides = new Dictionary<Owner, Side>
             {
                 { Owner.Player, new Side(playerSideParent) },
@@ -90,16 +88,10 @@ namespace Battle
         }
 
         [Button]
-        public void ChangeTime(BattleActor unit, float additiveTime,float duration)
-        {
-            BattleQueue.ChangeTime(unit,additiveTime,duration);
-        }
-        [Button]
         public void DestroyEnemy(BattleActor unit)
         {
             _sides[unit.ActorData.Owner].DespawnUnit(unit.ActorData);
             BattleQueue.RemoveUnit(unit);
-            BattleQueue.UpdateTime();
         }
 
         public void Run()
@@ -112,21 +104,15 @@ namespace Battle
             await UniTask.Delay(500);
 
             BattleQueue.NextTurn();
-            heroAbilitiesPresenter.Clear();
-
-            if (BattleQueue.CurrentCharacter.ActorData.Owner == Owner.Player)
-                heroAbilitiesPresenter.SetHero(BattleQueue.CurrentCharacter.ActorData);
-
-            await BattleQueue.CurrentCharacter.Run();
         }
 
-        public void Clear()
+        public void ClearBattle()
         {
             while (environmentParent.childCount > 0) DestroyImmediate(environmentParent.GetChild(0).gameObject);
             _sides.ForEach(t => t.Value.ClearField());
         }
 
-        public void Setup(EnemyRiftConfig enemyRiftConfig)
+        public void SetupBattle(EnemyRiftConfig enemyRiftConfig)
         {
             Instantiate(enemyRiftConfig.Environment, environmentParent);
 
@@ -149,7 +135,6 @@ namespace Battle
             BattleQueue.AddUnits(_sides[Owner.Player].GetAllCharacters().Select(t => t.GetComponent<BattleActor>()));
             BattleQueue.AddUnits(_sides[Owner.Enemy].GetAllCharacters().Select(t => t.GetComponent<BattleActor>()));
 
-            BattleQueue.UpdateTime();
             NextTurn();
         }
 

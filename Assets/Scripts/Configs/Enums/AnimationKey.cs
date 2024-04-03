@@ -9,6 +9,7 @@ namespace Configs.Enums
             Attack,
             Attack1,
             Attack2,
+            Cast,
             Heal,
             Hit,
             IsMoving,
@@ -19,6 +20,7 @@ namespace Configs.Enums
         private static readonly int Attack1 = Animator.StringToHash("Attack1");
         private static readonly int Attack2 = Animator.StringToHash("Attack2");
         private static readonly int Heal = Animator.StringToHash("Heal");
+        private static readonly int Cast = Animator.StringToHash("Cast");
         private static readonly int Hit = Animator.StringToHash("Hit");
         private static readonly int Death = Animator.StringToHash("Death");
         private static readonly int Idle = Animator.StringToHash("Idle");
@@ -32,6 +34,7 @@ namespace Configs.Enums
                 Animation.Attack1 => Attack1,
                 Animation.Attack2 => Attack2,
                 Animation.Heal => Heal,
+                Animation.Cast => Cast,
                 Animation.Hit => Hit,
                 Animation.Death => Death,
                 Animation.IsMoving => isMoving,

@@ -1,5 +1,4 @@
 using Configs.Abilities;
-using Cysharp.Threading.Tasks;
 using Game;
 using UnityEngine;
 
@@ -9,12 +8,10 @@ namespace Battle.Characters
     {
         [SerializeField] private DealDamageAbilityConfig biteAttack;
 
-        public override async UniTask Run()
+        public override void Run()
         {
             var target = ServiceLocator.Instance.BattleController.GetRandomEnemy(ActorData.Owner);
-
-            var dealDamageAbility = new DealDamageAbility(ActorData, target, biteAttack);
-            await UniTask.Delay(1000);
+            biteAttack.GetAbilityClone(ActorData, target);
         }
     }
 }

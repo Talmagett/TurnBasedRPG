@@ -8,10 +8,9 @@ using UnityEngine;
 namespace Configs
 {
     [Serializable]
-    public class SharedCharacterStats
+    public class SharedCharacterStats : ShowOdinSerializedPropertiesInInspectorAttribute
     {
-        [ReadOnly] [SerializeField] private bool check;
-        private Dictionary<StatKey, float> _stats;
+        [ReadOnly] private Dictionary<StatKey, float> _stats;
 
         public SharedCharacterStats(Dictionary<StatKey, float> values)
         {

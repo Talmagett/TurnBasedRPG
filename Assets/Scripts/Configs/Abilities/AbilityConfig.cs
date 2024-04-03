@@ -6,8 +6,7 @@ using UnityEngine;
 
 namespace Configs.Abilities
 {
-    [CreateAssetMenu(fileName = "New Ability", menuName = "SO/Ability", order = 0)]
-    public class AbilityConfig : ScriptableObject
+    public abstract class AbilityConfig : ScriptableObject
     {
         [field: SerializeField] public string ID { get; private set; }
         [field: SerializeField] public string Name { get; private set; }
@@ -15,12 +14,10 @@ namespace Configs.Abilities
         [field: SerializeField] public Sprite Icon { get; private set; }
         [field: SerializeField] public AbilityTargetType TargetType { get; private set; }
 
-        [field: SerializeField] public AnimationKey.Animation Animation { get; private set; }
+        [field: SerializeField] public AnimationKey.Animation AnimationKey { get; private set; }
 
         [SerializeReference] public IEffect[] Effects;
 
-        public virtual void Process(EventBus eventBus, ActorData source, ActorData target)
-        {
-        }
+        public abstract IAbility GetAbilityClone(ActorData source, ActorData target);
     }
 }

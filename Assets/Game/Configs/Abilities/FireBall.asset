@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5adc6763494415bba86cb8346ec6101, type: 3}
+  m_Name: FireBall
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: fireBall
+  <Name>k__BackingField: Fire Ball
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300132, guid: 7ab74e659e1f0a34d9cfec21c478fc12,
+    type: 3}
+  <TargetType>k__BackingField: 2
+  <AnimationKey>k__BackingField: 3
+  Effects: []
+  <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
+    type: 3}
+  <HitEffect>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
+    type: 3}
+  <BonusDamage>k__BackingField:
+    Value: 10
+  <StatMultiplier>k__BackingField:
+    Stat: 4
+    Multiplier: 0.1
+  references:
+    version: 2
+    RefIds: []

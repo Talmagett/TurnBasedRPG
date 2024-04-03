@@ -9,23 +9,13 @@ namespace Battle.Characters
     public abstract class BattleActor : MonoBehaviour
     {
         private UniTaskCompletionSource<bool> _hasFinished;
-        protected BattleController BattleController;
-        protected EventBus.Game.EventBus EventBus;
         public ActorData ActorData { get; private set; }
 
-        [Inject]
-        public void Setup(EventBus.Game.EventBus eventBus, BattleController battleController)
+        public void Awake()
         {
-            EventBus = eventBus;
-            BattleController = battleController;
             ActorData = GetComponent<ActorData>();
         }
 
-        public abstract UniTask Run();
-
-        public void Finish()
-        {
-            BattleController.NextTurn();
-        }
+        public abstract void Run();
     }
 }

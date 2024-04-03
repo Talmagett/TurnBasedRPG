@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Battle.Actors;
+using Battle.Characters;
 using Battle.EventBus.Game.Pipeline.Turn;
 using Configs.Abilities;
 using Configs.Character;
@@ -17,28 +18,40 @@ namespace Battle
         [SerializeField] private Transform spellsViewParent;
         [SerializeField] private BattleAbilityView battleAbilityView;
         private AbilitiesStorage _abilitiesStorage;
-        private EventBus.Game.EventBus _eventBus;
 
         private ActorData _hero;
 
         private bool _isChoosing;
-        private TurnPipeline _turnPipeline;
+
+        [Inject]
+        public void Construct(AbilitiesStorage abilitiesStorage)
+        {
+            _abilitiesStorage = abilitiesStorage;
+        }
+        
+        private void OnEnable()
+        {
+            ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged += OnCharacterChanged;
+        }
+
+        private void OnDisable()
+        {
+            ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged -= OnCharacterChanged;
+        }
+
+        private void OnCharacterChanged(BattleActor unit)
+        {
+            Clear();
+            if(unit.ActorData.Owner==Owner.Player)
+                SetHero(unit.ActorData);
+        }
 
         private void Update()
         {
             if (Input.GetMouseButtonDown(1)) _isChoosing = false;
         }
 
-        [Inject]
-        public void Construct(AbilitiesStorage abilitiesStorage, EventBus.Game.EventBus eventBus,
-            TurnPipeline turnPipeline)
-        {
-            _abilitiesStorage = abilitiesStorage;
-            _eventBus = eventBus;
-            _turnPipeline = turnPipeline;
-        }
-
-        public void SetHero(ActorData hero)
+        private void SetHero(ActorData hero)
         {
             _isChoosing = false;
             _hero = hero;
@@ -57,21 +70,19 @@ namespace Battle
 
         private void OnAbilityClicked(AbilityConfig abilityConfig)
         {
-            print(abilityConfig.ID);
-            _turnPipeline.Run();
-            ServiceLocator.Instance.BattleController.NextTurn();
-            return;
-            if (abilityConfig.TargetType == AbilityTargetType.Self)
+            var target = abilityConfig.TargetType switch
             {
-                abilityConfig.Process(_eventBus, _hero, _hero);
-                _turnPipeline.Run();
-                return;
-            }
-
-            _isChoosing = true;
+                AbilityTargetType.Ally => ServiceLocator.Instance.BattleController.GetRandomAlly(_hero.Owner),
+                AbilityTargetType.Enemy => ServiceLocator.Instance.BattleController.GetRandomEnemy(_hero.Owner),
+                _ => _hero
+            };
+            
+            abilityConfig.GetAbilityClone(_hero, target);
+            
+            //_isChoosing = true;
         }
 
-        public void Clear()
+        private void Clear()
         {
             while (spellsViewParent.transform.childCount > 0)
                 DestroyImmediate(spellsViewParent.transform.GetChild(0).gameObject);

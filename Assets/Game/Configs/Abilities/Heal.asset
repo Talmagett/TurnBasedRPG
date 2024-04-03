@@ -18,13 +18,13 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 21300000, guid: 07caf3d1930bab14aa8f6dcdf2db871a,
     type: 3}
   <TargetType>k__BackingField: 0
-  <Animation>k__BackingField: 3
+  <AnimationKey>k__BackingField: 4
   Effects: []
-  hitEffect: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
+  <HitEffect>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
     type: 3}
-  bonusDamage:
-    Value: 25
-  attackPowerMultiplier:
+  <BonusDamage>k__BackingField:
+    Value: 10
+  <StatMultiplier>k__BackingField:
     Stat: 0
     Multiplier: 0.2
   references:

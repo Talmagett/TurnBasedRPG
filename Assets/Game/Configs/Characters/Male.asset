@@ -15,14 +15,14 @@ MonoBehaviour:
   <ID>k__BackingField: male
   <Icon>k__BackingField: {fileID: 21300000, guid: 97701f4e22a0a6643a86510c70843aff,
     type: 3}
-  <Prefab>k__BackingField: {fileID: -6957851831168100096, guid: 4f85242bc2b7ae747979af5ef4f3ff6f,
+  <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: ad16fc65bace7e64a821c7ec41eb96cf,
     type: 3}
   <Stats>k__BackingField:
     Health: 140
     Mana: 45
     AttackPower: 25
     Defense: 34
-    AttackSpeed: 7.33
+    AttackSpeed: 3
     Evasion: 0
     CriticalChance: 0.2
     CriticalRate: 2
