@@ -17,7 +17,7 @@ MonoBehaviour:
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 07caf3d1930bab14aa8f6dcdf2db871a,
     type: 3}
-  <TargetType>k__BackingField: 0
+  <TargetType>k__BackingField: 1
   <AnimationKey>k__BackingField: 4
   Effects: []
   <HitEffect>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,

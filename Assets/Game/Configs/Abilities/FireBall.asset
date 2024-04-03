@@ -28,7 +28,7 @@ MonoBehaviour:
     Value: 10
   <StatMultiplier>k__BackingField:
     Stat: 4
-    Multiplier: 0.1
+    Multiplier: 1.2
   references:
     version: 2
     RefIds: []

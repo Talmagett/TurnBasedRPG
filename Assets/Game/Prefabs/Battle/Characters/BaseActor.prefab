@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8671160929339997737}
   - component: {fileID: 8380043677751829442}
+  - component: {fileID: 512517062125953865}
   m_Layer: 0
   m_Name: BaseActor
   m_TagString: Untagged
@@ -45,7 +46,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4661eb40de94a8381627f3e474118e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 0}
+  <BodyParts>k__BackingField:
+    <Head>k__BackingField: {fileID: 0}
+    <Chest>k__BackingField: {fileID: 0}
+    <RightHand>k__BackingField: {fileID: 0}
+    <LeftHand>k__BackingField: {fileID: 0}
+    <RightFeet>k__BackingField: {fileID: 0}
+    <LeftFeet>k__BackingField: {fileID: 0}
+--- !u!136 &512517062125953865
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6005569666195928798}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &190985966854242311
 PrefabInstance:
   m_ObjectHideFlags: 0

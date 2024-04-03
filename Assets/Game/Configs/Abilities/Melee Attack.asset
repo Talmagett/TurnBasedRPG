@@ -18,7 +18,7 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 21300000, guid: bcdde026ef2958945a59a7bac9baff52,
     type: 3}
   <TargetType>k__BackingField: 2
-  <Animation>k__BackingField: 0
+  <AnimationKey>k__BackingField: 0
   Effects: []
   <HitEffect>k__BackingField: {fileID: 2995373718814594992, guid: 97990056e8f14794184d33e11d20b80c,
     type: 3}
@@ -26,7 +26,7 @@ MonoBehaviour:
     Value: 0
   <StatMultiplier>k__BackingField:
     Stat: 4
-    Multiplier: 0
+    Multiplier: 1
   references:
     version: 2
     RefIds: []

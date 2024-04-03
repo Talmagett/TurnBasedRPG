@@ -11,6 +11,7 @@ namespace Game
         [SerializeField] private StateElements battleState;
         private GameStateController _gameStateController;
 
+
         private PlayerInputActions _playerInputActions;
 
         private void OnDestroy()
@@ -49,7 +50,7 @@ namespace Game
         {
             [SerializeField] private Camera stateCamera;
             [SerializeField] private GameObject canvas;
-
+            
             public void EnterState()
             {
                 canvas.SetActive(true);
