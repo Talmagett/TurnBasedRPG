@@ -2,6 +2,7 @@ using System;
 using Battle.Actors;
 using Battle.EventBus.Game.Events;
 using Configs.Abilities.Attributes;
+using Configs.Character;
 using Configs.Enums;
 using Game;
 using PrimeTween;
@@ -15,9 +16,10 @@ namespace Configs.Abilities
     public class ProjectileShootAbilityConfig : AbilityConfig
     {
         [field: SerializeField] public GameObject Projectile { get; private set; }
+        [field: SerializeField] public BodyParts.Key ProjectileShootPoint { get; private set; }
         [field: SerializeField] public ParticleSystem HitEffect { get; private set; }
-        [field: SerializeField] public BaseValue BonusDamage { get; private set; }
-        [field: SerializeField] public StatMultiplier StatMultiplier { get; private set; }
+        [field: SerializeField] public BodyParts.Key HitEffectPoint { get; private set; }
+        [field: SerializeField] public AbilityPowerValue DamageAmount { get; private set; }
 
         public override IAbility GetAbilityClone(ActorData source, ActorData target) =>
             new ProjectileShootAbility(source, target, this);
@@ -45,9 +47,12 @@ namespace Configs.Abilities
         
         private void Shoot()
         {
-            var projectile = GameObject.Instantiate(_config.Projectile, _source.BodyParts.RightHand.position, Quaternion.identity);
+            var shootPoint = _source.BodyParts.GetPoint(_config.ProjectileShootPoint);
+            var effectPoint = _target.BodyParts.GetPoint(_config.HitEffectPoint);
+            
+            var projectile = GameObject.Instantiate(_config.Projectile,shootPoint.position, Quaternion.identity);
             projectile.transform.LookAt(_target.transform.position);
-            Tween.Position(projectile.transform, _target.BodyParts.Chest.position, 0.7f, Ease.InSine).OnComplete(() =>
+            Tween.Position(projectile.transform, effectPoint.position, 0.7f, Ease.InSine).OnComplete(() =>
             {
                 GameObject.Destroy(projectile);
                 OnHit();
@@ -56,11 +61,12 @@ namespace Configs.Abilities
 
         private void OnHit()
         {
-            var attackPowerStat = _source.SharedStats.GetStat(_config.StatMultiplier.Stat);
-            var damage = (int)(_config.BonusDamage.Value + _config.StatMultiplier.Multiplier * attackPowerStat.Value);
+            var statValue = _source.SharedStats.GetStat(_config.DamageAmount.Stat);
+            var damage = (int)(_config.DamageAmount.BonusValue + _config.DamageAmount.StatMultiplier * statValue.Value);
             
             ServiceLocator.Instance.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
-            ServiceLocator.Instance.EventBus.RaiseEvent(new VisualParticleEvent(_target, _config.HitEffect));
+            var effectPoint = _target.BodyParts.GetPoint(_config.HitEffectPoint);
+            ServiceLocator.Instance.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HitEffect));
 
             _source.AnimatorDispatcher.AnimationEvent -= Shoot;
             _source.ConsumeAction();

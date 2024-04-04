@@ -47,12 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BodyParts>k__BackingField:
-    <Head>k__BackingField: {fileID: 0}
-    <Chest>k__BackingField: {fileID: 0}
-    <RightHand>k__BackingField: {fileID: 0}
-    <LeftHand>k__BackingField: {fileID: 0}
-    <RightFeet>k__BackingField: {fileID: 0}
-    <LeftFeet>k__BackingField: {fileID: 0}
+    root: {fileID: 0}
+    head: {fileID: 0}
+    chest: {fileID: 0}
+    rHand: {fileID: 0}
+    lHand: {fileID: 0}
+    rFeet: {fileID: 0}
+    lFeet: {fileID: 0}
 --- !u!136 &512517062125953865
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Objects;
@@ -6,6 +7,11 @@ using Configs.Character;
 using Configs.Enums;
 using UnityEngine;
 using PrimeTween;
+using Sirenix.OdinInspector;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 namespace Battle.Actors
 {
@@ -64,7 +70,8 @@ namespace Battle.Actors
 
         public void DestroySelf()
         {
-            Destroy(gameObject);
+            Animator.SetTrigger(AnimationKey.GetAnimation(AnimationKey.Animation.Death));
+            //Destroy(gameObject);
         }
 
         public void ConsumeAction()

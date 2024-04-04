@@ -11,23 +11,23 @@ namespace Configs.Abilities
 {
     [Serializable]
     [CreateAssetMenu(fileName = "New Ability", menuName = "SO/Ability/DealDamageAbility")]
-    public class DealDamageAbilityConfig : AbilityConfig
+    public class HealAbilityConfig : AbilityConfig
     {
-        [field: SerializeField] public ParticleSystem HitEffect { get; private set; }
-        [field: SerializeField] public BodyParts.Key HitEffectPoint { get; private set; }
-        [field: SerializeField] public AbilityPowerValue DamageAmount { get; private set; }
+        [field: SerializeField] public ParticleSystem HealEffect { get; private set; }
+        [field: SerializeField] public BodyParts.Key HealEffectPoint { get; private set; }
+        [field: SerializeField] public AbilityPowerValue HealAmount { get; private set; }
 
         public override IAbility GetAbilityClone(ActorData source, ActorData target) =>
-            new DealDamageAbility(source, target, this);
+            new HealAbility(source, target, this);
     }
 
-    public class DealDamageAbility : IAbility
+    public class HealAbility : IAbility
     {
-        private readonly DealDamageAbilityConfig _config;
+        private readonly HealAbilityConfig _config;
         private readonly ActorData _source;
         private readonly ActorData _target;
 
-        public DealDamageAbility(ActorData source, ActorData target, DealDamageAbilityConfig config)
+        public HealAbility(ActorData source, ActorData target, HealAbilityConfig config)
         {
             _source = source;
             _target = target;
@@ -43,12 +43,12 @@ namespace Configs.Abilities
         
         private void Melee()
         {
-            var statValue = _source.SharedStats.GetStat(_config.DamageAmount.Stat);
-            var damage = (int)(_config.DamageAmount.BonusValue + _config.DamageAmount.StatMultiplier * statValue.Value);
+            var statValue = _source.SharedStats.GetStat(_config.HealAmount.Stat);
+            var damage = (int)(_config.HealAmount.BonusValue + _config.HealAmount.StatMultiplier * statValue.Value);
             
             ServiceLocator.Instance.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
-            var effectPoint = _target.BodyParts.GetPoint(_config.HitEffectPoint);
-            ServiceLocator.Instance.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HitEffect));
+            var effectPoint = _target.BodyParts.GetPoint(_config.HealEffectPoint);
+            ServiceLocator.Instance.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HealEffect));
 
             _source.AnimatorDispatcher.AnimationEvent -= Melee;
             _source.ConsumeAction();

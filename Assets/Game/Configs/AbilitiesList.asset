@@ -21,3 +21,6 @@ MonoBehaviour:
     Abilities:
     - {fileID: 11400000, guid: a0a66519134ee704bb9327303cadcd1f, type: 2}
     - {fileID: 11400000, guid: 6fdb0fe1967e1bf498245ff1ba525d6e, type: 2}
+  - ID: leopard
+    Abilities:
+    - {fileID: 11400000, guid: 1da33a1c174dd104984c2a76aabd65e1, type: 2}

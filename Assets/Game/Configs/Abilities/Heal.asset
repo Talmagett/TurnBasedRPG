@@ -22,11 +22,11 @@ MonoBehaviour:
   Effects: []
   <HitEffect>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
     type: 3}
-  <BonusDamage>k__BackingField:
-    Value: -10
-  <StatMultiplier>k__BackingField:
+  <HitEffectPoint>k__BackingField: 2
+  <DamageAmount>k__BackingField:
+    BonusValue: 0
     Stat: 0
-    Multiplier: -0.2
+    StatMultiplier: 0.2
   references:
     version: 2
     RefIds: []

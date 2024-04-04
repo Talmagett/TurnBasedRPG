@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterArmature
       objectReference: {fileID: 0}
+    - target: {fileID: 1254680681997684, guid: ad5d192ff58055741beb3d8e0e2466e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570067292667072, guid: ad5d192ff58055741beb3d8e0e2466e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953126918673306, guid: ad5d192ff58055741beb3d8e0e2466e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4308745711888484, guid: ad5d192ff58055741beb3d8e0e2466e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -181,6 +193,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5660875707898932032}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &5665234635159609778 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4939642878659314, guid: ad5d192ff58055741beb3d8e0e2466e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 5660875707898932032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5665469295332326640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4699553565398960, guid: ad5d192ff58055741beb3d8e0e2466e6,
@@ -211,6 +229,41 @@ PrefabInstance:
       propertyPath: <Animator>k__BackingField
       value: 
       objectReference: {fileID: 5754445973576422424}
+    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: <BodyParts>k__BackingField.head
+      value: 
+      objectReference: {fileID: 5656597717455694418}
+    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: <BodyParts>k__BackingField.root
+      value: 
+      objectReference: {fileID: 5665234635159609778}
+    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: <BodyParts>k__BackingField.chest
+      value: 
+      objectReference: {fileID: 5665469295332326640}
+    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: <BodyParts>k__BackingField.lFeet
+      value: 
+      objectReference: {fileID: 5656636505072836104}
+    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: <BodyParts>k__BackingField.lHand
+      value: 
+      objectReference: {fileID: 5656606058745935820}
+    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: <BodyParts>k__BackingField.rFeet
+      value: 
+      objectReference: {fileID: 5656946335458621116}
+    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: <BodyParts>k__BackingField.rHand
+      value: 
+      objectReference: {fileID: 5665230319831135276}
     - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
       propertyPath: <BodyParts>k__BackingField.<Head>k__BackingField
@@ -292,7 +345,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7942373476593269512, guid: 00eb47580f7af8147a76369fe7bf55b6, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8671160929339997737, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}

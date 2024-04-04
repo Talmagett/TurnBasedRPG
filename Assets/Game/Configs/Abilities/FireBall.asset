@@ -22,13 +22,14 @@ MonoBehaviour:
   Effects: []
   <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
     type: 3}
+  <ProjectileShootPoint>k__BackingField: 2
   <HitEffect>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
     type: 3}
-  <BonusDamage>k__BackingField:
-    Value: 1
-  <StatMultiplier>k__BackingField:
+  <HitEffectPoint>k__BackingField: 2
+  <DamageAmount>k__BackingField:
+    BonusValue: 0
     Stat: 4
-    Multiplier: 1
+    StatMultiplier: 1.2
   references:
     version: 2
     RefIds: []
