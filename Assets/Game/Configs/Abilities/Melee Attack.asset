@@ -15,7 +15,7 @@ MonoBehaviour:
   <ID>k__BackingField: meleeAttack
   <Name>k__BackingField: 'Sword '
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: bcdde026ef2958945a59a7bac9baff52,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 9cddedba9b8f2e74fbd7d909e0d98843,
     type: 3}
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   <DamageAmount>k__BackingField:
     BonusValue: 0
     Stat: 4
-    StatMultiplier: 10
+    StatMultiplier: 1
   references:
     version: 2
     RefIds: []

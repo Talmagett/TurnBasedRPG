@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SnowLeopard
   m_EditorClassIdentifier: 
   <ID>k__BackingField: leopard
-  <Icon>k__BackingField: {fileID: 21300018, guid: 7ab74e659e1f0a34d9cfec21c478fc12,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 74b64a1a152c9244fb40bc04a180efb4,
     type: 3}
   <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: e733643b39014984abc6bbf12068064d,
     type: 3}
