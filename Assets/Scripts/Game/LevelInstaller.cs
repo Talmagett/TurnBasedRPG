@@ -1,6 +1,6 @@
 using Battle;
-using Configs;
 using UnityEngine;
+using Visual.UI;
 using Zenject;
 
 namespace Game
@@ -9,11 +9,14 @@ namespace Game
     {
         [SerializeField] private GameStateController gameStateController;
         [SerializeField] private BattleController battleController;
+        [SerializeField] private UIController uiController;
 
         public override void InstallBindings()
         {
             Container.BindInstance(gameStateController).AsSingle();
             Container.BindInstance(battleController).AsSingle();
+            Container.BindInstance(uiController).AsSingle();
+            Container.Bind<ServiceLocator>().AsSingle().NonLazy();
         }
     }
 }

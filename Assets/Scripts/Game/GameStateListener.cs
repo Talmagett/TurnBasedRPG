@@ -11,7 +11,13 @@ namespace Game
         [SerializeField] private StateElements battleState;
         private GameStateController _gameStateController;
 
+
         private PlayerInputActions _playerInputActions;
+
+        private void OnDestroy()
+        {
+            _gameStateController.OnGameStateChanged -= ChangeState;
+        }
 
         [Inject]
         public void Construct(GameStateController gameStateController, PlayerInputActions playerInputActions)
@@ -19,11 +25,6 @@ namespace Game
             _gameStateController = gameStateController;
             _playerInputActions = playerInputActions;
             _gameStateController.OnGameStateChanged += ChangeState;
-        }
-
-        private void OnDestroy()
-        {
-            _gameStateController.OnGameStateChanged -= ChangeState;
         }
 
         private void ChangeState(GameState state)
@@ -49,7 +50,7 @@ namespace Game
         {
             [SerializeField] private Camera stateCamera;
             [SerializeField] private GameObject canvas;
-
+            
             public void EnterState()
             {
                 canvas.SetActive(true);

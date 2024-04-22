@@ -1,6 +1,5 @@
-using Configs;
+using Configs.Enums;
 using Game.Heroes;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -10,16 +9,10 @@ namespace Visual.UI.Map
     {
         [SerializeField] private HeroView heroViewPrefab;
         [SerializeField] private Transform parent;
+        private HeroView[] _mapHeroViews;
 
         private HeroParty _party;
-        private HeroView[] _mapHeroViews;
-        
-        [Inject]
-        public void Construct(HeroParty party)
-        {
-            _party = party;
-        }
-        
+
         private void Start()
         {
             var index = 0;
@@ -29,11 +22,19 @@ namespace Visual.UI.Map
                 _mapHeroViews[index] = Instantiate(heroViewPrefab, parent);
                 _mapHeroViews[index].SetIcon(playerCharacter.Icon);
                 _mapHeroViews[index]
-                    .SetHealth(playerCharacter.Stats.GetStat(StatKey.Health) / playerCharacter.Stats.GetStat(StatKey.MaxHealth));
+                    .SetHealth(playerCharacter.Stats.GetStat(StatKey.Health).Value /
+                               playerCharacter.Stats.GetStat(StatKey.MaxHealth).Value);
                 _mapHeroViews[index]
-                    .SetMana(playerCharacter.Stats.GetStat(StatKey.Mana) / playerCharacter.Stats.GetStat(StatKey.MaxMana));
+                    .SetMana(playerCharacter.Stats.GetStat(StatKey.Mana).Value /
+                             playerCharacter.Stats.GetStat(StatKey.MaxMana).Value);
                 index++;
             }
+        }
+
+        [Inject]
+        public void Construct(HeroParty party)
+        {
+            _party = party;
         }
     }
 }

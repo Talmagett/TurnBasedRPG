@@ -18,9 +18,11 @@ namespace Battle.EventBus.Game.Pipeline.Visual.Tasks
         {
             var particle = Object.Instantiate(_particle.gameObject, _position, Quaternion.identity);
 
-            Finish();
-            Tween.Delay(2, () => { Object.Destroy(particle); });
-            //_transform.Value.DOMove(_position, _duration).OnComplete(Finish);
+            Tween.Delay(1, () =>
+            {
+                Object.Destroy(particle);
+                Finish();
+            });
         }
     }
 }

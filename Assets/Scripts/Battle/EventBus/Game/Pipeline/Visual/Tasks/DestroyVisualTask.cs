@@ -1,4 +1,5 @@
-﻿using Battle.EventBus.Entities.Common.Components;
+﻿using Atomic.Objects;
+using Battle.EventBus.Entities.Common.Components;
 using Entities;
 
 namespace Battle.EventBus.Game.Pipeline.Visual.Tasks
@@ -6,11 +7,9 @@ namespace Battle.EventBus.Game.Pipeline.Visual.Tasks
     public sealed class DestroyVisualTask : Task
     {
         private readonly float _duration;
-        private readonly TransformComponent _transform;
 
-        public DestroyVisualTask(IEntity entity, float duration = 0.15f)
+        public DestroyVisualTask(IAtomicObject entity, float duration = 0.15f)
         {
-            _transform = entity.Get<TransformComponent>();
             _duration = duration;
         }
 

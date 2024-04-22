@@ -9,18 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40fbff235f5a4d7a8a87cdc35b7e5d08, type: 3}
+  m_Script: {fileID: 11500000, guid: 249f2725fb6b408da03d0782798a9f8d, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
+  <ID>k__BackingField: heal
   <Name>k__BackingField: Heal
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
-  <Animation>k__BackingField: 3
-  Effects: []
-  <Particle>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 2beb617b3fc4b2c4eae2d3f409017cc7,
     type: 3}
-  <MaxHealthPercent>k__BackingField: 0.1
-  <BonusHealth>k__BackingField: 25
+  <TargetType>k__BackingField: 1
+  <AnimationKey>k__BackingField: 4
+  Effects: []
+  <HitEffect>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
+    type: 3}
+  <HitEffectPoint>k__BackingField: 2
+  <DamageAmount>k__BackingField:
+    BonusValue: 0
+    Stat: 0
+    StatMultiplier: 0.2
   references:
     version: 2
     RefIds: []

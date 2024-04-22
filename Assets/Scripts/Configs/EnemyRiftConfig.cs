@@ -1,5 +1,5 @@
 using Battle;
-using Battle.Actors;
+using Configs.Character;
 using UnityEngine;
 
 namespace Configs

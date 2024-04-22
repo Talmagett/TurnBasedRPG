@@ -1,4 +1,4 @@
-namespace Configs
+namespace Configs.Enums
 {
     public enum StatKey
     {
@@ -8,7 +8,7 @@ namespace Configs
         Mana,
         AttackPower,
         Defense,
-        AttackSpeed,
+        ActionRecoverySpeed,
         Evasion,
         CriticalChance,
         CriticalRate

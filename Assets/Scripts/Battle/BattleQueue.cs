@@ -1,38 +1,41 @@
 using System;
 using System.Collections.Generic;
-using Battle.Actors;
+using System.Linq;
+using Atomic.Elements;
 using Battle.Characters;
-using Configs;
+using Configs.Enums;
 using Sirenix.OdinInspector;
-using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Battle
 {
     [Serializable]
-    public class BattleQueue : IDisposable
+    public class BattleQueue
     {
-        [SerializeField] public float QueueTime = 10;
-
-        [ReadOnly] [ShowInInspector] private readonly PriorityQueue _queue = new();
-
-        [ReadOnly] [ShowInInspector] private readonly List<BattleActor> _unitList = new();
-
-        private bool _isInit = true;
-
-        [ReadOnly] [ShowInInspector] public float CurrentTime { get; private set; }
-
         public BattleActor CurrentCharacter { get; private set; }
-        public event Action OnQueueChanged;
+        
+        [ReadOnly] [ShowInInspector] private readonly List<BattleActor> _unitList = new();
+        private readonly BattleController _battleController;
+        private int _currentTime;
 
-        public UnitTime[] GetUnitTimes()
+        public event Action OnQueueChanged;
+        public event Action<int> OnTimeChanged;
+        public event Action<BattleActor> OnCharacterChanged;
+
+        public BattleQueue(BattleController battleController)
         {
-            return _queue.GetUnitTimes();
+            _battleController = battleController;
+        }
+
+        public void Clear()
+        {
+            CurrentCharacter = null;
+            _currentTime = 0;
+            _unitList.Clear();
         }
 
         public void AddUnits(IEnumerable<BattleActor> units)
         {
-            foreach (var unit in units) 
+            foreach (var unit in units)
                 AddUnit(unit);
 
             OnQueueChanged?.Invoke();
@@ -41,60 +44,46 @@ namespace Battle
         public void AddUnit(BattleActor unit)
         {
             _unitList.Add(unit);
-            AddUnitToQueue(unit);
         }
 
         public void RemoveUnit(BattleActor unit)
         {
             _unitList.Remove(unit);
-            RemoveUnitFromQueue(unit);
             OnQueueChanged?.Invoke();
         }
 
-        public void UpdateTime()
+        public void NextTime()
         {
-            foreach (var unit in _unitList) 
-                AddUnitToQueue(unit);
-        }
+            _currentTime++;
+            OnTimeChanged?.Invoke(_currentTime);
 
-        private void AddUnitToQueue(BattleActor unit)
-        {
-            var lastUnitTime = _queue.GetLatestUnitTime(unit);
-            var lastTime = lastUnitTime?.time ?? CurrentTime;
-            var attackSpeedDelta = unit.ActorData.SharedStats.GetStat(StatKey.AttackSpeed);
-            while (lastTime + attackSpeedDelta < CurrentTime + QueueTime)
+            _unitList.ForEach(t =>
             {
-                lastTime += attackSpeedDelta + (_isInit ? Random.Range(0f, 10) : 0);
-                _queue.Enqueue(new UnitTime { character = unit, time = lastTime });
-            }
-        }
-
-        private void RemoveUnitFromQueue(BattleActor unit)
-        {
-            _queue.RemoveUnit(unit);
+                if (!t.ActorData.TryGet(AtomicPropertyAPI.CooldownKey, out AtomicVariable<int> cooldown)) return;
+                cooldown.Value--;
+            });
+            _battleController.NextTurn();
         }
 
         public void NextTurn()
         {
-            if (_queue.IsEmpty)
+            var movingUnits = _unitList.Where(t =>
+            {
+                if (!t.ActorData.TryGet(AtomicPropertyAPI.CooldownKey, out AtomicVariable<int> cooldown)) return false;
+
+                return cooldown.Value <= 0;
+            }).ToList();
+
+            if (!movingUnits.Any())
+            {
+                NextTime();
                 return;
+            }
 
-            _isInit = false;
-
-            var unitTime = _queue.Dequeue();
-            if (CurrentCharacter != null)
-                CurrentCharacter.ActorData.Deselect();
-            CurrentCharacter = unitTime.character;
-            CurrentTime = unitTime.time;
+            CurrentCharacter = movingUnits[0];
             CurrentCharacter.ActorData.Select();
-            UpdateTime();
-            OnQueueChanged?.Invoke();
-        }
-
-        public void Dispose()
-        {
-            _queue.Clear();
-            _unitList.Clear();
+            CurrentCharacter.Run();
+            OnCharacterChanged?.Invoke(CurrentCharacter);
         }
     }
 }

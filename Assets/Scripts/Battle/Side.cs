@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Battle.Actors;
 using UnityEngine;
-using Zenject;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -11,8 +10,6 @@ namespace Battle
     [Serializable]
     public class Side
     {
-        public event Action OnUnitsCleared;
-        
         private const float DeltaPosition = 2;
         private readonly Transform _parent;
 
@@ -23,6 +20,7 @@ namespace Battle
             _parent = parent;
         }
 
+        public event Action OnUnitsCleared;
 
         public ActorData GetRandom()
         {
@@ -44,7 +42,8 @@ namespace Battle
         public ActorData SetupUnit(ActorData unit, float position)
         {
             unit.transform.SetParent(_parent);
-            unit.transform.SetPositionAndRotation(_parent.position + Vector3.forward * position*DeltaPosition, _parent.rotation);
+            unit.transform.SetPositionAndRotation(_parent.position + Vector3.forward * position * DeltaPosition,
+                _parent.rotation);
             _units.Add(unit);
             return unit;
         }
@@ -53,7 +52,7 @@ namespace Battle
         {
             _units.Remove(baseCharacter);
             baseCharacter.DestroySelf();
-            if(_units.Count==0)
+            if (_units.Count == 0)
                 OnUnitsCleared?.Invoke();
         }
     }

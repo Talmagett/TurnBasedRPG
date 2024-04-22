@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game;
+using UnityEngine;
 
 namespace Battle.EventBus.Game.Pipeline.Turn.Tasks
 {
@@ -7,7 +8,8 @@ namespace Battle.EventBus.Game.Pipeline.Turn.Tasks
         protected override void OnRun()
         {
             Debug.Log("Finish Turn!");
-
+            ServiceLocator.Instance.BattleController.BattleQueue.CurrentCharacter.ActorData.Deselect();
+            ServiceLocator.Instance.BattleController.NextTurn();
             Finish();
         }
     }

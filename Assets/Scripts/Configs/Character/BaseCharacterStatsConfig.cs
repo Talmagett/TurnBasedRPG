@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Configs.Enums;
 using Sirenix.OdinInspector;
 
-namespace Configs
+namespace Configs.Character
 {
     [Serializable]
     public class BaseCharacterStatsConfig
@@ -15,7 +16,7 @@ namespace Configs
 
         public int Defense;
 
-        [PropertyRange(0.1f, 10f)] public float AttackSpeed = 1;
+        [MinValue(1)] public int AttackSpeed = 1;
 
         [PropertyRange(0, 1)] public float Evasion;
 
@@ -33,7 +34,7 @@ namespace Configs
             stats.Add(StatKey.Mana, Mana);
             stats.Add(StatKey.AttackPower, AttackPower);
             stats.Add(StatKey.Defense, Defense);
-            stats.Add(StatKey.AttackSpeed, AttackSpeed);
+            stats.Add(StatKey.ActionRecoverySpeed, AttackSpeed);
             stats.Add(StatKey.Evasion, Evasion);
             stats.Add(StatKey.CriticalChance, CriticalChance);
             stats.Add(StatKey.CriticalRate, CriticalRate);

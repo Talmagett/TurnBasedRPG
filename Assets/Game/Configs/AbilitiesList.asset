@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c7cd98936f4f0189a833bfa85e92c4, type: 3}
+  m_Name: AbilitiesList
+  m_EditorClassIdentifier: 
+  AbilitiesPacks:
+  - ID: male
+    Abilities:
+    - {fileID: 11400000, guid: 7144b4fbbcc44784ba4b343dcbb885ec, type: 2}
+    - {fileID: 11400000, guid: 9a73a9e189f73264c96cb32a5faac781, type: 2}
+  - ID: female
+    Abilities:
+    - {fileID: 11400000, guid: a0a66519134ee704bb9327303cadcd1f, type: 2}
+    - {fileID: 11400000, guid: 6fdb0fe1967e1bf498245ff1ba525d6e, type: 2}
+  - ID: leopard
+    Abilities:
+    - {fileID: 11400000, guid: 1da33a1c174dd104984c2a76aabd65e1, type: 2}

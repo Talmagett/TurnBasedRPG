@@ -1,5 +1,4 @@
-using System;
-using Configs;
+using Configs.Enums;
 using Map.Interactions.Environment;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -10,6 +9,7 @@ namespace Map
 {
     public class PlayerCharacterController : MonoBehaviour
     {
+        private const float TerminalVelocity = 53.0f;
         [SerializeField] private Animator playerAnimator;
 
         [Title("Movement")] [SerializeField] private CharacterController characterController;
@@ -24,11 +24,10 @@ namespace Map
         [SerializeField] private float gravity = -15.0f;
         [ReadOnly] [SerializeField] private bool grounded = true;
 
-        [Space] [Title("Interaction")] [SerializeField] private float interactRadius;
+        [Space] [Title("Interaction")] [SerializeField]
+        private float interactRadius;
 
         private InputAction.CallbackContext _context;
-
-        private const float TerminalVelocity = 53.0f;
         private float _fallTimeoutDelta;
         private bool _isMoving;
 
@@ -36,22 +35,6 @@ namespace Map
         private Vector3 _targetDirection;
 
         private float _verticalVelocity;
-
-        [Inject]
-        public void Construct(PlayerInputActions playerInput)
-        {
-            _playerInput = playerInput;
-            _playerInput.Map.Interact.performed += Interact;
-            _playerInput.Map.Move.performed += StartMove;
-            _playerInput.Map.Move.canceled += StopMove;
-        }
-
-        private void OnDestroy()
-        {
-            _playerInput.Map.Interact.performed -= Interact;
-            _playerInput.Map.Move.performed -= StartMove;
-            _playerInput.Map.Move.canceled -= StopMove;
-        }
 
         private void Start()
         {
@@ -70,6 +53,19 @@ namespace Map
                 _targetDirection = Vector3.zero;
         }
 
+        private void OnDestroy()
+        {
+            _playerInput.Map.Interact.performed -= Interact;
+            _playerInput.Map.Move.performed -= StartMove;
+            _playerInput.Map.Move.canceled -= StopMove;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position + Vector3.up, interactRadius);
+        }
+
         private void OnDrawGizmosSelected()
         {
             var transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
@@ -82,6 +78,15 @@ namespace Map
             Gizmos.DrawSphere(
                 new Vector3(transform.position.x, transform.position.y - groundedOffset, transform.position.z),
                 groundedRadius);
+        }
+
+        [Inject]
+        public void Construct(PlayerInputActions playerInput)
+        {
+            _playerInput = playerInput;
+            _playerInput.Map.Interact.performed += Interact;
+            _playerInput.Map.Move.performed += StartMove;
+            _playerInput.Map.Move.canceled += StopMove;
         }
 
         private void StartMove(InputAction.CallbackContext obj)
@@ -113,7 +118,7 @@ namespace Map
 
         private void Interact(InputAction.CallbackContext obj)
         {
-            var hits = Physics.OverlapSphere(transform.position+Vector3.up, interactRadius);
+            var hits = Physics.OverlapSphere(transform.position + Vector3.up, interactRadius);
             foreach (var hit in hits)
                 if (hit.TryGetComponent(out Interactable interactable))
                     interactable.Interact(transform);
@@ -141,12 +146,6 @@ namespace Map
             }
 
             if (_verticalVelocity < TerminalVelocity) _verticalVelocity += gravity * Time.deltaTime;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position+Vector3.up,interactRadius);
         }
     }
 }

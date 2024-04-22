@@ -1,25 +1,38 @@
+using System;
 using System.Collections.Generic;
+using Atomic.Elements;
 using Atomic.Objects;
 using Configs;
+using Configs.Character;
+using Configs.Enums;
 using UnityEngine;
+using PrimeTween;
+using Sirenix.OdinInspector;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 namespace Battle.Actors
 {
     public class ActorData : AtomicObject
     {
+        [field: SerializeField] public BodyParts BodyParts { get; private set; }
+        public Animator Animator { get; private set; }
         public string ID { get; private set; }
         public Sprite Icon { get; private set; }
-        
-        [field: SerializeField] public Animator Animator { get; private set; }
         public AnimatorDispatcher AnimatorDispatcher { get; private set; }
         public SharedCharacterStats SharedStats { get; private set; }
         public Owner Owner { get; private set; }
-
+        private AtomicVariable<int> _cooldown = new();
+        
         public virtual void Awake()
         {
-            AddProperty("Transform", transform);
-            AddProperty("GameObject", gameObject);
-            
+            AddProperty(AtomicPropertyAPI.TransformKey, transform);
+            AddProperty(AtomicPropertyAPI.GameObjectKey, gameObject);
+            AddProperty(AtomicPropertyAPI.CooldownKey, _cooldown);
+
+            Animator = GetComponentInChildren<Animator>();
             AnimatorDispatcher = Animator.GetComponent<AnimatorDispatcher>();
         }
 
@@ -28,12 +41,14 @@ namespace Battle.Actors
             ID = id;
             Icon = icon;
         }
-        
+
         //From heroData or Character Config
         public void InitStats(Dictionary<StatKey, float> stats)
         {
             SharedStats = new SharedCharacterStats(stats);
-            AddProperty("Stats", SharedStats);
+            AddProperty(AtomicPropertyAPI.StatsKey, SharedStats);
+            var randomTime = Random.Range(1,(int)SharedStats.GetStat(StatKey.ActionRecoverySpeed).Value);
+            _cooldown.Value = randomTime;
         }
 
         public void SetOwner(Owner owner)
@@ -43,17 +58,28 @@ namespace Battle.Actors
 
         public void Select()
         {
-            transform.localScale = Vector3.one * 1.2f;
+            Tween.Scale(transform, Vector3.one * 1.2f, 0.3f);
+            Tween.Position(transform, transform.position+transform.forward * 2, 0.3f);
         }
 
         public void Deselect()
         {
-            transform.localScale = Vector3.one;
+            Tween.Scale(transform, Vector3.one, 0.3f);
+            Tween.Position(transform, transform.position-transform.forward * 2, 0.3f);
         }
 
         public void DestroySelf()
         {
-            Destroy(gameObject);
+            Animator.SetTrigger(AnimationKey.GetAnimation(AnimationKey.Animation.Death));
+            //Destroy(gameObject);
+        }
+
+        public void ConsumeAction()
+        {
+            if (TryGet(AtomicPropertyAPI.CooldownKey, out AtomicVariable<int> cooldownTimer))
+            {
+                cooldownTimer.Value = (int)SharedStats.GetStat(StatKey.ActionRecoverySpeed).Value;
+            }
         }
     }
 }

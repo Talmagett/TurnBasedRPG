@@ -47,6 +47,24 @@ MonoBehaviour:
   heroesConfigs:
   - {fileID: 11400000, guid: 6a4ef622fa64f5548b0321d7ba4f575b, type: 2}
   - {fileID: 11400000, guid: 69ccaac169c481a47af06ae4940cd821, type: 2}
+  - {fileID: 11400000, guid: 1af1ec898e5109c4abab0d45dcd33d5d, type: 2}
+  abilitiesStorage: {fileID: 11400000, guid: f250e6028da84804fa5156b12ced0257, type: 2}
+  cursorController:
+    cursorMappings:
+    - type: 0
+      texture: {fileID: 2800000, guid: 44a99ee545fd8ba46a452b12c1f9378b, type: 3}
+      hotspot: {x: 0, y: 0}
+    - type: 1
+      texture: {fileID: 2800000, guid: 8ea795c067613354898068091ffc7130, type: 3}
+      hotspot: {x: 0, y: 0}
+    - type: 2
+      texture: {fileID: 2800000, guid: 2a2b4775272c890448e1bd6239fdfc84, type: 3}
+      hotspot: {x: 0, y: 0}
+    - type: 3
+      texture: {fileID: 2800000, guid: 6fdfcd4167ed5e7488584241bb671bb2, type: 3}
+      hotspot: {x: 0, y: 0}
+    maxNavMeshProjectionDistance: 1
+    raycastRadius: 1
 --- !u!1 &3892207817408147773
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 using Battle.Actors;
 using UnityEngine;
 
-namespace Configs
+namespace Configs.Character
 {
     [CreateAssetMenu(fileName = "CharacterConfig", menuName = "SO/CharacterConfig", order = 0)]
     public class CharacterConfig : ScriptableObject

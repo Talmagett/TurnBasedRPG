@@ -1,33 +1,17 @@
-using Battle.Actors;
-using Battle.EventBus.Game.Events;
-using Configs;
-using Cysharp.Threading.Tasks;
+using Configs.Abilities;
+using Game;
 using UnityEngine;
 
 namespace Battle.Characters
 {
     public class Skeleton : BattleActor
     {
-        [SerializeField] private DealDamageAbility biteAttack;
-        public override async UniTask Run()
-        {
-            await base.Run();
-            MeleeAttack();
-        }
+        [SerializeField] private DealDamageAbilityConfig biteAttack;
 
-        private void MeleeAttack()
+        public override void Run()
         {
-            ActorData.AnimatorDispatcher.AnimationEvent += Melee;
-            ActorData.Animator.SetTrigger(AnimationKey.GetAnimation(AnimationKey.Animation.Attack));
-        }
-
-        private void Melee()
-        {
-            var damage = biteAttack.BonusDamage + (int)(biteAttack.AttackPowerMultiplier * ActorData.SharedStats.GetStat(StatKey.AttackPower));
-            EventBus.RaiseEvent(new DealDamageEvent(ActorData, BattleController.GetRandomEnemy(ActorData.Owner), damage));
-            EventBus.RaiseEvent(new VisualParticleEvent(BattleController.GetRandomEnemy(ActorData.Owner), biteAttack.Particle));
-            ActorData.AnimatorDispatcher.AnimationEvent -= Melee;
-            BattleController.Run();
+            var target = ServiceLocator.Instance.BattleController.GetRandomEnemy(ActorData.Owner);
+            biteAttack.GetAbilityClone(ActorData, target);
         }
     }
 }
