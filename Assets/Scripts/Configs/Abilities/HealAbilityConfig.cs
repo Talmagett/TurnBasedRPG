@@ -1,5 +1,6 @@
 using System;
 using Battle.Actors;
+using Battle.EventBus.Game;
 using Battle.EventBus.Game.Events;
 using Configs.Abilities.Attributes;
 using Configs.Character;
@@ -46,13 +47,13 @@ namespace Configs.Abilities
             var statValue = _source.SharedStats.GetStat(_config.HealAmount.Stat);
             var damage = (int)(_config.HealAmount.BonusValue + _config.HealAmount.StatMultiplier * statValue.Value);
             
-            ServiceLocator.Instance.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
+            EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
             var effectPoint = _target.BodyParts.GetPoint(_config.HealEffectPoint);
-            ServiceLocator.Instance.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HealEffect));
+            EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HealEffect));
 
             _source.AnimatorDispatcher.AnimationEvent -= Melee;
             _source.ConsumeAction();
-            ServiceLocator.Instance.BattleController.Run();
+            //ServiceLocator.Instance.BattleController.Run();
         }
     }
 }

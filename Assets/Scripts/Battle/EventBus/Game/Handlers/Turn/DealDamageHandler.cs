@@ -9,10 +9,7 @@ namespace Battle.EventBus.Game.Handlers.Turn
     [UsedImplicitly]
     public sealed class DealDamageHandler : BaseHandler<DealDamageEvent>
     {
-        public DealDamageHandler(EventBus eventBus) : base(eventBus)
-        {
-        }
-
+        
         protected override void HandleEvent(DealDamageEvent evt)
         {
             if (!evt.Target.TryGet("Stats", out SharedCharacterStats stats)) return;

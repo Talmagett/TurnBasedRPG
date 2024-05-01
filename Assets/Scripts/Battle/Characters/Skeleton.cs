@@ -10,8 +10,8 @@ namespace Battle.Characters
 
         public override void Run()
         {
-            var target = ServiceLocator.Instance.BattleController.GetRandomEnemy(ActorData.Owner);
-            biteAttack.GetAbilityClone(ActorData, target);
+            /*var target = ServiceLocator.Instance.BattleController.GetRandomEnemy(ActorData.Owner);
+            biteAttack.GetAbilityClone(ActorData, target);*/
         }
     }
 }

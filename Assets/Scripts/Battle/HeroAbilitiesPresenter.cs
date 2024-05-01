@@ -32,7 +32,7 @@ namespace Battle
             _cursorController = cursorController;
         }
         
-        private void OnEnable()
+        /*private void OnEnable()
         {
             ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged += OnCharacterChanged;
         }
@@ -40,7 +40,7 @@ namespace Battle
         private void OnDisable()
         {
             ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged -= OnCharacterChanged;
-        }
+        }*/
 
         private void OnCharacterChanged(BattleActor unit)
         {

@@ -16,7 +16,6 @@ namespace Game
             Container.BindInstance(gameStateController).AsSingle();
             Container.BindInstance(battleController).AsSingle();
             Container.BindInstance(uiController).AsSingle();
-            Container.Bind<ServiceLocator>().AsSingle().NonLazy();
         }
     }
 }

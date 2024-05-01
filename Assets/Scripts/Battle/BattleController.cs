@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Battle.Actors;
 using Battle.Characters;
-using Battle.EventBus.Game.Pipeline.Turn;
+using Battle.EventBus.Game.Events;
 using Configs;
 using Configs.Enums;
 using Cysharp.Threading.Tasks;
@@ -31,7 +31,6 @@ namespace Battle
         private HeroParty _heroParty;
 
         private Dictionary<Owner, Side> _sides;
-        private TurnPipeline _turnPipeline;
         [ReadOnly] [ShowInInspector] public BattleQueue BattleQueue { get; private set; }
 
         private BattleState _battleState;
@@ -64,7 +63,6 @@ namespace Battle
         {
             _diContainer = diContainer;
             _gameStateController = _diContainer.Resolve<GameStateController>();
-            _turnPipeline = _diContainer.Resolve<TurnPipeline>();
             _heroParty = _diContainer.Resolve<HeroParty>();
             _uiController = _diContainer.Resolve<UIController>();
             BattleQueue = new BattleQueue(this);
@@ -117,11 +115,6 @@ namespace Battle
             BattleQueue.RemoveUnit(unit.GetComponent<BattleActor>());
         }
 
-        public void Run()
-        {
-            _turnPipeline.Run();
-        }
-
         public async void NextTurn()
         {
             await UniTask.Delay(500);
@@ -169,8 +162,11 @@ namespace Battle
             Tween.Delay(1).OnComplete(()=>{
                 _uiController.Close();
                 NextTurn();
+                for (int i = 0; i < 8; i++)
+                {
+                    Tween.Delay(i).OnComplete(()=>EventBus.Game.EventBus.RaiseEvent(new DealDamageEvent(GetRandomAlly(Owner.Player),GetRandomAlly(Owner.Enemy),12)));
+                }
             });
-
         }
 
         private ActorData SpawnUnit(ActorData prefab, Owner owner, string id, Sprite icon,

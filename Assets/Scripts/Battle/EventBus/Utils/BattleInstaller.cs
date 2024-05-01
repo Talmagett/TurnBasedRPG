@@ -1,7 +1,4 @@
 ﻿using Battle.EventBus.Game.Handlers.Turn;
-using Battle.EventBus.Game.Handlers.Visual;
-using Battle.EventBus.Game.Pipeline.Turn;
-using Battle.EventBus.Game.Pipeline.Visual;
 using Zenject;
 
 namespace Battle.EventBus.Utils
@@ -11,15 +8,13 @@ namespace Battle.EventBus.Utils
         public override void InstallBindings()
         {
             ConfigureTurn(Container);
-            ConfigureVisual(Container);
+            //ConfigureVisual(Container);
         }
 
         private void ConfigureTurn(DiContainer builder)
         {
-            builder.Bind<Game.EventBus>().AsSingle().NonLazy();
-
             builder.BindInterfacesAndSelfTo<DealDamageHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<DestroyHandler>().AsSingle().NonLazy();
+            //builder.BindInterfacesAndSelfTo<DestroyHandler>().AsSingle().NonLazy();
             /*builder.BindInterfacesAndSelfTo<ApplyDirectionHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<AttackHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<CollideHandler>().AsSingle().NonLazy();
@@ -29,14 +24,14 @@ namespace Battle.EventBus.Utils
             builder.BindInterfacesAndSelfTo<DealDamageEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<PushEffectHandler>().AsSingle().NonLazy();*/
 
-            builder.Bind<TurnPipeline>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<TurnPipelineInstaller>().AsSingle().NonLazy();
+            //builder.Bind<TurnPipeline>().AsSingle().NonLazy();
+            //builder.BindInterfacesAndSelfTo<TurnPipelineInstaller>().AsSingle().NonLazy();
         }
 
         private void ConfigureVisual(DiContainer builder)
         {
-            builder.Bind<VisualPipeline>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<VisualParticleHandler>().AsSingle().NonLazy();
+            //builder.Bind<VisualPipeline>().AsSingle().NonLazy();
+            //builder.BindInterfacesAndSelfTo<VisualParticleHandler>().AsSingle().NonLazy();
             //builder.BindInterfacesAndSelfTo<DestroyVisualHandler>().AsSingle().NonLazy();
 /*
             builder.BindInterfacesAndSelfTo<MoveVisualHandler>().AsSingle().NonLazy();
@@ -45,4 +40,9 @@ namespace Battle.EventBus.Utils
             builder.BindInterfacesAndSelfTo<CollideVisualHandler>().AsSingle().NonLazy();*/
         }
     }
+    
+    /*
+            ServiceLocator.Instance.BattleController.BattleQueue.CurrentCharacter.ActorData.Deselect();
+            ServiceLocator.Instance.BattleController.NextTurn();
+     */
 }
