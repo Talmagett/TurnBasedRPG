@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Atomic.Elements;
 using Configs.Enums;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace Configs
 {
@@ -16,10 +14,7 @@ namespace Configs
         public SharedCharacterStats(Dictionary<StatKey, float> values)
         {
             _stats = new Dictionary<StatKey, AtomicVariable<float>>();
-            foreach (var (stat,value) in values)
-            {
-                _stats.Add(stat,new AtomicVariable<float>(value));                
-            }
+            foreach (var (stat, value) in values) _stats.Add(stat, new AtomicVariable<float>(value));
         }
 
         public Dictionary<StatKey, float> GetAllStats()
@@ -28,7 +23,7 @@ namespace Configs
             foreach (var (key, value) in _stats) stats.Add(key, value.Value);
             return stats;
         }
-        
+
         public AtomicVariable<float> GetStat(StatKey key)
         {
             return _stats[key];

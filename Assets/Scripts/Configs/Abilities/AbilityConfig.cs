@@ -1,7 +1,6 @@
 ﻿using Battle.Actors;
-using Battle.EventBus.Game;
-using Battle.EventBus.Game.Events.Effects;
 using Configs.Enums;
+using EventBus.Events.Effects;
 using UnityEngine;
 
 namespace Configs.Abilities

@@ -1,6 +1,4 @@
 using System;
-using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace Configs.Character
@@ -8,6 +6,17 @@ namespace Configs.Character
     [Serializable]
     public class BodyParts
     {
+        public enum Key
+        {
+            Root,
+            Head,
+            Chest,
+            RHand,
+            LHand,
+            RFeet,
+            LFeet
+        }
+
         [SerializeField] private Transform root;
         [SerializeField] private Transform head;
         [SerializeField] private Transform chest;
@@ -31,7 +40,7 @@ namespace Configs.Character
         {
             return key switch
             {
-                Key.Root=> root,
+                Key.Root => root,
                 Key.Head => head,
                 Key.Chest => chest,
                 Key.RHand => rHand,
@@ -40,16 +49,6 @@ namespace Configs.Character
                 Key.LFeet => lFeet,
                 _ => null
             };
-        }
-        public enum Key
-        {
-            Root,
-            Head,
-            Chest,
-            RHand,
-            LHand,
-            RFeet,
-            LFeet,
         }
     }
 }

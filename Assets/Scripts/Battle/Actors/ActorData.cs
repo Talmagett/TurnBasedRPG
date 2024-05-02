@@ -1,16 +1,11 @@
-using System;
 using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Objects;
 using Configs;
 using Configs.Character;
 using Configs.Enums;
-using UnityEngine;
 using PrimeTween;
-using Sirenix.OdinInspector;
-using UnityEditor;
-using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Battle.Actors
@@ -18,14 +13,14 @@ namespace Battle.Actors
     public class ActorData : AtomicObject
     {
         [field: SerializeField] public BodyParts BodyParts { get; private set; }
+        private readonly AtomicVariable<int> _cooldown = new();
         public Animator Animator { get; private set; }
         public string ID { get; private set; }
         public Sprite Icon { get; private set; }
         public AnimatorDispatcher AnimatorDispatcher { get; private set; }
         public SharedCharacterStats SharedStats { get; private set; }
         public Owner Owner { get; private set; }
-        private AtomicVariable<int> _cooldown = new();
-        
+
         public virtual void Awake()
         {
             AddProperty(AtomicPropertyAPI.TransformKey, transform);
@@ -47,7 +42,7 @@ namespace Battle.Actors
         {
             SharedStats = new SharedCharacterStats(stats);
             AddProperty(AtomicPropertyAPI.StatsKey, SharedStats);
-            var randomTime = Random.Range(1,(int)SharedStats.GetStat(StatKey.ActionRecoverySpeed).Value);
+            var randomTime = Random.Range(1, (int)SharedStats.GetStat(StatKey.ActionRecoverySpeed).Value);
             _cooldown.Value = randomTime;
         }
 
@@ -59,13 +54,13 @@ namespace Battle.Actors
         public void Select()
         {
             Tween.Scale(transform, Vector3.one * 1.2f, 0.3f);
-            Tween.Position(transform, transform.position+transform.forward * 2, 0.3f);
+            Tween.Position(transform, transform.position + transform.forward * 2, 0.3f);
         }
 
         public void Deselect()
         {
             Tween.Scale(transform, Vector3.one, 0.3f);
-            Tween.Position(transform, transform.position-transform.forward * 2, 0.3f);
+            Tween.Position(transform, transform.position - transform.forward * 2, 0.3f);
         }
 
         public void DestroySelf()
@@ -77,9 +72,7 @@ namespace Battle.Actors
         public void ConsumeAction()
         {
             if (TryGet(AtomicPropertyAPI.CooldownKey, out AtomicVariable<int> cooldownTimer))
-            {
                 cooldownTimer.Value = (int)SharedStats.GetStat(StatKey.ActionRecoverySpeed).Value;
-            }
         }
     }
 }

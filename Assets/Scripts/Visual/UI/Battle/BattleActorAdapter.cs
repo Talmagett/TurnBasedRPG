@@ -19,13 +19,15 @@ namespace Visual.UI.Battle
         private ActorData _actorData;
         private AtomicVariable<int> _cooldown;
         private SharedCharacterStats _stats;
-        
+
         private void Start()
         {
             _actorData = GetComponentInParent<ActorData>();
-            
-            if (!_actorData.TryGet(AtomicPropertyAPI.CooldownKey, out _cooldown)) throw new NullReferenceException("No Cooldown Key");
-            if(!_actorData.TryGet(AtomicPropertyAPI.StatsKey,out _stats)) throw new NullReferenceException("No Stats Key");
+
+            if (!_actorData.TryGet(AtomicPropertyAPI.CooldownKey, out _cooldown))
+                throw new NullReferenceException("No Cooldown Key");
+            if (!_actorData.TryGet(AtomicPropertyAPI.StatsKey, out _stats))
+                throw new NullReferenceException("No Stats Key");
             _cooldown.Subscribe(UpdateCooldownText);
             _stats.GetStat(StatKey.Health).Subscribe(UpdateHealthText);
             UpdateCooldownText(_cooldown.Value);
@@ -41,20 +43,17 @@ namespace Visual.UI.Battle
         private void UpdateCooldownText(int turn)
         {
             //TODO: prime tween
-            Tween.ShakeLocalRotation(iconImage.transform, Vector3.forward*90, 0.3f).OnComplete(() =>
+            Tween.ShakeLocalRotation(iconImage.transform, Vector3.forward * 90, 0.3f).OnComplete(() =>
             {
-                turnText.text = turn==0?"":turn.ToString();
-                iconImage.color=turn==0?Color.green: Color.white;
+                turnText.text = turn == 0 ? "" : turn.ToString();
+                iconImage.color = turn == 0 ? Color.green : Color.white;
             });
         }
-        
+
         private void UpdateHealthText(float value)
         {
-            if (value <= 0)
-            {
-                return;
-            }
-            Tween.ShakeLocalRotation(healthText.transform, Vector3.one*30, 0.2f).OnComplete(() =>
+            if (value <= 0) return;
+            Tween.ShakeLocalRotation(healthText.transform, Vector3.one * 30, 0.2f).OnComplete(() =>
             {
                 healthText.text = value.ToString();
             });

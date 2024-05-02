@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Battle.Actors;
 using Battle.Characters;
-using Battle.EventBus.Game.Events;
 using Configs;
 using Configs.Enums;
 using Cysharp.Threading.Tasks;
+using EventBus.Events;
 using Game;
 using Game.Heroes;
 using PrimeTween;
@@ -20,24 +20,9 @@ namespace Battle
 {
     public class BattleController : MonoBehaviour
     {
-        [Title("Configs")] [SerializeField] private Transform environmentParent;
-
-        [SerializeField] private Transform playerSideParent;
-        [SerializeField] private Transform enemySideParent;
-
-        private DiContainer _diContainer;
-
-        private GameStateController _gameStateController;
-        private HeroParty _heroParty;
-
-        private Dictionary<Owner, Side> _sides;
-        [ReadOnly] [ShowInInspector] public BattleQueue BattleQueue { get; private set; }
-
-        private BattleState _battleState;
-        private UIController _uiController;
-
-        public event Action<BattleState> OnStateChanged;
         //TODO: add UI to battle state changed
+        public event Action<BattleState> OnStateChanged;
+
         public enum BattleState
         {
             Going,
@@ -46,42 +31,41 @@ namespace Battle
             Lose
         }
 
+        [Title("Configs")] 
+        [SerializeField] private Transform environmentParent;
+
+        private BattleState _battleState;
+
+        private DiContainer _diContainer;
+
+        private GameStateController _gameStateController;
+        private HeroParty _heroParty;
+        private BattleContainer _battleContainer;
+        private UIController _uiController;
+
         private void OnEnable()
         {
-            _sides[Owner.Player].OnUnitsCleared += GameOver;
-            _sides[Owner.Enemy].OnUnitsCleared += WinBattle;
+            _battleContainer.OnUnitsCleared += OnBattleFinished;
         }
 
         private void OnDisable()
         {
-            _sides[Owner.Player].OnUnitsCleared -= GameOver;
-            _sides[Owner.Enemy].OnUnitsCleared -= WinBattle;
+            _battleContainer.OnUnitsCleared -= OnBattleFinished;
         }
 
         [Inject]
         public void Construct(DiContainer diContainer)
         {
             _diContainer = diContainer;
+            _battleContainer = _diContainer.Resolve<BattleContainer>();
             _gameStateController = _diContainer.Resolve<GameStateController>();
             _heroParty = _diContainer.Resolve<HeroParty>();
             _uiController = _diContainer.Resolve<UIController>();
-            BattleQueue = new BattleQueue(this);
-            _sides = new Dictionary<Owner, Side>
-            {
-                { Owner.Player, new Side(playerSideParent) },
-                { Owner.Enemy, new Side(enemySideParent) }
-            };
         }
 
-        private void WinBattle()
+        private void OnBattleFinished(Owner owner)
         {
-            _battleState = BattleState.Win;
-            OnStateChanged?.Invoke(_battleState);
-        }
-
-        private void GameOver()
-        {
-            _battleState = BattleState.Lose;
+            _battleState = owner==Owner.Enemy?BattleState.Win:BattleState.Lose;
             OnStateChanged?.Invoke(_battleState);
         }
 
@@ -91,7 +75,7 @@ namespace Battle
             OnStateChanged?.Invoke(_battleState);
         }
 
-        private void FinishBattle()
+        /*private void FinishBattle()
         {
             _gameStateController.ExitBattle();
 
@@ -99,110 +83,55 @@ namespace Battle
             {
                 var heroData = _heroParty.HeroDataArray.FirstOrDefault(t => t.ID == heroActor.ID);
                 if (heroData == null) continue;
-                
+
                 heroData.Stats.SetStat(StatKey.Health,
                     Mathf.Max(1, heroActor.SharedStats.GetStat(StatKey.Health).Value));
                 heroData.Stats.SetStat(StatKey.Mana, heroActor.SharedStats.GetStat(StatKey.Mana).Value);
             }
 
-            BattleQueue.Clear();
-        }
-
-        [Button]
-        public void DestroyEnemy(ActorData unit)
-        {
-            _sides[unit.Owner].DespawnUnit(unit);
-            BattleQueue.RemoveUnit(unit.GetComponent<BattleActor>());
-        }
-
-        public async void NextTurn()
-        {
-            await UniTask.Delay(500);
-            
-            if (_battleState!= BattleState.Going)
-            {
-                FinishBattle();
-                return;
-            }
-
-            BattleQueue.NextTurn();
-        }
-
-        public void ClearBattle()
-        {
-            while (environmentParent.childCount > 0) DestroyImmediate(environmentParent.GetChild(0).gameObject);
-            _sides.ForEach(t => t.Value.ClearField());
-        }
+//            BattleQueue.Clear();
+        }*/
 
         public void SetupBattle(EnemyRiftConfig enemyRiftConfig)
         {
             _battleState = BattleState.Going;
             OnStateChanged?.Invoke(_battleState);
-            Instantiate(enemyRiftConfig.Environment, environmentParent);
+            var environment = Instantiate(enemyRiftConfig.Environment, environmentParent);
 
             for (var i = 0; i < _heroParty.HeroDataArray.Length; i++)
             {
                 var unitData = _heroParty.HeroDataArray[i];
                 var position = -(_heroParty.HeroDataArray.Length - 1) / 2f + i;
-                var unit = SpawnUnit(unitData.Prefab, Owner.Player, unitData.ID, unitData.Icon,
-                    unitData.Stats.GetAllStats(), position);
+                var unit = SpawnUnit(unitData.Prefab, environment.PlayerSpawnPosition,Owner.Player, unitData.ID, unitData.Icon,
+                    unitData.Stats.GetAllStats());
+                unit.transform.position += Vector3.forward*position*2;
+                _battleContainer.AddUnit(unit);
             }
 
             for (var i = 0; i < enemyRiftConfig.Enemies.Length; i++)
             {
                 var unitData = enemyRiftConfig.Enemies[i];
                 var position = -(enemyRiftConfig.Enemies.Length - 1) / 2f + i;
-                var unit = SpawnUnit(unitData.Prefab, Owner.Enemy, unitData.ID, unitData.Icon,
-                    unitData.Stats.CloneStats(), position);
+                var unit = SpawnUnit(unitData.Prefab,environment.EnemySpawnPosition ,Owner.Enemy, unitData.ID, unitData.Icon,
+                    unitData.Stats.CloneStats());
+                unit.transform.position += Vector3.forward*position*2;
+                _battleContainer.AddUnit(unit);
             }
 
-            BattleQueue.AddUnits(_sides[Owner.Player].GetAllCharacters().Select(t => t.GetComponent<BattleActor>()));
-            BattleQueue.AddUnits(_sides[Owner.Enemy].GetAllCharacters().Select(t => t.GetComponent<BattleActor>()));
-
-            Tween.Delay(1).OnComplete(()=>{
+            Tween.Delay(1).OnComplete(() =>
+            {
                 _uiController.Close();
-                NextTurn();
-                for (int i = 0; i < 8; i++)
-                {
-                    Tween.Delay(i).OnComplete(()=>EventBus.Game.EventBus.RaiseEvent(new DealDamageEvent(GetRandomAlly(Owner.Player),GetRandomAlly(Owner.Enemy),12)));
-                }
+                EventBus.EventBus.RaiseEvent(new NextTurnEvent());
             });
         }
 
-        private ActorData SpawnUnit(ActorData prefab, Owner owner, string id, Sprite icon,
-            Dictionary<StatKey, float> stats, float position)
+        private ActorData SpawnUnit(ActorData prefab, Transform parent, Owner owner, string id, Sprite icon, Dictionary<StatKey, float> stats)
         {
-            var actorData = _diContainer.InstantiatePrefab(prefab).GetComponent<ActorData>();
+            var actorData = _diContainer.InstantiatePrefab(prefab,parent).GetComponent<ActorData>();
             actorData.InitStats(stats);
-
             actorData.SetOwner(owner);
             actorData.Setup(id, icon);
-            _sides[owner].SetupUnit(actorData, position);
-
             return actorData;
-        }
-
-        //_______________________________
-        public IEnumerable<ActorData> GetMyAllies(Owner owner)
-        {
-            return _sides[owner].GetAllCharacters();
-        }
-
-        public ActorData GetRandomAlly(Owner owner)
-        {
-            return _sides[owner].GetRandom();
-        }
-
-        public IEnumerable<ActorData> GetMyEnemies(Owner owner)
-        {
-            owner = owner == Owner.Enemy ? Owner.Player : Owner.Enemy;
-            return _sides[owner].GetAllCharacters();
-        }
-
-        public ActorData GetRandomEnemy(Owner owner)
-        {
-            owner = owner == Owner.Enemy ? Owner.Player : Owner.Enemy;
-            return _sides[owner].GetRandom();
         }
     }
 }

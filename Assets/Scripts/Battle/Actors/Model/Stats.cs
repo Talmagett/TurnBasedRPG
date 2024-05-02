@@ -1,11 +1,11 @@
 ﻿using System;
-using Battle.EventBus.Utils;
+using Atomic.Elements;
 
-namespace Battle.EventBus.Entities.Common.Model
+namespace Battle.Actors.Model
 {
     [Serializable]
     public sealed class Stats
     {
-        public AtomicVariable<int> strength = 1;
+        public AtomicVariable<int> strength;
     }
 }

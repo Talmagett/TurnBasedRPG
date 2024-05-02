@@ -1,11 +1,9 @@
 using System;
 using Battle.Actors;
-using Battle.EventBus.Game;
-using Battle.EventBus.Game.Events;
 using Configs.Abilities.Attributes;
 using Configs.Character;
 using Configs.Enums;
-using Game;
+using EventBus.Events;
 using UnityEngine;
 
 namespace Configs.Abilities
@@ -18,8 +16,10 @@ namespace Configs.Abilities
         [field: SerializeField] public BodyParts.Key HitEffectPoint { get; private set; }
         [field: SerializeField] public AbilityPowerValue DamageAmount { get; private set; }
 
-        public override IAbility GetAbilityClone(ActorData source, ActorData target) =>
-            new DealDamageAbility(source, target, this);
+        public override IAbility GetAbilityClone(ActorData source, ActorData target)
+        {
+            return new DealDamageAbility(source, target, this);
+        }
     }
 
     public class DealDamageAbility : IAbility
@@ -41,19 +41,21 @@ namespace Configs.Abilities
             _source.AnimatorDispatcher.AnimationEvent += Melee;
             _source.Animator.SetTrigger(AnimationKey.GetAnimation(_config.AnimationKey));
         }
-        
+
         private void Melee()
         {
             var statValue = _source.SharedStats.GetStat(_config.DamageAmount.Stat);
             var damage = (int)(_config.DamageAmount.BonusValue + _config.DamageAmount.StatMultiplier * statValue.Value);
-            
-            EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
+
+            EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
             var effectPoint = _target.BodyParts.GetPoint(_config.HitEffectPoint);
-            EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HitEffect));
+            EventBus.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HitEffect));
 
             _source.AnimatorDispatcher.AnimationEvent -= Melee;
             _source.ConsumeAction();
-            //ServiceLocator.Instance.BattleController.Run();
+
+            _source.Deselect();
+            EventBus.EventBus.RaiseEvent(new NextTurnEvent());
         }
     }
 }

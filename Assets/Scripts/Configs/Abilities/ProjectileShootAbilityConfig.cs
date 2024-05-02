@@ -1,14 +1,12 @@
 using System;
 using Battle.Actors;
-using Battle.EventBus.Game;
-using Battle.EventBus.Game.Events;
 using Configs.Abilities.Attributes;
 using Configs.Character;
 using Configs.Enums;
-using Game;
+using EventBus.Events;
 using PrimeTween;
 using UnityEngine;
-using Object = System.Object;
+using Object = UnityEngine.Object;
 
 namespace Configs.Abilities
 {
@@ -22,8 +20,10 @@ namespace Configs.Abilities
         [field: SerializeField] public BodyParts.Key HitEffectPoint { get; private set; }
         [field: SerializeField] public AbilityPowerValue DamageAmount { get; private set; }
 
-        public override IAbility GetAbilityClone(ActorData source, ActorData target) =>
-            new ProjectileShootAbility(source, target, this);
+        public override IAbility GetAbilityClone(ActorData source, ActorData target)
+        {
+            return new ProjectileShootAbility(source, target, this);
+        }
     }
 
     public class ProjectileShootAbility : IAbility
@@ -45,17 +45,17 @@ namespace Configs.Abilities
             _source.AnimatorDispatcher.AnimationEvent += Shoot;
             _source.Animator.SetTrigger(AnimationKey.GetAnimation(_config.AnimationKey));
         }
-        
+
         private void Shoot()
         {
             var shootPoint = _source.BodyParts.GetPoint(_config.ProjectileShootPoint);
             var effectPoint = _target.BodyParts.GetPoint(_config.HitEffectPoint);
-            
-            var projectile = GameObject.Instantiate(_config.Projectile,shootPoint.position, Quaternion.identity);
+
+            var projectile = Object.Instantiate(_config.Projectile, shootPoint.position, Quaternion.identity);
             projectile.transform.LookAt(_target.transform.position);
             Tween.Position(projectile.transform, effectPoint.position, 0.7f, Ease.InSine).OnComplete(() =>
             {
-                GameObject.Destroy(projectile);
+                Object.Destroy(projectile);
                 OnHit();
             });
         }
@@ -64,10 +64,10 @@ namespace Configs.Abilities
         {
             var statValue = _source.SharedStats.GetStat(_config.DamageAmount.Stat);
             var damage = (int)(_config.DamageAmount.BonusValue + _config.DamageAmount.StatMultiplier * statValue.Value);
-            
-            EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
+
+            EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
             var effectPoint = _target.BodyParts.GetPoint(_config.HitEffectPoint);
-            EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HitEffect));
+            EventBus.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HitEffect));
 
             _source.AnimatorDispatcher.AnimationEvent -= Shoot;
             _source.ConsumeAction();

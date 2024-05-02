@@ -5,6 +5,6 @@ namespace Game.Control
         None,
         Ally,
         Enemy,
-        Any,
+        Any
     }
 }

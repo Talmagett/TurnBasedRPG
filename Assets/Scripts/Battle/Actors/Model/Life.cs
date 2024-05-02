@@ -1,14 +1,14 @@
 ﻿using System;
-using Battle.EventBus.Utils;
+using Atomic.Elements;
 
-namespace Battle.EventBus.Entities.Common.Model
+namespace Battle.Actors.Model
 {
     [Serializable]
     public sealed class Life
     {
-        public AtomicVariable<bool> isDead = false;
+        public AtomicVariable<bool> isDead = new(false);
 
-        public AtomicVariable<int> hitPoints = 1;
-        public AtomicVariable<int> maxHitPoints = 1;
+        public AtomicVariable<int> hitPoints = new(1);
+        public AtomicVariable<int> maxHitPoints = new(1);
     }
 }

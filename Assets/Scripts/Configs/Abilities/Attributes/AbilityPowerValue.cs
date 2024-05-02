@@ -1,9 +1,9 @@
+using System;
 using Configs.Enums;
-using UnityEngine;
 
 namespace Configs.Abilities.Attributes
 {
-    [System.Serializable]
+    [Serializable]
     public class AbilityPowerValue
     {
         public float BonusValue;

@@ -1,8 +1,8 @@
 ﻿using System;
-using Battle.EventBus.Utils;
+using Atomic.Elements;
 using Configs.Abilities;
 
-namespace Battle.EventBus.Entities.Common.Model
+namespace Battle.Actors.Model
 {
     [Serializable]
     public sealed class Attack

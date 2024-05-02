@@ -5,7 +5,6 @@ using Battle.Characters;
 using Configs.Abilities;
 using Configs.Character;
 using Configs.Enums;
-using Game;
 using Game.Control;
 using PrimeTween;
 using UnityEngine;
@@ -19,50 +18,20 @@ namespace Battle
         [SerializeField] private Transform spellsViewParent;
         [SerializeField] private BattleAbilityView battleAbilityView;
         private AbilitiesStorage _abilitiesStorage;
+        private AbilityConfig _castingAbility;
         private CursorController _cursorController;
-        
+
         private ActorData _hero;
         private bool _isChoosing;
-        private AbilityConfig _castingAbility;
-        
-        [Inject]
-        public void Construct(AbilitiesStorage abilitiesStorage, CursorController cursorController)
-        {
-            _abilitiesStorage = abilitiesStorage;
-            _cursorController = cursorController;
-        }
-        
-        /*private void OnEnable()
-        {
-            ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged += OnCharacterChanged;
-        }
-
-        private void OnDisable()
-        {
-            ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged -= OnCharacterChanged;
-        }*/
-
-        private void OnCharacterChanged(BattleActor unit)
-        {
-            Clear();
-            if(unit.ActorData.Owner==Owner.Player)
-                SetHero(unit.ActorData);
-            var targetScale = unit.ActorData.Owner == Owner.Player ? Vector3.one : Vector3.zero;
-            
-            if (targetScale == transform.localScale)
-                return;
-            
-            Tween.Scale(transform, targetScale, 0.2f);
-        }
 
         private void Update()
         {
             if (!_isChoosing)
                 return;
-            
+
             if (Input.GetMouseButtonDown(1)) _isChoosing = false;
             if (!Input.GetMouseButtonDown(0)) return;
-            
+
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (!Physics.Raycast(ray, out var hit)) return;
 
@@ -78,6 +47,36 @@ namespace Battle
             }
         }
 
+        [Inject]
+        public void Construct(AbilitiesStorage abilitiesStorage, CursorController cursorController)
+        {
+            _abilitiesStorage = abilitiesStorage;
+            _cursorController = cursorController;
+        }
+
+        /*private void OnEnable()
+        {
+            ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged += OnCharacterChanged;
+        }
+
+        private void OnDisable()
+        {
+            ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged -= OnCharacterChanged;
+        }*/
+
+        private void OnCharacterChanged(ActorData unit)
+        {
+            Clear();
+            if (unit.Owner == Owner.Player)
+                SetHero(unit);
+            var targetScale = unit.Owner == Owner.Player ? Vector3.one : Vector3.zero;
+
+            if (targetScale == transform.localScale)
+                return;
+
+            Tween.Scale(transform, targetScale, 0.2f);
+        }
+
         private void SetHero(ActorData hero)
         {
             _isChoosing = false;
@@ -85,7 +84,7 @@ namespace Battle
             var heroAbilities = _abilitiesStorage.AbilitiesPacks.FirstOrDefault(t => t.ID == _hero.ID);
             if (heroAbilities == null)
                 throw new NullReferenceException($"No ability pack with this id {_hero.ID}");
-            
+
             foreach (var ability in heroAbilities.Abilities)
             {
                 var abilityView = Instantiate(battleAbilityView, spellsViewParent);
@@ -98,7 +97,7 @@ namespace Battle
         private void OnAbilityClicked(AbilityConfig abilityConfig)
         {
             _castingAbility = abilityConfig;
-            
+
             if (_castingAbility.TargetType == AbilityTargetType.Self)
             {
                 CastAbility(_castingAbility, _hero);
@@ -118,6 +117,7 @@ namespace Battle
                     _cursorController.SetCursor(CursorType.Any);
                     break;
             }
+
             _isChoosing = true;
         }
 
@@ -126,7 +126,7 @@ namespace Battle
             abilityConfig.GetAbilityClone(_hero, actorData);
             _cursorController.SetCursor(CursorType.None);
         }
-        
+
         private void Clear()
         {
             while (spellsViewParent.transform.childCount > 0)

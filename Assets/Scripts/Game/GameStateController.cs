@@ -21,7 +21,7 @@ namespace Game
         public event Action<GameState> OnGameStateChanged;
 
         [Inject]
-        public void Construct(BattleController battleController, HeroParty heroParty,UIController uiController)
+        public void Construct(BattleController battleController, HeroParty heroParty, UIController uiController)
         {
             _battleController = battleController;
             _uiController = uiController;
@@ -37,7 +37,7 @@ namespace Game
         public void ExitBattle()
         {
             OnGameStateChanged?.Invoke(GameState.Map);
-            _battleController.ClearBattle();
+            //_battleController.ClearBattle();
             _uiController.Close();
         }
     }

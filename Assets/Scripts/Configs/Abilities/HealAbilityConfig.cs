@@ -1,11 +1,9 @@
 using System;
 using Battle.Actors;
-using Battle.EventBus.Game;
-using Battle.EventBus.Game.Events;
 using Configs.Abilities.Attributes;
 using Configs.Character;
 using Configs.Enums;
-using Game;
+using EventBus.Events;
 using UnityEngine;
 
 namespace Configs.Abilities
@@ -18,8 +16,10 @@ namespace Configs.Abilities
         [field: SerializeField] public BodyParts.Key HealEffectPoint { get; private set; }
         [field: SerializeField] public AbilityPowerValue HealAmount { get; private set; }
 
-        public override IAbility GetAbilityClone(ActorData source, ActorData target) =>
-            new HealAbility(source, target, this);
+        public override IAbility GetAbilityClone(ActorData source, ActorData target)
+        {
+            return new HealAbility(source, target, this);
+        }
     }
 
     public class HealAbility : IAbility
@@ -41,19 +41,21 @@ namespace Configs.Abilities
             _source.AnimatorDispatcher.AnimationEvent += Melee;
             _source.Animator.SetTrigger(AnimationKey.GetAnimation(_config.AnimationKey));
         }
-        
+
         private void Melee()
         {
             var statValue = _source.SharedStats.GetStat(_config.HealAmount.Stat);
             var damage = (int)(_config.HealAmount.BonusValue + _config.HealAmount.StatMultiplier * statValue.Value);
-            
-            EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
+
+            EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
             var effectPoint = _target.BodyParts.GetPoint(_config.HealEffectPoint);
-            EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HealEffect));
+            EventBus.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HealEffect));
 
             _source.AnimatorDispatcher.AnimationEvent -= Melee;
             _source.ConsumeAction();
-            //ServiceLocator.Instance.BattleController.Run();
+            
+            _source.Deselect();
+            EventBus.EventBus.RaiseEvent(new NextTurnEvent());
         }
     }
 }

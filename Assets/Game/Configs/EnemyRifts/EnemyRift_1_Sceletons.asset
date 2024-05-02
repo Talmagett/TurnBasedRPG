@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebead88993a4b468add36c80e456476, type: 3}
   m_Name: EnemyRift_1_Sceletons
   m_EditorClassIdentifier: 
+  <ID>k__BackingField: first
   <Environment>k__BackingField: {fileID: 2006802663614620264, guid: 079c97de789523e439e29a2cee1eb6b4,
     type: 3}
   <Enemies>k__BackingField:

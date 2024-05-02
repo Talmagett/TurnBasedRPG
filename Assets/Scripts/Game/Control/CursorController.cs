@@ -7,26 +7,15 @@ namespace Game.Control
     [Serializable]
     public class CursorController
     {
-        [Serializable]
-        struct CursorMapping
-        {
-            public CursorType type;
-            public Texture2D texture;
-            public Vector2 hotspot;
-        }
-        
-        [SerializeField] private CursorMapping[] cursorMappings = null;
+        [SerializeField] private CursorMapping[] cursorMappings;
         [SerializeField] private float maxNavMeshProjectionDistance = 1f;
         [SerializeField] private float raycastRadius = 1f;
-        
+
         public RaycastHit[] RaycastAllSorted()
         {
-            RaycastHit[] hits = Physics.SphereCastAll(GetMouseRay(), raycastRadius);
-            float[] distances = new float[hits.Length];
-            for (int i = 0; i < hits.Length; i++)
-            {
-                distances[i] = hits[i].distance;
-            }
+            var hits = Physics.SphereCastAll(GetMouseRay(), raycastRadius);
+            var distances = new float[hits.Length];
+            for (var i = 0; i < hits.Length; i++) distances[i] = hits[i].distance;
             Array.Sort(distances, hits);
             return hits;
         }
@@ -35,10 +24,10 @@ namespace Game.Control
         {
             target = new Vector3();
             RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+            var hasHit = Physics.Raycast(GetMouseRay(), out hit);
             if (!hasHit) return false;
             NavMeshHit navMeshHit;
-            bool hasCastToNavMesh = NavMesh.SamplePosition(
+            var hasCastToNavMesh = NavMesh.SamplePosition(
                 hit.point, out navMeshHit, maxNavMeshProjectionDistance, NavMesh.AllAreas);
             if (!hasCastToNavMesh) return false;
 
@@ -56,23 +45,29 @@ namespace Game.Control
 
         public void SetCursor(CursorType type)
         {
-            CursorMapping mapping = GetCursorMapping(type);
+            var mapping = GetCursorMapping(type);
             Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
         }
-        
+
         private CursorMapping GetCursorMapping(CursorType type)
         {
             foreach (var item in cursorMappings)
-            {
                 if (item.type == type)
                     return item;
-            }
             return cursorMappings[0];
         }
-        
+
         private Ray GetMouseRay()
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+
+        [Serializable]
+        private struct CursorMapping
+        {
+            public CursorType type;
+            public Texture2D texture;
+            public Vector2 hotspot;
         }
     }
 }

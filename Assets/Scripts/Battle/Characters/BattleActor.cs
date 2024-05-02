@@ -1,5 +1,4 @@
 using Battle.Actors;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -8,12 +7,17 @@ namespace Battle.Characters
     [RequireComponent(typeof(ActorData))]
     public abstract class BattleActor : MonoBehaviour
     {
-        private UniTaskCompletionSource<bool> _hasFinished;
-        public ActorData ActorData { get; private set; }
-
+        protected ActorData ActorData { get; private set; }
+        protected BattleContainer BattleContainer;
+        [Inject]
+        public void Ctor(BattleContainer battleContainer)
+        {
+            BattleContainer = battleContainer;
+        }
         public void Awake()
         {
             ActorData = GetComponent<ActorData>();
+            ActorData.AddProperty("BattleActor", this);
         }
 
         public abstract void Run();

@@ -1,5 +1,4 @@
 using Battle;
-using Game;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -12,13 +11,6 @@ namespace Visual.UI.Battle
 
         private BattleController _battleController;
         private UIController _uiController;
-        
-        [Inject]
-        public void Construct(BattleController battleController,UIController uiController)
-        {
-            _battleController = battleController;
-            _uiController = uiController;
-        }
 
         private void OnEnable()
         {
@@ -28,6 +20,13 @@ namespace Visual.UI.Battle
         private void OnDisable()
         {
             exitBattle.onClick.RemoveListener(ExitBattle);
+        }
+
+        [Inject]
+        public void Construct(BattleController battleController, UIController uiController)
+        {
+            _battleController = battleController;
+            _uiController = uiController;
         }
 
         private void ExitBattle()

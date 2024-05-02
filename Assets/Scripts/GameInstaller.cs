@@ -9,7 +9,8 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private CharacterConfig[] heroesConfigs;
     [SerializeField] private AbilitiesStorage abilitiesStorage;
     [SerializeField] private CursorController cursorController;
-    
+
+    // ReSharper disable Unity.PerformanceAnalysis
     public override void InstallBindings()
     {
         Container.Bind<PlayerInputActions>().AsSingle().NonLazy();

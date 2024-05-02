@@ -35,7 +35,16 @@ namespace Map
         private Vector3 _targetDirection;
 
         private float _verticalVelocity;
-
+        
+        [Inject]
+        public void Construct(PlayerInputActions playerInput)
+        {
+            _playerInput = playerInput;
+            _playerInput.Map.Interact.performed += Interact;
+            _playerInput.Map.Move.performed += StartMove;
+            _playerInput.Map.Move.canceled += StopMove;
+        }
+        
         private void Start()
         {
             _fallTimeoutDelta = fallTimeout;
@@ -58,35 +67,6 @@ namespace Map
             _playerInput.Map.Interact.performed -= Interact;
             _playerInput.Map.Move.performed -= StartMove;
             _playerInput.Map.Move.canceled -= StopMove;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position + Vector3.up, interactRadius);
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            var transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-            var transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
-
-            if (grounded) Gizmos.color = transparentGreen;
-            else Gizmos.color = transparentRed;
-
-            // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
-            Gizmos.DrawSphere(
-                new Vector3(transform.position.x, transform.position.y - groundedOffset, transform.position.z),
-                groundedRadius);
-        }
-
-        [Inject]
-        public void Construct(PlayerInputActions playerInput)
-        {
-            _playerInput = playerInput;
-            _playerInput.Map.Interact.performed += Interact;
-            _playerInput.Map.Move.performed += StartMove;
-            _playerInput.Map.Move.canceled += StopMove;
         }
 
         private void StartMove(InputAction.CallbackContext obj)
@@ -131,8 +111,7 @@ namespace Map
             grounded = Physics.CheckSphere(spherePosition, groundedRadius, groundLayers,
                 QueryTriggerInteraction.Ignore);
         }
-
-
+        
         private void JumpAndGravity()
         {
             if (grounded)
@@ -146,6 +125,25 @@ namespace Map
             }
 
             if (_verticalVelocity < TerminalVelocity) _verticalVelocity += gravity * Time.deltaTime;
+        }
+        
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position + Vector3.up, interactRadius);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            var transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
+            var transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
+
+            Gizmos.color = grounded ? transparentGreen : transparentRed;
+
+            // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+            Gizmos.DrawSphere(
+                new Vector3(transform.position.x, transform.position.y - groundedOffset, transform.position.z),
+                groundedRadius);
         }
     }
 }
