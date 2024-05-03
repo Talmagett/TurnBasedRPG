@@ -14,7 +14,7 @@ namespace Configs.Abilities
     {
         [field: SerializeField] public ParticleSystem HealEffect { get; private set; }
         [field: SerializeField] public BodyParts.Key HealEffectPoint { get; private set; }
-        [field: SerializeField] public AbilityPowerValue HealAmount { get; private set; }
+        [field: SerializeField] public AbilityStat HealAmount { get; private set; }
 
         public override IAbility GetAbilityClone(ActorData source, ActorData target)
         {
@@ -45,7 +45,7 @@ namespace Configs.Abilities
         private void Melee()
         {
             var statValue = _source.SharedStats.GetStat(_config.HealAmount.Stat);
-            var damage = (int)(_config.HealAmount.BonusValue + _config.HealAmount.StatMultiplier * statValue.Value);
+            var damage = (int)(_config.HealAmount.BaseValue + _config.HealAmount.MultValue * statValue.Value);
 
             EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
             var effectPoint = _target.BodyParts.GetPoint(_config.HealEffectPoint);

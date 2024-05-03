@@ -34,7 +34,7 @@ namespace Configs.Character
             stats.Add(StatKey.Mana, Mana);
             stats.Add(StatKey.AttackPower, AttackPower);
             stats.Add(StatKey.Defense, Defense);
-            stats.Add(StatKey.ActionRecoverySpeed, AttackSpeed);
+            stats.Add(StatKey.ActionRecoverySpeed, 1);
             stats.Add(StatKey.Evasion, Evasion);
             stats.Add(StatKey.CriticalChance, CriticalChance);
             stats.Add(StatKey.CriticalRate, CriticalRate);
@@ -42,29 +42,3 @@ namespace Configs.Character
         }
     }
 }
-
-/*
-Характеристики:
-
-Power - сила атаки, магии
-Durability - HP
-Intellect - MP
-Defense - защита
-Haste - скорость на карте и между атаками
-Luck - шанс на уклонение и крита
-
-Статы у всех:
-
-Сила атаки
-Сила магии
-Здоровье
-Мана
-Вампиризм
-Физ защита
-Маг защита
-Скорость атаки
-Уклонение
-Шанс крита
-Урон крита
-
- */
