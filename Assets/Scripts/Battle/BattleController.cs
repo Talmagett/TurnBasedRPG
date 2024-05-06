@@ -38,7 +38,6 @@ namespace Battle
 
         private DiContainer _diContainer;
 
-        private GameStateController _gameStateController;
         private HeroParty _heroParty;
         private BattleContainer _battleContainer;
         private UIController _uiController;
@@ -58,7 +57,6 @@ namespace Battle
         {
             _diContainer = diContainer;
             _battleContainer = _diContainer.Resolve<BattleContainer>();
-            _gameStateController = _diContainer.Resolve<GameStateController>();
             _heroParty = _diContainer.Resolve<HeroParty>();
             _uiController = _diContainer.Resolve<UIController>();
         }

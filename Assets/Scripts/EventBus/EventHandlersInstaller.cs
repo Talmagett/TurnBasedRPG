@@ -1,4 +1,5 @@
 ﻿using EventBus.Handlers.Turn;
+using EventBus.Handlers.Visual;
 using Zenject;
 
 namespace EventBus
@@ -14,6 +15,8 @@ namespace EventBus
         // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureTurn(DiContainer builder)
         {
+            builder.BindInterfacesAndSelfTo<ConsumeActionHandler>().AsSingle().NonLazy();
+            
             builder.BindInterfacesAndSelfTo<NextTurnHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<NextTimeHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DelayedHandler>().AsSingle().NonLazy();
@@ -32,11 +35,12 @@ namespace EventBus
             //builder.BindInterfacesAndSelfTo<TurnPipelineInstaller>().AsSingle().NonLazy();
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureVisual(DiContainer builder)
         {
             //builder.Bind<VisualPipeline>().AsSingle().NonLazy();
             //builder.BindInterfacesAndSelfTo<VisualParticleHandler>().AsSingle().NonLazy();
-            //builder.BindInterfacesAndSelfTo<DestroyVisualHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<DestroyVisualHandler>().AsSingle().NonLazy();
 /*
             builder.BindInterfacesAndSelfTo<MoveVisualHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DealDamageVisualHandler>().AsSingle().NonLazy();

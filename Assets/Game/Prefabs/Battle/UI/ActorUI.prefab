@@ -415,6 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8941146442872982232}
   - component: {fileID: 8417804033554509753}
+  - component: {fileID: 2172614808182262616}
   m_Layer: 0
   m_Name: ActorUI
   m_TagString: Untagged
@@ -452,7 +453,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconImage: {fileID: 4688023246109593754}
   turnText: {fileID: 347945613854718281}
+--- !u!114 &2172614808182262616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6539777765643941222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a573f1ed3b4884ae07e9474bccbb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   healthText: {fileID: 2540472003822954150}
+  entity: {fileID: 0}
 --- !u!1 &9092891199298359929
 GameObject:
   m_ObjectHideFlags: 0

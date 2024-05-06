@@ -41,8 +41,11 @@ namespace Battle.Actors
         public void InitStats(Dictionary<StatKey, float> stats)
         {
             SharedStats = new SharedCharacterStats(stats);
+            SharedStats.SetStat(StatKey.Energy,Random.Range(1,6));
             AddProperty(AtomicPropertyAPI.StatsKey, SharedStats);
-            var randomTime = Random.Range(1, (int)SharedStats.GetStat(StatKey.ActionRecoverySpeed).Value);
+            
+            
+            var randomTime = Random.Range(1, (int)SharedStats.GetStat(StatKey.Energy).Value);
             _cooldown.Value = randomTime;
         }
 
@@ -66,13 +69,14 @@ namespace Battle.Actors
         public void DestroySelf()
         {
             Animator.SetTrigger(AnimationKey.GetAnimation(AnimationKey.Animation.Death));
-            //Destroy(gameObject);
+            Debug.Log("destroyed"+gameObject.name);
+            Destroy(gameObject);
         }
 
         public void ConsumeAction()
         {
             if (TryGet(AtomicPropertyAPI.CooldownKey, out AtomicVariable<int> cooldownTimer))
-                cooldownTimer.Value = (int)SharedStats.GetStat(StatKey.ActionRecoverySpeed).Value;
+                cooldownTimer.Value = (int)SharedStats.GetStat(StatKey.Energy).Value;
         }
     }
 }

@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using Battle.Actors;
-using Battle.Characters;
 using Configs.Abilities;
 using Configs.Character;
 using Configs.Enums;
+using EventBus.Events;
 using Game.Control;
 using PrimeTween;
 using UnityEngine;
@@ -54,22 +54,22 @@ namespace Battle
             _cursorController = cursorController;
         }
 
-        /*private void OnEnable()
+        private void OnEnable()
         {
-            ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged += OnCharacterChanged;
+            EventBus.EventBus.Subscribe<CharacterTurnEvent>(OnCharacterChanged);
         }
 
         private void OnDisable()
         {
-            ServiceLocator.Instance.BattleController.BattleQueue.OnCharacterChanged -= OnCharacterChanged;
-        }*/
+            EventBus.EventBus.Unsubscribe<CharacterTurnEvent>(OnCharacterChanged);
+        }
 
-        private void OnCharacterChanged(ActorData unit)
+        private void OnCharacterChanged(CharacterTurnEvent evt)
         {
             Clear();
-            if (unit.Owner == Owner.Player)
-                SetHero(unit);
-            var targetScale = unit.Owner == Owner.Player ? Vector3.one : Vector3.zero;
+            if (evt.ActorData.Owner == Owner.Player)
+                SetHero(evt.ActorData);
+            var targetScale = evt.ActorData.Owner == Owner.Player ? Vector3.one : Vector3.zero;
 
             if (targetScale == transform.localScale)
                 return;

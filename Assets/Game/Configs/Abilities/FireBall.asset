@@ -17,6 +17,7 @@ MonoBehaviour:
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 33556251f01a04443a27d557c874eab4,
     type: 3}
+  <EnergyCost>k__BackingField: 7
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 3
   Effects: []
@@ -27,9 +28,9 @@ MonoBehaviour:
     type: 3}
   <HitEffectPoint>k__BackingField: 2
   <DamageAmount>k__BackingField:
-    BonusValue: 0
     Stat: 4
-    StatMultiplier: 1.2
+    BaseValue: 40
+    MultValue: 10
   references:
     version: 2
     RefIds: []

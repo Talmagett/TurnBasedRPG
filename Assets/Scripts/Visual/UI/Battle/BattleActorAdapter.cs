@@ -14,7 +14,6 @@ namespace Visual.UI.Battle
     {
         [SerializeField] private Image iconImage;
         [SerializeField] private TMP_Text turnText;
-        [SerializeField] private TMP_Text healthText;
 
         private ActorData _actorData;
         private AtomicVariable<int> _cooldown;
@@ -26,18 +25,13 @@ namespace Visual.UI.Battle
 
             if (!_actorData.TryGet(AtomicPropertyAPI.CooldownKey, out _cooldown))
                 throw new NullReferenceException("No Cooldown Key");
-            if (!_actorData.TryGet(AtomicPropertyAPI.StatsKey, out _stats))
-                throw new NullReferenceException("No Stats Key");
             _cooldown.Subscribe(UpdateCooldownText);
-            _stats.GetStat(StatKey.Health).Subscribe(UpdateHealthText);
             UpdateCooldownText(_cooldown.Value);
-            UpdateHealthText(_stats.GetStat(StatKey.Health).Value);
         }
 
         private void OnDestroy()
         {
             _cooldown.Unsubscribe(UpdateCooldownText);
-            _stats.GetStat(StatKey.Health).Unsubscribe(UpdateHealthText);
         }
 
         private void UpdateCooldownText(int turn)
@@ -47,15 +41,6 @@ namespace Visual.UI.Battle
             {
                 turnText.text = turn == 0 ? "" : turn.ToString();
                 iconImage.color = turn == 0 ? Color.green : Color.white;
-            });
-        }
-
-        private void UpdateHealthText(float value)
-        {
-            if (value <= 0) return;
-            Tween.ShakeLocalRotation(healthText.transform, Vector3.one * 30, 0.2f).OnComplete(() =>
-            {
-                healthText.text = value.ToString();
             });
         }
     }

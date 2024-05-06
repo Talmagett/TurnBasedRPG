@@ -5,7 +5,7 @@ namespace Visual.UI.Battle.UI
 {
     public sealed class TextWidget : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI text;
+        [SerializeField] private TMP_Text text;
 
         public void SetText(string value)
         {

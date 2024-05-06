@@ -15,9 +15,7 @@ namespace Configs.Character
         public int AttackPower;
 
         public int Defense;
-
-        [MinValue(1)] public int AttackSpeed = 1;
-
+        
         [PropertyRange(0, 1)] public float Evasion;
 
         [PropertyRange(0, 1)] public float CriticalChance;
@@ -34,7 +32,7 @@ namespace Configs.Character
             stats.Add(StatKey.Mana, Mana);
             stats.Add(StatKey.AttackPower, AttackPower);
             stats.Add(StatKey.Defense, Defense);
-            stats.Add(StatKey.ActionRecoverySpeed, 1);
+            stats.Add(StatKey.Energy, 1);
             stats.Add(StatKey.Evasion, Evasion);
             stats.Add(StatKey.CriticalChance, CriticalChance);
             stats.Add(StatKey.CriticalRate, CriticalRate);

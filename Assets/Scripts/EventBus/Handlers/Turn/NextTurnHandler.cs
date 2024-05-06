@@ -22,6 +22,11 @@ namespace EventBus.Handlers.Turn
 
         protected override void HandleEvent(NextTurnEvent evt)
         {
+            if (evt.CurrentActor != null)
+            {
+                evt.CurrentActor.Deselect();
+            }
+
             // if (_battleState != BattleState.Going)
             // {
             //     //FinishBattle();
@@ -46,10 +51,11 @@ namespace EventBus.Handlers.Turn
                 currentUnit = movingUnits.FirstOrDefault(t => t.Owner!= _battleContainer.LastMoved);
             }
 
+            _battleContainer.LastMoved = currentUnit!.Owner;
+            
             if (currentUnit!.TryGet("BattleActor", out BattleActor battleActor))
             {
-                _battleContainer.LastMoved = currentUnit.Owner;
-                Debug.Log(currentUnit.ID);
+                EventBus.RaiseEvent(new CharacterTurnEvent(currentUnit));
                 currentUnit.Select();
                 battleActor.Run();
             }

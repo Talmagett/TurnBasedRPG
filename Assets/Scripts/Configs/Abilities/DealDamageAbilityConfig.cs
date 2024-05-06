@@ -33,11 +33,8 @@ namespace Configs.Abilities
             _source = source;
             _target = target;
             _config = config;
-            Init();
-        }
-
-        private void Init()
-        {
+            EventBus.EventBus.RaiseEvent(new ConsumeEnergyEvent(source,config.EnergyCost));
+            
             _source.AnimatorDispatcher.AnimationEvent += Melee;
             _source.Animator.SetTrigger(AnimationKey.GetAnimation(_config.AnimationKey));
         }
@@ -55,7 +52,7 @@ namespace Configs.Abilities
             _source.ConsumeAction();
 
             _source.Deselect();
-            EventBus.EventBus.RaiseEvent(new NextTurnEvent());
+            EventBus.EventBus.RaiseEvent(new DelayedEvent(new NextTurnEvent(),1f));
         }
     }
 }
