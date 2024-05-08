@@ -32,7 +32,6 @@ namespace Configs.Character
             stats.Add(StatKey.Mana, Mana);
             stats.Add(StatKey.AttackPower, AttackPower);
             stats.Add(StatKey.Defense, Defense);
-            stats.Add(StatKey.Energy, 1);
             stats.Add(StatKey.Evasion, Evasion);
             stats.Add(StatKey.CriticalChance, CriticalChance);
             stats.Add(StatKey.CriticalRate, CriticalRate);

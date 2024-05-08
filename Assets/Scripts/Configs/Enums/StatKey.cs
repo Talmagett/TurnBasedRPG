@@ -8,7 +8,6 @@ namespace Configs.Enums
         Mana,
         AttackPower,
         Defense,
-        Energy,
         Evasion,
         CriticalChance,
         CriticalRate

@@ -59,7 +59,7 @@ namespace Configs.Abilities
 
         private void OnHit()
         {
-            var statValue = _source.SharedStats.GetStat(_config.DamageAmount.Stat);
+            var statValue = _source.Get<SharedCharacterStats>(AtomicAPI.SharedStats).GetStat(_config.DamageAmount.Stat);
             var damage = (int)(_config.DamageAmount.BaseValue + _config.DamageAmount.MultValue * statValue.Value);
 
             EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
@@ -67,10 +67,8 @@ namespace Configs.Abilities
             EventBus.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HitEffect));
 
             _source.AnimatorDispatcher.AnimationEvent -= Shoot;
-            _source.ConsumeAction();
 
-            _source.Deselect();
-            EventBus.EventBus.RaiseEvent(new DelayedEvent(new NextTurnEvent(),1f));
+            EventBus.EventBus.RaiseEvent(new FinishTurnEvent(_source));
         }
     }
 }

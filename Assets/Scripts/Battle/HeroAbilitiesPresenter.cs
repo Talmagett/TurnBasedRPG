@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Battle.Actors;
+using Battle.Actors.Model;
 using Configs.Abilities;
 using Configs.Character;
 using Configs.Enums;
@@ -39,8 +40,8 @@ namespace Battle
 
             switch (_castingAbility.TargetType)
             {
-                case AbilityTargetType.Ally when actorData.Owner == _hero.Owner:
-                case AbilityTargetType.Enemy when actorData.Owner != _hero.Owner:
+                case AbilityTargetType.Ally when actorData.Get<Ownership>(AtomicAPI.Owner).Owner == _hero.Get<Ownership>(AtomicAPI.Owner).Owner:
+                case AbilityTargetType.Enemy when actorData.Get<Ownership>(AtomicAPI.Owner).Owner != _hero.Get<Ownership>(AtomicAPI.Owner).Owner:
                 case AbilityTargetType.Any:
                     CastAbility(_castingAbility, actorData);
                     break;
@@ -67,9 +68,9 @@ namespace Battle
         private void OnCharacterChanged(CharacterTurnEvent evt)
         {
             Clear();
-            if (evt.ActorData.Owner == Owner.Player)
+            if (evt.ActorData.Get<Ownership>(AtomicAPI.Owner).Owner == Owner.Player)
                 SetHero(evt.ActorData);
-            var targetScale = evt.ActorData.Owner == Owner.Player ? Vector3.one : Vector3.zero;
+            var targetScale = evt.ActorData.Get<Ownership>(AtomicAPI.Owner).Owner == Owner.Player ? Vector3.one : Vector3.zero;
 
             if (targetScale == transform.localScale)
                 return;
@@ -81,9 +82,9 @@ namespace Battle
         {
             _isChoosing = false;
             _hero = hero;
-            var heroAbilities = _abilitiesStorage.AbilitiesPacks.FirstOrDefault(t => t.ID == _hero.ID);
+            var heroAbilities = _abilitiesStorage.AbilitiesPacks.FirstOrDefault(t => t.Name == _hero.Get<string>(AtomicAPI.Name));
             if (heroAbilities == null)
-                throw new NullReferenceException($"No ability pack with this id {_hero.ID}");
+                throw new NullReferenceException($"No ability pack with this id {_hero.Get(AtomicAPI.Name)}");
 
             foreach (var ability in heroAbilities.Abilities)
             {

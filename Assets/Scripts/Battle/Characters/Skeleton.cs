@@ -1,4 +1,6 @@
+using Battle.Actors.Model;
 using Configs.Abilities;
+using Configs.Enums;
 using UnityEngine;
 
 namespace Battle.Characters
@@ -9,7 +11,7 @@ namespace Battle.Characters
         
         public override void Run()
         {
-            var target = BattleContainer.GetRandomEnemy(ActorData.Owner);
+            var target = BattleContainer.GetRandomEnemy(ActorData);
             biteAttack.GetAbilityClone(ActorData, target);
         }
     }

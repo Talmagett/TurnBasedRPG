@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Battle.Actors;
+using Battle.Actors.Model;
 using Configs.Enums;
 using JetBrains.Annotations;
 using Random=UnityEngine.Random;
@@ -24,20 +25,26 @@ namespace Battle
         {
             _units.Remove(unit);
             unit.DestroySelf();
-            if(_units.Count(t=>t.Owner==unit.Owner)==0)
-                OnUnitsCleared?.Invoke(unit.Owner);
+            if(_units.Count(t=>t.Get<Ownership>(AtomicAPI.Owner)==unit.Get<Ownership>(AtomicAPI.Owner))==0)
+                OnUnitsCleared?.Invoke(unit.Get<Ownership>(AtomicAPI.Owner).Owner);
         }
         
-        public ActorData GetRandomEnemy(Owner actorDataOwner)
+        public ActorData GetRandomEnemy(ActorData actorData)
         {
-            var enemies = _units.Where(t => t.Owner != actorDataOwner).ToArray();
+            if (!actorData.TryGet(AtomicAPI.Owner, out Ownership owner))
+                throw new NullReferenceException($"No ownership component is {actorData.Get(AtomicAPI.Name)}");
+            
+            var enemies = _units.Where(t => t.Get<Ownership>(AtomicAPI.Owner) != owner).ToArray();
             var rand = Random.Range(0, enemies.Length);
             return enemies[rand];
         }
         
-        public ActorData GetRandomAlly(Owner actorDataOwner)
+        public ActorData GetRandomAlly(ActorData actorData)
         {
-            var enemies = _units.Where(t => t.Owner == actorDataOwner).ToArray();
+            if (!actorData.TryGet(AtomicAPI.Owner, out Ownership owner))
+                throw new NullReferenceException($"No ownership component is {actorData.Get(AtomicAPI.Name)}");
+
+            var enemies = _units.Where(t => t.Get<Ownership>(AtomicAPI.Owner) == owner).ToArray();
             var rand = Random.Range(0, enemies.Length);
             return enemies[rand];
         }

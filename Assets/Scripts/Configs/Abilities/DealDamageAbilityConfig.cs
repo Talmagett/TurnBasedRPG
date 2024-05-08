@@ -12,10 +12,6 @@ namespace Configs.Abilities
     [CreateAssetMenu(fileName = "New Ability", menuName = "SO/Ability/DealDamageAbility")]
     public class DealDamageAbilityConfig : AbilityConfig
     {
-        [field: SerializeField] public ParticleSystem HitEffect { get; private set; }
-        [field: SerializeField] public BodyParts.Key HitEffectPoint { get; private set; }
-        [field: SerializeField] public AbilityStat DamageAmount { get; private set; }
-
         public override IAbility GetAbilityClone(ActorData source, ActorData target)
         {
             return new DealDamageAbility(source, target, this);
@@ -41,18 +37,13 @@ namespace Configs.Abilities
 
         private void Melee()
         {
-            var statValue = _source.SharedStats.GetStat(_config.DamageAmount.Stat);
-            var damage = (int)(_config.DamageAmount.BaseValue + _config.DamageAmount.MultValue * statValue.Value);
-
-            EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
-            var effectPoint = _target.BodyParts.GetPoint(_config.HitEffectPoint);
-            EventBus.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HitEffect));
-
             _source.AnimatorDispatcher.AnimationEvent -= Melee;
-            _source.ConsumeAction();
-
-            _source.Deselect();
-            EventBus.EventBus.RaiseEvent(new DelayedEvent(new NextTurnEvent(),1f));
+            foreach (var effect in _config.Effects)
+            {
+                effect.Source = _source;
+                effect.Target = _target;
+                EventBus.EventBus.RaiseEvent(effect);
+            }
         }
     }
 }

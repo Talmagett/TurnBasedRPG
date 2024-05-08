@@ -1,6 +1,7 @@
 using System;
 using Configs.Abilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Configs.Character
 {
@@ -12,7 +13,7 @@ namespace Configs.Character
         [Serializable]
         public class AbilitiesPack
         {
-            public string ID;
+            public string Name;
             public AbilityConfig[] Abilities;
         }
     }

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Atomic.Elements;
 using Battle.Actors;
+using Battle.Actors.Model;
 using Battle.Characters;
 using Configs;
 using Configs.Enums;
@@ -15,6 +17,7 @@ using Sirenix.Utilities;
 using UnityEngine;
 using Visual.UI;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Battle
 {
@@ -100,7 +103,7 @@ namespace Battle
             {
                 var unitData = _heroParty.HeroDataArray[i];
                 var position = -(_heroParty.HeroDataArray.Length - 1) / 2f + i;
-                var unit = SpawnUnit(unitData.Prefab, environment.PlayerSpawnPosition,Owner.Player, unitData.ID, unitData.Icon,
+                var unit = SpawnUnit(unitData.Prefab, environment.PlayerSpawnPosition,Owner.Player, unitData.Name, unitData.CharacterConfig.Icon,
                     unitData.Stats.GetAllStats());
                 unit.transform.position += Vector3.forward*position*2;
                 _battleContainer.AddUnit(unit);
@@ -110,7 +113,7 @@ namespace Battle
             {
                 var unitData = enemyRiftConfig.Enemies[i];
                 var position = -(enemyRiftConfig.Enemies.Length - 1) / 2f + i;
-                var unit = SpawnUnit(unitData.Prefab,environment.EnemySpawnPosition ,Owner.Enemy, unitData.ID, unitData.Icon,
+                var unit = SpawnUnit(unitData.Prefab,environment.EnemySpawnPosition ,Owner.Enemy, unitData.Name, unitData.Icon,
                     unitData.Stats.CloneStats());
                 unit.transform.position += Vector3.forward*position*2;
                 _battleContainer.AddUnit(unit);
@@ -123,12 +126,19 @@ namespace Battle
             });
         }
 
-        private ActorData SpawnUnit(ActorData prefab, Transform parent, Owner owner, string id, Sprite icon, Dictionary<StatKey, float> stats)
+        private ActorData SpawnUnit(ActorData prefab, Transform parent, Owner owner, string characterName, Sprite icon, Dictionary<StatKey, float> stats)
         {
             var actorData = _diContainer.InstantiatePrefab(prefab,parent).GetComponent<ActorData>();
-            actorData.InitStats(stats);
-            actorData.SetOwner(owner);
-            actorData.Setup(id, icon);
+            actorData.AddProperty(AtomicAPI.Owner,new Ownership(owner));
+            actorData.AddProperty(AtomicAPI.Name, characterName);
+            var attack = new Attack
+            {
+                energy = new AtomicVariable<int>(Random.Range(0, 6))
+            };
+            actorData.AddProperty(AtomicAPI.Attack, attack);
+            actorData.AddProperty(AtomicAPI.SharedStats, new SharedCharacterStats(stats));
+            //actorData.AddProperty(AtomicAPI.Description, "Description Lores Insum");
+            //actorData.AddProperty(AtomicAPI.Icon, icon);
             return actorData;
         }
     }

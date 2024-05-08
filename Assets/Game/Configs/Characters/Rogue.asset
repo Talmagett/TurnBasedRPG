@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c365bb021b140cd8e1341e4096d4750, type: 3}
   m_Name: Rogue
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: rogue
-  <Icon>k__BackingField: {fileID: 21300000, guid: 97701f4e22a0a6643a86510c70843aff,
+  <Name>k__BackingField: Shumkar
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 3fd9d307296c6444cbac48674d27613c,
     type: 3}
   <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: e733643b39014984abc6bbf12068064d,
     type: 3}

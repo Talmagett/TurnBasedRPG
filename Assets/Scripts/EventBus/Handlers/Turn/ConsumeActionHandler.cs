@@ -10,10 +10,10 @@ namespace EventBus.Handlers.Turn
     {
         protected override void HandleEvent(ConsumeEnergyEvent evt)
         {
-            if (!evt.Entity.TryGet(AtomicPropertyAPI.StatsKey, out SharedCharacterStats stats))
+            if (!evt.Entity.TryGet(AtomicAPI.Attack, out Attack energy))
                 throw new NullReferenceException("no energy");
             
-            stats.SetStat(StatKey.Energy, evt.Cost);
+            energy.energy.Value=evt.Cost;
         }
     }
 }

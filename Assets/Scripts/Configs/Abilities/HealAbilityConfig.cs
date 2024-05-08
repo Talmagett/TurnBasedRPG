@@ -41,7 +41,7 @@ namespace Configs.Abilities
 
         private void Heal()
         {
-            var statValue = _source.SharedStats.GetStat(_config.HealAmount.Stat);
+            var statValue = _source.Get<SharedCharacterStats>(AtomicAPI.SharedStats).GetStat(_config.HealAmount.Stat);
             var damage = (int)(_config.HealAmount.BaseValue + _config.HealAmount.MultValue * statValue.Value);
 
             EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, -damage));
@@ -49,10 +49,8 @@ namespace Configs.Abilities
             EventBus.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HealEffect));
 
             _source.AnimatorDispatcher.AnimationEvent -= Heal;
-            _source.ConsumeAction();
             
-            _source.Deselect();
-            EventBus.EventBus.RaiseEvent(new DelayedEvent(new NextTurnEvent(),1f));
+            EventBus.EventBus.RaiseEvent(new FinishTurnEvent(_source));
         }
     }
 }

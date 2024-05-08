@@ -2,6 +2,7 @@
 using System.Linq;
 using Atomic.Elements;
 using Battle;
+using Battle.Actors.Model;
 using Battle.Characters;
 using Configs.Enums;
 using EventBus.Events;
@@ -34,9 +35,9 @@ namespace EventBus.Handlers.Turn
             // }
             var movingUnits = _battleContainer.GetAllCharacters().Where(t =>
             {
-                if (!t.TryGet(AtomicPropertyAPI.CooldownKey, out AtomicVariable<int> cooldown)) return false;
+                if (!t.TryGet(AtomicAPI.Attack, out Attack attack)) return false;
 
-                return cooldown.Value <= 0;
+                return attack.energy.Value <= 0;
             }).ToList();
 
             if (!movingUnits.Any())
@@ -46,21 +47,14 @@ namespace EventBus.Handlers.Turn
             }
             var currentUnit = movingUnits[0];
 
-            if (movingUnits.Any(t => t.Owner != _battleContainer.LastMoved))
+            if (movingUnits.Any(t => t.Get<Ownership>(AtomicAPI.Owner).Owner != _battleContainer.LastMoved))
             {
-                currentUnit = movingUnits.FirstOrDefault(t => t.Owner!= _battleContainer.LastMoved);
+                currentUnit = movingUnits.FirstOrDefault(t => t.Get<Ownership>(AtomicAPI.Owner).Owner!= _battleContainer.LastMoved);
             }
 
-            _battleContainer.LastMoved = currentUnit!.Owner;
-            
-            if (currentUnit!.TryGet("BattleActor", out BattleActor battleActor))
-            {
-                EventBus.RaiseEvent(new CharacterTurnEvent(currentUnit));
-                currentUnit.Select();
-                battleActor.Run();
-            }
-            else
-                throw new NullReferenceException($"No battleActor in unit {currentUnit.ID}");
+            _battleContainer.LastMoved = currentUnit!.Get<Ownership>(AtomicAPI.Owner).Owner;
+            EventBus.RaiseEvent(new CharacterTurnEvent(currentUnit));
+            EventBus.RaiseEvent(new StartTurnEvent(currentUnit));
         }
     }
 }
