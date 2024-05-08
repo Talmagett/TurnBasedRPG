@@ -1,8 +1,8 @@
 ﻿using System;
-using Entities;
+using Atomic.Objects;
 using UnityEngine;
 
-namespace Battle.EventBus.Game.Events.Effects
+namespace EventBus.Events.Effects
 {
     [Serializable]
     public struct StunEffectEvent : IEffect
@@ -11,7 +11,7 @@ namespace Battle.EventBus.Game.Events.Effects
 
         [field: SerializeField] public ParticleSystem HitEffect { get; private set; }
 
-        public IEntity Source { get; set; }
-        public IEntity Target { get; set; }
+        public IAtomicObject Source { get; set; }
+        public IAtomicObject Target { get; set; }
     }
 }
