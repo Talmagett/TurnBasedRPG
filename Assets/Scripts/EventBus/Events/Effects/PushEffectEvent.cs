@@ -1,12 +1,12 @@
 ﻿using System;
-using Entities;
+using Atomic.Objects;
 
 namespace EventBus.Events.Effects
 {
     [Serializable]
     public struct PushEffectEvent : IEffect
     {
-        public IEntity Source { get; set; }
-        public IEntity Target { get; set; }
+        public IAtomicObject Source { get; set; }
+        public IAtomicObject Target { get; set; }
     }
 }

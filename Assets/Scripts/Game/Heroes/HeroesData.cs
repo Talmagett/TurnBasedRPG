@@ -3,12 +3,11 @@ using Battle.Actors;
 using Configs;
 using Configs.Character;
 using Configs.Enums;
-using Entities;
 using UnityEngine;
 
 namespace Game.Heroes
 {
-    public class HeroesData : ListEntity
+    public class HeroesData
     {
         public readonly Sprite Icon;
         public readonly string ID;

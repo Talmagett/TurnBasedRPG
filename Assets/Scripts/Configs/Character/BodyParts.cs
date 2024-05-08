@@ -17,36 +17,36 @@ namespace Configs.Character
             LFeet
         }
 
-        [SerializeField] private Transform root;
-        [SerializeField] private Transform head;
-        [SerializeField] private Transform chest;
-        [SerializeField] private Transform rHand;
-        [SerializeField] private Transform lHand;
-        [SerializeField] private Transform rFeet;
-        [SerializeField] private Transform lFeet;
+        public Transform Root;
+        public Transform Head;
+        public Transform Chest;
+        public Transform RHand;
+        public Transform LHand;
+        public Transform RFeet;
+        public Transform LFeet;
 
         public void Setup()
         {
-            root = GameObject.Find("root")?.transform;
-            head = GameObject.Find("head")?.transform;
-            chest = GameObject.Find("spine_02")?.transform;
-            rHand = GameObject.Find("hand_r")?.transform;
-            lHand = GameObject.Find("hand_l")?.transform;
-            rFeet = GameObject.Find("ball_r")?.transform;
-            lFeet = GameObject.Find("ball_l")?.transform;
+            Root = GameObject.Find("root")?.transform;
+            Head = GameObject.Find("head")?.transform;
+            Chest = GameObject.Find("spine_02")?.transform;
+            RHand = GameObject.Find("hand_r")?.transform;
+            LHand = GameObject.Find("hand_l")?.transform;
+            RFeet = GameObject.Find("ball_r")?.transform;
+            LFeet = GameObject.Find("ball_l")?.transform;
         }
 
         public Transform GetPoint(Key key)
         {
             return key switch
             {
-                Key.Root => root,
-                Key.Head => head,
-                Key.Chest => chest,
-                Key.RHand => rHand,
-                Key.LHand => lHand,
-                Key.RFeet => rFeet,
-                Key.LFeet => lFeet,
+                Key.Root => Root,
+                Key.Head => Head,
+                Key.Chest => Chest,
+                Key.RHand => RHand,
+                Key.LHand => LHand,
+                Key.RFeet => RFeet,
+                Key.LFeet => LFeet,
                 _ => null
             };
         }

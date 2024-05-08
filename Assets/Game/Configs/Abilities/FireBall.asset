@@ -30,7 +30,7 @@ MonoBehaviour:
   <DamageAmount>k__BackingField:
     Stat: 4
     BaseValue: 40
-    MultValue: 10
+    MultValue: 1.1
   references:
     version: 2
     RefIds: []

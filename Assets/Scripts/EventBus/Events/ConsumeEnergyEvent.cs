@@ -1,5 +1,4 @@
 ﻿using Atomic.Objects;
-using Entities;
 
 namespace EventBus.Events
 {

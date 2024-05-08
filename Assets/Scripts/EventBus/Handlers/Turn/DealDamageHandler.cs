@@ -20,7 +20,7 @@ namespace EventBus.Handlers.Turn
             Debug.Log(stats.GetStat(StatKey.Health).Value+" after");
             
             if (stats.GetStat(StatKey.Health).Value <= 0)
-                EventBus.RaiseEvent(new DestroyEvent(evt.Target));
+                EventBus.RaiseEvent(new DestroyAtomicEvent(evt.Target));
         }
     }
 }

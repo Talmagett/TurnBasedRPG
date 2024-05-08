@@ -30,17 +30,13 @@ namespace EventBus
 
             builder.BindInterfacesAndSelfTo<DealDamageEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<PushEffectHandler>().AsSingle().NonLazy();*/
-
-            //builder.Bind<TurnPipeline>().AsSingle().NonLazy();
-            //builder.BindInterfacesAndSelfTo<TurnPipelineInstaller>().AsSingle().NonLazy();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureVisual(DiContainer builder)
         {
-            //builder.Bind<VisualPipeline>().AsSingle().NonLazy();
-            //builder.BindInterfacesAndSelfTo<VisualParticleHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<DestroyVisualHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<VisualParticleHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<DestroyAtomicHandler>().AsSingle().NonLazy();
 /*
             builder.BindInterfacesAndSelfTo<MoveVisualHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DealDamageVisualHandler>().AsSingle().NonLazy();
@@ -48,9 +44,4 @@ namespace EventBus
             builder.BindInterfacesAndSelfTo<CollideVisualHandler>().AsSingle().NonLazy();*/
         }
     }
-
-    /*
-            ServiceLocator.Instance.BattleController.BattleQueue.CurrentCharacter.ActorData.Deselect();
-            ServiceLocator.Instance.BattleController.NextTurn();
-     */
 }

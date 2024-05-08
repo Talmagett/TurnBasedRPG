@@ -157,15 +157,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5660875707898932032}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5656636505072836104 stripped
+--- !u!4 &5656753776208303460 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4240373206201672, guid: ad5d192ff58055741beb3d8e0e2466e6,
+  m_CorrespondingSourceObject: {fileID: 4411103250152996, guid: ad5d192ff58055741beb3d8e0e2466e6,
     type: 3}
   m_PrefabInstance: {fileID: 5660875707898932032}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5656946335458621116 stripped
+--- !u!4 &5657020776303980574 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4216415842295292, guid: ad5d192ff58055741beb3d8e0e2466e6,
+  m_CorrespondingSourceObject: {fileID: 4149669432023902, guid: ad5d192ff58055741beb3d8e0e2466e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 5660875707898932032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5657021403583429718 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4150141966292758, guid: ad5d192ff58055741beb3d8e0e2466e6,
     type: 3}
   m_PrefabInstance: {fileID: 5660875707898932032}
   m_PrefabAsset: {fileID: 0}
@@ -199,12 +205,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5660875707898932032}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5665469295332326640 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4699553565398960, guid: ad5d192ff58055741beb3d8e0e2466e6,
-    type: 3}
-  m_PrefabInstance: {fileID: 5660875707898932032}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &5754445973576422424 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95875667245612888, guid: ad5d192ff58055741beb3d8e0e2466e6,
@@ -229,6 +229,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 6005569666195928798, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
       propertyPath: <Animator>k__BackingField
@@ -236,67 +241,37 @@ PrefabInstance:
       objectReference: {fileID: 5754445973576422424}
     - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
-      propertyPath: <BodyParts>k__BackingField.head
+      propertyPath: <BodyParts>k__BackingField.Head
       value: 
       objectReference: {fileID: 5656597717455694418}
     - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
-      propertyPath: <BodyParts>k__BackingField.root
+      propertyPath: <BodyParts>k__BackingField.Root
       value: 
       objectReference: {fileID: 5665234635159609778}
     - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
-      propertyPath: <BodyParts>k__BackingField.chest
+      propertyPath: <BodyParts>k__BackingField.Chest
       value: 
-      objectReference: {fileID: 5665469295332326640}
+      objectReference: {fileID: 5657020776303980574}
     - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
-      propertyPath: <BodyParts>k__BackingField.lFeet
+      propertyPath: <BodyParts>k__BackingField.LFeet
       value: 
-      objectReference: {fileID: 5656636505072836104}
+      objectReference: {fileID: 5657021403583429718}
     - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
-      propertyPath: <BodyParts>k__BackingField.lHand
-      value: 
-      objectReference: {fileID: 5656606058745935820}
-    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
-        type: 3}
-      propertyPath: <BodyParts>k__BackingField.rFeet
-      value: 
-      objectReference: {fileID: 5656946335458621116}
-    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
-        type: 3}
-      propertyPath: <BodyParts>k__BackingField.rHand
-      value: 
-      objectReference: {fileID: 5665230319831135276}
-    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
-        type: 3}
-      propertyPath: <BodyParts>k__BackingField.<Head>k__BackingField
-      value: 
-      objectReference: {fileID: 5656597717455694418}
-    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
-        type: 3}
-      propertyPath: <BodyParts>k__BackingField.<Chest>k__BackingField
-      value: 
-      objectReference: {fileID: 5665469295332326640}
-    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
-        type: 3}
-      propertyPath: <BodyParts>k__BackingField.<LeftFeet>k__BackingField
-      value: 
-      objectReference: {fileID: 5656636505072836104}
-    - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
-        type: 3}
-      propertyPath: <BodyParts>k__BackingField.<LeftHand>k__BackingField
+      propertyPath: <BodyParts>k__BackingField.LHand
       value: 
       objectReference: {fileID: 5656606058745935820}
     - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
-      propertyPath: <BodyParts>k__BackingField.<RightFeet>k__BackingField
+      propertyPath: <BodyParts>k__BackingField.RFeet
       value: 
-      objectReference: {fileID: 5656946335458621116}
+      objectReference: {fileID: 5656753776208303460}
     - target: {fileID: 8380043677751829442, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
-      propertyPath: <BodyParts>k__BackingField.<RightHand>k__BackingField
+      propertyPath: <BodyParts>k__BackingField.RHand
       value: 
       objectReference: {fileID: 5665230319831135276}
     - target: {fileID: 8671160929339997737, guid: 00eb47580f7af8147a76369fe7bf55b6,

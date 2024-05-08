@@ -35,20 +35,20 @@ namespace Configs.Abilities
             _config = config;
             EventBus.EventBus.RaiseEvent(new ConsumeEnergyEvent(source,config.EnergyCost));
             
-            _source.AnimatorDispatcher.AnimationEvent += Melee;
+            _source.AnimatorDispatcher.AnimationEvent += Heal;
             _source.Animator.SetTrigger(AnimationKey.GetAnimation(_config.AnimationKey));
         }
 
-        private void Melee()
+        private void Heal()
         {
             var statValue = _source.SharedStats.GetStat(_config.HealAmount.Stat);
             var damage = (int)(_config.HealAmount.BaseValue + _config.HealAmount.MultValue * statValue.Value);
 
-            EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
+            EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, -damage));
             var effectPoint = _target.BodyParts.GetPoint(_config.HealEffectPoint);
             EventBus.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HealEffect));
 
-            _source.AnimatorDispatcher.AnimationEvent -= Melee;
+            _source.AnimatorDispatcher.AnimationEvent -= Heal;
             _source.ConsumeAction();
             
             _source.Deselect();

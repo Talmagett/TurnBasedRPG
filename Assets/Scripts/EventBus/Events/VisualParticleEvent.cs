@@ -6,11 +6,13 @@ namespace EventBus.Events
     {
         public readonly Transform Target;
         public readonly ParticleSystem Particle;
+        public readonly float Duration;
 
-        public VisualParticleEvent(Transform target, ParticleSystem particle)
+        public VisualParticleEvent(Transform target, ParticleSystem particle, float duration=2)
         {
             Target = target;
             Particle = particle;
+            Duration = duration;
         }
     }
 }
