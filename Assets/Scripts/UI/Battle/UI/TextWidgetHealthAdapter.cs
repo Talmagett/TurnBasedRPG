@@ -12,8 +12,8 @@ namespace Visual.UI.Battle.UI
     {
         [SerializeField] private TMP_Text healthText;
         [SerializeField] private ActorData entity;
+        
         private SharedCharacterStats _stats;
-
 
         private void Start()
         {

@@ -31,19 +31,21 @@ namespace Configs.Abilities
             _config = config;
             EventBus.EventBus.RaiseEvent(new ConsumeEnergyEvent(source,config.EnergyCost));
             
-            _source.AnimatorDispatcher.AnimationEvent += Melee;
+            _source.AnimatorDispatcher.AnimationEvent += Hit;
             _source.Animator.SetTrigger(AnimationKey.GetAnimation(_config.AnimationKey));
         }
 
-        private void Melee()
+        private void Hit()
         {
-            _source.AnimatorDispatcher.AnimationEvent -= Melee;
+            _source.AnimatorDispatcher.AnimationEvent -= Hit;
             foreach (var effect in _config.Effects)
             {
                 effect.Source = _source;
                 effect.Target = _target;
                 EventBus.EventBus.RaiseEvent(effect);
             }
+            
+            EventBus.EventBus.RaiseEvent(new FinishTurnEvent(_source));
         }
     }
 }

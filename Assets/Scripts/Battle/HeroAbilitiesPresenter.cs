@@ -68,16 +68,28 @@ namespace Battle
         private void OnCharacterChanged(CharacterTurnEvent evt)
         {
             Clear();
-            if (evt.ActorData.Get<Ownership>(AtomicAPI.Owner).Owner == Owner.Player)
+            
+            var owner = evt.ActorData.Get<Ownership>(AtomicAPI.Owner).Owner;
+            if (owner != Owner.Player)
+                Hide();
+            else
+            {
+                Show();
                 SetHero(evt.ActorData);
-            var targetScale = evt.ActorData.Get<Ownership>(AtomicAPI.Owner).Owner == Owner.Player ? Vector3.one : Vector3.zero;
-
-            if (targetScale == transform.localScale)
-                return;
-
-            Tween.Scale(transform, targetScale, 0.2f);
+            }
         }
 
+        private void Show()
+        {
+            Clear();
+            Tween.Scale(transform, Vector3.one, 0.2f);
+        }
+
+        private void Hide()
+        {
+            Tween.Scale(transform, Vector3.zero, 0.2f);
+        }
+        
         private void SetHero(ActorData hero)
         {
             _isChoosing = false;
@@ -99,13 +111,6 @@ namespace Battle
         {
             _castingAbility = abilityConfig;
 
-            if (_castingAbility.TargetType == AbilityTargetType.Self)
-            {
-                CastAbility(_castingAbility, _hero);
-                _cursorController.SetCursor(CursorType.None);
-                return;
-            }
-
             switch (abilityConfig.TargetType)
             {
                 case AbilityTargetType.Ally:
@@ -117,6 +122,12 @@ namespace Battle
                 case AbilityTargetType.Any:
                     _cursorController.SetCursor(CursorType.Any);
                     break;
+                case AbilityTargetType.Self:
+                    CastAbility(_castingAbility, _hero);
+                    _cursorController.SetCursor(CursorType.None);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             _isChoosing = true;
@@ -126,6 +137,7 @@ namespace Battle
         {
             abilityConfig.GetAbilityClone(_hero, actorData);
             _cursorController.SetCursor(CursorType.None);
+            Hide();
         }
 
         private void Clear()

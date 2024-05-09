@@ -16,9 +16,7 @@ namespace Configs.Abilities
     {
         [field: SerializeField] public GameObject Projectile { get; private set; }
         [field: SerializeField] public BodyParts.Key ProjectileShootPoint { get; private set; }
-        [field: SerializeField] public ParticleSystem HitEffect { get; private set; }
         [field: SerializeField] public BodyParts.Key HitEffectPoint { get; private set; }
-        [field: SerializeField] public AbilityStat DamageAmount { get; private set; }
 
         public override IAbility GetAbilityClone(ActorData source, ActorData target)
         {
@@ -56,18 +54,16 @@ namespace Configs.Abilities
                 OnHit();
             });
         }
-
+            
         private void OnHit()
         {
-            var statValue = _source.Get<SharedCharacterStats>(AtomicAPI.SharedStats).GetStat(_config.DamageAmount.Stat);
-            var damage = (int)(_config.DamageAmount.BaseValue + _config.DamageAmount.MultValue * statValue.Value);
-
-            EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, damage));
-            var effectPoint = _target.BodyParts.GetPoint(_config.HitEffectPoint);
-            EventBus.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HitEffect));
-
             _source.AnimatorDispatcher.AnimationEvent -= Shoot;
-
+            foreach (var effect in _config.Effects)
+            {
+                effect.Source = _source;
+                effect.Target = _target;
+                EventBus.EventBus.RaiseEvent(effect);
+            }
             EventBus.EventBus.RaiseEvent(new FinishTurnEvent(_source));
         }
     }

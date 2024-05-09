@@ -12,6 +12,8 @@ namespace Battle.Characters
         public override void Run()
         {
             var target = BattleContainer.GetRandomEnemy(ActorData);
+            Debug.Log(ActorData.Get<Ownership>(AtomicAPI.Owner).Owner);
+            Debug.Log(target.Get<Ownership>(AtomicAPI.Owner).Owner);
             biteAttack.GetAbilityClone(ActorData, target);
         }
     }

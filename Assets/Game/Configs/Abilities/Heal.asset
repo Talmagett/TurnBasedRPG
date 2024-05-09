@@ -20,14 +20,18 @@ MonoBehaviour:
   <EnergyCost>k__BackingField: 4
   <TargetType>k__BackingField: 1
   <AnimationKey>k__BackingField: 4
-  Effects: []
-  <HealEffect>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
-    type: 3}
-  <HealEffectPoint>k__BackingField: 0
-  <HealAmount>k__BackingField:
-    Stat: 0
-    BaseValue: 20
-    MultValue: 0.1
+  Effects:
+  - rid: 5779337889127071816
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5779337889127071816
+      type: {class: DealDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <HitEffect>k__BackingField: {fileID: 3537102440278479908, guid: b10cda179b97ef045a378e9e68932ea1,
+          type: 3}
+        <HitEffectPoint>k__BackingField: 0
+        <DamageAmount>k__BackingField:
+          Stat: 0
+          BaseValue: -10
+          MultValue: -0.2

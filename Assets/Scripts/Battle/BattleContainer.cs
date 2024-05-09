@@ -34,7 +34,7 @@ namespace Battle
             if (!actorData.TryGet(AtomicAPI.Owner, out Ownership owner))
                 throw new NullReferenceException($"No ownership component is {actorData.Get(AtomicAPI.Name)}");
             
-            var enemies = _units.Where(t => t.Get<Ownership>(AtomicAPI.Owner) != owner).ToArray();
+            var enemies = _units.Where(t => t.Get<Ownership>(AtomicAPI.Owner).Owner != owner.Owner).ToArray();
             var rand = Random.Range(0, enemies.Length);
             return enemies[rand];
         }
@@ -44,7 +44,7 @@ namespace Battle
             if (!actorData.TryGet(AtomicAPI.Owner, out Ownership owner))
                 throw new NullReferenceException($"No ownership component is {actorData.Get(AtomicAPI.Name)}");
 
-            var enemies = _units.Where(t => t.Get<Ownership>(AtomicAPI.Owner) == owner).ToArray();
+            var enemies = _units.Where(t => t.Get<Ownership>(AtomicAPI.Owner).Owner != owner.Owner).ToArray();
             var rand = Random.Range(0, enemies.Length);
             return enemies[rand];
         }

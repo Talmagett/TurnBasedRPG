@@ -12,10 +12,6 @@ namespace Configs.Abilities
     [CreateAssetMenu(fileName = "New Ability", menuName = "SO/Ability/DealDamageAbility")]
     public class HealAbilityConfig : AbilityConfig
     {
-        [field: SerializeField] public ParticleSystem HealEffect { get; private set; }
-        [field: SerializeField] public BodyParts.Key HealEffectPoint { get; private set; }
-        [field: SerializeField] public AbilityStat HealAmount { get; private set; }
-
         public override IAbility GetAbilityClone(ActorData source, ActorData target)
         {
             return new HealAbility(source, target, this);
@@ -33,23 +29,22 @@ namespace Configs.Abilities
             _source = source;
             _target = target;
             _config = config;
+            
             EventBus.EventBus.RaiseEvent(new ConsumeEnergyEvent(source,config.EnergyCost));
             
-            _source.AnimatorDispatcher.AnimationEvent += Heal;
+            _source.AnimatorDispatcher.AnimationEvent += Hit;
             _source.Animator.SetTrigger(AnimationKey.GetAnimation(_config.AnimationKey));
         }
 
-        private void Heal()
+        private void Hit()
         {
-            var statValue = _source.Get<SharedCharacterStats>(AtomicAPI.SharedStats).GetStat(_config.HealAmount.Stat);
-            var damage = (int)(_config.HealAmount.BaseValue + _config.HealAmount.MultValue * statValue.Value);
-
-            EventBus.EventBus.RaiseEvent(new DealDamageEvent(_source, _target, -damage));
-            var effectPoint = _target.BodyParts.GetPoint(_config.HealEffectPoint);
-            EventBus.EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, _config.HealEffect));
-
-            _source.AnimatorDispatcher.AnimationEvent -= Heal;
-            
+            _source.AnimatorDispatcher.AnimationEvent -= Hit;
+            foreach (var effect in _config.Effects)
+            {
+                effect.Source = _source;
+                effect.Target = _target;
+                EventBus.EventBus.RaiseEvent(effect);
+            }
             EventBus.EventBus.RaiseEvent(new FinishTurnEvent(_source));
         }
     }

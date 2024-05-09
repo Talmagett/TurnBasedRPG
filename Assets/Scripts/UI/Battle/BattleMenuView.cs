@@ -1,9 +1,10 @@
 using Battle;
 using UnityEngine;
 using UnityEngine.UI;
+using Visual.UI;
 using Zenject;
 
-namespace Visual.UI.Battle
+namespace UI.Battle
 {
     public class BattleMenuView : MonoBehaviour
     {

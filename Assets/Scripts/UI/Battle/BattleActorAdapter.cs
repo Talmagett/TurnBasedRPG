@@ -1,5 +1,4 @@
 using System;
-using Atomic.Elements;
 using Battle.Actors;
 using Battle.Actors.Model;
 using Configs;
@@ -9,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Visual.UI.Battle
+namespace UI.Battle
 {
     public class BattleActorAdapter : MonoBehaviour
     {
