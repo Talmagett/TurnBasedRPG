@@ -6,12 +6,12 @@ namespace Game.Heroes
     [UsedImplicitly]
     public class HeroParty
     {
-        public readonly HeroesData[] HeroDataArray;
+        public readonly Hero[] HeroDataArray;
 
         public HeroParty(CharacterConfig[] configs)
         {
-            HeroDataArray = new HeroesData[configs.Length];
-            for (var i = 0; i < configs.Length; i++) HeroDataArray[i] = new HeroesData(configs[i]);
+            HeroDataArray = new Hero[configs.Length];
+            for (var i = 0; i < configs.Length; i++) HeroDataArray[i] = new Hero(configs[i]);
         }
     }
 }
