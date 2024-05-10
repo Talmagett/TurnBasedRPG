@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22487d842414666b12f9ae5a7f89099, type: 3}
+  m_Name: HealthPotion
+  m_EditorClassIdentifier: 
+  item:
+    name: HealthPotion
+    flags: 10
+    components:
+    - rid: 2416527777508622398
+  references:
+    version: 2
+    RefIds:
+    - rid: 2416527777508622398
+      type: {class: StatAdditive, ns: Configs.Abilities.Attributes, asm: Assembly-CSharp}
+      data:
+        Stat: 1
+        Value: 50
