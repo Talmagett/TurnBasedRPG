@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Tools
+namespace Modules.Utils
 {
     public static class Extentions
     {

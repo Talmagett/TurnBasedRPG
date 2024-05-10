@@ -13,15 +13,19 @@ MonoBehaviour:
   m_Name: IronSword
   m_EditorClassIdentifier: 
   item:
-    name: 
-    flags: 0
+    name: Iron Sword
+    flags: 12
     components:
-    - rid: 625097725440950274
+    - rid: 2416527777508622396
   references:
     version: 2
     RefIds:
-    - rid: 625097725440950274
+    - rid: 2416527777508622396
       type: {class: DealDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
-        <ExtraDamage>k__BackingField: 0
         <HitEffect>k__BackingField: {fileID: 0}
+        <HitEffectPoint>k__BackingField: 0
+        <DamageAmount>k__BackingField:
+          Stat: 4
+          BaseValue: 0
+          MultValue: 0

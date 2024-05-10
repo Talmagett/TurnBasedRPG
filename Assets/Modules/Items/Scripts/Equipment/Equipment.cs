@@ -2,34 +2,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sample
+namespace Modules.Items.Scripts.Equipment
 {
     [Serializable]
     public sealed class Equipment
     {
-        private readonly Dictionary<EquipmentType, Item> _equipment = new();
+        /*private readonly Dictionary<EquipmentType, Item.Item> _equipment = new();
 
-        public event Action<Item> OnItemEquipped;
-        public event Action<Item> OnItemUnequipped;
+        public event Action<Item.Item> OnItemEquipped;
+        public event Action<Item.Item> OnItemUnequipped;
 
-        public void Setup(params KeyValuePair<EquipmentType, Item>[] items)
+        public void Setup(params KeyValuePair<EquipmentType, Item.Item>[] items)
         {
             foreach (var itemPair in items) EquipItem(itemPair.Key, itemPair.Value);
         }
 
-        private Item GetItem(EquipmentType type)
+        private Item.Item GetItem(EquipmentType type)
         {
             return !_equipment.ContainsKey(type) ? null : _equipment[type];
         }
 
-        public bool TryGetItem(EquipmentType type, out Item result)
+        public bool TryGetItem(EquipmentType type, out Item.Item result)
         {
             var hasItem = HasItem(type);
             result = GetItem(type);
             return hasItem;
         }
 
-        public void UnequipItem(EquipmentType type, Item item)
+        public void UnequipItem(EquipmentType type, Item.Item item)
         {
             if (!_equipment.ContainsKey(type)) return;
 
@@ -37,7 +37,7 @@ namespace Sample
             OnItemUnequipped?.Invoke(item);
         }
 
-        public void EquipItem(EquipmentType type, Item item)
+        public void EquipItem(EquipmentType type, Item.Item item)
         {
             if (HasItem(type)) UnequipItem(type, _equipment[type]);
 
@@ -50,21 +50,21 @@ namespace Sample
             return _equipment.ContainsKey(type);
         }
 
-        public KeyValuePair<EquipmentType, Item>[] GetItems()
+        public KeyValuePair<EquipmentType, Item.Item>[] GetItems()
         {
-            return _equipment.Select(item => new KeyValuePair<EquipmentType, Item>(item.Key, item.Value)).ToArray();
+            return _equipment.Select(item => new KeyValuePair<EquipmentType, Item.Item>(item.Key, item.Value)).ToArray();
         }
 
-        public void EquipItem(Item item)
+        public void EquipItem(Item.Item item)
         {
             var equipmentType = item.GetComponent<EquipmentTypeComponent>();
             EquipItem(equipmentType.Type, item);
         }
 
-        public void UnequipItem(Item item)
+        public void UnequipItem(Item.Item item)
         {
             var equipmentType = item.GetComponent<EquipmentTypeComponent>();
             UnequipItem(equipmentType.Type, item);
-        }
+        }*/
     }
 }

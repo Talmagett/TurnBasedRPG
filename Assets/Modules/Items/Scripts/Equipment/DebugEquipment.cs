@@ -1,8 +1,10 @@
+using Modules.Items.Scripts.Item;
+using Modules.Items.Scripts.ItemModule;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Sample
+namespace Modules.Items.Scripts.Equipment
 {
     public class DebugEquipment : MonoBehaviour
     {
@@ -20,7 +22,7 @@ namespace Sample
             var item = itemConfig.item.Clone();
             var equipmentType = item.GetComponent<EquipmentTypeComponent>();
 
-            _equipment.EquipItem(equipmentType.Type,item);
+            //_equipment.EquipItem(equipmentType.Type,item);
         }
 
         [Button]
@@ -29,7 +31,7 @@ namespace Sample
             var item = itemConfig.item.Clone();
             var equipmentType = item.GetComponent<EquipmentTypeComponent>();
             
-            _equipment.UnequipItem(equipmentType.Type,item);
+            //_equipment.UnequipItem(equipmentType.Type,item);
         }
     }
 }

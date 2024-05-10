@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 
-namespace Sample
+namespace Modules.Items.Scripts.Inventory
 {
     //Нельзя менять!
+    [Serializable]
     public sealed class Inventory
     {
-        [ShowInInspector] [ReadOnly] private List<Item> items;
+        [ShowInInspector] [ReadOnly] private List<ItemModule.Item> items;
 
-        public Inventory(params Item[] items)
+        public Inventory(params ItemModule.Item[] items)
         {
-            this.items = new List<Item>(items);
+            this.items = new List<ItemModule.Item>(items);
         }
 
-        public event Action<Item> OnItemAdded;
-        public event Action<Item> OnItemRemoved;
+        public event Action<ItemModule.Item> OnItemAdded;
+        public event Action<ItemModule.Item> OnItemRemoved;
 
-        public void Setup(params Item[] items)
+        [Button]
+        public void Setup(params ItemModule.Item[] items)
         {
-            this.items = new List<Item>(items);
+            this.items = new List<ItemModule.Item>(items);
         }
+        [Button]
 
-        public void AddItem(Item item)
+        public void AddItem(ItemModule.Item item)
         {
             if (!items.Contains(item))
             {
@@ -31,28 +34,31 @@ namespace Sample
                 OnItemAdded?.Invoke(item);
             }
         }
+        [Button]
 
-        public void RemoveItem(Item item)
+        public void RemoveItem(ItemModule.Item item)
         {
             if (items.Remove(item)) OnItemRemoved?.Invoke(item);
         }
+        [Button]
 
         public void RemoveItems(string name, int count)
         {
             for (var i = 0; i < count; i++) RemoveItem(name);
         }
+        [Button]
 
         public void RemoveItem(string name)
         {
             if (FindItem(name, out var item)) RemoveItem(item);
         }
 
-        public List<Item> GetItems()
+        public List<ItemModule.Item> GetItems()
         {
             return items.ToList();
         }
 
-        public bool FindItem(string name, out Item result)
+        public bool FindItem(string name, out ItemModule.Item result)
         {
             foreach (var inventoryItem in items)
                 if (inventoryItem.Name == name)

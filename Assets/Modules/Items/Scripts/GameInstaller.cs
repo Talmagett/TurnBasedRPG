@@ -1,21 +1,24 @@
 using System.Collections.Generic;
-using Sample;
+using Modules.Items.Scripts.Equipment.EquipmentEffector;
 using Zenject;
 
-public class GameInstaller : MonoInstaller
+namespace Modules.Items.Scripts
 {
-    public override void InstallBindings()
+    public class GameInstaller : MonoInstaller
     {
-        var stats = new KeyValuePair<string, int>[]
+        public override void InstallBindings()
         {
-            new("damage", 10),
-            new("health", 10),
-            new("speed", 10)
-        };
-        Container.Bind<Character>().AsSingle().WithArguments(stats).NonLazy();
+            var stats = new KeyValuePair<string, int>[]
+            {
+                new("damage", 10),
+                new("health", 10),
+                new("speed", 10)
+            };
+            //Container.Bind<Character>().AsSingle().WithArguments(stats).NonLazy();
 
-        Container.Bind<Inventory>().AsSingle().NonLazy();
-        Container.Bind<Equipment>().AsSingle().NonLazy();
-        Container.Bind<EquipmentEffector>().AsSingle().NonLazy();
+            Container.Bind<Inventory.Inventory>().AsSingle().NonLazy();
+            Container.Bind<Equipment.Equipment>().AsSingle().NonLazy();
+            Container.Bind<EquipmentEffector>().AsSingle().NonLazy();
+        }
     }
 }

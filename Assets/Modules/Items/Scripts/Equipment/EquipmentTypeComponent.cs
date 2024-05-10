@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Sample
+namespace Modules.Items.Scripts.Equipment
 {
     public class EquipmentTypeComponent
     {

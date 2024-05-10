@@ -1,4 +1,4 @@
-namespace Sample
+namespace Modules.Items.Scripts.Equipment
 {
     public enum EquipmentType
     {
