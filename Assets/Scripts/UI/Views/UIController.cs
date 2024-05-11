@@ -1,7 +1,7 @@
 using PrimeTween;
 using UnityEngine;
 
-namespace Visual.UI
+namespace UI.Views
 {
     public class UIController : MonoBehaviour
     {

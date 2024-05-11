@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
     name: Iron Sword
+    icon: {fileID: 21300000, guid: 940c577f292dd4198a4a6a5e49486de7, type: 3}
     flags: 12
     components:
     - rid: 2416527777508622396

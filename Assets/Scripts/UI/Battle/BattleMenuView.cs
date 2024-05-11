@@ -1,4 +1,5 @@
 using Battle;
+using UI.Views;
 using UnityEngine;
 using UnityEngine.UI;
 using Visual.UI;

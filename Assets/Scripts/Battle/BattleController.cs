@@ -14,6 +14,7 @@ using Game.Heroes;
 using PrimeTween;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
+using UI.Views;
 using UnityEngine;
 using Visual.UI;
 using Zenject;

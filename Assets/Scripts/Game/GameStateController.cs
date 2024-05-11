@@ -2,6 +2,7 @@ using System;
 using Battle;
 using Configs;
 using Game.Heroes;
+using UI.Views;
 using UnityEngine;
 using Visual.UI;
 using Zenject;

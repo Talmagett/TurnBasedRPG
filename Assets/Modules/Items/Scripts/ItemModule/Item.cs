@@ -16,11 +16,13 @@ namespace Modules.Items.Scripts.ItemModule
 
         public Item(
             string name,
+            Sprite icon,
             ItemFlags flags,
             params object[] components
         )
         {
             this.name = name;
+            this.icon = icon;
             this.flags = flags;
             this.components = components;
         }
@@ -62,7 +64,7 @@ namespace Modules.Items.Scripts.ItemModule
                 components[i] = component;
             }
 
-            return new Item(name, flags, components);
+            return new Item(name, icon, flags, components);
         }
     }
 }
