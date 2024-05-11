@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
-  m_Name: SkeletonAttack
+  m_Name: MeleeAttack
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: SkeletonAttack
+  <ID>k__BackingField: MeleeAttack
   <Name>k__BackingField: 
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 9cddedba9b8f2e74fbd7d909e0d98843,
     type: 3}
-  <EnergyCost>k__BackingField: 0
+  <EnergyCost>k__BackingField: 5
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 0
   Effects:
-  - rid: 1041286146816475202
+  - rid: 1041286146816475223
   references:
     version: 2
     RefIds:
-    - rid: 1041286146816475202
+    - rid: 1041286146816475223
       type: {class: DealDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <HitEffect>k__BackingField: {fileID: 0}

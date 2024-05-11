@@ -1,6 +1,5 @@
-using Battle.Actors;
+using Character;
 using Configs.Enums;
-using Cysharp.Threading.Tasks;
 using EventBus.Events;
 using UnityEngine;
 
@@ -10,9 +9,9 @@ namespace EventBus.Handlers.Turn.Abilities
     {
         protected override void HandleEvent(CastAbilityEvent evt)
         {
-            EventBus.RaiseEvent(new ConsumeEnergyEvent(evt.Source,evt.AbilityConfig.EnergyCost));
+            EventBus.RaiseEvent(new ConsumeEnergyEvent(evt.Source, evt.AbilityConfig.EnergyCost));
             evt.Source.Get<Animator>().SetTrigger(AnimationKey.GetAnimation(evt.AbilityConfig.AnimationKey));
-            evt.Source.Get<AnimatorDispatcher>().AnimationEvent += () => { Cast(evt);};
+            evt.Source.Get<AnimatorDispatcher>().AnimationEvent += () => { Cast(evt); };
         }
 
         private void Cast(CastAbilityEvent evt)
@@ -25,7 +24,7 @@ namespace EventBus.Handlers.Turn.Abilities
                 effect.Target = evt.Target;
                 EventBus.RaiseEvent(effect);
             }
-            
+
             EventBus.RaiseEvent(new FinishTurnEvent(evt.Source));
         }
     }

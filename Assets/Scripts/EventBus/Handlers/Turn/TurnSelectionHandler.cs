@@ -8,7 +8,7 @@ namespace EventBus.Handlers.Turn
     {
         protected override void HandleEvent(TurnSelectionEvent evt)
         {
-            Tween.Scale(evt.Source.Get<Transform>(), Vector3.one*(evt.IsActive?1.2f:1f), 0.3f);
+            Tween.Scale(evt.Source.Get<Transform>(), Vector3.one * (evt.IsActive ? 1.2f : 1f), 0.3f);
             //Tween.Position(transform, transform.position - transform.forward * 2, 0.3f);*/
         }
     }

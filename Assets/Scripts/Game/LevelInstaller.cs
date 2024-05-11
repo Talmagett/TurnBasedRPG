@@ -1,7 +1,6 @@
 using Battle;
 using UI.Views;
 using UnityEngine;
-using Visual.UI;
 using Zenject;
 
 namespace Game
@@ -10,9 +9,7 @@ namespace Game
     {
         [SerializeField] private GameStateController gameStateController;
         [SerializeField] private BattleController battleController;
-        [SerializeField] private UIController uiController;
-
-        // ReSharper disable Unity.PerformanceAnalysis
+        [SerializeField] private UIController uiController; // ReSharper disable Unity.PerformanceAnalysis
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<BattleContainer>().AsSingle().NonLazy();

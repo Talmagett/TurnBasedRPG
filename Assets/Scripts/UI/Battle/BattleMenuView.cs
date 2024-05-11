@@ -2,7 +2,6 @@ using Battle;
 using UI.Views;
 using UnityEngine;
 using UnityEngine.UI;
-using Visual.UI;
 using Zenject;
 
 namespace UI.Battle
@@ -33,7 +32,7 @@ namespace UI.Battle
 
         private void ExitBattle()
         {
-            _uiController.Open();
+            //_uiController.Open();
             _battleController.ExitBattle();
         }
     }

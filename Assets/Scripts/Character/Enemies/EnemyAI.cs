@@ -1,23 +1,25 @@
-using Battle.Actors;
+using Battle;
 using UnityEngine;
 using Zenject;
 
-namespace Battle.Characters
+namespace Character.Enemies
 {
     [RequireComponent(typeof(CharacterEntity))]
-    public abstract class BattleActor : MonoBehaviour
+    public abstract class EnemyAI : MonoBehaviour
     {
-        protected CharacterEntity CharacterEntity { get; private set; }
         protected BattleContainer BattleContainer;
-        [Inject]
-        public void Ctor(BattleContainer battleContainer)
-        {
-            BattleContainer = battleContainer;
-        }
+        protected CharacterEntity CharacterEntity { get; private set; }
+
         public void Awake()
         {
             CharacterEntity = GetComponent<CharacterEntity>();
             CharacterEntity.Add(this);
+        }
+
+        [Inject]
+        public void Ctor(BattleContainer battleContainer)
+        {
+            BattleContainer = battleContainer;
         }
 
         public abstract void Run();

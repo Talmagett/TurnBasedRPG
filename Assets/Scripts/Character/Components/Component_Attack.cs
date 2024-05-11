@@ -2,7 +2,7 @@
 using Atomic.Elements;
 using Configs.Abilities;
 
-namespace Battle.Actors.Model
+namespace Character.Components
 {
     [Serializable]
     public sealed class Component_Attack
@@ -11,8 +11,8 @@ namespace Battle.Actors.Model
         public AtomicVariable<float> attackPower;
         public AtomicVariable<float> criticalChance;
         public AtomicVariable<float> criticalRate;
-        
-        public Component_Attack(int baseAttackPower,float baseCriticalChance,float baseCriticalRate)
+
+        public Component_Attack(int baseAttackPower, float baseCriticalChance, float baseCriticalRate)
         {
             attackPower = new AtomicVariable<float>(baseAttackPower);
             criticalChance = new AtomicVariable<float>(baseCriticalChance);

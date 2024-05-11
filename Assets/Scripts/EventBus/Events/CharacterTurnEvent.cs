@@ -1,4 +1,3 @@
-using Battle.Actors;
 using Entities;
 
 namespace EventBus.Events

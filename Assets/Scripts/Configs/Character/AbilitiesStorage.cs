@@ -1,7 +1,6 @@
 using System;
 using Configs.Abilities;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Configs.Character
 {

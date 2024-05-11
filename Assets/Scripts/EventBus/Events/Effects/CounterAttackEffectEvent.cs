@@ -1,7 +1,12 @@
+using System;
+using Entities;
+
 namespace EventBus.Events.Effects
 {
-    public struct CounterAttackEffectEvent
+    [Serializable]
+    public struct CounterAttackEffectEvent:IEffect
     {
-        
+        public IEntity Source { get; set; }
+        public IEntity Target { get; set; }
     }
 }

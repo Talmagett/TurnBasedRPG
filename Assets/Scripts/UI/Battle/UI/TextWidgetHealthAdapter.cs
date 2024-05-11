@@ -1,14 +1,11 @@
-﻿using System;
-using Atomic.Elements;
-using Battle.Actors;
-using Battle.Actors.Model;
-using Configs;
-using Configs.Enums;
+﻿using Atomic.Elements;
+using Character;
+using Character.Components;
 using PrimeTween;
 using TMPro;
 using UnityEngine;
 
-namespace Visual.UI.Battle.UI
+namespace UI.Battle.UI
 {
     public sealed class TextWidgetHealthAdapter : MonoBehaviour
     {
@@ -39,4 +36,3 @@ namespace Visual.UI.Battle.UI
         }
     }
 }
-

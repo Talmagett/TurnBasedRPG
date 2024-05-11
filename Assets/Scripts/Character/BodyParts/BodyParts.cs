@@ -1,9 +1,6 @@
-using System;
-using Battle.Actors;
-using Configs.Enums;
 using UnityEngine;
 
-namespace Configs.Character
+namespace Character.BodyParts
 {
     [RequireComponent(typeof(CharacterEntity))]
     public class BodyParts : MonoBehaviour
@@ -18,7 +15,7 @@ namespace Configs.Character
             RFeet,
             LFeet
         }
-        
+
         public Transform Root;
         public Transform Head;
         public Transform Chest;

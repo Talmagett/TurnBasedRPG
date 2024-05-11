@@ -1,4 +1,4 @@
-using Configs.Character;
+using Character.BodyParts;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,11 +13,8 @@ namespace EditorScripts
             serializedObject.Update(); // Update serialized object
 
 // Button to trigger setup
-            if (GUILayout.Button("Setup"))
-            {
-                SetupBodyParts(); // Call function to set BodyParts
-            }
-            
+            if (GUILayout.Button("Setup")) SetupBodyParts(); // Call function to set BodyParts
+
             serializedObject.ApplyModifiedProperties(); // Apply changes to serialized object
         }
 
@@ -25,34 +22,30 @@ namespace EditorScripts
         {
             serializedObject.Update(); // Update serialized object
 
-            BodyParts data = (BodyParts)target; // Get the target ActorData object
-            
-            data.Root =  FindDeepChild(data.transform, "root");
+            var data = (BodyParts)target; // Get the target ActorData object
+
+            data.Root = FindDeepChild(data.transform, "root");
             data.Head = FindDeepChild(data.transform, "head");
             data.Chest = FindDeepChild(data.transform, "spine_03");
             data.RHand = FindDeepChild(data.transform, "hand_r");
             data.LHand = FindDeepChild(data.transform, "hand_l");
             data.RFeet = FindDeepChild(data.transform, "foot_r");
             data.LFeet = FindDeepChild(data.transform, "foot_l");
-            
+
             serializedObject.ApplyModifiedProperties(); // Apply changes to serialized object
             EditorUtility.SetDirty(target);
         }
-        Transform FindDeepChild(Transform parent, string name)
+
+        private Transform FindDeepChild(Transform parent, string name)
         {
             foreach (Transform child in parent)
             {
-                if (child.name == name)
-                {
-                    return child;
-                }
+                if (child.name == name) return child;
 
-                Transform found = FindDeepChild(child, name);
-                if (found != null)
-                {
-                    return found;
-                }
+                var found = FindDeepChild(child, name);
+                if (found != null) return found;
             }
+
             return null;
         }
     }

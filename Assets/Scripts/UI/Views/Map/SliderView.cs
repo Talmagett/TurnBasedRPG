@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Visual.UI.View
+namespace UI.Views.Map
 {
     public class SliderView : MonoBehaviour
     {

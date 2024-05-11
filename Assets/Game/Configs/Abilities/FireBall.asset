@@ -10,27 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
-  m_Name: Lightning
+  m_Name: FireBall
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Lightning
+  <ID>k__BackingField: FireBall
   <Name>k__BackingField: 
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 56f9b5e3ec25e7646b70d16ae551f40b,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 33556251f01a04443a27d557c874eab4,
     type: 3}
-  <EnergyCost>k__BackingField: 6
+  <EnergyCost>k__BackingField: 4
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 1041286146816475205
+  - rid: 1041286146816475232
   references:
     version: 2
     RefIds:
-    - rid: 1041286146816475205
+    - rid: 1041286146816475232
+      type: {class: ShootProjectileEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
+          type: 3}
+        <ProjectileShootPoint>k__BackingField: 3
+        <HitEffectPoint>k__BackingField: 2
+        <EffectsOnHit>k__BackingField:
+        - rid: 1041286146816475234
+    - rid: 1041286146816475234
       type: {class: DealDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <HitEffect>k__BackingField: {fileID: 0}
-        <HitEffectPoint>k__BackingField: 0
+        <HitEffectPoint>k__BackingField: 2
         <DamageAmount>k__BackingField:
           Stat: 4
-          BaseValue: 10
+          BaseValue: 0
           MultValue: 1

@@ -1,10 +1,8 @@
-using Atomic.Objects;
-using Configs;
 using Configs.Enums;
 using Game.Heroes;
-using Visual.UI.TabMenu;
+using UI.Views.TabMenu;
 
-namespace Visual.Presenters
+namespace UI.Presenters
 {
     public class CharacterStatObserver
     {

@@ -1,9 +1,10 @@
 using Configs.Enums;
 using Game.Heroes;
+using UI.Views.Map;
 using UnityEngine;
 using Zenject;
 
-namespace Visual.UI.Map
+namespace UI
 {
     public class MapHeroPresenter : MonoBehaviour
     {

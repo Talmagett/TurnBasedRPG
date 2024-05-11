@@ -1,8 +1,7 @@
 ﻿using System;
 using Atomic.Elements;
-using UnityEngine.Serialization;
 
-namespace Battle.Actors.Model
+namespace Character.Components
 {
     [Serializable]
     public sealed class Component_Life

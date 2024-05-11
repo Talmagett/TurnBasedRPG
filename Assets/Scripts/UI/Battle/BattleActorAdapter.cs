@@ -1,10 +1,6 @@
-using System;
 using Atomic.Elements;
-using Battle.Actors;
-using Battle.Actors.Model;
+using Character;
 using Character.Components;
-using Configs;
-using Configs.Enums;
 using PrimeTween;
 using TMPro;
 using UnityEngine;

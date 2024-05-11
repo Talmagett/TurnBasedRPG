@@ -18,7 +18,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
   - Name: Aisuluu
     Abilities:
-    - {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
+    - {fileID: 11400000, guid: 95ec1935e29a1e94e88887bd74bdc515, type: 2}
+    - {fileID: 11400000, guid: 1d2bb84b268a88f4c8a7ba92e75a3ca3, type: 2}
   - Name: Shumkar
     Abilities:
-    - {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
+    - {fileID: 11400000, guid: bbe60b761ddcc4348bcd788b5a5171a0, type: 2}

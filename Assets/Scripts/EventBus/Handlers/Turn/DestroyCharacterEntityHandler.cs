@@ -1,5 +1,4 @@
 ﻿using Battle;
-using Battle.Actors;
 using Configs.Enums;
 using EventBus.Events;
 using JetBrains.Annotations;
@@ -16,12 +15,12 @@ namespace EventBus.Handlers.Turn
         {
             _battleContainer = battleContainer;
         }
+
         protected override void HandleEvent(DestroyCharacterEntityEvent evt)
         {
-                _battleContainer.RemoveUnit(evt.Entity);
-                evt.Entity.Get<Animator>().SetTrigger(AnimationKey.GetAnimation(AnimationKey.Animation.Death));
-                GameObject.Destroy(evt.Entity.Get<GameObject>(),2);
+            _battleContainer.RemoveUnit(evt.Entity);
+            evt.Entity.Get<Animator>().SetTrigger(AnimationKey.GetAnimation(AnimationKey.Animation.Death));
+            Object.Destroy(evt.Entity.Get<GameObject>(), 2);
         }
     }
 }
-

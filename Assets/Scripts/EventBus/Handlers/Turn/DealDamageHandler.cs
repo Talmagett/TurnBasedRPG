@@ -1,9 +1,6 @@
-﻿using Battle.Actors.Model;
-using Configs;
-using Configs.Enums;
+﻿using Character.Components;
 using EventBus.Events;
 using JetBrains.Annotations;
-using UnityEngine;
 
 namespace EventBus.Handlers.Turn
 {

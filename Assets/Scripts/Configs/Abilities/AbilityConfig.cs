@@ -1,5 +1,4 @@
-﻿using Battle.Actors;
-using Configs.Enums;
+﻿using Configs.Enums;
 using EventBus.Events.Effects;
 using UnityEngine;
 

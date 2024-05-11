@@ -1,8 +1,7 @@
-using System;
 using Game.Heroes;
+using UI.Presenters;
+using UI.Views.TabMenu;
 using UnityEngine;
-using Visual.Presenters;
-using Visual.UI.TabMenu;
 using Zenject;
 
 namespace UI.Controllers.TabMenu
@@ -11,9 +10,9 @@ namespace UI.Controllers.TabMenu
     {
         [SerializeField] private HeroDataView heroDataView;
         [SerializeField] private UIInventoryController uiInventoryController;
-        
+
         private HeroParty _heroParty;
-        
+
         private PlayerInputActions _inputActions;
 
         [Inject]
@@ -23,7 +22,7 @@ namespace UI.Controllers.TabMenu
             _inputActions = inputActions;
         }
 
-        public void ShowCharacterPanel(int index=0)
+        public void ShowCharacterPanel(int index = 0)
         {
             heroDataView.gameObject.SetActive(true);
             _inputActions.Map.Disable();

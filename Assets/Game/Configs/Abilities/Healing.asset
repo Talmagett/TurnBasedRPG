@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
-  m_Name: Lightning
+  m_Name: Healing
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Lightning
+  <ID>k__BackingField: Healing
   <Name>k__BackingField: 
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 56f9b5e3ec25e7646b70d16ae551f40b,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 2beb617b3fc4b2c4eae2d3f409017cc7,
     type: 3}
-  <EnergyCost>k__BackingField: 6
-  <TargetType>k__BackingField: 2
-  <AnimationKey>k__BackingField: 3
+  <EnergyCost>k__BackingField: 7
+  <TargetType>k__BackingField: 1
+  <AnimationKey>k__BackingField: 0
   Effects:
-  - rid: 1041286146816475205
+  - rid: 1041286146816475240
   references:
     version: 2
     RefIds:
-    - rid: 1041286146816475205
-      type: {class: DealDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
+    - rid: 1041286146816475240
+      type: {class: HealEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <HitEffect>k__BackingField: {fileID: 0}
         <HitEffectPoint>k__BackingField: 0
-        <DamageAmount>k__BackingField:
-          Stat: 4
+        <HealingAmount>k__BackingField:
+          Stat: 0
           BaseValue: 10
-          MultValue: 1
+          MultValue: 0.2

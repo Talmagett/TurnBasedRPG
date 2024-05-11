@@ -1,5 +1,4 @@
-﻿using Atomic.Objects;
-using Entities;
+﻿using Entities;
 
 namespace EventBus.Events
 {
@@ -7,6 +6,7 @@ namespace EventBus.Events
     {
         public readonly IEntity Entity;
         public readonly int Cost;
+
         public ConsumeEnergyEvent(IEntity entity, int cost)
         {
             Entity = entity;

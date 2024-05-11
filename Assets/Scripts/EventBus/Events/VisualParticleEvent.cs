@@ -8,7 +8,7 @@ namespace EventBus.Events
         public readonly ParticleSystem Particle;
         public readonly float Duration;
 
-        public VisualParticleEvent(Transform target, ParticleSystem particle, float duration=2)
+        public VisualParticleEvent(Transform target, ParticleSystem particle, float duration = 2)
         {
             Target = target;
             Particle = particle;

@@ -1,4 +1,4 @@
-using Battle.Actors;
+using Character;
 
 namespace EventBus.Events
 {
@@ -6,7 +6,7 @@ namespace EventBus.Events
     {
         public readonly CharacterEntity CurrentActor;
 
-        public NextTurnEvent(CharacterEntity currentActor=null)
+        public NextTurnEvent(CharacterEntity currentActor = null)
         {
             CurrentActor = currentActor;
         }

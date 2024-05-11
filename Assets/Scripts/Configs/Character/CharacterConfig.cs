@@ -1,4 +1,4 @@
-using Battle.Actors;
+using Character;
 using UnityEngine;
 
 namespace Configs.Character

@@ -1,7 +1,6 @@
 ﻿using System;
-using Atomic.Objects;
+using Character.BodyParts;
 using Configs.Abilities.Attributes;
-using Configs.Character;
 using Entities;
 using UnityEngine;
 

@@ -1,10 +1,10 @@
 using System;
 using Configs.Abilities;
+using UI.Views.Map;
 using UnityEngine;
 using UnityEngine.UI;
-using Visual.UI.View;
 
-namespace Visual.UI.Battle
+namespace UI
 {
     public class BattleAbilityView : MonoBehaviour
     {

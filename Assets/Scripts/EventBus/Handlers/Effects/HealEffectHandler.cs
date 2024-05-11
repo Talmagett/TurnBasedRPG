@@ -9,22 +9,22 @@ using Zenject;
 namespace EventBus.Handlers.Effects
 {
     [UsedImplicitly]
-    public sealed class DealDamageEffectHandler : IInitializable, IDisposable
+    public sealed class HealEffectHandler : IInitializable, IDisposable
     {
         void IDisposable.Dispose()
         {
-            EventBus.Unsubscribe<DealDamageEffectEvent>(OnDealDamage);
+            EventBus.Unsubscribe<HealEffectEvent>(OnDealDamage);
         }
 
         void IInitializable.Initialize()
         {
-            EventBus.Subscribe<DealDamageEffectEvent>(OnDealDamage);
+            EventBus.Subscribe<HealEffectEvent>(OnDealDamage);
         }
 
-        private void OnDealDamage(DealDamageEffectEvent evt)
+        private void OnDealDamage(HealEffectEvent evt)
         {
             var statValue = evt.Source.Get<Component_Attack>().attackPower;
-            var damage = (int)(evt.DamageAmount.BaseValue + evt.DamageAmount.MultValue * statValue.Value);
+            var damage = -(int)(evt.HealingAmount.BaseValue + evt.HealingAmount.MultValue * statValue.Value);
 
             EventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, damage));
             var effectPoint = evt.Target.Get<BodyParts>().GetPoint(evt.HitEffectPoint);

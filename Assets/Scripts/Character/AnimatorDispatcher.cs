@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Battle.Actors
+namespace Character
 {
     public class AnimatorDispatcher : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace Battle.Actors
         {
             AnimationEvent = null;
         }
-        
+
         public void ReceiveEvent()
         {
             AnimationEvent?.Invoke();

@@ -4,7 +4,6 @@ using Configs;
 using Game.Heroes;
 using UI.Views;
 using UnityEngine;
-using Visual.UI;
 using Zenject;
 
 namespace Game
@@ -19,6 +18,11 @@ namespace Game
             OnGameStateChanged?.Invoke(GameState.Map);
         }
 
+        private void OnEnable()
+        {
+            _battleController.OnStateChanged += OnBattleStateChanged;
+        }
+
         public event Action<GameState> OnGameStateChanged;
 
         [Inject]
@@ -28,18 +32,39 @@ namespace Game
             _uiController = uiController;
         }
 
+        private void OnBattleStateChanged(BattleController.BattleState battleState)
+        {
+            Debug.Log(battleState);
+            switch (battleState)
+            {
+                case BattleController.BattleState.Going:
+                    break;
+                case BattleController.BattleState.Exit:
+                    ExitBattle();
+                    break;
+                case BattleController.BattleState.Win:
+                    ExitBattle();
+                    break;
+                case BattleController.BattleState.Lose:
+                    ExitBattle();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(battleState), battleState, null);
+            }
+        }
+
         public void EnterBattle(EnemyRiftConfig enemyRiftConfig)
         {
             OnGameStateChanged?.Invoke(GameState.Battle);
             _battleController.SetupBattle(enemyRiftConfig);
-            _uiController.Open();
+            //_uiController.Open();
         }
 
         public void ExitBattle()
         {
             OnGameStateChanged?.Invoke(GameState.Map);
-            //_battleController.ClearBattle();
-            _uiController.Close();
+            _battleController.ClearBattle();
+            //_uiController.Close();
         }
     }
 }

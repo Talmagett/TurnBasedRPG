@@ -1,7 +1,6 @@
 using UnityEngine;
-using Visual.UI.View;
 
-namespace Visual.UI.Map
+namespace UI.Views.Map
 {
     public class HeroView : MonoBehaviour
     {

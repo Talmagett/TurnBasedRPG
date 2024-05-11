@@ -1,12 +1,8 @@
-using System;
-using Battle.Actors;
-using Battle.Characters;
-using Configs.Enums;
+using Character.Enemies;
 using Cysharp.Threading.Tasks;
 using Entities;
 using EventBus.Events;
 using JetBrains.Annotations;
-using PrimeTween;
 
 namespace EventBus.Handlers.Turn
 {
@@ -15,14 +11,15 @@ namespace EventBus.Handlers.Turn
     {
         protected override void HandleEvent(StartTurnEvent evt)
         {
-            Run(evt.Source.Get<BattleActor>()).Forget();
-            EventBus.RaiseEvent(new TurnSelectionEvent(evt.Source,true));
+            Run(evt.Source).Forget();
+            EventBus.RaiseEvent(new TurnSelectionEvent(evt.Source, true));
         }
 
-        private async UniTask Run(BattleActor battleActor)
+        private async UniTask Run(IEntity entity)
         {
             await UniTask.Delay(750);
-            battleActor.Run();
+            if (entity.TryGet(out EnemyAI enemyAI))
+                enemyAI.Run();
         }
     }
 }

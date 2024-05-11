@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
-using Battle.Actors;
-using Battle.Actors.Model;
+using Character;
 using Character.Components;
 using Configs.Abilities;
 using Configs.Character;
@@ -10,8 +9,8 @@ using Entities;
 using EventBus.Events;
 using Game.Control;
 using PrimeTween;
+using UI;
 using UnityEngine;
-using Visual.UI.Battle;
 using Zenject;
 
 namespace Battle
@@ -42,19 +41,14 @@ namespace Battle
 
             switch (_castingAbility.TargetType)
             {
-                case AbilityTargetType.Ally when actorData.Get<Component_Owner>().owner == _hero.Get<Component_Owner>().owner:
-                case AbilityTargetType.Enemy when actorData.Get<Component_Owner>().owner != _hero.Get<Component_Owner>().owner:
+                case AbilityTargetType.Ally
+                    when actorData.Get<Component_Owner>().owner == _hero.Get<Component_Owner>().owner:
+                case AbilityTargetType.Enemy
+                    when actorData.Get<Component_Owner>().owner != _hero.Get<Component_Owner>().owner:
                 case AbilityTargetType.Any:
                     CastAbility(_castingAbility, actorData);
                     break;
             }
-        }
-
-        [Inject]
-        public void Construct(AbilitiesStorage abilitiesStorage, CursorController cursorController)
-        {
-            _abilitiesStorage = abilitiesStorage;
-            _cursorController = cursorController;
         }
 
         private void OnEnable()
@@ -67,13 +61,22 @@ namespace Battle
             EventBus.EventBus.Unsubscribe<CharacterTurnEvent>(OnCharacterChanged);
         }
 
+        [Inject]
+        public void Construct(AbilitiesStorage abilitiesStorage, CursorController cursorController)
+        {
+            _abilitiesStorage = abilitiesStorage;
+            _cursorController = cursorController;
+        }
+
         private void OnCharacterChanged(CharacterTurnEvent evt)
         {
             Clear();
-            
+
             var owner = evt.Entity.Get<Component_Owner>().owner;
             if (owner.Value != Owner.Player)
+            {
                 Hide();
+            }
             else
             {
                 Show();
@@ -91,12 +94,13 @@ namespace Battle
         {
             Tween.Scale(transform, Vector3.zero, 0.2f);
         }
-        
+
         private void SetHero(IEntity hero)
         {
             _isChoosing = false;
             _hero = hero;
-            var heroAbilities = _abilitiesStorage.AbilitiesPacks.FirstOrDefault(t => t.Name == _hero.Get<Component_ID>().id.Value);
+            var heroAbilities =
+                _abilitiesStorage.AbilitiesPacks.FirstOrDefault(t => t.Name == _hero.Get<Component_ID>().id.Value);
             if (heroAbilities == null)
                 throw new NullReferenceException($"No ability pack with this id {_hero.Get<Component_ID>()}");
 
@@ -137,7 +141,7 @@ namespace Battle
 
         private void CastAbility(AbilityConfig abilityConfig, IEntity characterEntity)
         {
-            EventBus.EventBus.RaiseEvent(new CastAbilityEvent(_hero,characterEntity,abilityConfig));
+            EventBus.EventBus.RaiseEvent(new CastAbilityEvent(_hero, characterEntity, abilityConfig));
             _cursorController.SetCursor(CursorType.None);
             Hide();
         }

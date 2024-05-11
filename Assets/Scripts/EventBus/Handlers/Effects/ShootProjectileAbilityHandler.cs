@@ -1,5 +1,5 @@
 using System;
-using Configs.Character;
+using Character.BodyParts;
 using EventBus.Events;
 using EventBus.Events.Effects;
 using PrimeTween;
@@ -11,14 +11,14 @@ namespace EventBus.Handlers.Effects
 {
     public class ShootProjectileAbilityHandler : IInitializable, IDisposable
     {
-        void IInitializable.Initialize()
-        {
-            EventBus.Subscribe<ShootProjectileEffectEvent>(OnShoot);
-        }
-        
         void IDisposable.Dispose()
         {
             EventBus.Unsubscribe<ShootProjectileEffectEvent>(OnShoot);
+        }
+
+        void IInitializable.Initialize()
+        {
+            EventBus.Subscribe<ShootProjectileEffectEvent>(OnShoot);
         }
 
         private void OnShoot(ShootProjectileEffectEvent evt)
@@ -34,7 +34,7 @@ namespace EventBus.Handlers.Effects
                 OnHit(evt);
             });
         }
-        
+
         private void OnHit(ShootProjectileEffectEvent evt)
         {
             foreach (var effect in evt.EffectsOnHit)
@@ -43,6 +43,7 @@ namespace EventBus.Handlers.Effects
                 effect.Target = evt.Target;
                 EventBus.RaiseEvent(effect);
             }
+
             EventBus.RaiseEvent(new FinishTurnEvent(evt.Source));
         }
     }

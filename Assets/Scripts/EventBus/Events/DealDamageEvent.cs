@@ -1,5 +1,4 @@
-﻿using Atomic.Objects;
-using Entities;
+﻿using Entities;
 
 namespace EventBus.Events
 {

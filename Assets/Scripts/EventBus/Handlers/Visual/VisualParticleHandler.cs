@@ -11,8 +11,8 @@ namespace EventBus.Handlers.Visual
         {
             if (evt.Particle == null)
                 return;
-            var vfx = GameObject.Instantiate(evt.Particle,evt.Target.position,evt.Target.rotation);
-            GameObject.Destroy(vfx.gameObject,evt.Duration);
+            var vfx = Object.Instantiate(evt.Particle, evt.Target.position, evt.Target.rotation);
+            Object.Destroy(vfx.gameObject, evt.Duration);
         }
     }
 }

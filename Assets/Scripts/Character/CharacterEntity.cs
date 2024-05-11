@@ -1,8 +1,7 @@
 using Entities;
-using PrimeTween;
 using UnityEngine;
 
-namespace Battle.Actors
+namespace Character
 {
     public sealed class CharacterEntity : MonoEntityBase
     {

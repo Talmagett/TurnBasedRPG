@@ -1,9 +1,8 @@
 using System;
 using Atomic.Elements;
 using Configs.Enums;
-using UnityEngine.Serialization;
 
-namespace Battle.Actors.Model
+namespace Character.Components
 {
     [Serializable]
     public sealed class Component_Owner

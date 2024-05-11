@@ -6,17 +6,17 @@ using Zenject;
 
 public class InventoryDebug : MonoBehaviour
 {
-        [SerializeField] private Inventory _inventory;
-        
-        [Inject]
-        public void Ctor(Inventory inventory)
-        {
-                _inventory = inventory;
-        }
+    [SerializeField] private Inventory _inventory;
 
-        [Button]
-        public void AddItem(ItemConfig itemConfig)
-        {
-               _inventory.AddItem(itemConfig.item.Clone()); 
-        }
+    [Inject]
+    public void Ctor(Inventory inventory)
+    {
+        _inventory = inventory;
+    }
+
+    [Button]
+    public void AddItem(ItemConfig itemConfig)
+    {
+        _inventory.AddItem(itemConfig.item.Clone());
+    }
 }

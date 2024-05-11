@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Visual.UI.TabMenu
+namespace UI.Views.TabMenu
 {
     public class HeroPersonalDataView : MonoBehaviour
     {
