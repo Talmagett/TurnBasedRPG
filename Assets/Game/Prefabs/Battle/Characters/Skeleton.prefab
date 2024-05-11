@@ -224,6 +224,41 @@ PrefabInstance:
       propertyPath: entity
       value: 
       objectReference: {fileID: 2181775178617024246}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: Head
+      value: 
+      objectReference: {fileID: 5656597717455694418}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: Root
+      value: 
+      objectReference: {fileID: 5665234635159609778}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: Chest
+      value: 
+      objectReference: {fileID: 5657020776303980574}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: LFeet
+      value: 
+      objectReference: {fileID: 5657021403583429718}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: LHand
+      value: 
+      objectReference: {fileID: 5656606058745935820}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: RFeet
+      value: 
+      objectReference: {fileID: 5656753776208303460}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: RHand
+      value: 
+      objectReference: {fileID: 5665230319831135276}
     - target: {fileID: 6005569666195928798, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
       propertyPath: m_Name
@@ -374,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5480b360c70490497d4423830c286be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  biteAttack: {fileID: 11400000, guid: 7144b4fbbcc44784ba4b343dcbb885ec, type: 2}
+  dealDamageAbility: {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
 --- !u!1001 &7770133109021515627
 PrefabInstance:
   m_ObjectHideFlags: 0

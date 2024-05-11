@@ -1,6 +1,8 @@
 using System;
+using Atomic.Elements;
 using Battle.Actors;
 using Battle.Actors.Model;
+using Character.Components;
 using Configs;
 using Configs.Enums;
 using PrimeTween;
@@ -15,23 +17,21 @@ namespace UI.Battle
         [SerializeField] private Image iconImage;
         [SerializeField] private TMP_Text turnText;
 
-        private ActorData _actorData;
-        private Attack _attack;
-        private SharedCharacterStats _stats;
+        private CharacterEntity _characterEntity;
+        private AtomicVariable<int> _energy;
 
         private void Start()
         {
-            _actorData = GetComponentInParent<ActorData>();
+            _characterEntity = GetComponentInParent<CharacterEntity>();
 
-            if (!_actorData.TryGet(AtomicAPI.Attack, out _attack))
-                throw new NullReferenceException("No Cooldown Key");
-            _attack.energy.Subscribe(UpdateCooldownText);
-            UpdateCooldownText(_attack.energy.Value);
+            _energy = _characterEntity.Get<Component_Turn>().energy;
+            UpdateCooldownText(_energy.Value);
+            _energy.Subscribe(UpdateCooldownText);
         }
 
         private void OnDestroy()
         {
-            _attack.energy.Unsubscribe(UpdateCooldownText);
+            _energy.Unsubscribe(UpdateCooldownText);
         }
 
         private void UpdateCooldownText(int turn)

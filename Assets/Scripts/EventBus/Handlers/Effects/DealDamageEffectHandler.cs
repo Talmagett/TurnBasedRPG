@@ -1,6 +1,8 @@
 ﻿using System;
 using Battle.Actors;
+using Battle.Actors.Model;
 using Configs;
+using Configs.Character;
 using Configs.Enums;
 using EventBus.Events;
 using EventBus.Events.Effects;
@@ -24,13 +26,11 @@ namespace EventBus.Handlers.Effects
 
         private void OnDealDamage(DealDamageEffectEvent evt)
         {
-            var source = evt.Source as ActorData;
-            var target = evt.Target as ActorData;
-            var statValue = source.Get<SharedCharacterStats>(AtomicAPI.SharedStats).GetStat(evt.DamageAmount.Stat);
+            var statValue = evt.Source.Get<Component_Attack>().attackPower;
             var damage = (int)(evt.DamageAmount.BaseValue + evt.DamageAmount.MultValue * statValue.Value);
 
-            EventBus.RaiseEvent(new DealDamageEvent(source, target, damage));
-            var effectPoint = target.BodyParts.GetPoint(evt.HitEffectPoint);
+            EventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, damage));
+            var effectPoint = evt.Target.Get<BodyParts>().GetPoint(evt.HitEffectPoint);
             EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, evt.HitEffect));
         }
     }

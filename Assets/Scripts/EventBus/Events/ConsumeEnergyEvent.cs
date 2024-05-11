@@ -1,12 +1,13 @@
 ﻿using Atomic.Objects;
+using Entities;
 
 namespace EventBus.Events
 {
     public readonly struct ConsumeEnergyEvent : IEvent
     {
-        public readonly IAtomicObject Entity;
+        public readonly IEntity Entity;
         public readonly int Cost;
-        public ConsumeEnergyEvent(IAtomicObject entity, int cost)
+        public ConsumeEnergyEvent(IEntity entity, int cost)
         {
             Entity = entity;
             Cost = cost;

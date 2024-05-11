@@ -2,39 +2,32 @@ using System;
 using System.Collections.Generic;
 using Configs.Enums;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Configs.Character
 {
     [Serializable]
     public class BaseCharacterStatsConfig
     {
-        [MinValue(0)] public int Health;
-
-        [MinValue(0)] public int Mana;
-
-        public int AttackPower;
-
-        public int Defense;
-        
-        [PropertyRange(0, 1)] public float Evasion;
-
-        [PropertyRange(0, 1)] public float CriticalChance;
-
-        [PropertyRange(0, 5)] public float CriticalRate = 1.5f;
+        [MinValue(0)] [SerializeField] private int health;
+        [MinValue(0)] [SerializeField] private int mana;
+        [SerializeField] private int attackPower;
+        [SerializeField] private int defense;
+        [PropertyRange(0, 1)] [SerializeField] private float evasion;
+        [PropertyRange(0, 1)] [SerializeField] private float criticalChance;
+        [PropertyRange(0, 5)] [SerializeField] private float criticalRate = 1.5f;
 
         public Dictionary<StatKey, float> CloneStats()
         {
             Dictionary<StatKey, float> stats = new();
 
-            stats.Add(StatKey.MaxHealth, Health);
-            stats.Add(StatKey.Health, Health);
-            stats.Add(StatKey.MaxMana, Mana);
-            stats.Add(StatKey.Mana, Mana);
-            stats.Add(StatKey.AttackPower, AttackPower);
-            stats.Add(StatKey.Defense, Defense);
-            stats.Add(StatKey.Evasion, Evasion);
-            stats.Add(StatKey.CriticalChance, CriticalChance);
-            stats.Add(StatKey.CriticalRate, CriticalRate);
+            stats.Add(StatKey.MaxHealth, health);
+            stats.Add(StatKey.MaxMana, mana);
+            stats.Add(StatKey.AttackPower, attackPower);
+            stats.Add(StatKey.Defense, defense);
+            stats.Add(StatKey.Evasion, evasion);
+            stats.Add(StatKey.CriticalChance, criticalChance);
+            stats.Add(StatKey.CriticalRate, criticalRate);
             return stats;
         }
     }

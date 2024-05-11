@@ -1,12 +1,19 @@
 using System;
 using Configs.Enums;
+using UnityEngine;
 
 namespace Configs.Character
 {
     [Serializable]
     public class Stat
     {
-        public StatKey key;
-        public float Value;
+        [field: SerializeField] public StatKey Name { get; private set; }
+        [field: SerializeField] public float Value { get; private set; }
+
+        public Stat(StatKey name, float value)
+        {
+            Name = name;
+            Value = value;
+        }
     }
 }

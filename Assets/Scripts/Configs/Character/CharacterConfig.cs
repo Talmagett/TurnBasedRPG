@@ -10,7 +10,7 @@ namespace Configs.Character
         [field: SerializeField] public string Description { get; private set; }
         [field: SerializeField] public Sprite Icon { get; private set; }
 
-        [field: SerializeField] [field: Space] public ActorData Prefab { get; private set; }
+        [field: SerializeField] [field: Space] public CharacterEntity Prefab { get; private set; }
         [field: SerializeField] public BaseCharacterStatsConfig Stats { get; private set; }
     }
 }

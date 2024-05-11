@@ -1,14 +1,15 @@
 using Battle.Actors;
+using Entities;
 
 namespace EventBus.Events
 {
     public readonly struct CharacterTurnEvent : IEvent
     {
-        public readonly ActorData ActorData;
+        public readonly IEntity Entity;
 
-        public CharacterTurnEvent(ActorData actorData)
+        public CharacterTurnEvent(IEntity entity)
         {
-            ActorData = actorData;
+            Entity = entity;
         }
     }
 }

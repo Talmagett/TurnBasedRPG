@@ -1,5 +1,6 @@
 ﻿using EventBus.Handlers.Effects;
 using EventBus.Handlers.Turn;
+using EventBus.Handlers.Turn.Abilities;
 using EventBus.Handlers.Visual;
 using Zenject;
 
@@ -17,13 +18,18 @@ namespace EventBus
         private void ConfigureTurn(DiContainer builder)
         {
             builder.BindInterfacesAndSelfTo<StartTurnEventHandler>().AsSingle().NonLazy();
+            
+            //Abilities
+            builder.BindInterfacesAndSelfTo<CastAbilityHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<ShootProjectileAbilityHandler>().AsSingle().NonLazy();
+            
             builder.BindInterfacesAndSelfTo<ConsumeActionHandler>().AsSingle().NonLazy();
             
             builder.BindInterfacesAndSelfTo<NextTurnHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<NextTimeHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DelayedHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DealDamageHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<DestroyAtomicHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<DestroyCharacterEntityHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<FinishTurnEventHandler>().AsSingle().NonLazy();
             //builder.BindInterfacesAndSelfTo<DestroyHandler>().AsSingle().NonLazy();
             /*builder.BindInterfacesAndSelfTo<ApplyDirectionHandler>().AsSingle().NonLazy();
@@ -39,7 +45,9 @@ namespace EventBus
         // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureVisual(DiContainer builder)
         {
+            builder.BindInterfacesAndSelfTo<TurnSelectionHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<VisualParticleHandler>().AsSingle().NonLazy();
+            
 /*
             builder.BindInterfacesAndSelfTo<MoveVisualHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DealDamageVisualHandler>().AsSingle().NonLazy();

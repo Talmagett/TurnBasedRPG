@@ -4,9 +4,9 @@ namespace EventBus.Events
 {
     public readonly struct NextTurnEvent : IEvent
     {
-        public readonly ActorData CurrentActor;
+        public readonly CharacterEntity CurrentActor;
 
-        public NextTurnEvent(ActorData currentActor=null)
+        public NextTurnEvent(CharacterEntity currentActor=null)
         {
             CurrentActor = currentActor;
         }

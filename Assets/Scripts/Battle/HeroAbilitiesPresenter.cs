@@ -2,9 +2,11 @@ using System;
 using System.Linq;
 using Battle.Actors;
 using Battle.Actors.Model;
+using Character.Components;
 using Configs.Abilities;
 using Configs.Character;
 using Configs.Enums;
+using Entities;
 using EventBus.Events;
 using Game.Control;
 using PrimeTween;
@@ -22,7 +24,7 @@ namespace Battle
         private AbilityConfig _castingAbility;
         private CursorController _cursorController;
 
-        private ActorData _hero;
+        private IEntity _hero;
         private bool _isChoosing;
 
         private void Update()
@@ -36,12 +38,12 @@ namespace Battle
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (!Physics.Raycast(ray, out var hit)) return;
 
-            if (!hit.transform.TryGetComponent(out ActorData actorData)) return;
+            if (!hit.transform.TryGetComponent(out CharacterEntity actorData)) return;
 
             switch (_castingAbility.TargetType)
             {
-                case AbilityTargetType.Ally when actorData.Get<Ownership>(AtomicAPI.Owner).Owner == _hero.Get<Ownership>(AtomicAPI.Owner).Owner:
-                case AbilityTargetType.Enemy when actorData.Get<Ownership>(AtomicAPI.Owner).Owner != _hero.Get<Ownership>(AtomicAPI.Owner).Owner:
+                case AbilityTargetType.Ally when actorData.Get<Component_Owner>().owner == _hero.Get<Component_Owner>().owner:
+                case AbilityTargetType.Enemy when actorData.Get<Component_Owner>().owner != _hero.Get<Component_Owner>().owner:
                 case AbilityTargetType.Any:
                     CastAbility(_castingAbility, actorData);
                     break;
@@ -69,13 +71,13 @@ namespace Battle
         {
             Clear();
             
-            var owner = evt.ActorData.Get<Ownership>(AtomicAPI.Owner).Owner;
-            if (owner != Owner.Player)
+            var owner = evt.Entity.Get<Component_Owner>().owner;
+            if (owner.Value != Owner.Player)
                 Hide();
             else
             {
                 Show();
-                SetHero(evt.ActorData);
+                SetHero(evt.Entity);
             }
         }
 
@@ -90,13 +92,13 @@ namespace Battle
             Tween.Scale(transform, Vector3.zero, 0.2f);
         }
         
-        private void SetHero(ActorData hero)
+        private void SetHero(IEntity hero)
         {
             _isChoosing = false;
             _hero = hero;
-            var heroAbilities = _abilitiesStorage.AbilitiesPacks.FirstOrDefault(t => t.Name == _hero.Get<string>(AtomicAPI.Name));
+            var heroAbilities = _abilitiesStorage.AbilitiesPacks.FirstOrDefault(t => t.Name == _hero.Get<Component_ID>().id.Value);
             if (heroAbilities == null)
-                throw new NullReferenceException($"No ability pack with this id {_hero.Get(AtomicAPI.Name)}");
+                throw new NullReferenceException($"No ability pack with this id {_hero.Get<Component_ID>()}");
 
             foreach (var ability in heroAbilities.Abilities)
             {
@@ -133,9 +135,9 @@ namespace Battle
             _isChoosing = true;
         }
 
-        private void CastAbility(AbilityConfig abilityConfig, ActorData actorData)
+        private void CastAbility(AbilityConfig abilityConfig, IEntity characterEntity)
         {
-            abilityConfig.GetAbilityClone(_hero, actorData);
+            EventBus.EventBus.RaiseEvent(new CastAbilityEvent(_hero,characterEntity,abilityConfig));
             _cursorController.SetCursor(CursorType.None);
             Hide();
         }

@@ -1,7 +1,4 @@
-using System;
-using Battle.Actors.Model;
-using Configs;
-using Configs.Enums;
+using Character.Components;
 using EventBus.Events;
 
 namespace EventBus.Handlers.Turn
@@ -10,10 +7,7 @@ namespace EventBus.Handlers.Turn
     {
         protected override void HandleEvent(ConsumeEnergyEvent evt)
         {
-            if (!evt.Entity.TryGet(AtomicAPI.Attack, out Attack energy))
-                throw new NullReferenceException("no energy");
-            
-            energy.energy.Value=evt.Cost;
+            evt.Entity.Get<Component_Turn>().energy.Value = evt.Cost;
         }
     }
 }

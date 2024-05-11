@@ -1,5 +1,6 @@
 ﻿using System;
 using Atomic.Objects;
+using Entities;
 using UnityEngine;
 
 namespace EventBus.Events.Effects
@@ -11,7 +12,7 @@ namespace EventBus.Events.Effects
 
         [field: SerializeField] public ParticleSystem HitEffect { get; private set; }
 
-        public IAtomicObject Source { get; set; }
-        public IAtomicObject Target { get; set; }
+        public IEntity Source { get; set; }
+        public IEntity Target { get; set; }
     }
 }

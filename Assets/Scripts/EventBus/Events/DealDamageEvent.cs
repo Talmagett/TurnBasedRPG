@@ -1,14 +1,15 @@
 ﻿using Atomic.Objects;
+using Entities;
 
 namespace EventBus.Events
 {
     public readonly struct DealDamageEvent : IEvent
     {
-        public readonly IAtomicObject Source;
-        public readonly IAtomicObject Target;
+        public readonly IEntity Source;
+        public readonly IEntity Target;
         public readonly int Damage;
 
-        public DealDamageEvent(IAtomicObject source, IAtomicObject target, int damage)
+        public DealDamageEvent(IEntity source, IEntity target, int damage)
         {
             Source = source;
             Target = target;

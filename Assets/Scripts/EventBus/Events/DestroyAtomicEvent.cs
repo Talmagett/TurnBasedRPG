@@ -1,12 +1,13 @@
 ﻿using Atomic.Objects;
+using Entities;
 
 namespace EventBus.Events
 {
-    public readonly struct DestroyAtomicEvent : IEvent
+    public readonly struct DestroyCharacterEntityEvent : IEvent
     {
-        public readonly IAtomicObject Entity;
+        public readonly IEntity Entity;
 
-        public DestroyAtomicEvent(IAtomicObject entity)
+        public DestroyCharacterEntityEvent(IEntity entity)
         {
             Entity = entity;
         }

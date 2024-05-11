@@ -278,6 +278,41 @@ PrefabInstance:
       propertyPath: entity
       value: 
       objectReference: {fileID: 2181775178617024246}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: Head
+      value: 
+      objectReference: {fileID: 2359626884270776934}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: Root
+      value: 
+      objectReference: {fileID: 2359837665711222322}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: Chest
+      value: 
+      objectReference: {fileID: 2359590450572962968}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: LFeet
+      value: 
+      objectReference: {fileID: 2351229561730977936}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: LHand
+      value: 
+      objectReference: {fileID: 2350986528871607750}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: RFeet
+      value: 
+      objectReference: {fileID: 2351342976578033552}
+    - target: {fileID: 2552225608910388407, guid: 00eb47580f7af8147a76369fe7bf55b6,
+        type: 3}
+      propertyPath: RHand
+      value: 
+      objectReference: {fileID: 2351045597686655506}
     - target: {fileID: 6005569666195928798, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
       propertyPath: m_Name

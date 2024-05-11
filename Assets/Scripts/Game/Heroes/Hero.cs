@@ -10,7 +10,7 @@ namespace Game.Heroes
     {
         public readonly string Name;
         public readonly CharacterConfig CharacterConfig;
-        public readonly ActorData Prefab;
+        public readonly CharacterEntity Prefab;
         public readonly SharedCharacterStats Stats;
 
         public Hero(CharacterConfig characterConfig, Dictionary<StatKey, float> stats = null)

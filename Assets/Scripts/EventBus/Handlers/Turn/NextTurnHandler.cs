@@ -4,6 +4,7 @@ using Atomic.Elements;
 using Battle;
 using Battle.Actors.Model;
 using Battle.Characters;
+using Character.Components;
 using Configs.Enums;
 using EventBus.Events;
 using JetBrains.Annotations;
@@ -25,20 +26,13 @@ namespace EventBus.Handlers.Turn
         {
             if (evt.CurrentActor != null)
             {
-                evt.CurrentActor.Deselect();
+                EventBus.RaiseEvent(new TurnSelectionEvent(evt.CurrentActor,false));
             }
-
-            // if (_battleState != BattleState.Going)
-            // {
-            //     //FinishBattle();
-            //     return;
-            // }
-            var movingUnits = _battleContainer.GetAllCharacters().Where(t =>
-            {
-                if (!t.TryGet(AtomicAPI.Attack, out Attack attack)) return false;
-
-                return attack.energy.Value <= 0;
-            }).ToList();
+            
+            var movingUnits = _battleContainer
+                .GetAllCharacters()
+                .Where(t => t.Get<Component_Turn>().energy.Value<=0)
+                .ToList();
 
             if (!movingUnits.Any())
             {
@@ -47,12 +41,12 @@ namespace EventBus.Handlers.Turn
             }
             var currentUnit = movingUnits[0];
 
-            if (movingUnits.Any(t => t.Get<Ownership>(AtomicAPI.Owner).Owner != _battleContainer.LastMoved))
+            if (movingUnits.Any(t => t.Get<Component_Owner>().owner.Value != _battleContainer.LastMoved))
             {
-                currentUnit = movingUnits.FirstOrDefault(t => t.Get<Ownership>(AtomicAPI.Owner).Owner!= _battleContainer.LastMoved);
+                currentUnit = movingUnits.FirstOrDefault(t => t.Get<Component_Owner>().owner.Value!= _battleContainer.LastMoved);
             }
 
-            _battleContainer.LastMoved = currentUnit!.Get<Ownership>(AtomicAPI.Owner).Owner;
+            _battleContainer.LastMoved = currentUnit!.Get<Component_Owner>().owner.Value;
             EventBus.RaiseEvent(new CharacterTurnEvent(currentUnit));
             EventBus.RaiseEvent(new StartTurnEvent(currentUnit));
         }

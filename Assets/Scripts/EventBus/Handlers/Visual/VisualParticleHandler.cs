@@ -9,6 +9,8 @@ namespace EventBus.Handlers.Visual
     {
         protected override void HandleEvent(VisualParticleEvent evt)
         {
+            if (evt.Particle == null)
+                return;
             var vfx = GameObject.Instantiate(evt.Particle,evt.Target.position,evt.Target.rotation);
             GameObject.Destroy(vfx.gameObject,evt.Duration);
         }

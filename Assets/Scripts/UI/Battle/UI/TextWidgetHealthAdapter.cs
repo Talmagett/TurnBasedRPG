@@ -1,5 +1,7 @@
 ﻿using System;
+using Atomic.Elements;
 using Battle.Actors;
+using Battle.Actors.Model;
 using Configs;
 using Configs.Enums;
 using PrimeTween;
@@ -11,24 +13,23 @@ namespace Visual.UI.Battle.UI
     public sealed class TextWidgetHealthAdapter : MonoBehaviour
     {
         [SerializeField] private TMP_Text healthText;
-        [SerializeField] private ActorData entity;
-        
-        private SharedCharacterStats _stats;
+        [SerializeField] private CharacterEntity entity;
+
+        private AtomicVariable<int> _health;
 
         private void Start()
         {
-            if (!entity.TryGet(AtomicAPI.SharedStats, out _stats))
-                throw new NullReferenceException("No Stats Key");
-            _stats.GetStat(StatKey.Health).Subscribe(UpdateHealthText);
-            UpdateHealthText(_stats.GetStat(StatKey.Health).Value);
+            _health = entity.Get<Component_Life>().health;
+            _health.Subscribe(UpdateHealthText);
+            UpdateHealthText(_health.Value);
         }
 
         private void OnDestroy()
         {
-            _stats.GetStat(StatKey.Health).Unsubscribe(UpdateHealthText);
+            _health.Unsubscribe(UpdateHealthText);
         }
 
-        private void UpdateHealthText(float value)
+        private void UpdateHealthText(int value)
         {
             if (value <= 0) return;
             Tween.ShakeLocalRotation(healthText.transform, Vector3.one * 30, 0.2f).OnComplete(() =>

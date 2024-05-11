@@ -5,6 +5,7 @@ using Atomic.Elements;
 using Battle.Actors;
 using Battle.Actors.Model;
 using Battle.Characters;
+using Character.Components;
 using Configs;
 using Configs.Enums;
 using Cysharp.Threading.Tasks;
@@ -127,17 +128,16 @@ namespace Battle
             });
         }
 
-        private ActorData SpawnUnit(ActorData prefab, Transform parent, Owner owner, string characterName, Sprite icon, Dictionary<StatKey, float> stats)
+        private CharacterEntity SpawnUnit(CharacterEntity prefab, Transform parent, Owner owner, string characterName, Sprite icon, Dictionary<StatKey, float> stats)
         {
-            var actorData = _diContainer.InstantiatePrefab(prefab,parent).GetComponent<ActorData>();
-            actorData.AddProperty(AtomicAPI.Owner,new Ownership(owner));
-            actorData.AddProperty(AtomicAPI.Name, characterName);
-            var attack = new Attack
-            {
-                energy = new AtomicVariable<int>(Random.Range(0, 6))
-            };
-            actorData.AddProperty(AtomicAPI.Attack, attack);
-            actorData.AddProperty(AtomicAPI.SharedStats, new SharedCharacterStats(stats));
+            var actorData = _diContainer.InstantiatePrefab(prefab,parent).GetComponent<CharacterEntity>();
+            actorData.Add(new Component_Owner(owner));
+            actorData.Add(new Component_ID(characterName));
+            actorData.Add(new Component_Life((int)stats[StatKey.MaxHealth]));
+            actorData.Add(new Component_Attack((int)stats[StatKey.AttackPower],stats[StatKey.CriticalChance],stats[StatKey.CriticalRate]));
+            actorData.Add(new Component_Mana((int)stats[StatKey.MaxMana]));
+            actorData.Add(new Component_Defense((int)stats[StatKey.Defense],stats[StatKey.Evasion]));
+            actorData.Add(new Component_Turn(Random.Range(0, 6)));
             //actorData.AddProperty(AtomicAPI.Description, "Description Lores Insum");
             //actorData.AddProperty(AtomicAPI.Icon, icon);
             return actorData;

@@ -3,8 +3,10 @@ using Battle.Actors;
 using Battle.Characters;
 using Configs.Enums;
 using Cysharp.Threading.Tasks;
+using Entities;
 using EventBus.Events;
 using JetBrains.Annotations;
+using PrimeTween;
 
 namespace EventBus.Handlers.Turn
 {
@@ -13,13 +15,8 @@ namespace EventBus.Handlers.Turn
     {
         protected override void HandleEvent(StartTurnEvent evt)
         {
-            if (!evt.Source.TryGet("BattleActor", out BattleActor battleActor))
-                throw new NullReferenceException($"No battleActor in unit {evt.Source.Get(AtomicAPI.Name)}");
-            {
-                (evt.Source as ActorData)?.Select();
-
-                Run(battleActor).Forget();
-            }
+            Run(evt.Source.Get<BattleActor>()).Forget();
+            EventBus.RaiseEvent(new TurnSelectionEvent(evt.Source,true));
         }
 
         private async UniTask Run(BattleActor battleActor)

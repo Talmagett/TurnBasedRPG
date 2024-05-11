@@ -19,10 +19,10 @@ MonoBehaviour:
   <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: 4dc1c548a54bb9443aaf44be3fa86282,
     type: 3}
   <Stats>k__BackingField:
-    Health: 100
-    Mana: 70
-    AttackPower: 20
-    Defense: 20
-    Evasion: 0
-    CriticalChance: 0.2
-    CriticalRate: 2
+    health: 80
+    mana: 120
+    attackPower: 65
+    defense: 12
+    evasion: 0
+    criticalChance: 0
+    criticalRate: 1.5

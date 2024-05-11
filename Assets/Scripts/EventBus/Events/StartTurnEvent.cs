@@ -1,12 +1,13 @@
 using Atomic.Objects;
+using Entities;
 
 namespace EventBus.Events
 {
     public readonly struct StartTurnEvent : IEvent
     {
-        public readonly IAtomicObject Source;
+        public readonly IEntity Source;
 
-        public StartTurnEvent(IAtomicObject source)
+        public StartTurnEvent(IEntity source)
         {
             Source = source;
         }

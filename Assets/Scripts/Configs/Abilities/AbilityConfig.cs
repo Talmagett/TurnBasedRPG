@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace Configs.Abilities
 {
-    public abstract class AbilityConfig : ScriptableObject
+    [CreateAssetMenu(menuName = "SO/Create AbilityConfig", fileName = "AbilityConfig", order = 0)]
+    public class AbilityConfig : ScriptableObject
     {
         [field: SerializeField] public string ID { get; private set; }
         [field: SerializeField] public string Name { get; private set; }
@@ -17,7 +18,5 @@ namespace Configs.Abilities
         [field: SerializeField] public AnimationKey.Animation AnimationKey { get; private set; }
 
         [SerializeReference] public IEffect[] Effects;
-
-        public abstract IAbility GetAbilityClone(ActorData source, ActorData target);
     }
 }
