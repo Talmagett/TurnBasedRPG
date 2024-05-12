@@ -13,7 +13,7 @@ namespace UI
         private HeroView[] _mapHeroViews;
 
         private HeroParty _party;
-
+/*
         private void Start()
         {
             var index = 0;
@@ -30,7 +30,7 @@ namespace UI
                              playerCharacter.Stats.GetStat(StatKey.MaxMana).Value);
                 index++;
             }
-        }
+        }*/
 
         [Inject]
         public void Construct(HeroParty party)

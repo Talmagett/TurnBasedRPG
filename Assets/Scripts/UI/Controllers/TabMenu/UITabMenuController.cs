@@ -1,4 +1,5 @@
 using Game.Heroes;
+using Sirenix.OdinInspector;
 using UI.Presenters;
 using UI.Views.TabMenu;
 using UnityEngine;
@@ -8,11 +9,12 @@ namespace UI.Controllers.TabMenu
 {
     public class UITabMenuController : MonoBehaviour
     {
-        [SerializeField] private HeroDataView heroDataView;
+        [SerializeField] private HeroesListController heroesListController;
+        //[SerializeField] private HeroDataView heroDataView;
         [SerializeField] private UIInventoryController uiInventoryController;
-
+        [SerializeField] private UIEquipmentController uiEquipmentController;
+        
         private HeroParty _heroParty;
-
         private PlayerInputActions _inputActions;
 
         [Inject]
@@ -22,17 +24,36 @@ namespace UI.Controllers.TabMenu
             _inputActions = inputActions;
         }
 
-        public void ShowCharacterPanel(int index = 0)
+        // from outside
+        public void ShowCharactersList()
         {
-            heroDataView.gameObject.SetActive(true);
             _inputActions.Map.Disable();
+
+            for (int i = 0; i < _heroParty.HeroDataArray.Length; i++)
+            {
+                var index = i;
+                heroesListController.Show(_heroParty.HeroDataArray[i].CharacterConfig.Icon,()=>ShowCharacterPanel(index));
+            }
+        }
+        
+        public void ShowCharacterPanel(int index)
+        {
+            uiEquipmentController.SetCharacterIndex();
+            /*
+            heroDataView.gameObject.SetActive(true);
 
             var hero = _heroParty.HeroDataArray[index];
 
             var characterStatObserver = new CharacterStatObserver(heroDataView.CharacterStatsView, hero);
-            var characterDataPresenter = new CharacterDataPresenter(heroDataView.HeroPersonalDataView, hero);
+            var characterDataPresenter = new CharacterDataPresenter(heroDataView.HeroPersonalDataView, hero);*/
         }
 
+        [Button]
+        public void ShowEquipment()
+        {
+            uiEquipmentController.Show();
+        }
+        
         public void HideCharacterPanel()
         {
             _inputActions.Map.Enable();

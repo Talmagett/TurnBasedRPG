@@ -18,9 +18,15 @@ MonoBehaviour:
     flags: 12
     components:
     - rid: 2416527777508622396
+    - rid: 1041286152238137565
   references:
     version: 2
     RefIds:
+    - rid: 1041286152238137565
+      type: {class: Component_EquipmentType, ns: Modules.Items.Scripts.Equipment,
+        asm: Equipment}
+      data:
+        <Type>k__BackingField: 0
     - rid: 2416527777508622396
       type: {class: DealDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
       data:

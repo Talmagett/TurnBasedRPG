@@ -1,6 +1,5 @@
 ﻿using EventBus.Handlers.Effects;
 using EventBus.Handlers.Turn;
-using EventBus.Handlers.Turn.Abilities;
 using EventBus.Handlers.Visual;
 using Zenject;
 
@@ -13,17 +12,13 @@ namespace EventBus
             ConfigureTurn(Container);
             ConfigureAbilities(Container);
             ConfigureVisual(Container);
-        }
-
-
-        // ReSharper disable Unity.PerformanceAnalysis
+        } // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureTurn(DiContainer builder)
         {
             builder.BindInterfacesAndSelfTo<StartTurnEventHandler>().AsSingle().NonLazy();
 
             //Abilities
             builder.BindInterfacesAndSelfTo<CastAbilityHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<ShootProjectileAbilityHandler>().AsSingle().NonLazy();
 
             builder.BindInterfacesAndSelfTo<ConsumeActionHandler>().AsSingle().NonLazy();
 
@@ -47,9 +42,11 @@ namespace EventBus
         private void ConfigureAbilities(DiContainer builder)
         {
             builder.BindInterfacesAndSelfTo<DealDamageHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<MultiDamageEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<HealEffectHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<ShootProjectileAbilityHandler>().AsSingle().NonLazy();
         }
-        
+
         // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureVisual(DiContainer builder)
         {

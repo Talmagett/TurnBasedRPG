@@ -1,6 +1,5 @@
 using System;
 using Character.BodyParts;
-using EventBus.Events;
 using EventBus.Events.Effects;
 using PrimeTween;
 using UnityEngine;
@@ -43,8 +42,6 @@ namespace EventBus.Handlers.Effects
                 effect.Target = evt.Target;
                 EventBus.RaiseEvent(effect);
             }
-
-            EventBus.RaiseEvent(new FinishTurnEvent(evt.Source));
         }
     }
 }

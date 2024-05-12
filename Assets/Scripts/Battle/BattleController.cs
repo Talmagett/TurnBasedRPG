@@ -70,10 +70,7 @@ namespace Battle
 
         public void ClearBattle()
         {
-            while (environmentParent.childCount>0)
-            {
-                DestroyImmediate(environmentParent.GetChild(0).gameObject);
-            }
+            while (environmentParent.childCount > 0) DestroyImmediate(environmentParent.GetChild(0).gameObject);
         }
 
         public void SetupBattle(EnemyRiftConfig enemyRiftConfig)

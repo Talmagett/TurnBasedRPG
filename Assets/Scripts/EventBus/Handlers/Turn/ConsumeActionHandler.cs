@@ -1,6 +1,5 @@
 using Character.Components;
 using EventBus.Events;
-using UnityEngine;
 
 namespace EventBus.Handlers.Turn
 {

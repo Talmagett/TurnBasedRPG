@@ -21,7 +21,7 @@ namespace UI.Controllers.Map
 
         private void OpenTabMenu()
         {
-            uiTabMenuController.ShowCharacterPanel();
+            uiTabMenuController.ShowCharactersList();
         }
     }
 }

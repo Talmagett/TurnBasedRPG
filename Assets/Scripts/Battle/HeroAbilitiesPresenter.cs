@@ -19,6 +19,7 @@ namespace Battle
     {
         [SerializeField] private Transform spellsViewParent;
         [SerializeField] private BattleAbilityView battleAbilityView;
+
         private AbilitiesStorage _abilitiesStorage;
         private AbilityConfig _castingAbility;
         private CursorController _cursorController;
@@ -66,6 +67,7 @@ namespace Battle
         {
             _abilitiesStorage = abilitiesStorage;
             _cursorController = cursorController;
+            Hide();
         }
 
         private void OnCharacterChanged(CharacterTurnEvent evt)
@@ -141,6 +143,7 @@ namespace Battle
 
         private void CastAbility(AbilityConfig abilityConfig, IEntity characterEntity)
         {
+            _isChoosing = false;
             EventBus.EventBus.RaiseEvent(new CastAbilityEvent(_hero, characterEntity, abilityConfig));
             _cursorController.SetCursor(CursorType.None);
             Hide();

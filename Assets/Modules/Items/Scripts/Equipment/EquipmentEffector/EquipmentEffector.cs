@@ -13,8 +13,8 @@ namespace Modules.Items.Scripts.Equipment.EquipmentEffector
             _character = character;
             _equipment = equipment;
 
-            // _equipment.OnItemEquipped += AddEffectToCharacter;
-            // _equipment.OnItemUnequipped += RemoveEffectFromCharacter;
+            _equipment.OnItemEquipped += AddEffectToCharacter;
+            _equipment.OnItemUnequipped += RemoveEffectFromCharacter;
         }
 
         public void Dispose()

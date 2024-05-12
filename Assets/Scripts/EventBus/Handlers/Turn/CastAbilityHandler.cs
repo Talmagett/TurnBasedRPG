@@ -3,7 +3,7 @@ using Configs.Enums;
 using EventBus.Events;
 using UnityEngine;
 
-namespace EventBus.Handlers.Turn.Abilities
+namespace EventBus.Handlers.Turn
 {
     public class CastAbilityHandler : BaseHandler<CastAbilityEvent>
     {
@@ -25,7 +25,7 @@ namespace EventBus.Handlers.Turn.Abilities
                 EventBus.RaiseEvent(effect);
             }
 
-            EventBus.RaiseEvent(new FinishTurnEvent(evt.Source));
+            EventBus.RaiseEvent(new DelayedEvent(new FinishTurnEvent(evt.Source), evt.AbilityConfig.TurnTime));
         }
     }
 }

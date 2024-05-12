@@ -22,6 +22,7 @@ namespace Game.Heroes
             CharacterConfig = characterConfig;
             Prefab = characterConfig.Prefab;
             Stats = new SharedCharacterStats(stats ?? characterConfig.Stats.CloneStats());
+            Equipment = new Equipment();
         }
     }
 }

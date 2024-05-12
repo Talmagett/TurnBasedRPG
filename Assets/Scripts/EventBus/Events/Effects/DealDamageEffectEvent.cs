@@ -1,6 +1,6 @@
 ﻿using System;
 using Character.BodyParts;
-using Configs.Abilities.Attributes;
+using Configs.Attributes;
 using Entities;
 using UnityEngine;
 

@@ -17,12 +17,12 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 5ca649c84aae84d33b66600f77b5764f, type: 3}
     flags: 12
     components:
-    - rid: 2416527777508622398
+    - rid: 1041286152238137563
   references:
     version: 2
     RefIds:
-    - rid: 2416527777508622398
-      type: {class: StatAdditive, ns: Configs.Abilities.Attributes, asm: Assembly-CSharp}
+    - rid: 1041286152238137563
+      type: {class: Component_EquipmentType, ns: Modules.Items.Scripts.Equipment,
+        asm: Equipment}
       data:
-        Stat: 0
-        Value: 20
+        <Type>k__BackingField: 5

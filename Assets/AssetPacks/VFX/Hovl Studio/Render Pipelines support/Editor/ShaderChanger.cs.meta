@@ -9,3 +9,10 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157764
+  packageName: Support package for Hovl Studio assets
+  packageVersion: 3.13
+  assetPath: Assets/AssetPacks/VFX/Hovl Studio/Render Pipelines support/Editor/ShaderChanger.cs
+  uploadId: 655626

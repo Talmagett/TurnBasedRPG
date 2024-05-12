@@ -18,6 +18,7 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 21300000, guid: 2beb617b3fc4b2c4eae2d3f409017cc7,
     type: 3}
   <EnergyCost>k__BackingField: 7
+  <TurnTime>k__BackingField: 1.5
   <TargetType>k__BackingField: 1
   <AnimationKey>k__BackingField: 0
   Effects:

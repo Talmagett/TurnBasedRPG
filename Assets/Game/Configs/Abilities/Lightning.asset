@@ -18,19 +18,23 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 21300000, guid: 56f9b5e3ec25e7646b70d16ae551f40b,
     type: 3}
   <EnergyCost>k__BackingField: 6
-  <TargetType>k__BackingField: 2
+  <TurnTime>k__BackingField: 4
+  <TargetType>k__BackingField: 0
   <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 1041286146816475205
+  - rid: 1041286146816475250
   references:
     version: 2
     RefIds:
-    - rid: 1041286146816475205
-      type: {class: DealDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
+    - rid: 1041286146816475250
+      type: {class: MultiDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
-        <HitEffect>k__BackingField: {fileID: 0}
-        <HitEffectPoint>k__BackingField: 0
-        <DamageAmount>k__BackingField:
-          Stat: 4
-          BaseValue: 10
-          MultValue: 1
+        Count: 5
+        DealDamageEffectEvent:
+          <HitEffect>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
+            type: 3}
+          <HitEffectPoint>k__BackingField: 2
+          <DamageAmount>k__BackingField:
+            Stat: 4
+            BaseValue: 10
+            MultValue: 0.1

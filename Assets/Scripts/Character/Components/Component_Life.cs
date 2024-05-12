@@ -1,5 +1,6 @@
 ﻿using System;
 using Atomic.Elements;
+using UnityEngine;
 
 namespace Character.Components
 {
@@ -8,7 +9,8 @@ namespace Character.Components
     {
         public AtomicVariable<bool> isDead = new(false);
 
-        public AtomicVariable<int> health;
+        [Min(0)] public AtomicVariable<int> health;
+
         public AtomicVariable<int> maxHealth;
 
         public Component_Life(int baseHealth)

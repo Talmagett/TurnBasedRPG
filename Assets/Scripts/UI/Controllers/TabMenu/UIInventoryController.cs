@@ -1,3 +1,5 @@
+using Game.Heroes;
+using Modules.Items.Scripts.Equipment;
 using Modules.Items.Scripts.Inventory;
 using Modules.Items.Scripts.ItemModule;
 using Sirenix.OdinInspector;
@@ -12,7 +14,6 @@ namespace UI.Controllers.TabMenu
 
         [SerializeField] private ItemFullView itemFullView;
 
-
         private Inventory _inventory;
 
         [Title("DEBUG")]
@@ -23,9 +24,10 @@ namespace UI.Controllers.TabMenu
         }
 
         [Inject]
-        public void Ctor(Inventory inventory)
+        public void Ctor(HeroParty heroParty, Inventory inventory)
         {
             _inventory = inventory;
+            
         }
 
         public void Show()

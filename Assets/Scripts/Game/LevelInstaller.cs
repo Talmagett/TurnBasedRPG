@@ -10,6 +10,7 @@ namespace Game
         [SerializeField] private GameStateController gameStateController;
         [SerializeField] private BattleController battleController;
         [SerializeField] private UIController uiController; // ReSharper disable Unity.PerformanceAnalysis
+
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<BattleContainer>().AsSingle().NonLazy();
