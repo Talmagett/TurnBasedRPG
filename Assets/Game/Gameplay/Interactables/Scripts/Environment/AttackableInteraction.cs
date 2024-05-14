@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Map.Interactions.Environment
+namespace Game.Gameplay.Interactables.Scripts.Environment
 {
     public class AttackableInteraction : Interactable
     {

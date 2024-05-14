@@ -1,12 +1,12 @@
 ﻿using System;
-using Character.BodyParts;
-using Character.Components;
-using EventBus.Events;
-using EventBus.Events.Effects;
+using Game.Gameplay.Characters.Scripts.BodyParts;
+using Game.Gameplay.Characters.Scripts.Components;
+using Game.Gameplay.EventBus.Events;
+using Game.Gameplay.EventBus.Events.Effects;
 using JetBrains.Annotations;
 using Zenject;
 
-namespace EventBus.Handlers.Effects
+namespace Game.Gameplay.EventBus.Handlers.Effects
 {
     [UsedImplicitly]
     public sealed class DealDamageEffectHandler : IInitializable, IDisposable

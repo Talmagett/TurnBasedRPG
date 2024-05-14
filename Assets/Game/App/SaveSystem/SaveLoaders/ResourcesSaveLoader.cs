@@ -1,20 +1,18 @@
 using System.Linq;
-using SaveSystem.GameEngine.Objects;
-using SaveSystem.GameEngine.Systems;
-using SaveSystem.SaveSystem;
+using Game.App.SaveSystem.GameEngine.Objects;
+using Game.App.SaveSystem.GameEngine.Systems;
+using Game.App.SaveSystem.SaveSystem;
 
-namespace SaveSystem.SaveLoaders
+namespace Game.App.SaveSystem.SaveLoaders
 {
     public sealed class ResourcesSaveLoader : SaveLoader<ResourceData[], ResourceService>
     {
         protected override void SetupData(ResourceService resourceService, ResourceData[] loadedUnitsDataArray)
         {
             var resources = resourceService.GetResources().ToArray();
-            for (int i = 0; i < loadedUnitsDataArray.Length; i++)
-            {
+            for (var i = 0; i < loadedUnitsDataArray.Length; i++)
                 if (resources[i].ID == loadedUnitsDataArray[i].id)
                     resources[i].Amount = loadedUnitsDataArray[i].amount;
-            }
             resourceService.SetResources(resources);
         }
 
@@ -22,7 +20,7 @@ namespace SaveSystem.SaveLoaders
         {
             var resources = resourceService.GetResources().ToArray();
             var resourcesData = new ResourceData[resources.Length];
-            for (int i = 0; i < resources.Length; i++)
+            for (var i = 0; i < resources.Length; i++)
             {
                 resourcesData[i].id = resources[i].ID;
                 resourcesData[i].amount = resources[i].Amount;

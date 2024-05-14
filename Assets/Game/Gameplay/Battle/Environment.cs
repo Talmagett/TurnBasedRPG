@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Battle
+namespace Game.Gameplay.Battle
 {
     public class Environment : MonoBehaviour
     {

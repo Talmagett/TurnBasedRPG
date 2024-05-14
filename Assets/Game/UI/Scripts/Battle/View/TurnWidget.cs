@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Battle.View
+namespace Game.UI.Scripts.Battle.View
 {
     public class TurnWidget : MonoBehaviour
     {
@@ -14,13 +14,12 @@ namespace UI.Battle.View
         public void SetTurn(string turnValue, bool isActive)
         {
             turnText.text = turnValue;
-            //Tween.Rotation(time.transform, Quaternion.Euler(0,0,time.transform.eulerAngles.z+180), 0.4f);
-            time.gameObject.SetActive(!isActive);
+            //not working !!??
+            Tween.EulerAngles(transform, Vector3.zero, new Vector3(0, 360), 0.3f);
+            turnText.gameObject.SetActive(!isActive);
             energy.gameObject.SetActive(isActive);
             if (isActive)
-            {
                 Tween.ShakeScale(energy.transform, Vector3.one * 1.2f, 0.3f);
-            }
         }
     }
 }

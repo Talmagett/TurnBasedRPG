@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Battle.View
+namespace Game.UI.Scripts.Battle.View
 {
     public class ResourceBar : MonoBehaviour
     {
@@ -23,7 +23,7 @@ namespace UI.Battle.View
 
         public void SetFill(float percentage)
         {
-            Tween.UIFillAmount(barImage, percentage,0.3f);
+            Tween.UIFillAmount(barImage, percentage, 0.3f);
         }
     }
 }

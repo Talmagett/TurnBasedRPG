@@ -1,4 +1,4 @@
-namespace Game.Control
+namespace Game.Gameplay.Game.Control
 {
     public enum CursorType
     {

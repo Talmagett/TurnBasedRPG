@@ -1,25 +1,20 @@
 using UnityEngine;
 
-namespace SaveSystem.GameEngine.Objects
+namespace Game.App.SaveSystem.GameEngine.Objects
 {
     //Нельзя менять!
     public sealed class Resource : MonoBehaviour
     {
-        public string ID
-        {
-            get => id;
-        }
+        [SerializeField] private string id;
+
+        [SerializeField] private int amount;
+
+        public string ID => id;
 
         public int Amount
         {
             get => amount;
             set => amount = value;
         }
-
-        [SerializeField]
-        private string id;
-
-        [SerializeField]
-        private int amount;
     }
 }

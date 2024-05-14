@@ -1,7 +1,7 @@
-﻿using EventBus.Events;
+﻿using Game.Gameplay.EventBus.Events;
 using JetBrains.Annotations;
 
-namespace EventBus.Handlers.Turn
+namespace Game.Gameplay.EventBus.Handlers.Turn
 {
     [UsedImplicitly]
     public sealed class MoveHandler : BaseHandler<MoveEvent>

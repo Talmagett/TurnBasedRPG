@@ -1,4 +1,4 @@
-namespace Modules.Items.Scripts.Equipment
+namespace Game.Meta.Inventory.Equipment
 {
     public enum EquipmentType
     {
@@ -7,6 +7,6 @@ namespace Modules.Items.Scripts.Equipment
         Chest,
         Boots,
         Gloves,
-        Ring,
+        Ring
     }
 }

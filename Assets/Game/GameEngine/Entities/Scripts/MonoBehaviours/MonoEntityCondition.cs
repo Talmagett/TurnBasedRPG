@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Modules.Entities.Scripts.MonoBehaviours
+namespace Game.GameEngine.Entities.Scripts.MonoBehaviours
 {
     public abstract class MonoEntityCondition : MonoBehaviour, IEntityCondition
     {

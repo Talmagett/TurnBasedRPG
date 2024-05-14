@@ -1,9 +1,9 @@
-using Configs.Character;
-using Game.Heroes;
+using Game.Configs.Configs.Character;
+using Game.Gameplay.Game.Heroes;
 using UnityEngine;
 using Zenject;
 
-namespace UI.Controllers.TabMenu
+namespace Game.UI.Scripts.Controllers.TabMenu
 {
     public class UITabMenuController : MonoBehaviour
     {

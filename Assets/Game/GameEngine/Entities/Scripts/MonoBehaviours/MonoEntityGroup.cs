@@ -2,23 +2,19 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Modules.Entities.Scripts.MonoBehaviours
+namespace Game.GameEngine.Entities.Scripts.MonoBehaviours
 {
     [AddComponentMenu("Entities/Entity Group")]
     public sealed class MonoEntityGroup : MonoEntity
     {
-        [SerializeField]
-        private MonoEntity[] entities = new MonoEntity[0];
+        [SerializeField] private MonoEntity[] entities = new MonoEntity[0];
 
         public override T Get<T>()
         {
-            for (int i = 0, count = this.entities.Length; i < count; i++)
+            for (int i = 0, count = entities.Length; i < count; i++)
             {
-                var entity = this.entities[i];
-                if (entity.TryGet(out T element))
-                {
-                    return element;
-                }
+                var entity = entities[i];
+                if (entity.TryGet(out T element)) return element;
             }
 
             throw new Exception($"Element of type {typeof(T).Name} is not found!");
@@ -26,13 +22,10 @@ namespace Modules.Entities.Scripts.MonoBehaviours
 
         public override bool TryGet<T>(out T element)
         {
-            for (int i = 0, count = this.entities.Length; i < count; i++)
+            for (int i = 0, count = entities.Length; i < count; i++)
             {
-                var entity = this.entities[i];
-                if (entity.TryGet(out element))
-                {
-                    return true;
-                }
+                var entity = entities[i];
+                if (entity.TryGet(out element)) return true;
             }
 
             element = default;
@@ -42,10 +35,7 @@ namespace Modules.Entities.Scripts.MonoBehaviours
         public override object[] GetAll()
         {
             var result = new List<object>();
-            foreach (var entity in this.entities)
-            {
-                result.AddRange(entity.GetAll());
-            }
+            foreach (var entity in entities) result.AddRange(entity.GetAll());
 
             return result.ToArray();
         }

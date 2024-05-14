@@ -1,12 +1,12 @@
 using System;
-using Character.BodyParts;
-using EventBus.Events.Effects;
+using Game.Gameplay.Characters.Scripts.BodyParts;
+using Game.Gameplay.EventBus.Events.Effects;
 using PrimeTween;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
-namespace EventBus.Handlers.Effects
+namespace Game.Gameplay.EventBus.Handlers.Effects
 {
     public class ShootProjectileAbilityHandler : IInitializable, IDisposable
     {

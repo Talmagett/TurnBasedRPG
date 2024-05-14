@@ -1,29 +1,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Meta.Items.Scripts.ItemModule;
 using Sirenix.OdinInspector;
-using Zenject;
 
-namespace Modules.Items.Scripts.Inventory
+namespace Game.Meta.Inventory.Inventory
 {
     public sealed class Inventory
     {
-        [ShowInInspector] [ReadOnly] private List<ItemModule.Item> _items;
+        [ShowInInspector] [ReadOnly] private List<Item> _items;
 
-        public Inventory(params ItemModule.Item[] items)
+        public Inventory(params Item[] items)
         {
-            _items = new List<ItemModule.Item>(items);
+            _items = new List<Item>(items);
         }
 
-        public event Action<ItemModule.Item> OnItemAdded;
-        public event Action<ItemModule.Item> OnItemRemoved;
+        public event Action<Item> OnItemAdded;
+        public event Action<Item> OnItemRemoved;
 
-        public void Setup(params ItemModule.Item[] items)
+        public void Setup(params Item[] items)
         {
-            _items = new List<ItemModule.Item>(items);
+            _items = new List<Item>(items);
         }
 
-        public void AddItem(ItemModule.Item item)
+        public void AddItem(Item item)
         {
             if (!_items.Contains(item))
             {
@@ -32,7 +32,7 @@ namespace Modules.Items.Scripts.Inventory
             }
         }
 
-        public void RemoveItem(ItemModule.Item item)
+        public void RemoveItem(Item item)
         {
             if (_items.Remove(item)) OnItemRemoved?.Invoke(item);
         }
@@ -47,12 +47,12 @@ namespace Modules.Items.Scripts.Inventory
             if (FindItem(name, out var item)) RemoveItem(item);
         }
 
-        public List<ItemModule.Item> GetItems()
+        public List<Item> GetItems()
         {
             return _items.ToList();
         }
 
-        public bool FindItem(string name, out ItemModule.Item result)
+        public bool FindItem(string name, out Item result)
         {
             foreach (var inventoryItem in _items)
                 if (inventoryItem.Name == name)

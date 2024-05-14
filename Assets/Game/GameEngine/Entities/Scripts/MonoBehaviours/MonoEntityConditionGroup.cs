@@ -1,54 +1,46 @@
 using System;
 using System.Collections.Generic;
-using Modules.Entities.Scripts.ScriptableObjects;
+using Game.GameEngine.Entities.Scripts.ScriptableObjects;
 using UnityEngine;
 
-namespace Modules.Entities.Scripts.MonoBehaviours
+namespace Game.GameEngine.Entities.Scripts.MonoBehaviours
 {
     public sealed class MonoEntityConditionGroup : MonoEntityCondition
     {
-        [SerializeField]
-        private Mode mode;
+        [SerializeField] private Mode mode;
 
-        [Space]
-        [SerializeReference]
-        private IEntityCondition[] baseConditions;
-        
-        [SerializeField]
-        private MonoEntityCondition[] monoConditions;
+        [Space] [SerializeReference] private IEntityCondition[] baseConditions;
 
-        [SerializeField]
-        private ScriptableEntityCondition[] scriptableConditions;
-        
+        [SerializeField] private MonoEntityCondition[] monoConditions;
+
+        [SerializeField] private ScriptableEntityCondition[] scriptableConditions;
+
         private List<IEntityCondition> conditions;
 
         private void Awake()
         {
-            this.conditions = new List<IEntityCondition>();
-            this.conditions.AddRange(this.baseConditions);
-            this.conditions.AddRange(this.monoConditions);
-            this.conditions.AddRange(this.scriptableConditions);
+            conditions = new List<IEntityCondition>();
+            conditions.AddRange(baseConditions);
+            conditions.AddRange(monoConditions);
+            conditions.AddRange(scriptableConditions);
         }
 
         public override bool IsTrue(IEntity entity)
         {
-            return this.mode switch
+            return mode switch
             {
-                Mode.AND => this.All(entity),
-                Mode.OR => this.Any(entity),
-                _ => throw new Exception($"Mode is undefined {this.mode}")
+                Mode.AND => All(entity),
+                Mode.OR => Any(entity),
+                _ => throw new Exception($"Mode is undefined {mode}")
             };
         }
 
         private bool All(IEntity entity)
         {
-            for (int i = 0, count = this.conditions.Count; i < count; i++)
+            for (int i = 0, count = conditions.Count; i < count; i++)
             {
-                var condition = this.conditions[i];
-                if (!condition.IsTrue(entity))
-                {
-                    return false;
-                }
+                var condition = conditions[i];
+                if (!condition.IsTrue(entity)) return false;
             }
 
             return true;
@@ -56,13 +48,10 @@ namespace Modules.Entities.Scripts.MonoBehaviours
 
         private bool Any(IEntity entity)
         {
-            for (int i = 0, count = this.conditions.Count; i < count; i++)
+            for (int i = 0, count = conditions.Count; i < count; i++)
             {
-                var condition = this.conditions[i];
-                if (condition.IsTrue(entity))
-                {
-                    return true;
-                }
+                var condition = conditions[i];
+                if (condition.IsTrue(entity)) return true;
             }
 
             return false;

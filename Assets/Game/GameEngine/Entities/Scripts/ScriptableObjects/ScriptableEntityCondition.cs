@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Modules.Entities.Scripts.ScriptableObjects
+namespace Game.GameEngine.Entities.Scripts.ScriptableObjects
 {
     public abstract class ScriptableEntityCondition : ScriptableObject, IEntityCondition
     {

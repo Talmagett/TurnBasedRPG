@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Character.BodyParts.Editor
+namespace Game.Gameplay.Characters.Scripts.BodyParts.Editor
 {
     [CustomEditor(typeof(BodyParts))]
     public class BodyPartsEditor : UnityEditor.Editor

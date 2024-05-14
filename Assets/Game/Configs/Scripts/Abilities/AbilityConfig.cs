@@ -1,9 +1,9 @@
-﻿using Configs.Enums;
-using EventBus.Events.Effects;
+﻿using Game.Configs.Configs.Enums;
+using Game.Gameplay.EventBus.Events.Effects;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Configs.Abilities
+namespace Game.Configs.Configs.Abilities
 {
     [CreateAssetMenu(menuName = "SO/Create AbilityConfig", fileName = "AbilityConfig", order = 0)]
     public class AbilityConfig : ScriptableObject

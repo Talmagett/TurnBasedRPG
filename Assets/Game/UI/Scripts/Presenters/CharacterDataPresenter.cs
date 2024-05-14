@@ -1,8 +1,8 @@
-using Configs.Character;
-using Game.Heroes;
-using UI.Views.TabMenu;
+using Game.Configs.Configs.Character;
+using Game.Gameplay.Game.Heroes;
+using Game.UI.Scripts.Views.TabMenu;
 
-namespace UI.Presenters
+namespace Game.UI.Scripts.Presenters
 {
     public class CharacterDataPresenter
     {

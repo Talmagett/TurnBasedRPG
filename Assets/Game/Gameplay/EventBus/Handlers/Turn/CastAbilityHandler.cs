@@ -1,9 +1,9 @@
-using Character;
-using Configs.Enums;
-using EventBus.Events;
+using Game.Configs.Configs.Enums;
+using Game.Gameplay.Characters.Scripts;
+using Game.Gameplay.EventBus.Events;
 using UnityEngine;
 
-namespace EventBus.Handlers.Turn
+namespace Game.Gameplay.EventBus.Handlers.Turn
 {
     public class CastAbilityHandler : BaseHandler<CastAbilityEvent>
     {

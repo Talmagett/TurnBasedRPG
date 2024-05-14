@@ -1,8 +1,8 @@
 using System;
 using Atomic.Elements;
-using Configs.Enums;
+using Game.Configs.Configs.Enums;
 
-namespace Character.Components
+namespace Game.Gameplay.Characters.Scripts.Components
 {
     [Serializable]
     public sealed class Component_Owner

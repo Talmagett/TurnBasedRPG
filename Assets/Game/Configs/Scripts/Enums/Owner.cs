@@ -1,4 +1,4 @@
-namespace Configs.Enums
+namespace Game.Configs.Configs.Enums
 {
     public enum Owner
     {

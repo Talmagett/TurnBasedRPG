@@ -1,8 +1,7 @@
-using Character;
-using Modules.Items.Scripts.ItemModule;
+using Game.Gameplay.Characters.Scripts;
 using UnityEngine;
 
-namespace Configs.Character
+namespace Game.Configs.Configs.Character
 {
     [CreateAssetMenu(fileName = "CharacterConfig", menuName = "SO/CharacterConfig", order = 0)]
     public abstract class CharacterConfig : ScriptableObject

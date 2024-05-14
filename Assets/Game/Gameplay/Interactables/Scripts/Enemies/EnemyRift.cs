@@ -1,9 +1,10 @@
-using Configs;
-using Game;
+using Game.Configs.Configs;
+using Game.Gameplay.Game;
+using Game.Gameplay.Player;
 using UnityEngine;
 using Zenject;
 
-namespace Map.Interactions.Enemies
+namespace Game.Gameplay.Interactables.Scripts.Enemies
 {
     public class EnemyRift : MonoBehaviour
     {

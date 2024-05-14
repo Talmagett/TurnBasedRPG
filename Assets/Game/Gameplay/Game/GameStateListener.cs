@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace Game
+namespace Game.Gameplay.Game
 {
     [Serializable]
     public class GameStateListener : MonoBehaviour

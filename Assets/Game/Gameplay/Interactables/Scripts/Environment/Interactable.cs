@@ -1,7 +1,8 @@
 using System;
+using Game.Gameplay.Player;
 using UnityEngine;
 
-namespace Map.Interactions.Environment
+namespace Game.Gameplay.Interactables.Scripts.Environment
 {
     public abstract class Interactable : MonoBehaviour
     {

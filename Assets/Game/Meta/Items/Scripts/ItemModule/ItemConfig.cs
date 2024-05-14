@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Modules.Items.Scripts.ItemModule
+namespace Game.Meta.Items.Scripts.ItemModule
 {
     [CreateAssetMenu(
         fileName = "ItemConfig",

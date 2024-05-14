@@ -1,19 +1,19 @@
 using System;
 using System.Collections.Generic;
-using Character;
-using Character.Components;
-using Configs;
-using Configs.Character;
-using Configs.Enums;
-using EventBus.Events;
-using Game.Heroes;
+using Game.Configs.Configs;
+using Game.Configs.Configs.Character;
+using Game.Configs.Configs.Enums;
+using Game.Gameplay.Characters.Scripts;
+using Game.Gameplay.Characters.Scripts.Components;
+using Game.Gameplay.EventBus.Events;
+using Game.Gameplay.Game.Heroes;
 using PrimeTween;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace Battle
+namespace Game.Gameplay.Battle
 {
     public class BattleController : MonoBehaviour
     {
@@ -85,7 +85,8 @@ namespace Battle
                 var unitData = _heroParty.HeroDataArray[i];
                 var position = -(_heroParty.HeroDataArray.Length - 1) / 2f + i;
                 var characterConfig = unitData.Get<HeroCharacterConfig>();
-                var unit = SpawnUnit(characterConfig.Prefab, environment.PlayerSpawnPosition, Owner.Player, characterConfig.Name,
+                var unit = SpawnUnit(characterConfig.Prefab, environment.PlayerSpawnPosition, Owner.Player,
+                    characterConfig.Name,
                     unitData.Get<SharedCharacterStats>().GetAllStats());
                 unit.Add(characterConfig);
                 unit.transform.position += Vector3.forward * position * 2;
@@ -105,7 +106,8 @@ namespace Battle
             Tween.Delay(1).OnComplete(() => { EventBus.EventBus.RaiseEvent(new NextTurnEvent()); });
         }
 
-        private CharacterEntity SpawnUnit(CharacterEntity prefab, Transform parent, Owner owner, string characterName, Dictionary<StatKey, float> stats)
+        private CharacterEntity SpawnUnit(CharacterEntity prefab, Transform parent, Owner owner, string characterName,
+            Dictionary<StatKey, float> stats)
         {
             var actorData = _diContainer.InstantiatePrefab(prefab, parent).GetComponent<CharacterEntity>();
             actorData.Add(new Component_Owner(owner));

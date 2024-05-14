@@ -1,6 +1,6 @@
-using Character;
+using Game.Gameplay.Characters.Scripts;
 
-namespace EventBus.Events
+namespace Game.Gameplay.EventBus.Events
 {
     public readonly struct NextTurnEvent : IEvent
     {

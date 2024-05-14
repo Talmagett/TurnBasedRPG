@@ -1,9 +1,9 @@
-using Character.Components;
-using Configs.Abilities;
-using EventBus.Events;
+using Game.Configs.Configs.Abilities;
+using Game.Gameplay.Characters.Scripts.Components;
+using Game.Gameplay.EventBus.Events;
 using UnityEngine;
 
-namespace Character.Enemies
+namespace Game.Gameplay.Characters.Enemies.Scripts
 {
     public class Skeleton : EnemyAI
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using EventBus.Events;
+using Game.Gameplay.EventBus.Events;
 using UnityEngine;
 
-namespace EventBus
+namespace Game.Gameplay.EventBus
 {
     public static class EventBus
     {

@@ -1,6 +1,6 @@
 using Atomic.Elements;
 
-namespace Character.Components
+namespace Game.Gameplay.Characters.Scripts.Components
 {
     public sealed class Component_Mana
     {

@@ -1,7 +1,7 @@
-using Configs.Abilities;
-using Modules.Entities.Scripts;
+using Game.Configs.Configs.Abilities;
+using Game.GameEngine.Entities.Scripts;
 
-namespace EventBus.Events
+namespace Game.Gameplay.EventBus.Events
 {
     public struct CastAbilityEvent : IEvent
     {

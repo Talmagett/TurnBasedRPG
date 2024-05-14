@@ -1,8 +1,9 @@
-using Battle;
+using Game.Gameplay.Battle;
+using Game.Gameplay.Characters.Scripts;
 using UnityEngine;
 using Zenject;
 
-namespace Character.Enemies
+namespace Game.Gameplay.Characters.Enemies.Scripts
 {
     [RequireComponent(typeof(CharacterEntity))]
     public abstract class EnemyAI : MonoBehaviour

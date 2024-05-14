@@ -1,9 +1,9 @@
-﻿using EventBus.Handlers.Effects;
-using EventBus.Handlers.Turn;
-using EventBus.Handlers.Visual;
+﻿using Game.Gameplay.EventBus.Handlers.Effects;
+using Game.Gameplay.EventBus.Handlers.Turn;
+using Game.Gameplay.EventBus.Handlers.Visual;
 using Zenject;
 
-namespace EventBus
+namespace Game.Gameplay.EventBus
 {
     public sealed class EventHandlersInstaller : MonoInstaller
     {

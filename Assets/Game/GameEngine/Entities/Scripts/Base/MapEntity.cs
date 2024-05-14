@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Modules.Entities.Scripts.Base
+namespace Game.GameEngine.Entities.Scripts.Base
 {
     public class MapEntity : IEntity
     {
@@ -10,7 +10,7 @@ namespace Modules.Entities.Scripts.Base
 
         public MapEntity()
         {
-            this.elements = new Dictionary<Type, object>();
+            elements = new Dictionary<Type, object>();
         }
 
         public MapEntity(Dictionary<Type, object> elements)
@@ -20,44 +20,39 @@ namespace Modules.Entities.Scripts.Base
 
         public T Get<T>()
         {
-            if (this.elements.TryGetValue(typeof(T), out var element))
-            {
-                return (T) element;
-            }
+            if (elements.TryGetValue(typeof(T), out var element)) return (T)element;
 
             throw new EntityException($"Element of type {typeof(T).Name} is not found!");
         }
 
         public object[] GetAll()
         {
-            return this.elements.Values.ToArray();
-        }
-
-        public void Add<T>(T element)
-        {
-            if (this.elements.ContainsKey(typeof(T)))
-            {
-                throw new EntityException($"Element of type {typeof(T).Name} is already exists!");
-            }
-            
-            this.elements.Add(typeof(T), element);
-        }
-
-        public void Remove<T>(T element)
-        {
-            this.elements.Remove(typeof(T));
+            return elements.Values.ToArray();
         }
 
         public bool TryGet<T>(out T result)
         {
-            if (this.elements.TryGetValue(typeof(T), out var element))
+            if (elements.TryGetValue(typeof(T), out var element))
             {
-                result = (T) element;
+                result = (T)element;
                 return true;
             }
 
             result = default;
             return false;
+        }
+
+        public void Add<T>(T element)
+        {
+            if (elements.ContainsKey(typeof(T)))
+                throw new EntityException($"Element of type {typeof(T).Name} is already exists!");
+
+            elements.Add(typeof(T), element);
+        }
+
+        public void Remove<T>(T element)
+        {
+            elements.Remove(typeof(T));
         }
     }
 }

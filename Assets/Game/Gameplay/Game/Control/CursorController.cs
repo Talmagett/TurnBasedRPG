@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Game.Control
+namespace Game.Gameplay.Game.Control
 {
     [Serializable]
     public class CursorController

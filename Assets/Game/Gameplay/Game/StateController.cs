@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Game
+namespace Game.Gameplay.Game
 {
     public abstract class StateController : MonoBehaviour
     {

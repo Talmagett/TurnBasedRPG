@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Character
+namespace Game.Gameplay.Characters.Scripts
 {
     public class AnimatorDispatcher : MonoBehaviour
     {

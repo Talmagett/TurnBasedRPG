@@ -1,12 +1,12 @@
 using System;
-using Battle;
-using Configs;
-using Game.Heroes;
-using UI.Views;
+using Game.Configs.Configs;
+using Game.Gameplay.Battle;
+using Game.Gameplay.Game.Heroes;
+using Game.UI.Scripts.Views;
 using UnityEngine;
 using Zenject;
 
-namespace Game
+namespace Game.Gameplay.Game
 {
     public class GameStateController : MonoBehaviour
     {

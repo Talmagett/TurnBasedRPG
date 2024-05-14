@@ -1,9 +1,9 @@
-using Battle;
-using Configs.Character;
-using Modules.Items.Scripts.ItemModule;
+using Game.Configs.Configs.Character;
+using Game.Gameplay.Battle;
+using Game.Meta.Items.Scripts.ItemModule;
 using UnityEngine;
 
-namespace Configs
+namespace Game.Configs.Configs
 {
     [CreateAssetMenu(fileName = "EnemyRift", menuName = "SO/EnemyRift", order = 1)]
     public class EnemyRiftConfig : ScriptableObject

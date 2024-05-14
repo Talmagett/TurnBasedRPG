@@ -1,9 +1,9 @@
-using Battle;
-using Character.Components;
-using EventBus.Events;
+using Game.Gameplay.Battle;
+using Game.Gameplay.Characters.Scripts.Components;
+using Game.Gameplay.EventBus.Events;
 using Sirenix.Utilities;
 
-namespace EventBus.Handlers.Turn
+namespace Game.Gameplay.EventBus.Handlers.Turn
 {
     public class NextTimeHandler : BaseHandler<NextTimeEvent>
     {

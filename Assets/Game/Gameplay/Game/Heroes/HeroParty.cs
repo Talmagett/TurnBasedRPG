@@ -1,7 +1,7 @@
-using Configs.Character;
+using Game.Configs.Configs.Character;
 using JetBrains.Annotations;
 
-namespace Game.Heroes
+namespace Game.Gameplay.Game.Heroes
 {
     [UsedImplicitly]
     public class HeroParty

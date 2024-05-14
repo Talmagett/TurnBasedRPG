@@ -1,6 +1,6 @@
-﻿using Modules.Entities.Scripts;
+﻿using Game.GameEngine.Entities.Scripts;
 
-namespace EventBus.Events.Effects
+namespace Game.Gameplay.EventBus.Events.Effects
 {
     public interface IEffect : IEvent
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Views.Map
+namespace Game.UI.Scripts.Views.Map
 {
     public class CharacterIconView : MonoBehaviour
     {

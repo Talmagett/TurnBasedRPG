@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Atomic.Elements;
-using Configs.Enums;
+using Game.Configs.Configs.Enums;
 using Sirenix.OdinInspector;
 
-namespace Configs
+namespace Game.Configs.Configs
 {
     [Serializable]
     public class SharedCharacterStats : ShowOdinSerializedPropertiesInInspectorAttribute

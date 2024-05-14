@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Modules.Items.Scripts.ItemModule
+namespace Game.Meta.Items.Scripts.ItemModule
 {
     [Serializable]
     public sealed class Item
@@ -29,7 +29,7 @@ namespace Modules.Items.Scripts.ItemModule
         public string Name => name;
         public Sprite Icon => icon;
         public ItemFlags Flags => flags;
-        
+
         public T GetComponent<T>()
         {
             foreach (var component in components)
@@ -42,22 +42,24 @@ namespace Modules.Items.Scripts.ItemModule
         public T[] GetComponents<T>()
         {
             List<T> getComponents = new();
-            
+
             foreach (var component in components)
                 if (component is T tComponent)
                     getComponents.Add(tComponent);
-            
+
             return getComponents.ToArray();
         }
-        
+
         public Item Clone()
         {
             var count = this.components.Length;
             var components = new object[count];
+            Debug.Log(count);
 
             for (var i = 0; i < count; i++)
             {
                 var component = this.components[i];
+                Debug.Log(component.GetType());
                 if (component is ICloneable cloneable) component = cloneable.Clone();
 
                 components[i] = component;

@@ -1,4 +1,4 @@
-namespace Modules.Entities.Scripts
+namespace Game.GameEngine.Entities.Scripts
 {
     public interface IEntityCondition
     {

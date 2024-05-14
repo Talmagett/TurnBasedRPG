@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Character.BodyParts
+namespace Game.Gameplay.Characters.Scripts.BodyParts
 {
     [RequireComponent(typeof(CharacterEntity))]
     public class BodyParts : MonoBehaviour

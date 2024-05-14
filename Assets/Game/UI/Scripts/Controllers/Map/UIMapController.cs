@@ -1,8 +1,8 @@
-using UI.Controllers.TabMenu;
+using Game.UI.Scripts.Controllers.TabMenu;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Controllers.Map
+namespace Game.UI.Scripts.Controllers.Map
 {
     public class UIMapController : MonoBehaviour
     {

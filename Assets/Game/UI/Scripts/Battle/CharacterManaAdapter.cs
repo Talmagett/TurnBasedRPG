@@ -1,15 +1,15 @@
 ﻿using Atomic.Elements;
-using Character;
-using Character.Components;
-using UI.Battle.View;
+using Game.Gameplay.Characters.Scripts;
+using Game.Gameplay.Characters.Scripts.Components;
+using Game.UI.Scripts.Battle.View;
 using UnityEngine;
 
-namespace UI.Battle
+namespace Game.UI.Scripts.Battle
 {
     public sealed class CharacterManaAdapter : MonoBehaviour
     {
         [SerializeField] private ResourceBar resourceBar;
-        
+
         private CharacterEntity _entity;
 
         private AtomicVariable<int> _mana;

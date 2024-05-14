@@ -1,7 +1,6 @@
-namespace SaveSystem.SaveLoaders
+namespace Game.App.SaveSystem.SaveLoaders
 {
     public class InventorySaveLoader
     {
-        
     }
 }

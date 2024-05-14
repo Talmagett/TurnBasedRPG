@@ -17,18 +17,17 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 5ca649c84aae84d33b66600f77b5764f, type: 3}
     flags: 12
     components:
-    - rid: 1041286152238137563
-    - rid: 1041286193205477577
+    - rid: 1041286217044852736
+    - rid: 1041286217044852836
   references:
     version: 2
     RefIds:
-    - rid: 1041286152238137563
-      type: {class: Component_EquipmentType, ns: Modules.Items.Scripts.Equipment,
-        asm: Equipment}
+    - rid: 1041286217044852736
+      type: {class: StatAdditive, ns: Game.Configs.Configs.Attributes, asm: Assembly-CSharp}
+      data:
+        Stat: 2
+        Value: 120
+    - rid: 1041286217044852836
+      type: {class: Component_EquipmentType, ns: Game.Meta.Inventory.Equipment, asm: Equipment}
       data:
         <Type>k__BackingField: 5
-    - rid: 1041286193205477577
-      type: {class: StatAdditive, ns: Configs.Attributes, asm: Assembly-CSharp}
-      data:
-        Stat: 0
-        Value: 30

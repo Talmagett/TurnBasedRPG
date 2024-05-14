@@ -1,8 +1,8 @@
 ﻿using System;
-using Modules.Entities.Scripts;
+using Game.GameEngine.Entities.Scripts;
 using UnityEngine;
 
-namespace EventBus.Events.Effects
+namespace Game.Gameplay.EventBus.Events.Effects
 {
     [Serializable]
     public struct DoTEffectEvent : IEffect

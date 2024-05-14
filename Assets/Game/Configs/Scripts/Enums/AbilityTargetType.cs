@@ -1,10 +1,11 @@
-namespace Configs.Enums
+namespace Game.Configs.Configs.Enums
 {
     public enum AbilityTargetType
     {
         Self,
-        Ally,
+        AllyOnly,
         Enemy,
+        AllyAndSelf,
         Any
     }
 }

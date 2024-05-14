@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Configs.Enums
+namespace Game.Configs.Configs.Enums
 {
     public static class AnimationKey
     {

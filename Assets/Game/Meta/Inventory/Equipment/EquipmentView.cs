@@ -1,8 +1,9 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Modules.Items.Scripts.Equipment
+namespace Game.Meta.Inventory.Equipment
 {
     public class EquipmentView : MonoBehaviour
     {
@@ -12,8 +13,8 @@ namespace Modules.Items.Scripts.Equipment
         {
             equipmentStack.FirstOrDefault(t => t.type == type)!.icon.sprite = icon;
         }
-        
-        [System.Serializable]
+
+        [Serializable]
         public class EquipmentStack
         {
             public EquipmentType type;

@@ -1,10 +1,10 @@
-using Character.Enemies;
 using Cysharp.Threading.Tasks;
-using EventBus.Events;
+using Game.GameEngine.Entities.Scripts;
+using Game.Gameplay.Characters.Enemies.Scripts;
+using Game.Gameplay.EventBus.Events;
 using JetBrains.Annotations;
-using Modules.Entities.Scripts;
 
-namespace EventBus.Handlers.Turn
+namespace Game.Gameplay.EventBus.Handlers.Turn
 {
     [UsedImplicitly]
     public class StartTurnEventHandler : BaseHandler<StartTurnEvent>

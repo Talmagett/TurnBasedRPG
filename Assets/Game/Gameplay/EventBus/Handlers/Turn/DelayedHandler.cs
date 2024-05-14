@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
-using EventBus.Events;
+using Game.Gameplay.EventBus.Events;
 
-namespace EventBus.Handlers.Turn
+namespace Game.Gameplay.EventBus.Handlers.Turn
 {
     public class DelayedHandler : BaseHandler<DelayedEvent>
     {

@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EntryPoint : MonoBehaviour
+namespace Game.App.Loading
 {
-    [SerializeField] private int mapIndex;
-
-    public void Start()
+    public class EntryPoint : MonoBehaviour
     {
-        SceneManager.LoadScene(mapIndex);
+        [SerializeField] private int mapIndex;
+
+        public void Start()
+        {
+            SceneManager.LoadScene(mapIndex);
+        }
     }
 }

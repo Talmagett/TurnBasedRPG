@@ -1,17 +1,17 @@
 using Atomic.Elements;
-using Character;
-using Character.Components;
-using UI.Battle.View;
+using Game.Gameplay.Characters.Scripts;
+using Game.Gameplay.Characters.Scripts.Components;
+using Game.UI.Scripts.Battle.View;
 using UnityEngine;
 
-namespace UI.Battle
+namespace Game.UI.Scripts.Battle
 {
     public class CharacterTurnAdapter : MonoBehaviour
     {
         [SerializeField] private TurnWidget turnWidget;
 
         private CharacterEntity _characterEntity;
-        
+
         private AtomicVariable<int> _energy;
 
         private void Start()
@@ -30,7 +30,7 @@ namespace UI.Battle
 
         private void UpdateCooldownText(int turn)
         {
-            turnWidget.SetTurn(turn.ToString(),turn==0);
+            turnWidget.SetTurn(turn.ToString(), turn == 0);
         }
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace EventBus.Events
+namespace Game.Gameplay.EventBus.Events
 {
     public readonly struct VisualParticleEvent : IEvent
     {

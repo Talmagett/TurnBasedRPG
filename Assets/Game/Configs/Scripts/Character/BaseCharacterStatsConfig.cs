@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Configs.Enums;
+using Game.Configs.Configs.Enums;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Configs.Character
+namespace Game.Configs.Configs.Character
 {
     [Serializable]
     public class BaseCharacterStatsConfig

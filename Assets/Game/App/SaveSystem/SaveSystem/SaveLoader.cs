@@ -1,6 +1,6 @@
-using SaveSystem.GameEngine.Systems;
+using Game.App.SaveSystem.GameEngine.Systems;
 
-namespace SaveSystem.SaveSystem
+namespace Game.App.SaveSystem.SaveSystem
 {
     public abstract class SaveLoader<TData, TService> : ISaveLoader
     {
@@ -8,19 +8,15 @@ namespace SaveSystem.SaveSystem
         {
             var service = context.GetService<TService>();
             if (repository.TryGetData(out TData data))
-            {
-                this.SetupData(service, data);
-            }
+                SetupData(service, data);
             else
-            {
-                this.SetupByDefault(service);
-            }
+                SetupByDefault(service);
         }
 
         void ISaveLoader.SaveGame(IGameRepository repository, GameContext context)
         {
             var service = context.GetService<TService>();
-            var data = this.ConvertToData(service);
+            var data = ConvertToData(service);
             repository.SetData(data);
         }
 

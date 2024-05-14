@@ -1,22 +1,21 @@
 using System;
-using Modules.Items.Scripts.ItemModule;
+using Game.Meta.Items.Scripts.ItemModule;
 
-namespace Modules.Items.Scripts.Inventory
+namespace Game.Meta.Inventory.Inventory
 {
     public class ItemFullPresenter : IDisposable
     {
-        private readonly ItemModule.Item _item;
+        private readonly Item _item;
         private readonly ItemFullView _itemFullView;
 
-        public ItemFullPresenter(ItemModule.Item item, ItemFullView itemFullView)
+        public ItemFullPresenter(Item item, ItemFullView itemFullView)
         {
             _item = item;
             _itemFullView = itemFullView;
         }
-        
+
         public void Dispose()
         {
-            
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace SaveSystem.SaveSystem
+namespace Game.App.SaveSystem.SaveSystem
 {
     public interface IGameRepository
     {

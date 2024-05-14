@@ -1,11 +1,11 @@
-using Configs.Enums;
-using Map.Interactions.Environment;
+using Game.Configs.Configs.Enums;
+using Game.Gameplay.Interactables.Scripts.Environment;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace Map
+namespace Game.Gameplay.Player
 {
     public class PlayerCharacterController : MonoBehaviour
     {

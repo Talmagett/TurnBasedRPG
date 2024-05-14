@@ -1,25 +1,25 @@
 using System.Collections.Generic;
-using Configs;
-using Configs.Character;
-using Configs.Enums;
-using Modules.Entities.Scripts.Base;
-using Modules.Items.Scripts.Equipment;
+using Game.Configs.Configs;
+using Game.Configs.Configs.Character;
+using Game.Configs.Configs.Enums;
+using Game.GameEngine.Entities.Scripts.Base;
+using Game.Meta.Inventory.Equipment;
 
-namespace Game.Heroes
+namespace Game.Gameplay.Game.Heroes
 {
     public class Hero : ListEntity
     {
         public Hero(HeroCharacterConfig characterConfig, Dictionary<StatKey, float> stats = null)
         {
-
             var equipment = new Equipment();
+            
+            var itemConfigs = characterConfig.EquippedItems;
+            foreach (var itemConfig in itemConfigs) equipment.EquipItem(itemConfig.item.Clone());
             Add(new SharedCharacterStats(stats ?? characterConfig.Stats.CloneStats()));
             Add(characterConfig);
             Add(equipment);
-
+            
             var equipmentEffector = new EquipmentEffector.EquipmentEffector(this, equipment);
-            var itemConfigs = characterConfig.EquippedItems;
-            foreach (var itemConfig in itemConfigs) equipment.EquipItem(itemConfig.item.Clone());
         }
     }
 }

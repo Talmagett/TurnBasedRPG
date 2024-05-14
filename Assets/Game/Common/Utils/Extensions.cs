@@ -1,27 +1,28 @@
 using UnityEngine;
+using Random = System.Random;
 
-namespace Modules.Utils
+namespace Game.Common.Utils
 {
     public static class Extentions
     {
         public static Color GetRandomColor(this Color color)
         {
             return new Color(
-                Random.Range(0f, 1f),
-                Random.Range(0f, 1f),
-                Random.Range(0f, 1f)
+                UnityEngine.Random.Range(0f, 1f),
+                UnityEngine.Random.Range(0f, 1f),
+                UnityEngine.Random.Range(0f, 1f)
             );
         }
 
         //randomizer
 
-        public static void Shuffle<T>(this System.Random rng, T[] array)
+        public static void Shuffle<T>(this Random rng, T[] array)
         {
-            int n = array.Length;
+            var n = array.Length;
             while (n > 1)
             {
-                int k = rng.Next(n--);
-                T temp = array[n];
+                var k = rng.Next(n--);
+                var temp = array[n];
                 array[n] = array[k];
                 array[k] = temp;
             }

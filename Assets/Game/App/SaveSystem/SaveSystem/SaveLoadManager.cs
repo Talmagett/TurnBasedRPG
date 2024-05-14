@@ -1,15 +1,15 @@
+using Game.App.SaveSystem.GameEngine.Systems;
 using JetBrains.Annotations;
-using SaveSystem.GameEngine.Systems;
 using Zenject;
 
-namespace SaveSystem.SaveSystem
+namespace Game.App.SaveSystem.SaveSystem
 {
     [UsedImplicitly]
     public sealed class SaveLoadManager
     {
-        private ISaveLoader[] _saveLoaders;
-        private GameRepository _repository;
         private GameContext _gameContext;
+        private GameRepository _repository;
+        private ISaveLoader[] _saveLoaders;
 
         [Inject]
         public void Construct(ISaveLoader[] saveLoaders, GameRepository repository, GameContext gameContext)

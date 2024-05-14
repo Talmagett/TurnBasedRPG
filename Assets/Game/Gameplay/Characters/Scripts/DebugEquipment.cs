@@ -1,16 +1,16 @@
-using Game.Heroes;
-using Modules.Items.Scripts.Equipment;
-using Modules.Items.Scripts.ItemModule;
+using Game.Gameplay.Game.Heroes;
+using Game.Meta.Inventory.Equipment;
+using Game.Meta.Items.Scripts.ItemModule;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Character
+namespace Game.Gameplay.Characters.Scripts
 {
     public class DebugEquipment : MonoBehaviour
     {
         private HeroParty _heroParty;
-        
+
         [Inject]
         public void Construct(HeroParty heroParty)
         {

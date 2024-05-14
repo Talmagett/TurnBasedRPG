@@ -1,8 +1,8 @@
-using EventBus.Events;
+using Game.Gameplay.EventBus.Events;
 using PrimeTween;
 using UnityEngine;
 
-namespace EventBus.Handlers.Turn
+namespace Game.Gameplay.EventBus.Handlers.Turn
 {
     public class TurnSelectionHandler : BaseHandler<TurnSelectionEvent>
     {

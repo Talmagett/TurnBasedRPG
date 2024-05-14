@@ -1,9 +1,8 @@
-using Character;
-using Configs.Abilities;
-using Modules.Items.Scripts.ItemModule;
+using Game.Configs.Configs.Abilities;
+using Game.Meta.Items.Scripts.ItemModule;
 using UnityEngine;
 
-namespace Configs.Character
+namespace Game.Configs.Configs.Character
 {
     [CreateAssetMenu(fileName = "HeroConfig", menuName = "SO/HeroConfig", order = 0)]
     public class HeroCharacterConfig : CharacterConfig

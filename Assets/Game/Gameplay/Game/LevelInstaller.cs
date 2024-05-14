@@ -1,9 +1,9 @@
-using Battle;
-using UI.Views;
+using Game.Gameplay.Battle;
+using Game.UI.Scripts.Views;
 using UnityEngine;
 using Zenject;
 
-namespace Game
+namespace Game.Gameplay.Game
 {
     public class LevelInstaller : MonoInstaller
     {

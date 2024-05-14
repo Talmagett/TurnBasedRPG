@@ -1,10 +1,11 @@
 using System;
-using Configs;
-using Configs.Attributes;
-using Modules.Entities.Scripts;
-using Modules.Items.Scripts.Equipment;
+using Game.Configs.Configs;
+using Game.Configs.Configs.Attributes;
+using Game.GameEngine.Entities.Scripts;
+using Game.Meta.Inventory.Equipment;
+using Game.Meta.Items.Scripts.ItemModule;
 
-namespace Game.Heroes.EquipmentEffector
+namespace Game.Gameplay.Game.Heroes.EquipmentEffector
 {
     public class EquipmentEffector : IDisposable
     {
@@ -26,29 +27,29 @@ namespace Game.Heroes.EquipmentEffector
             _equipment.OnItemUnequipped -= RemoveEffectFromCharacter;
         }
 
-        private void AddEffectToCharacter(Modules.Items.Scripts.ItemModule.Item obj)
+        private void AddEffectToCharacter(Item obj)
         {
             var itemStats = obj.GetComponents<StatAdditive>();
-            if (itemStats.Length==0)
+            if (itemStats.Length == 0)
                 return;
             var heroStats = _character.Get<SharedCharacterStats>();
             foreach (var stat in itemStats)
             {
                 var heroStat = heroStats.GetStat(stat.Stat);
-                heroStats.SetStat(stat.Stat,heroStat.Value+stat.Value);
+                heroStats.SetStat(stat.Stat, heroStat.Value + stat.Value);
             }
         }
 
-        private void RemoveEffectFromCharacter(Modules.Items.Scripts.ItemModule.Item obj)
+        private void RemoveEffectFromCharacter(Item obj)
         {
             var itemStats = obj.GetComponents<StatAdditive>();
-            if (itemStats.Length==0)
+            if (itemStats.Length == 0)
                 return;
             var heroStats = _character.Get<SharedCharacterStats>();
             foreach (var stat in itemStats)
             {
                 var heroStat = heroStats.GetStat(stat.Stat);
-                heroStats.SetStat(stat.Stat,heroStat.Value-stat.Value);
+                heroStats.SetStat(stat.Stat, heroStat.Value - stat.Value);
             }
         }
     }

@@ -19,19 +19,19 @@ MonoBehaviour:
     type: 3}
   <EnergyCost>k__BackingField: 7
   <TurnTime>k__BackingField: 1.5
-  <TargetType>k__BackingField: 1
+  <TargetType>k__BackingField: 3
   <AnimationKey>k__BackingField: 0
   Effects:
-  - rid: 1041286146816475240
+  - rid: 1041286217044852833
   references:
     version: 2
     RefIds:
-    - rid: 1041286146816475240
-      type: {class: HealEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
+    - rid: 1041286217044852833
+      type: {class: HealEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <HitEffect>k__BackingField: {fileID: 0}
         <HitEffectPoint>k__BackingField: 0
         <HealingAmount>k__BackingField:
           Stat: 0
-          BaseValue: 10
+          BaseValue: 0
           MultValue: 0.2

@@ -1,7 +1,7 @@
 using System;
-using Configs.Enums;
+using Game.Configs.Configs.Enums;
 
-namespace Configs.Attributes
+namespace Game.Configs.Configs.Attributes
 {
     [Serializable]
     public struct AbilityStat

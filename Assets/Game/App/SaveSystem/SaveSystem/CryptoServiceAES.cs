@@ -3,17 +3,17 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace SaveSystem.SaveSystem
+namespace Game.App.SaveSystem.SaveSystem
 {
     public class CryptoServiceAES
     {
-        private static int _iterations = 2;
-        private static int _keySize = 256;
+        private static readonly int _iterations = 2;
+        private static readonly int _keySize = 256;
 
-        private static string password = "OtusSaveSystem";
-        private static string _hash = "SHA1";
-        private static string _salt = "aselrias38490a32"; // Random
-        private static string _vector = "8947az34awl34kjq"; // Random
+        private static readonly string password = "OtusSaveSystem";
+        private static readonly string _hash = "SHA1";
+        private static readonly string _salt = "aselrias38490a32"; // Random
+        private static readonly string _vector = "8947az34awl34kjq"; // Random
 
         public static string Encrypt(string original)
         {
@@ -38,24 +38,24 @@ namespace SaveSystem.SaveSystem
         private static string Encrypt<T>(string value, string password)
             where T : SymmetricAlgorithm, new()
         {
-            byte[] vectorBytes = GetBytes<ASCIIEncoding>(_vector);
-            byte[] saltBytes = GetBytes<ASCIIEncoding>(_salt);
-            byte[] valueBytes = GetBytes<UTF8Encoding>(value);
+            var vectorBytes = GetBytes<ASCIIEncoding>(_vector);
+            var saltBytes = GetBytes<ASCIIEncoding>(_salt);
+            var valueBytes = GetBytes<UTF8Encoding>(value);
 
             byte[] encrypted;
-            using (T cipher = new T())
+            using (var cipher = new T())
             {
-                PasswordDeriveBytes _passwordBytes =
+                var _passwordBytes =
                     new PasswordDeriveBytes(password, saltBytes, _hash, _iterations);
-                byte[] keyBytes = _passwordBytes.GetBytes(_keySize / 8);
+                var keyBytes = _passwordBytes.GetBytes(_keySize / 8);
 
                 cipher.Mode = CipherMode.CBC;
 
-                using (ICryptoTransform encryptor = cipher.CreateEncryptor(keyBytes, vectorBytes))
+                using (var encryptor = cipher.CreateEncryptor(keyBytes, vectorBytes))
                 {
-                    using (MemoryStream to = new MemoryStream())
+                    using (var to = new MemoryStream())
                     {
-                        using (CryptoStream writer = new CryptoStream(to, encryptor, CryptoStreamMode.Write))
+                        using (var writer = new CryptoStream(to, encryptor, CryptoStreamMode.Write))
                         {
                             writer.Write(valueBytes, 0, valueBytes.Length);
                             writer.FlushFinalBlock();
@@ -77,27 +77,27 @@ namespace SaveSystem.SaveSystem
 
         private static string Decrypt<T>(string value, string password) where T : SymmetricAlgorithm, new()
         {
-            byte[] vectorBytes = GetBytes<ASCIIEncoding>(_vector);
-            byte[] saltBytes = GetBytes<ASCIIEncoding>(_salt);
-            byte[] valueBytes = Convert.FromBase64String(value);
+            var vectorBytes = GetBytes<ASCIIEncoding>(_vector);
+            var saltBytes = GetBytes<ASCIIEncoding>(_salt);
+            var valueBytes = Convert.FromBase64String(value);
 
             byte[] decrypted;
-            int decryptedByteCount = 0;
+            var decryptedByteCount = 0;
 
-            using (T cipher = new T())
+            using (var cipher = new T())
             {
-                PasswordDeriveBytes _passwordBytes = new PasswordDeriveBytes(password, saltBytes, _hash, _iterations);
-                byte[] keyBytes = _passwordBytes.GetBytes(_keySize / 8);
+                var _passwordBytes = new PasswordDeriveBytes(password, saltBytes, _hash, _iterations);
+                var keyBytes = _passwordBytes.GetBytes(_keySize / 8);
 
                 cipher.Mode = CipherMode.CBC;
 
                 try
                 {
-                    using (ICryptoTransform decryptor = cipher.CreateDecryptor(keyBytes, vectorBytes))
+                    using (var decryptor = cipher.CreateDecryptor(keyBytes, vectorBytes))
                     {
-                        using (MemoryStream from = new MemoryStream(valueBytes))
+                        using (var from = new MemoryStream(valueBytes))
                         {
-                            using (CryptoStream reader = new CryptoStream(from, decryptor, CryptoStreamMode.Read))
+                            using (var reader = new CryptoStream(from, decryptor, CryptoStreamMode.Read))
                             {
                                 decrypted = new byte[valueBytes.Length];
                                 decryptedByteCount = reader.Read(decrypted, 0, decrypted.Length);
@@ -107,7 +107,7 @@ namespace SaveSystem.SaveSystem
                 }
                 catch (Exception ex)
                 {
-                    return String.Empty;
+                    return string.Empty;
                 }
 
                 cipher.Clear();

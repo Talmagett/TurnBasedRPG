@@ -17,22 +17,17 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 940c577f292dd4198a4a6a5e49486de7, type: 3}
     flags: 12
     components:
-    - rid: 2416527777508622396
-    - rid: 1041286152238137565
+    - rid: 1041286217044852744
+    - rid: 1041286217044852834
   references:
     version: 2
     RefIds:
-    - rid: 1041286152238137565
-      type: {class: Component_EquipmentType, ns: Modules.Items.Scripts.Equipment,
-        asm: Equipment}
+    - rid: 1041286217044852744
+      type: {class: StatAdditive, ns: Game.Configs.Configs.Attributes, asm: Assembly-CSharp}
+      data:
+        Stat: 4
+        Value: 34
+    - rid: 1041286217044852834
+      type: {class: Component_EquipmentType, ns: Game.Meta.Inventory.Equipment, asm: Equipment}
       data:
         <Type>k__BackingField: 0
-    - rid: 2416527777508622396
-      type: {class: DealDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
-      data:
-        <HitEffect>k__BackingField: {fileID: 0}
-        <HitEffectPoint>k__BackingField: 0
-        <DamageAmount>k__BackingField:
-          Stat: 4
-          BaseValue: 0
-          MultValue: 0

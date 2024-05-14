@@ -22,19 +22,21 @@ MonoBehaviour:
   <TargetType>k__BackingField: 0
   <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 1041286146816475250
+  - rid: 1041286217044852828
   references:
     version: 2
     RefIds:
-    - rid: 1041286146816475250
-      type: {class: MultiDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
+    - rid: 1041286217044852828
+      type: {class: MultiDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
       data:
         Count: 5
+        Delay: 0.3
         DealDamageEffectEvent:
-          <HitEffect>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
+          <HitEffect>k__BackingField: {fileID: 5337203621404181406, guid: 334ccdade87a4194b9f1855c484967dc,
             type: 3}
-          <HitEffectPoint>k__BackingField: 2
+          <HitEffectPoint>k__BackingField: 0
           <DamageAmount>k__BackingField:
             Stat: 4
             BaseValue: 10
-            MultValue: 0.1
+            MultValue: 0.2

@@ -1,10 +1,10 @@
 ﻿using System;
-using Character.BodyParts;
-using Configs.Attributes;
-using Modules.Entities.Scripts;
+using Game.Configs.Configs.Attributes;
+using Game.GameEngine.Entities.Scripts;
+using Game.Gameplay.Characters.Scripts.BodyParts;
 using UnityEngine;
 
-namespace EventBus.Events.Effects
+namespace Game.Gameplay.EventBus.Events.Effects
 {
     [Serializable]
     public struct HealEffectEvent : IEffect

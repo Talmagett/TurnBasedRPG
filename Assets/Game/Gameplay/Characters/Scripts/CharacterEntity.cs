@@ -1,7 +1,7 @@
-using Modules.Entities.Scripts.MonoBehaviours;
+using Game.GameEngine.Entities.Scripts.MonoBehaviours;
 using UnityEngine;
 
-namespace Character
+namespace Game.Gameplay.Characters.Scripts
 {
     public sealed class CharacterEntity : MonoEntityBase
     {

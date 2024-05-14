@@ -2,12 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Modules.Items.Scripts.ItemModule
+namespace Game.Meta.Items.Scripts.ItemModule
 {
     public class ItemView : MonoBehaviour
     {
-        public event Action OnPressed;
-        
         [SerializeField] private Button button;
         [SerializeField] private Image image;
 
@@ -20,6 +18,8 @@ namespace Modules.Items.Scripts.ItemModule
         {
             button.onClick.RemoveListener(Invoke);
         }
+
+        public event Action OnPressed;
 
         private void Invoke()
         {

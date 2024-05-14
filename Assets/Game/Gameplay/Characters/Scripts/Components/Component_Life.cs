@@ -2,7 +2,7 @@
 using Atomic.Elements;
 using UnityEngine;
 
-namespace Character.Components
+namespace Game.Gameplay.Characters.Scripts.Components
 {
     [Serializable]
     public sealed class Component_Life

@@ -1,12 +1,11 @@
-using Game.Heroes;
-using Modules.Items.Scripts.Equipment;
-using Modules.Items.Scripts.Inventory;
-using Modules.Items.Scripts.ItemModule;
+using Game.Gameplay.Game.Heroes;
+using Game.Meta.Inventory.Inventory;
+using Game.Meta.Items.Scripts.ItemModule;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace UI.Controllers.TabMenu
+namespace Game.UI.Scripts.Controllers.TabMenu
 {
     public class UIInventoryController : MonoBehaviour
     {
@@ -27,7 +26,6 @@ namespace UI.Controllers.TabMenu
         public void Ctor(HeroParty heroParty, Inventory inventory)
         {
             _inventory = inventory;
-            
         }
 
         public void Show()

@@ -1,7 +1,7 @@
 using PrimeTween;
 using UnityEngine;
 
-namespace UI.Views
+namespace Game.UI.Scripts.Views
 {
     public class UIController : MonoBehaviour
     {

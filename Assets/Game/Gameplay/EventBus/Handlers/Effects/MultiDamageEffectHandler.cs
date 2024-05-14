@@ -1,10 +1,10 @@
 using System;
-using Battle;
-using EventBus.Events;
-using EventBus.Events.Effects;
+using Game.Gameplay.Battle;
+using Game.Gameplay.EventBus.Events;
+using Game.Gameplay.EventBus.Events.Effects;
 using Zenject;
 
-namespace EventBus.Handlers.Effects
+namespace Game.Gameplay.EventBus.Handlers.Effects
 {
     public class MultiDamageEffectHandler : IInitializable, IDisposable
     {
@@ -34,7 +34,7 @@ namespace EventBus.Handlers.Effects
             {
                 var randomEnemy = _battleContainer.GetRandomEnemy(data.Source);
                 effect.Target = randomEnemy;
-                EventBus.RaiseEvent(new DelayedEvent(effect, 0.3f * i));
+                EventBus.RaiseEvent(new DelayedEvent(effect, data.Delay * i));
             }
         }
     }

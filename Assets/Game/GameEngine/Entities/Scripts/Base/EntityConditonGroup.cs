@@ -1,16 +1,20 @@
 using System;
 using UnityEngine;
 
-namespace Modules.Entities.Scripts.Base
+namespace Game.GameEngine.Entities.Scripts.Base
 {
     [Serializable]
     public sealed class EntityConditonGroup : IEntityCondition
     {
-        [SerializeReference]
-        private IEntityCondition[] conditions;
+        public enum Mode
+        {
+            AND,
+            OR
+        }
 
-        [SerializeField]
-        private Mode mode;
+        [SerializeReference] private IEntityCondition[] conditions;
+
+        [SerializeField] private Mode mode;
 
         public EntityConditonGroup(Mode mode, params IEntityCondition[] conditions)
         {
@@ -20,23 +24,20 @@ namespace Modules.Entities.Scripts.Base
 
         public bool IsTrue(IEntity entity)
         {
-            return this.mode switch
+            return mode switch
             {
-                Mode.AND => this.All(entity),
-                Mode.OR => this.Any(entity),
-                _ => throw new Exception($"Mode is undefined {this.mode}")
+                Mode.AND => All(entity),
+                Mode.OR => Any(entity),
+                _ => throw new Exception($"Mode is undefined {mode}")
             };
         }
 
         private bool All(IEntity entity)
         {
-            for (int i = 0, count = this.conditions.Length; i < count; i++)
+            for (int i = 0, count = conditions.Length; i < count; i++)
             {
-                var condition = this.conditions[i];
-                if (!condition.IsTrue(entity))
-                {
-                    return false;
-                }
+                var condition = conditions[i];
+                if (!condition.IsTrue(entity)) return false;
             }
 
             return true;
@@ -44,22 +45,13 @@ namespace Modules.Entities.Scripts.Base
 
         private bool Any(IEntity entity)
         {
-            for (int i = 0, count = this.conditions.Length; i < count; i++)
+            for (int i = 0, count = conditions.Length; i < count; i++)
             {
-                var condition = this.conditions[i];
-                if (condition.IsTrue(entity))
-                {
-                    return true;
-                }
+                var condition = conditions[i];
+                if (condition.IsTrue(entity)) return true;
             }
 
             return false;
-        }
-
-        public enum Mode
-        {
-            AND,
-            OR
         }
     }
 }

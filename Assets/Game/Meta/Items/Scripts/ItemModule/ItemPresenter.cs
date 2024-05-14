@@ -1,15 +1,14 @@
 using System;
-using UnityEngine;
 
-namespace Modules.Items.Scripts.ItemModule
+namespace Game.Meta.Items.Scripts.ItemModule
 {
     public class ItemPresenter : IDisposable
     {
         private readonly Item _item;
         private readonly ItemView _itemView;
         private readonly Action _onPressed;
-        
-        public ItemPresenter(Item item, ItemView itemView, Action onPressed=null)
+
+        public ItemPresenter(Item item, ItemView itemView, Action onPressed = null)
         {
             _item = item;
             _itemView = itemView;

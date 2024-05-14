@@ -1,14 +1,14 @@
 using System;
-using Modules.Items.Scripts.ItemModule;
+using Game.Meta.Items.Scripts.ItemModule;
 
-namespace Modules.Items.Scripts.Inventory
+namespace Game.Meta.Inventory.Inventory
 {
     public class InventoryPresenter : IDisposable
     {
         private readonly Inventory _inventory;
         private readonly InventoryView _inventoryView;
-        private readonly ItemFullView _itemFullView;
         private readonly ItemFullPresenter _itemFullPresenter;
+        private readonly ItemFullView _itemFullView;
 
         public InventoryPresenter(Inventory inventory, InventoryView inventoryView, ItemFullView itemFullView)
         {
@@ -17,23 +17,22 @@ namespace Modules.Items.Scripts.Inventory
             _itemFullView = itemFullView;
 
             _inventoryView.ClearField();
-            
+
             foreach (var item in _inventory.GetItems())
             {
-                var itemPresenter = new ItemPresenter(item,_inventoryView.SpawnItem());
-                
+                var itemPresenter = new ItemPresenter(item, _inventoryView.SpawnItem());
+
                 //OpenItemFullDataWindow
             }
+        }
+
+        public void Dispose()
+        {
         }
 
         private void OpenItemFullDataWindow(ItemPresenter item)
         {
             //_itemFullPresenter.
-        }
-
-        public void Dispose()
-        {
-            
         }
     }
 }

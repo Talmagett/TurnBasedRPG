@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Character.Components;
-using Configs.Enums;
+using Game.Configs.Configs.Enums;
+using Game.GameEngine.Entities.Scripts;
+using Game.Gameplay.Characters.Scripts.Components;
 using JetBrains.Annotations;
-using Modules.Entities.Scripts;
 using Random = UnityEngine.Random;
 
-namespace Battle
+namespace Game.Gameplay.Battle
 {
     [UsedImplicitly]
     public class BattleContainer

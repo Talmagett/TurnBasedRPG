@@ -1,8 +1,8 @@
 ﻿using System;
 using Atomic.Elements;
-using Configs.Abilities;
+using Game.Configs.Configs.Abilities;
 
-namespace Character.Components
+namespace Game.Gameplay.Characters.Scripts.Components
 {
     [Serializable]
     public sealed class Component_Attack

@@ -1,6 +1,6 @@
-using Modules.Entities.Scripts;
+using Game.GameEngine.Entities.Scripts;
 
-namespace EventBus.Events
+namespace Game.Gameplay.EventBus.Events
 {
     public readonly struct FinishTurnEvent : IEvent
     {

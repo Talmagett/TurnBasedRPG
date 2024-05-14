@@ -1,10 +1,10 @@
-﻿using Battle;
-using Configs.Enums;
-using EventBus.Events;
+﻿using Game.Configs.Configs.Enums;
+using Game.Gameplay.Battle;
+using Game.Gameplay.EventBus.Events;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace EventBus.Handlers.Turn
+namespace Game.Gameplay.EventBus.Handlers.Turn
 {
     [UsedImplicitly]
     public sealed class DestroyCharacterEntityHandler : BaseHandler<DestroyCharacterEntityEvent>

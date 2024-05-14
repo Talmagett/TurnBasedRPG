@@ -1,14 +1,15 @@
 using UnityEngine;
 
-namespace SaveSystem.GameEngine.Objects
+namespace Game.App.SaveSystem.GameEngine.Objects
 {
     //Нельзя менять!
     public sealed class Unit : MonoBehaviour
     {
-        public string Type
-        {
-            get => type;
-        }
+        [SerializeField] private string type;
+
+        [SerializeField] private int hitPoints;
+
+        public string Type => type;
 
         public int HitPoints
         {
@@ -16,26 +17,14 @@ namespace SaveSystem.GameEngine.Objects
             set => hitPoints = value;
         }
 
-        public Vector3 Position
-        {
-            get => this.transform.position;
-        }
-        
-        public Vector3 Rotation
-        {
-            get => this.transform.eulerAngles;
-        }
+        public Vector3 Position => transform.position;
 
-        [SerializeField]
-        private string type;
-        
-        [SerializeField]
-        private int hitPoints;
+        public Vector3 Rotation => transform.eulerAngles;
 
         private void Reset()
         {
-            this.type = this.name;
-            this.hitPoints = 10;
+            type = name;
+            hitPoints = 10;
         }
     }
 }

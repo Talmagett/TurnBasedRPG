@@ -1,8 +1,8 @@
 using System;
-using Configs.Enums;
+using Game.Configs.Configs.Enums;
 using UnityEngine;
 
-namespace Configs.Character
+namespace Game.Configs.Configs.Character
 {
     [Serializable]
     public class Stat

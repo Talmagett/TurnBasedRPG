@@ -1,8 +1,8 @@
-﻿using EventBus.Events;
+﻿using Game.Gameplay.EventBus.Events;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace EventBus.Handlers.Visual
+namespace Game.Gameplay.EventBus.Handlers.Visual
 {
     [UsedImplicitly]
     public sealed class VisualParticleHandler : BaseHandler<VisualParticleEvent>

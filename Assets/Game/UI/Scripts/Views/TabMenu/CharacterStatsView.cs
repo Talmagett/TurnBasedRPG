@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI.Views.TabMenu
+namespace Game.UI.Scripts.Views.TabMenu
 {
     public class CharacterStatsView : MonoBehaviour
     {

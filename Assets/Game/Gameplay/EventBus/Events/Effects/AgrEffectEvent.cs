@@ -1,7 +1,7 @@
 using System;
-using Modules.Entities.Scripts;
+using Game.GameEngine.Entities.Scripts;
 
-namespace EventBus.Events.Effects
+namespace Game.Gameplay.EventBus.Events.Effects
 {
     [Serializable]
     public struct AgrEffectEvent : IEffect

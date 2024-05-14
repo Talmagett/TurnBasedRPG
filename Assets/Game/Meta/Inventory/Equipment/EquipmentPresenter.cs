@@ -1,6 +1,6 @@
 using Sirenix.Utilities;
 
-namespace Modules.Items.Scripts.Equipment
+namespace Game.Meta.Inventory.Equipment
 {
     public class EquipmentPresenter
     {

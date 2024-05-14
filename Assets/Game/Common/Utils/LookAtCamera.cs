@@ -1,18 +1,9 @@
 using UnityEngine;
 
-namespace Modules.Utils
+namespace Game.Common.Utils
 {
     public class LookAtCamera : MonoBehaviour
     {
-        private enum Mode
-        {
-            LookAt,
-            LookAtInverted,
-            CameraForward,
-            CameraForwardInverted,
-
-        }
-
         [SerializeField] private Mode _mode;
 
         private void LateUpdate()
@@ -23,7 +14,7 @@ namespace Modules.Utils
                     transform.LookAt(Camera.main.transform);
                     break;
                 case Mode.LookAtInverted:
-                    Vector3 dirFromCamera = transform.position - Camera.main.transform.position;
+                    var dirFromCamera = transform.position - Camera.main.transform.position;
                     transform.LookAt(transform.position + dirFromCamera);
                     break;
                 case Mode.CameraForward:
@@ -33,6 +24,14 @@ namespace Modules.Utils
                     transform.forward = -Camera.main.transform.forward;
                     break;
             }
+        }
+
+        private enum Mode
+        {
+            LookAt,
+            LookAtInverted,
+            CameraForward,
+            CameraForwardInverted
         }
     }
 }

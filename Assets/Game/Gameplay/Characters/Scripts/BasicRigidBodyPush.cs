@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Character
+namespace Game.Gameplay.Characters.Scripts
 {
     public class BasicRigidBodyPush : MonoBehaviour
     {

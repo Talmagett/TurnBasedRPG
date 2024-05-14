@@ -1,6 +1,6 @@
 using Atomic.Elements;
 
-namespace Character.Components
+namespace Game.Gameplay.Characters.Scripts.Components
 {
     public class Component_Defense
     {

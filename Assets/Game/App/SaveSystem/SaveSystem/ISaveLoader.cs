@@ -1,6 +1,6 @@
-using SaveSystem.GameEngine.Systems;
+using Game.App.SaveSystem.GameEngine.Systems;
 
-namespace SaveSystem.SaveSystem
+namespace Game.App.SaveSystem.SaveSystem
 {
     public interface ISaveLoader
     {

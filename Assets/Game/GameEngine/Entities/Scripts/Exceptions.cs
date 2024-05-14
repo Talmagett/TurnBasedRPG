@@ -1,6 +1,6 @@
 using System;
 
-namespace Modules.Entities.Scripts
+namespace Game.GameEngine.Entities.Scripts
 {
     public sealed class EntityException : Exception
     {

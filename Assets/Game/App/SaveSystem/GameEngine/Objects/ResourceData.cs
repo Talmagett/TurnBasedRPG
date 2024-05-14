@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace SaveSystem.GameEngine.Objects
+namespace Game.App.SaveSystem.GameEngine.Objects
 {
     [Serializable]
     public struct ResourceData

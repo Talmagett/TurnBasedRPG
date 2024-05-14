@@ -1,13 +1,13 @@
-using Modules.Items.Scripts.ItemModule;
+using Game.Meta.Items.Scripts.ItemModule;
 using UnityEngine;
 
-namespace Configs.Character
+namespace Game.Configs.Configs.Character
 {
     [CreateAssetMenu(menuName = "SO/AbilitiesList", fileName = "AbilitiesList", order = 0)]
     public class PlayerInitData : ScriptableObject
     {
         [SerializeField] private ItemConfig[] baseItemsForInventory;
-        
+
         public Item[] GetItems()
         {
             var items = new Item[baseItemsForInventory.Length];

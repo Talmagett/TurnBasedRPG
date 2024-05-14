@@ -1,19 +1,18 @@
 using System;
-using System.Linq;
-using Character;
-using Character.Components;
-using Configs.Abilities;
-using Configs.Character;
-using Configs.Enums;
-using EventBus.Events;
-using Game.Control;
-using Modules.Entities.Scripts;
+using Game.Configs.Configs.Abilities;
+using Game.Configs.Configs.Character;
+using Game.Configs.Configs.Enums;
+using Game.GameEngine.Entities.Scripts;
+using Game.Gameplay.Characters.Scripts;
+using Game.Gameplay.Characters.Scripts.Components;
+using Game.Gameplay.EventBus.Events;
+using Game.Gameplay.Game.Control;
+using Game.UI.Scripts;
 using PrimeTween;
-using UI;
 using UnityEngine;
 using Zenject;
 
-namespace Battle
+namespace Game.Gameplay.Battle
 {
     public class HeroAbilitiesPresenter : MonoBehaviour
     {
@@ -37,16 +36,20 @@ namespace Battle
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (!Physics.Raycast(ray, out var hit)) return;
 
-            if (!hit.transform.TryGetComponent(out CharacterEntity actorData)) return;
+            if (!hit.transform.TryGetComponent(out CharacterEntity targetCharacter)) return;
 
+            var heroOwner = _hero.Get<Component_Owner>().owner.Value;
+            var targetOwner = targetCharacter.Get<Component_Owner>().owner.Value;
             switch (_castingAbility.TargetType)
             {
-                case AbilityTargetType.Ally
-                    when actorData.Get<Component_Owner>().owner == _hero.Get<Component_Owner>().owner:
+                case AbilityTargetType.AllyOnly
+                    when targetOwner == heroOwner && targetCharacter != (CharacterEntity)_hero:
                 case AbilityTargetType.Enemy
-                    when actorData.Get<Component_Owner>().owner != _hero.Get<Component_Owner>().owner:
+                    when targetOwner != heroOwner:
+                case AbilityTargetType.AllyAndSelf
+                    when targetOwner == heroOwner && targetCharacter:
                 case AbilityTargetType.Any:
-                    CastAbility(_castingAbility, actorData);
+                    CastAbility(_castingAbility, targetCharacter);
                     break;
             }
         }
@@ -118,7 +121,8 @@ namespace Battle
 
             switch (abilityConfig.TargetType)
             {
-                case AbilityTargetType.Ally:
+                case AbilityTargetType.AllyOnly:
+                case AbilityTargetType.AllyAndSelf:
                     _cursorController.SetCursor(CursorType.Ally);
                     break;
                 case AbilityTargetType.Enemy:
