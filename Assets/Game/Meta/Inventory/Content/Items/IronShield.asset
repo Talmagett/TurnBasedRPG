@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22487d842414666b12f9ae5a7f89099, type: 3}
+  m_Name: IronShield
+  m_EditorClassIdentifier: 
+  item:
+    name: Iron Shield
+    icon: {fileID: 21300000, guid: a3319a305f7b5474b84825e3d48d0e0d, type: 3}
+    flags: 12
+    components:
+    - rid: 2416527777508622396
+    - rid: 1041286152238137564
+  references:
+    version: 2
+    RefIds:
+    - rid: 1041286152238137564
+      type: {class: Component_EquipmentType, ns: Modules.Items.Scripts.Equipment,
+        asm: Equipment}
+      data:
+        <Type>k__BackingField: 4
+    - rid: 2416527777508622396
+      type: {class: DealDamageEffectEvent, ns: EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <HitEffect>k__BackingField: {fileID: 0}
+        <HitEffectPoint>k__BackingField: 0
+        <DamageAmount>k__BackingField:
+          Stat: 4
+          BaseValue: 0
+          MultValue: 0
