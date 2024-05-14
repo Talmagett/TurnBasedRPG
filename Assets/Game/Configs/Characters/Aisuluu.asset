@@ -26,7 +26,8 @@ MonoBehaviour:
     evasion: 0
     criticalChance: 0
     criticalRate: 1.5
-  <EquippedItems>k__BackingField: []
+  <EquippedItems>k__BackingField:
+  - {fileID: 11400000, guid: 807a04a42969e5f4cb6246186cc96061, type: 2}
   <Abilities>k__BackingField:
   - {fileID: 11400000, guid: 95ec1935e29a1e94e88887bd74bdc515, type: 2}
   - {fileID: 11400000, guid: 1d2bb84b268a88f4c8a7ba92e75a3ca3, type: 2}

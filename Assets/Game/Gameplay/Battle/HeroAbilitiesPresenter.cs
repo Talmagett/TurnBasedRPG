@@ -25,6 +25,13 @@ namespace Game.Gameplay.Battle
         private IEntity _hero;
         private bool _isChoosing;
 
+        [Inject]
+        public void Construct(CursorController cursorController)
+        {
+            _cursorController = cursorController;
+            transform.localScale = Vector3.zero;
+        }
+        
         private void Update()
         {
             if (!_isChoosing)
@@ -64,12 +71,6 @@ namespace Game.Gameplay.Battle
             EventBus.EventBus.Unsubscribe<CharacterTurnEvent>(OnCharacterChanged);
         }
 
-        [Inject]
-        public void Construct(CursorController cursorController)
-        {
-            _cursorController = cursorController;
-            Hide();
-        }
 
         private void OnCharacterChanged(CharacterTurnEvent evt)
         {

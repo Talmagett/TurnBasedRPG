@@ -8,7 +8,7 @@ namespace Game.UI.Scripts.Battle
 {
     public class CharacterTurnAdapter : MonoBehaviour
     {
-        [SerializeField] private TurnWidget turnWidget;
+        [SerializeField] private CharacterTurnView characterTurnView;
 
         private CharacterEntity _characterEntity;
 
@@ -30,7 +30,7 @@ namespace Game.UI.Scripts.Battle
 
         private void UpdateCooldownText(int turn)
         {
-            turnWidget.SetTurn(turn.ToString(), turn == 0);
+            characterTurnView.SetTurn(turn.ToString(), turn == 0);
         }
     }
 }

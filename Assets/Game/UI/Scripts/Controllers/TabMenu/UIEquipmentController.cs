@@ -1,16 +1,17 @@
 using Game.Gameplay.Game.Heroes;
 using Game.Meta.Inventory.Equipment;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.UI.Scripts.Controllers.TabMenu
 {
     public class UIEquipmentController : MonoBehaviour
     {
-        [SerializeField] private EquipmentView equipmentView;
+        [SerializeField] private EquipmentObserver.EquipmentAdapter[] equipmentsStack;
 
         public void Setup(Hero hero)
         {
-            var equipmentPresenter = new EquipmentPresenter(hero.Get<Equipment>(), equipmentView);
+            var equipmentPresenter = new EquipmentObserver(hero.Get<Equipment>(), equipmentsStack);
         }
     }
 }

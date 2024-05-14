@@ -6,6 +6,7 @@ using Game.Gameplay.Game.Heroes;
 using Game.Meta.Inventory.Inventory;
 using Game.Meta.Items.Scripts.ItemModule;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Game.App.Loading
@@ -13,7 +14,7 @@ namespace Game.App.Loading
     public class ProjectInstaller : MonoInstaller
     {
         [SerializeField] private HeroCharacterConfig[] heroesConfigs;
-        [SerializeField] private ItemConfig[] allItems;
+        [SerializeField] private ItemsContainer itemContainer;
         [SerializeField] private ItemConfig[] defaultItems;
         [SerializeReference] private ISaveLoader[] saveLoaders;
 
@@ -23,8 +24,10 @@ namespace Game.App.Loading
             Container.Bind<GameRepository>().AsSingle().NonLazy();
             Container.BindInstance(saveLoaders).AsSingle();
             Container.Bind<Inventory>().AsSingle().NonLazy();
-            Container.Bind<ItemsManager>().AsSingle().WithArguments(defaultItems)
-                .OnInstantiated<ItemsManager>((ctx,i)=>i.InitializeAllItems(allItems)).NonLazy();
+            Container.BindInstance(itemContainer).AsSingle()
+                .OnInstantiated<ItemsContainer>((ctx, t) => t.Initialize())
+                .NonLazy();
+            Container.Bind<ItemsManager>().AsSingle().WithArguments(defaultItems).NonLazy();
             Container.Bind<GameContext>().AsSingle().NonLazy();
             Container.Bind<PlayerInputActions>().AsSingle().NonLazy();
             Container.Bind<HeroParty>().AsSingle().WithArguments(heroesConfigs);
