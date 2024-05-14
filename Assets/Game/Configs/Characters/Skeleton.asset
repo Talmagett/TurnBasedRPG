@@ -19,7 +19,7 @@ MonoBehaviour:
   <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: 7e00046cab7d75043a99b013034e5062,
     type: 3}
   <Stats>k__BackingField:
-    health: 80
+    health: 120
     mana: 20
     attackPower: 15
     defense: 16

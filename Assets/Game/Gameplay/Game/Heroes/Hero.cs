@@ -14,12 +14,11 @@ namespace Game.Gameplay.Game.Heroes
             var equipment = new Equipment();
             
             var itemConfigs = characterConfig.EquippedItems;
-            foreach (var itemConfig in itemConfigs) equipment.EquipItem(itemConfig.item.Clone());
             Add(new SharedCharacterStats(stats ?? characterConfig.Stats.CloneStats()));
             Add(characterConfig);
             Add(equipment);
-            
-            var equipmentEffector = new EquipmentEffector.EquipmentEffector(this, equipment);
+            Add(new EquipmentEffector.EquipmentEffector(this, equipment));
+            foreach (var itemConfig in itemConfigs) equipment.EquipItem(itemConfig.item.Clone());
         }
     }
 }

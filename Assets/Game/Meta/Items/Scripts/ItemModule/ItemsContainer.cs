@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Sirenix.Utilities;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Meta.Items.Scripts.ItemModule
 {

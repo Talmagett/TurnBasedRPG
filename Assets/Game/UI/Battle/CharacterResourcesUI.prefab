@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ddf3c3daac4418b074865d44e7ec91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnWidget: {fileID: 5021045290760840826}
+  characterTurnView: {fileID: 5021045290760840826}
 --- !u!1 &6588124945448846657
 GameObject:
   m_ObjectHideFlags: 0

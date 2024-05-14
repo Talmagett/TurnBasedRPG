@@ -22,14 +22,15 @@ MonoBehaviour:
   <TargetType>k__BackingField: 3
   <AnimationKey>k__BackingField: 0
   Effects:
-  - rid: 1041286217044852833
+  - rid: 1041286217044852845
   references:
     version: 2
     RefIds:
-    - rid: 1041286217044852833
+    - rid: 1041286217044852845
       type: {class: HealEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
-        <HitEffect>k__BackingField: {fileID: 0}
+        <HitEffect>k__BackingField: {fileID: 198025859805546612, guid: 721cfe8018b2cd04abd0748143d2a312,
+          type: 3}
         <HitEffectPoint>k__BackingField: 0
         <HealingAmount>k__BackingField:
           Stat: 0

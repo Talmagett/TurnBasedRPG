@@ -19,6 +19,7 @@ MonoBehaviour:
     components:
     - rid: 1041286217044852838
     - rid: 1041286217044852839
+    - rid: 1041286217044852840
   references:
     version: 2
     RefIds:
@@ -30,4 +31,9 @@ MonoBehaviour:
       type: {class: StatAdditive, ns: Game.Configs.Configs.Attributes, asm: Assembly-CSharp}
       data:
         Stat: 5
-        Value: 34
+        Value: 312
+    - rid: 1041286217044852840
+      type: {class: StatAdditive, ns: Game.Configs.Configs.Attributes, asm: Assembly-CSharp}
+      data:
+        Stat: 0
+        Value: 222

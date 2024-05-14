@@ -26,7 +26,7 @@ MonoBehaviour:
       type: {class: StatAdditive, ns: Game.Configs.Configs.Attributes, asm: Assembly-CSharp}
       data:
         Stat: 5
-        Value: 15
+        Value: 135
     - rid: 1041286217044852835
       type: {class: Component_EquipmentType, ns: Game.Meta.Inventory.Equipment, asm: Equipment}
       data:

@@ -22,11 +22,11 @@ MonoBehaviour:
   <TargetType>k__BackingField: 0
   <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 1041286217044852828
+  - rid: 1041286217044852843
   references:
     version: 2
     RefIds:
-    - rid: 1041286217044852828
+    - rid: 1041286217044852843
       type: {class: MultiDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
@@ -38,5 +38,5 @@ MonoBehaviour:
           <HitEffectPoint>k__BackingField: 0
           <DamageAmount>k__BackingField:
             Stat: 4
-            BaseValue: 10
-            MultValue: 0.2
+            BaseValue: 3
+            MultValue: 0.1

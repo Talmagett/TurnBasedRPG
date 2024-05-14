@@ -21,7 +21,7 @@ MonoBehaviour:
   <Stats>k__BackingField:
     health: 120
     mana: 70
-    attackPower: 43
+    attackPower: 34
     defense: 40
     evasion: 0
     criticalChance: 0

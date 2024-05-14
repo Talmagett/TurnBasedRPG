@@ -30,4 +30,4 @@ MonoBehaviour:
       type: {class: StatAdditive, ns: Game.Configs.Configs.Attributes, asm: Assembly-CSharp}
       data:
         Stat: 4
-        Value: 15
+        Value: 11

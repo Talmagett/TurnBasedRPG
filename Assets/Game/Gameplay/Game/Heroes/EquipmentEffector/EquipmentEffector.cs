@@ -4,6 +4,7 @@ using Game.Configs.Configs.Attributes;
 using Game.GameEngine.Entities.Scripts;
 using Game.Meta.Inventory.Equipment;
 using Game.Meta.Items.Scripts.ItemModule;
+using UnityEngine;
 
 namespace Game.Gameplay.Game.Heroes.EquipmentEffector
 {
@@ -29,6 +30,7 @@ namespace Game.Gameplay.Game.Heroes.EquipmentEffector
 
         private void AddEffectToCharacter(Item obj)
         {
+            Debug.Log("onITemEquipped");
             var itemStats = obj.GetComponents<StatAdditive>();
             if (itemStats.Length == 0)
                 return;

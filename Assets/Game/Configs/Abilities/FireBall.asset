@@ -35,12 +35,13 @@ MonoBehaviour:
         <ProjectileShootPoint>k__BackingField: 2
         <HitEffectPoint>k__BackingField: 2
         <EffectsOnHit>k__BackingField:
-        - rid: 1041286217044852757
-    - rid: 1041286217044852757
+        - rid: 1041286217044852846
+    - rid: 1041286217044852846
       type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <HitEffect>k__BackingField: {fileID: 0}
+        <HitEffect>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
+          type: 3}
         <HitEffectPoint>k__BackingField: 2
         <DamageAmount>k__BackingField:
           Stat: 4
