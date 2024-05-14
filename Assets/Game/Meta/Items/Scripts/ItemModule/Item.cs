@@ -54,12 +54,10 @@ namespace Game.Meta.Items.Scripts.ItemModule
         {
             var count = this.components.Length;
             var components = new object[count];
-            Debug.Log(count);
 
             for (var i = 0; i < count; i++)
             {
                 var component = this.components[i];
-                Debug.Log(component.GetType());
                 if (component is ICloneable cloneable) component = cloneable.Clone();
 
                 components[i] = component;

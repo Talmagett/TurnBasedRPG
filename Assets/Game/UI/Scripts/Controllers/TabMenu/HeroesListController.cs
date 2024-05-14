@@ -14,5 +14,13 @@ namespace Game.UI.Scripts.Controllers.TabMenu
             var view = Instantiate(selectHeroView, parent);
             view.SetIcon(icon, action);
         }
+
+        public void Clear()
+        {
+            while (parent.childCount>0)
+            {
+                DestroyImmediate(parent.GetChild(0).gameObject);
+            }
+        }
     }
 }

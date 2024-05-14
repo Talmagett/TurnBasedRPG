@@ -27,7 +27,9 @@ namespace Game.UI.Scripts.Controllers.TabMenu
         public void ShowCharactersList()
         {
             _inputActions.Map.Disable();
+            heroesListController.Clear();
             heroesListController.gameObject.SetActive(true);
+            
             for (var i = 0; i < _heroParty.HeroDataArray.Length; i++)
             {
                 var index = i;
@@ -36,15 +38,17 @@ namespace Game.UI.Scripts.Controllers.TabMenu
             }
         }
 
+        public void HideCharactersList()
+        {
+            heroUIController.Hide();
+            _inputActions.Map.Enable();
+            heroesListController.gameObject.SetActive(false);
+        }
+
         private void ShowCharacterPanel(Hero hero)
         {
             heroUIController.Show(hero);
             uiInventoryController.Show();
-        }
-
-        public void HideCharacterPanel()
-        {
-            _inputActions.Map.Enable();
         }
     }
 }

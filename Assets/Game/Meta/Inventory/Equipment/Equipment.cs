@@ -43,7 +43,6 @@ namespace Game.Meta.Inventory.Equipment
             if (HasItem(type)) UnequipItem(type);
 
             _equipment.Add(type, item);
-            Debug.Log(item.Name);
             OnItemEquipped?.Invoke(item);
         }
 
@@ -54,7 +53,6 @@ namespace Game.Meta.Inventory.Equipment
             if (!_equipment.ContainsKey(type)) return;
 
             _equipment.Remove(type);
-            Debug.Log(item.Name);
             OnItemUnequipped?.Invoke(item);
         }
 

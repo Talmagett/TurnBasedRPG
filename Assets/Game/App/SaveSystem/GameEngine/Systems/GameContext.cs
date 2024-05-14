@@ -11,10 +11,9 @@ namespace Game.App.SaveSystem.GameEngine.Systems
         private readonly Dictionary<Type, object> _services = new();
 
         [Inject]
-        public GameContext(UnitManager unitManager, ResourceService resourceManager)
+        public GameContext(ItemsManager itemsManager)
         {
-            _services.Add(typeof(UnitManager), unitManager);
-            _services.Add(typeof(ResourceService), resourceManager);
+            _services.Add(typeof(ItemsManager), itemsManager);
         }
 
         public TService GetService<TService>()
