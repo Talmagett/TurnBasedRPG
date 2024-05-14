@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Modules.Items.Scripts.Item;
 using UnityEngine;
 
 namespace Modules.Items.Scripts.ItemModule

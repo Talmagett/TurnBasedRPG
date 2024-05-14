@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Modules.Entities.Scripts.ScriptableObjects;
 using UnityEngine;
 
-namespace Entities
+namespace Modules.Entities.Scripts.MonoBehaviours
 {
     public sealed class MonoEntityConditionGroup : MonoEntityCondition
     {

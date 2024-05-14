@@ -29,7 +29,8 @@ namespace PixelCrushers.DialogueSystem
                 if (inputWeight > 0.001f && !played.Contains(i))
                 {
                     played.Add(i);
-                    ScriptPlayable<PlaySequenceBehaviour> inputPlayable = (ScriptPlayable<PlaySequenceBehaviour>)playable.GetInput(i);
+                    ScriptPlayable<PlaySequenceBehaviour> inputPlayable =
+ (ScriptPlayable<PlaySequenceBehaviour>)playable.GetInput(i);
                     PlaySequenceBehaviour input = inputPlayable.GetBehaviour();
                     var sequence = input.sequence;
                     if (Application.isPlaying)

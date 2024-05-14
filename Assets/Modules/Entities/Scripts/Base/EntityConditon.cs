@@ -1,6 +1,6 @@
 using System;
 
-namespace Entities
+namespace Modules.Entities.Scripts.Base
 {
     public sealed class EntityConditon : IEntityCondition
     {

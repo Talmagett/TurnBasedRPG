@@ -5,9 +5,9 @@ using Character.Components;
 using Configs.Abilities;
 using Configs.Character;
 using Configs.Enums;
-using Entities;
 using EventBus.Events;
 using Game.Control;
+using Modules.Entities.Scripts;
 using PrimeTween;
 using UI;
 using UnityEngine;
@@ -20,7 +20,6 @@ namespace Battle
         [SerializeField] private Transform spellsViewParent;
         [SerializeField] private BattleAbilityView battleAbilityView;
 
-        private AbilitiesStorage _abilitiesStorage;
         private AbilityConfig _castingAbility;
         private CursorController _cursorController;
 
@@ -63,9 +62,8 @@ namespace Battle
         }
 
         [Inject]
-        public void Construct(AbilitiesStorage abilitiesStorage, CursorController cursorController)
+        public void Construct(CursorController cursorController)
         {
-            _abilitiesStorage = abilitiesStorage;
             _cursorController = cursorController;
             Hide();
         }
@@ -101,12 +99,11 @@ namespace Battle
         {
             _isChoosing = false;
             _hero = hero;
-            var heroAbilities =
-                _abilitiesStorage.AbilitiesPacks.FirstOrDefault(t => t.Name == _hero.Get<Component_ID>().id.Value);
+            var heroAbilities = _hero.Get<HeroCharacterConfig>().Abilities;
             if (heroAbilities == null)
                 throw new NullReferenceException($"No ability pack with this id {_hero.Get<Component_ID>()}");
 
-            foreach (var ability in heroAbilities.Abilities)
+            foreach (var ability in heroAbilities)
             {
                 var abilityView = Instantiate(battleAbilityView, spellsViewParent);
                 abilityView.AbilityConfig = ability;

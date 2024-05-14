@@ -2,15 +2,16 @@ using Configs.Enums;
 using Game.Heroes;
 using UI.Views.Map;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace UI
 {
     public class MapHeroPresenter : MonoBehaviour
     {
-        [SerializeField] private HeroView heroViewPrefab;
+        [FormerlySerializedAs("heroViewPrefab")] [SerializeField] private MapHeroView mapHeroViewPrefab;
         [SerializeField] private Transform parent;
-        private HeroView[] _mapHeroViews;
+        private MapHeroView[] _mapHeroViews;
 
         private HeroParty _party;
 /*

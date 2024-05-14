@@ -108,7 +108,8 @@ namespace PixelCrushers.DialogueSystem
         /// <param name="startingEntryID">Entry started, or -1 for beginning of conversation.</param>
         /// <param name="numContinues">Number of nodes to continue past.</param>
         /// <returns></returns>
-        public static string GetSequence(string conversationTitle, int startingEntryID, out DialogueEntry entry, int numContinues = 0)
+        public static string GetSequence(string conversationTitle, int startingEntryID, out DialogueEntry entry, int numContinues
+ = 0)
         {
             bool isPlayer;
             string sequence = string.Empty;                 
@@ -196,7 +197,8 @@ namespace PixelCrushers.DialogueSystem
                     if (ui != null && ui.conversationUIElements.defaultNPCSubtitlePanel != null &&
                         ui.conversationUIElements.defaultNPCSubtitlePanel.subtitleText != null)
                     {
-                        typewriterEffect = ui.conversationUIElements.defaultNPCSubtitlePanel.subtitleText.gameObject.GetComponent<AbstractTypewriterEffect>();
+                        typewriterEffect =
+ ui.conversationUIElements.defaultNPCSubtitlePanel.subtitleText.gameObject.GetComponent<AbstractTypewriterEffect>();
                     }
                 }
                 if (typewriterEffect == null) typewriterEffect = FindObjectOfType<AbstractTypewriterEffect>();
@@ -303,7 +305,8 @@ namespace PixelCrushers.DialogueSystem
             {
                 computedRect = true;
                 var size = GUI.skin.label.CalcSize(new GUIContent(message));
-                rect = new Rect((Screen.width - size.x) / 2, (Screen.height - size.y) / 2 + lineOffset * size.y, size.x, size.y);
+                rect =
+ new Rect((Screen.width - size.x) / 2, (Screen.height - size.y) / 2 + lineOffset * size.y, size.x, size.y);
             }
             GUI.Label(rect, message);
         }

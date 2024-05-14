@@ -12,11 +12,6 @@ namespace Modules.Items.Scripts.Equipment
 
         public event Action<ItemModule.Item> OnItemEquipped;
         public event Action<ItemModule.Item> OnItemUnequipped;
-        //
-        // public void Setup(params KeyValuePair<EquipmentType, ItemModule.Item>[] items)
-        // {
-        //     foreach (var itemPair in items) EquipItem(itemPair.Key, itemPair.Value);
-        // }
 
         private ItemModule.Item GetItem(EquipmentType type)
         {

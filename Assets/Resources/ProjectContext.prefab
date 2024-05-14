@@ -1,70 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1215336393450171441
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6043215861816078373}
-  - component: {fileID: 2692352785641134630}
-  m_Layer: 0
-  m_Name: GameInstaller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6043215861816078373
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215336393450171441}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7101572371014314162}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2692352785641134630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215336393450171441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c51d6cd09c13470c85e142b85d2b5624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heroesConfigs:
-  - {fileID: 11400000, guid: 6a4ef622fa64f5548b0321d7ba4f575b, type: 2}
-  - {fileID: 11400000, guid: 69ccaac169c481a47af06ae4940cd821, type: 2}
-  - {fileID: 11400000, guid: d6fc75645b8a92b4195a8ca51b1b45d7, type: 2}
-  abilitiesStorage: {fileID: 11400000, guid: f250e6028da84804fa5156b12ced0257, type: 2}
-  cursorController:
-    cursorMappings:
-    - type: 0
-      texture: {fileID: 2800000, guid: 44a99ee545fd8ba46a452b12c1f9378b, type: 3}
-      hotspot: {x: 0, y: 0}
-    - type: 1
-      texture: {fileID: 2800000, guid: 8ea795c067613354898068091ffc7130, type: 3}
-      hotspot: {x: 0, y: 0}
-    - type: 2
-      texture: {fileID: 2800000, guid: 2a2b4775272c890448e1bd6239fdfc84, type: 3}
-      hotspot: {x: 0, y: 0}
-    - type: 3
-      texture: {fileID: 2800000, guid: 6fdfcd4167ed5e7488584241bb671bb2, type: 3}
-      hotspot: {x: 0, y: 0}
-    maxNavMeshProjectionDistance: 1
-    raycastRadius: 1
 --- !u!1 &3892207817408147773
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7101572371014314162}
   - component: {fileID: 3499478390270476216}
+  - component: {fileID: 951352012199266608}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -94,8 +30,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6043215861816078373}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3499478390270476216
@@ -112,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 2692352785641134630}
+  - {fileID: 951352012199266608}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -127,3 +62,40 @@ MonoBehaviour:
       _missingHandlerDefaultResponse: 2
       _requireStrictUnsubscribe: 0
       _defaultAsyncTickPriority: 1
+--- !u!114 &951352012199266608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892207817408147773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51d6cd09c13470c85e142b85d2b5624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroesConfigs:
+  - {fileID: 11400000, guid: 6a4ef622fa64f5548b0321d7ba4f575b, type: 2}
+  - {fileID: 11400000, guid: 69ccaac169c481a47af06ae4940cd821, type: 2}
+  - {fileID: 11400000, guid: d6fc75645b8a92b4195a8ca51b1b45d7, type: 2}
+  playerInitData: {fileID: 11400000, guid: f250e6028da84804fa5156b12ced0257, type: 2}
+  cursorController:
+    cursorMappings:
+    - type: 0
+      texture: {fileID: 2800000, guid: 44a99ee545fd8ba46a452b12c1f9378b, type: 3}
+      hotspot: {x: 0, y: 0}
+    - type: 1
+      texture: {fileID: 2800000, guid: 8ea795c067613354898068091ffc7130, type: 3}
+      hotspot: {x: 0, y: 0}
+    - type: 2
+      texture: {fileID: 2800000, guid: 2a2b4775272c890448e1bd6239fdfc84, type: 3}
+      hotspot: {x: 0, y: 0}
+    - type: 3
+      texture: {fileID: 2800000, guid: 6fdfcd4167ed5e7488584241bb671bb2, type: 3}
+      hotspot: {x: 0, y: 0}
+    maxNavMeshProjectionDistance: 1
+    raycastRadius: 1
+  saveLoaders: []
+  references:
+    version: 2
+    RefIds: []

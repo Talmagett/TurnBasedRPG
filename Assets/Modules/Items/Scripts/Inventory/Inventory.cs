@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Zenject;
 
 namespace Modules.Items.Scripts.Inventory
 {

@@ -18,6 +18,7 @@ MonoBehaviour:
     flags: 12
     components:
     - rid: 1041286152238137563
+    - rid: 1041286193205477577
   references:
     version: 2
     RefIds:
@@ -26,3 +27,8 @@ MonoBehaviour:
         asm: Equipment}
       data:
         <Type>k__BackingField: 5
+    - rid: 1041286193205477577
+      type: {class: StatAdditive, ns: Configs.Attributes, asm: Assembly-CSharp}
+      data:
+        Stat: 0
+        Value: 30

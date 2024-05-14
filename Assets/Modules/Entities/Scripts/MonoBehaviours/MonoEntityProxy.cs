@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Entities
+namespace Modules.Entities.Scripts.MonoBehaviours
 {
     [AddComponentMenu("Entities/Entity Proxy")]
     public sealed class MonoEntityProxy : MonoEntity

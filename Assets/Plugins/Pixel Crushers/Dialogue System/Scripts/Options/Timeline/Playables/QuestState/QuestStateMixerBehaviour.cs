@@ -25,7 +25,8 @@ namespace PixelCrushers.DialogueSystem
                 if (inputWeight > 0.001f && !played.Contains(i))
                 {
                     played.Add(i);
-                    ScriptPlayable<SetQuestStateBehaviour> inputPlayable = (ScriptPlayable<SetQuestStateBehaviour>)playable.GetInput(i);
+                    ScriptPlayable<SetQuestStateBehaviour> inputPlayable =
+ (ScriptPlayable<SetQuestStateBehaviour>)playable.GetInput(i);
                     SetQuestStateBehaviour input = inputPlayable.GetBehaviour();
                     if (Application.isPlaying)
                     {
@@ -51,7 +52,8 @@ namespace PixelCrushers.DialogueSystem
                         }
                         else if (input.setQuestEntryState)
                         {
-                            message = "Set quest " + input.quest + " entry #" + input.questEntryNumber + " to " + input.questEntryState;
+                            message =
+ "Set quest " + input.quest + " entry #" + input.questEntryNumber + " to " + input.questEntryState;
                         }
                         if (!string.IsNullOrEmpty(message)) PreviewUI.ShowMessage(message, 2, -2);
                     }

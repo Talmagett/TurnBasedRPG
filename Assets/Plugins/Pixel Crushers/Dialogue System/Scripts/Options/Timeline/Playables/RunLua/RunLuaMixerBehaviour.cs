@@ -29,7 +29,8 @@ namespace PixelCrushers.DialogueSystem
                 if (inputWeight > 0.001f && !played.Contains(i))
                 {
                     played.Add(i);
-                    ScriptPlayable<RunLuaBehaviour> inputPlayable = (ScriptPlayable<RunLuaBehaviour>)playable.GetInput(i);
+                    ScriptPlayable<RunLuaBehaviour> inputPlayable =
+ (ScriptPlayable<RunLuaBehaviour>)playable.GetInput(i);
                     RunLuaBehaviour input = inputPlayable.GetBehaviour();
                     var luaCode = input.luaCode;
                     if (Application.isPlaying)

@@ -41,7 +41,8 @@ namespace PixelCrushers.DialogueSystem
                                 {
                                     if (input.clearAllPanels)
                                     {
-                                        for (int j = 0; j < standardDialogueUI.conversationUIElements.subtitlePanels.Length; j++)
+                                        for (int j =
+ 0; j < standardDialogueUI.conversationUIElements.subtitlePanels.Length; j++)
                                         {
                                             if (standardDialogueUI.conversationUIElements.subtitlePanels[j] == null) continue;
                                             standardDialogueUI.conversationUIElements.subtitlePanels[j].ClearText();
@@ -98,7 +99,8 @@ namespace PixelCrushers.DialogueSystem
                             var startConversationClip = clip.asset as StartConversationClip;
                             startConversationTime = clip.start;
                             conversationTitle = startConversationClip.template.conversation;
-                            startingEntryID = startConversationClip.template.jumpToSpecificEntry ? startConversationClip.template.entryID : -1;
+                            startingEntryID =
+ startConversationClip.template.jumpToSpecificEntry ? startConversationClip.template.entryID : -1;
                         }
                     }
                 }

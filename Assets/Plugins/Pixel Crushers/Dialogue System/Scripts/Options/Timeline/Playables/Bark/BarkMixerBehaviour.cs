@@ -37,7 +37,8 @@ namespace PixelCrushers.DialogueSystem
                         {
                             if (input.barkSpecificEntry)
                             {
-                                var subtitle = GetBarkSubtitle(input.conversation, input.entryID, trackBinding.transform, input.listener);
+                                var subtitle =
+ GetBarkSubtitle(input.conversation, input.entryID, trackBinding.transform, input.listener);
                                 DialogueManager.instance.StartCoroutine(BarkController.Bark(subtitle));
                             }
                             else
@@ -52,7 +53,8 @@ namespace PixelCrushers.DialogueSystem
                     }
                     else
                     {
-                        var message = DialogueActor.GetActorName(trackBinding.transform) + " bark: " + input.GetEditorBarkText();
+                        var message =
+ DialogueActor.GetActorName(trackBinding.transform) + " bark: " + input.GetEditorBarkText();
                         if (input.useConversation) message += " (may vary)";
                         PreviewUI.ShowMessage(message, 2, 1);
                     }
@@ -70,7 +72,8 @@ namespace PixelCrushers.DialogueSystem
             if (conversation == null) return null;
             var entry = conversation.GetDialogueEntry(entryID);
             if (entry == null) return null;
-            var conversationModel = new ConversationModel(DialogueManager.masterDatabase, conversationTitle, speaker, listener, true, null);
+            var conversationModel =
+ new ConversationModel(DialogueManager.masterDatabase, conversationTitle, speaker, listener, true, null);
             var speakerInfo = conversationModel.GetCharacterInfo(entry.ActorID, speaker);
             var listenerInfo = conversationModel.GetCharacterInfo(entry.ConversantID, listener);
             var formattedText = FormattedText.Parse(entry.currentDialogueText);

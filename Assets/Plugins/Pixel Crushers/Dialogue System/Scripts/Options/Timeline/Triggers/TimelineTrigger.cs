@@ -108,8 +108,10 @@ namespace PixelCrushers.DialogueSystem
         public void Awake()
         {
             if (playableDirector == null) playableDirector = GetComponent<PlayableDirector>();
-            if (playableDirector == null && timelineAsset != null) playableDirector = gameObject.AddComponent<PlayableDirector>();
-            if (playableDirector != null && playableDirector.playableAsset == null) playableDirector.playableAsset = timelineAsset;
+            if (playableDirector == null && timelineAsset != null) playableDirector =
+ gameObject.AddComponent<PlayableDirector>();
+            if (playableDirector != null && playableDirector.playableAsset == null) playableDirector.playableAsset =
+ timelineAsset;
         }
 
         public void Start()

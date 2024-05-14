@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c365bb021b140cd8e1341e4096d4750, type: 3}
+  m_Script: {fileID: 11500000, guid: cb8080e51a88486da961815da53317a7, type: 3}
   m_Name: Skeleton
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Skeleton
@@ -26,3 +26,5 @@ MonoBehaviour:
     evasion: 0
     criticalChance: 0
     criticalRate: 1.5
+  <LootItems>k__BackingField:
+  - {fileID: 11400000, guid: c74341c466e997f4fa7a37c19200b737, type: 2}

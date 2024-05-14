@@ -1,71 +1,82 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 namespace CharacterCreator2D.UI
 {
     public class UIColor : MonoBehaviour
     {
         /// <summary>
-        /// Current mode of this UIColor. Tells whether UIColor is opening color palette or color picker.
+        ///     Current mode of this UIColor. Tells whether UIColor is opening color palette or color picker.
         /// </summary>
         [Tooltip("Current mode of this UIColor. Tells whether UIColor is opening color palette or color picker")]
         [ReadOnly]
         public UIColorMode mode;
 
-        [ReadOnly]
-        public Color selectedColor;
+        [ReadOnly] public Color selectedColor;
 
         /// <summary>
-        /// UIColorPalette managed by this UIColor.
+        ///     UIColorPalette managed by this UIColor.
         /// </summary>
         [Tooltip("UIColorPalette managed by this UIColor")]
         public UIColorPalette colorPalette;
 
         /// <summary>
-        /// UIColorPicker managed by this UIColor.
+        ///     UIColorPicker managed by this UIColor.
         /// </summary>
         [Tooltip("UIColorPicker managed by this UIColor")]
         public UIColorPicker colorPicker;
 
         /// <summary>
-        /// Scrollbar controlling color palette's contents
+        ///     Scrollbar controlling color palette's contents
         /// </summary>
         [Tooltip("Scrollbar controlling color palette's contents")]
         public Transform scrollBar;
 
-        /// <summary>
-        /// Show this UIColor.
-        /// </summary>
-        public void Show()
+        private void Update()
         {
-            Show(this.selectedColor);
+            switch (mode)
+            {
+                case UIColorMode.Palette:
+                    selectedColor = colorPalette.color;
+                    colorPicker.color = colorPalette.color;
+                    break;
+                case UIColorMode.Picker:
+                    selectedColor = colorPicker.color;
+                    colorPalette.color = colorPicker.color;
+                    break;
+            }
         }
 
         /// <summary>
-        /// Show this UIColor.
+        ///     Show this UIColor.
+        /// </summary>
+        public void Show()
+        {
+            Show(selectedColor);
+        }
+
+        /// <summary>
+        ///     Show this UIColor.
         /// </summary>
         /// <param name="currentColor">Initiated color to be showed.</param>
         public void Show(Color currentColor)
         {
             selectedColor = currentColor;
-            colorPalette.color = this.selectedColor;
-            colorPicker.color = this.selectedColor;
-            setMode(this.mode);
-            this.gameObject.SetActive(true);
+            colorPalette.color = selectedColor;
+            colorPicker.color = selectedColor;
+            setMode(mode);
+            gameObject.SetActive(true);
         }
 
         /// <summary>
-        /// Close this UIColor.
+        ///     Close this UIColor.
         /// </summary>
         public void Close()
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         /// <summary>
-        /// Show color palette and close color picker.
+        ///     Show color palette and close color picker.
         /// </summary>
         public void ShowColorPalette()
         {
@@ -73,7 +84,7 @@ namespace CharacterCreator2D.UI
         }
 
         /// <summary>
-        /// Show color picker and close color palette.
+        ///     Show color picker and close color palette.
         /// </summary>
         public void ShowColorPicker()
         {
@@ -82,40 +93,23 @@ namespace CharacterCreator2D.UI
 
         private void setMode(UIColorMode colorMode)
         {
-            this.mode = colorMode;
-            switch (this.mode)
-            {
-                case UIColorMode.Palette:
-                    this.colorPalette.gameObject.SetActive(true);
-                    this.colorPicker.gameObject.SetActive(false);
-                    this.scrollBar.gameObject.SetActive(true);
-                    break;
-                case UIColorMode.Picker:
-                    this.colorPalette.gameObject.SetActive(false);
-                    this.colorPicker.gameObject.SetActive(true);
-                    this.scrollBar.gameObject.SetActive(false);
-                    break;
-                default:
-                    this.colorPalette.gameObject.SetActive(false);
-                    this.colorPicker.gameObject.SetActive(false);
-                    this.scrollBar.gameObject.SetActive(false);
-                    break;
-            }
-        }
-
-        void Update()
-        {
+            mode = colorMode;
             switch (mode)
             {
                 case UIColorMode.Palette:
-                    this.selectedColor = colorPalette.color;
-                    colorPicker.color = colorPalette.color;
+                    colorPalette.gameObject.SetActive(true);
+                    colorPicker.gameObject.SetActive(false);
+                    scrollBar.gameObject.SetActive(true);
                     break;
                 case UIColorMode.Picker:
-                    this.selectedColor = colorPicker.color;
-                    colorPalette.color = colorPicker.color;
+                    colorPalette.gameObject.SetActive(false);
+                    colorPicker.gameObject.SetActive(true);
+                    scrollBar.gameObject.SetActive(false);
                     break;
                 default:
+                    colorPalette.gameObject.SetActive(false);
+                    colorPicker.gameObject.SetActive(false);
+                    scrollBar.gameObject.SetActive(false);
                     break;
             }
         }

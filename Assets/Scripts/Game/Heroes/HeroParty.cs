@@ -8,7 +8,7 @@ namespace Game.Heroes
     {
         public readonly Hero[] HeroDataArray;
 
-        public HeroParty(CharacterConfig[] configs)
+        public HeroParty(HeroCharacterConfig[] configs)
         {
             HeroDataArray = new Hero[configs.Length];
             for (var i = 0; i < configs.Length; i++) HeroDataArray[i] = new Hero(configs[i]);

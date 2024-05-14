@@ -1,5 +1,5 @@
 ﻿using System;
-using Entities;
+using Modules.Entities.Scripts;
 using UnityEngine;
 
 namespace EventBus.Events.Effects

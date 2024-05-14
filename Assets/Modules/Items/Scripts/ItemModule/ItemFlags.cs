@@ -1,6 +1,6 @@
 using System;
 
-namespace Modules.Items.Scripts.Item
+namespace Modules.Items.Scripts.ItemModule
 {
     [Flags]
     public enum ItemFlags

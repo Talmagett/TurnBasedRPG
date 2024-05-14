@@ -1,12 +1,10 @@
-using Entities;
+using Modules.Entities.Scripts.MonoBehaviours;
 using UnityEngine;
 
 namespace Character
 {
     public sealed class CharacterEntity : MonoEntityBase
     {
-        public AnimatorDispatcher AnimatorDispatcher { get; }
-
         public void Awake()
         {
             var animator = GetComponentInChildren<Animator>();

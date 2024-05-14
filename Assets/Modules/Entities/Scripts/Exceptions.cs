@@ -1,6 +1,6 @@
 using System;
 
-namespace Entities
+namespace Modules.Entities.Scripts
 {
     public sealed class EntityException : Exception
     {

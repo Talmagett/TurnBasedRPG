@@ -1,7 +1,7 @@
 ﻿using System;
 using Character.BodyParts;
 using Configs.Attributes;
-using Entities;
+using Modules.Entities.Scripts;
 using UnityEngine;
 
 namespace EventBus.Events.Effects

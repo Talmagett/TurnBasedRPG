@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Entities
+namespace Modules.Entities.Scripts.ScriptableObjects
 {
     [CreateAssetMenu(
         fileName = "ConditionGroup",

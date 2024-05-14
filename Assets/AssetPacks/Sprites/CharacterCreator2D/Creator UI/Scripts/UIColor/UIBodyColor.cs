@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace CharacterCreator2D.UI
@@ -8,26 +6,37 @@ namespace CharacterCreator2D.UI
     public class UIBodyColor : MonoBehaviour
     {
         /// <summary>
-        /// Image preview of the color.
+        ///     Image preview of the color.
         /// </summary>
         [Tooltip("Image preview of the color")]
         public Image colorImg;
-        
+
         private bool _uicolorenabled;
         private UICreator _uicreator;
 
-        void Awake()
+        private void Awake()
         {
-            _uicreator = this.transform.GetComponentInParent<UICreator>();
+            _uicreator = transform.GetComponentInParent<UICreator>();
         }
 
-        void OnEnable()
+        private void Update()
+        {
+            if (!_uicolorenabled)
+                return;
+
+            if (!_uicreator.colorUI.gameObject.activeInHierarchy)
+                setUIColorEnable(false);
+            else
+                _uicreator.character.SkinColor = _uicreator.colorUI.selectedColor;
+        }
+
+        private void OnEnable()
         {
             setUIColorEnable(false);
         }
 
         /// <summary>
-        /// Request to open UIColor and edit current color of interest.
+        ///     Request to open UIColor and edit current color of interest.
         /// </summary>
         public void EditColor()
         {
@@ -35,12 +44,12 @@ namespace CharacterCreator2D.UI
         }
 
         /// <summary>
-        /// Adjust color's opacity.
+        ///     Adjust color's opacity.
         /// </summary>
         /// <param name="opacity">Opacity value</param>
         public void SetOpacity(float opacity)
         {
-            Color detailscolor = _uicreator.character.GetPartColor(SlotCategory.SkinDetails, ColorCode.Color1);
+            var detailscolor = _uicreator.character.GetPartColor(SlotCategory.SkinDetails, ColorCode.Color1);
             detailscolor.a = Mathf.Clamp01(opacity);
             _uicreator.character.SetPartColor(SlotCategory.SkinDetails, ColorCode.Color1, detailscolor);
         }
@@ -78,25 +87,10 @@ namespace CharacterCreator2D.UI
             }
         }
 
-        void Update()
-        {
-            if (!_uicolorenabled)
-                return;
-
-            if (!_uicreator.colorUI.gameObject.activeInHierarchy)
-            {
-                setUIColorEnable(false);
-            }
-            else
-            {
-                _uicreator.character.SkinColor = _uicreator.colorUI.selectedColor;
-            }
-        }
-
         private void setChildActive(bool isActive)
         {
-            for (int i = 0; i < this.transform.childCount; i++)
-                this.transform.GetChild(i).gameObject.SetActive(isActive);
+            for (var i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).gameObject.SetActive(isActive);
         }
     }
 }

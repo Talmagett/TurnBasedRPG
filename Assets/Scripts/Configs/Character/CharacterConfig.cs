@@ -1,10 +1,11 @@
 using Character;
+using Modules.Items.Scripts.ItemModule;
 using UnityEngine;
 
 namespace Configs.Character
 {
     [CreateAssetMenu(fileName = "CharacterConfig", menuName = "SO/CharacterConfig", order = 0)]
-    public class CharacterConfig : ScriptableObject
+    public abstract class CharacterConfig : ScriptableObject
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public string Description { get; private set; }

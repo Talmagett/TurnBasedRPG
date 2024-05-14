@@ -1,5 +1,5 @@
 using Configs.Abilities;
-using Entities;
+using Modules.Entities.Scripts;
 
 namespace EventBus.Events
 {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Entities
+namespace Modules.Entities.Scripts.MonoBehaviours
 {
     [AddComponentMenu("Entities/Entity Group")]
     public sealed class MonoEntityGroup : MonoEntity

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Character.Components;
 using Configs.Enums;
-using Entities;
 using JetBrains.Annotations;
+using Modules.Entities.Scripts;
 using Random = UnityEngine.Random;
 
 namespace Battle

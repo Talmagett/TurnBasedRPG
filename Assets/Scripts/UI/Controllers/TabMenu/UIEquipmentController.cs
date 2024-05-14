@@ -10,31 +10,9 @@ namespace UI.Controllers.TabMenu
     {
         [SerializeField] private EquipmentView equipmentView;
         
-        private HeroParty _heroParty;
-
-        private int _index=0;
-        
-        [Inject]
-        public void Ctor(HeroParty heroParty)
+        public void Setup(Hero hero)
         {
-            _heroParty = heroParty;
-        }
-
-        [Button]
-        public void SetCharacterIndex(int index = 0)
-        {
-            _index = index;
-        }
-
-        public void Show()
-        {
-            equipmentView.gameObject.SetActive(true);
-            var equipmentPresenter = new EquipmentPresenter(_heroParty.HeroDataArray[_index].Equipment,equipmentView);
-        }
-
-        public void Hide()
-        {
-            equipmentView.gameObject.SetActive(false);
+            var equipmentPresenter = new EquipmentPresenter(hero.Get<Equipment>(),equipmentView);
         }
     }
 }

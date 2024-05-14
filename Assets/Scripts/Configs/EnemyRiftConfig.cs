@@ -1,5 +1,6 @@
 using Battle;
 using Configs.Character;
+using Modules.Items.Scripts.ItemModule;
 using UnityEngine;
 
 namespace Configs
@@ -9,8 +10,7 @@ namespace Configs
     {
         [field: SerializeField] public string ID { get; private set; }
         [field: SerializeField] public Environment Environment { get; private set; }
-
-        [field: SerializeField] public CharacterConfig[] Enemies { get; private set; }
-        //loot
+        [field: SerializeField] public EnemyCharacterConfig[] Enemies { get; private set; }
+        [field: SerializeField] public ItemConfig[] LootItems { get; private set; }
     }
 }

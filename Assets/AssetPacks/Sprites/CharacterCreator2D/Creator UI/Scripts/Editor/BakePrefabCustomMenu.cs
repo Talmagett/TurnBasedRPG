@@ -1,10 +1,10 @@
-﻿using CharacterCreator2D;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using CharacterCreator2D;
 using CharacterCreator2D.UI;
 using CharacterCreator2D.Utilities;
 using CharacterCreator2D.Utilities.Humanoid;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using UnityEditor;
 using UnityEditor.U2D;
 using UnityEngine;
@@ -23,14 +23,11 @@ namespace CharacterEditor2D.UI
 
         private static void BakeAsPrefab()
         {
-            if (!EditorApplication.isPlaying)
-            {
-                return;
-            }
-            CharacterViewer[] cvs = Object.FindObjectsOfType<CharacterViewer>();
+            if (!EditorApplication.isPlaying) return;
+            var cvs = Object.FindObjectsOfType<CharacterViewer>();
             if (cvs != null && cvs.Length > 0)
             {
-                foreach (CharacterViewer character in cvs)
+                foreach (var character in cvs)
                 {
                     switch (character.bodyType)
                     {
@@ -38,17 +35,19 @@ namespace CharacterEditor2D.UI
                         case BodyType.Female:
                             break;
                         default:
-                            EditorUtility.DisplayDialog("Bake Information", "Only support Male and Female body type only.", "Ok");
+                            EditorUtility.DisplayDialog("Bake Information",
+                                "Only support Male and Female body type only.", "Ok");
                             continue;
                     }
-                    string path = CharacterUtils.ShowSaveFileDialog("Save Character", "Baked Character", "prefab", true);
+
+                    var path = CharacterUtils.ShowSaveFileDialog("Save Character", "Baked Character", "prefab", true);
                     if (!string.IsNullOrEmpty(path))
                     {
-                        string fileName = Path.GetFileNameWithoutExtension(path);
-                        string folderPath = path.Remove(path.LastIndexOf(fileName) - 1);
-                        CharacterViewer tcharacter = Object.Instantiate(character);
+                        var fileName = Path.GetFileNameWithoutExtension(path);
+                        var folderPath = path.Remove(path.LastIndexOf(fileName) - 1);
+                        var tcharacter = Object.Instantiate(character);
                         tcharacter.Unbake();
-                        GameObject charGO = tcharacter.gameObject;
+                        var charGO = tcharacter.gameObject;
                         charGO.name = fileName;
                         ExtractTexture(tcharacter, folderPath + "/" + fileName + "_Textures");
                         ExtractMaterial(tcharacter, folderPath + "/" + fileName + "_Materials");
@@ -59,6 +58,7 @@ namespace CharacterEditor2D.UI
                         Object.DestroyImmediate(charGO);
                     }
                 }
+
                 Resources.UnloadUnusedAssets();
             }
         }
@@ -69,46 +69,43 @@ namespace CharacterEditor2D.UI
             {
                 if (EditorUtils.MakeSureAssetFolderExist(path))
                 {
-                    List<Object> textureAtlases = new List<Object>();
-                    List<(SlotCategory, string)> bakedTexturePaths = new List<(SlotCategory, string)>();
-                    SlotCategory[] categories = Enum.GetValues(typeof(SlotCategory)) as SlotCategory[];
-                    for (int i = 0; i < categories.Length; i++)
+                    var textureAtlases = new List<Object>();
+                    var bakedTexturePaths = new List<(SlotCategory, string)>();
+                    var categories = Enum.GetValues(typeof(SlotCategory)) as SlotCategory[];
+                    for (var i = 0; i < categories.Length; i++)
                     {
-                        SlotCategory category = categories[i];
-                        if (category == SlotCategory.SkinDetails)
-                        {
-                            continue;
-                        }
-                        string filePath = path + "/" + character.gameObject.name + "_" + category + ".png";
-                        EditorUtility.DisplayProgressBar("Render Texture", filePath.Remove(0, 7), (float)(i + 1) / categories.Length);
-                        Texture2D targetTexture = HumanoidSlotRenderer.RenderToTexture2D(character, category, TextureFormat.RGBAFloat, false);
+                        var category = categories[i];
+                        if (category == SlotCategory.SkinDetails) continue;
+                        var filePath = path + "/" + character.gameObject.name + "_" + category + ".png";
+                        EditorUtility.DisplayProgressBar("Render Texture", filePath.Remove(0, 7),
+                            (float)(i + 1) / categories.Length);
+                        var targetTexture =
+                            HumanoidSlotRenderer.RenderToTexture2D(character, category, TextureFormat.RGBAFloat, false);
                         if (targetTexture)
                         {
-                            byte[] png = targetTexture.EncodeToPNG();
+                            var png = targetTexture.EncodeToPNG();
                             Object.DestroyImmediate(targetTexture);
-                            Texture textur = AssetDatabase.LoadAssetAtPath<Texture>(filePath);
-                            if (textur)
-                            {
-                                AssetDatabase.DeleteAsset(filePath);
-                            }
+                            var textur = AssetDatabase.LoadAssetAtPath<Texture>(filePath);
+                            if (textur) AssetDatabase.DeleteAsset(filePath);
                             File.WriteAllBytes(filePath, png);
                             bakedTexturePaths.Add((category, filePath));
                         }
                     }
+
                     AssetDatabase.Refresh();
-                    for (int i = 0; i < bakedTexturePaths.Count; i++)
+                    for (var i = 0; i < bakedTexturePaths.Count; i++)
                     {
-                        (SlotCategory, string) texturePath = bakedTexturePaths[i];
-                        EditorUtility.DisplayProgressBar("Slice Sprites", texturePath.Item1.ToString(), (float)(i + 1) / bakedTexturePaths.Count);
+                        var texturePath = bakedTexturePaths[i];
+                        EditorUtility.DisplayProgressBar("Slice Sprites", texturePath.Item1.ToString(),
+                            (float)(i + 1) / bakedTexturePaths.Count);
                         AssignToRenderer(character, texturePath.Item1, texturePath.Item2);
                         if (texturePath.Item1 != SlotCategory.Cape && texturePath.Item1 != SlotCategory.Skirt)
-                        {
                             textureAtlases.Add(AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath.Item2));
-                        }
                     }
+
                     /////////// atlas ////////////////
-                    string atlasPath = path + "/" + character.gameObject.name + "_Atlas.spriteatlas";
-                    SpriteAtlas spriteAtlas = new SpriteAtlas();
+                    var atlasPath = path + "/" + character.gameObject.name + "_Atlas.spriteatlas";
+                    var spriteAtlas = new SpriteAtlas();
                     spriteAtlas.Add(textureAtlases.ToArray());
                     AssetDatabase.CreateAsset(spriteAtlas, atlasPath);
                     //////////////////////////////////
@@ -122,10 +119,11 @@ namespace CharacterEditor2D.UI
 
         private static void AssignToRenderer(CharacterViewer character, SlotCategory category, string targetTexPath)
         {
-            PartSlot partSlot = character.slots.GetSlot(category);
-            List<Sprite> sprites = SpriteSlicerUtils.SliceSprite(AssetDatabase.GetAssetPath(partSlot.assignedPart.texture), targetTexPath);
-            Texture2D texture = AssetDatabase.LoadAssetAtPath<Texture2D>(targetTexPath);
-            Transform charTrans = character.transform;
+            var partSlot = character.slots.GetSlot(category);
+            var sprites = SpriteSlicerUtils.SliceSprite(AssetDatabase.GetAssetPath(partSlot.assignedPart.texture),
+                targetTexPath);
+            var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(targetTexPath);
+            var charTrans = character.transform;
 
             switch (category)
             {
@@ -138,10 +136,8 @@ namespace CharacterEditor2D.UI
                     charTrans.AssignWeaponSprites(category, (partSlot.assignedPart as Weapon).weaponCategory, sprites);
                     break;
                 default:
-                    if (SetupData.partLinks.TryGetValue(category, out Dictionary<string, string> links))
-                    {
+                    if (SetupData.partLinks.TryGetValue(category, out var links))
                         charTrans.AssignSprites(links, sprites);
-                    }
                     break;
             }
         }
@@ -150,33 +146,37 @@ namespace CharacterEditor2D.UI
         {
             if (EditorUtils.MakeSureAssetFolderExist(path))
             {
-                Shader shader = Shader.Find("Sprites/Default");
+                var shader = Shader.Find("Sprites/Default");
 
                 //material for SpriteRenderer
-                Material spriteMaterial = new Material(shader);
-                string filePath = path + "/" + character.gameObject.name;
+                var spriteMaterial = new Material(shader);
+                var filePath = path + "/" + character.gameObject.name;
                 foreach (var spriteRenderer in character.GetComponentsInChildren<SpriteRenderer>(true))
                 {
                     spriteRenderer.color = Color.white;
                     spriteRenderer.sharedMaterial = spriteMaterial;
                 }
+
                 AssetDatabase.CreateAsset(spriteMaterial, filePath + "_Sprite.mat");
 
                 //material for SkinnedMeshRenderer
                 SkinnedMeshRenderer renderer;
                 Texture tempTexture;
-                if (character.transform.GetRenderer(SetupData.capeLink, out renderer) && renderer.gameObject.activeInHierarchy)
+                if (character.transform.GetRenderer(SetupData.capeLink, out renderer) &&
+                    renderer.gameObject.activeInHierarchy)
                 {
                     tempTexture = renderer.sharedMaterial.mainTexture;
-                    Material capeMaterial = new Material(shader);
+                    var capeMaterial = new Material(shader);
                     capeMaterial.mainTexture = tempTexture;
                     renderer.sharedMaterial = capeMaterial;
                     AssetDatabase.CreateAsset(capeMaterial, filePath + "_Cape.mat");
                 }
-                if (character.transform.GetRenderer(SetupData.skirtLink, out renderer) && renderer.gameObject.activeInHierarchy)
+
+                if (character.transform.GetRenderer(SetupData.skirtLink, out renderer) &&
+                    renderer.gameObject.activeInHierarchy)
                 {
                     tempTexture = renderer.sharedMaterial.mainTexture;
-                    Material skirtMaterial = new Material(shader);
+                    var skirtMaterial = new Material(shader);
                     skirtMaterial.mainTexture = tempTexture;
                     renderer.sharedMaterial = skirtMaterial;
                     AssetDatabase.CreateAsset(skirtMaterial, filePath + "_Skirt.mat");

@@ -25,7 +25,8 @@ namespace PixelCrushers.DialogueSystem
                 if (inputWeight > 0.001f && !played.Contains(i))
                 {
                     played.Add(i);
-                    ScriptPlayable<ShowAlertBehaviour> inputPlayable = (ScriptPlayable<ShowAlertBehaviour>)playable.GetInput(i);
+                    ScriptPlayable<ShowAlertBehaviour> inputPlayable =
+ (ScriptPlayable<ShowAlertBehaviour>)playable.GetInput(i);
                     ShowAlertBehaviour input = inputPlayable.GetBehaviour();
                     var message = input.message;
                     var duration = input.useTextLengthForDuration ? 0 : (float) inputPlayable.GetDuration();

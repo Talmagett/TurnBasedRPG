@@ -1,4 +1,4 @@
-namespace Entities
+namespace Modules.Entities.Scripts
 {
     public interface IEntity
     {

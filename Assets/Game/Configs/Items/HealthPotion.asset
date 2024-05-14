@@ -16,7 +16,13 @@ MonoBehaviour:
     name: HealthPotion
     icon: {fileID: 21300000, guid: 145f1ff5930e646d5a94fb3443f087cd, type: 3}
     flags: 10
-    components: []
+    components:
+    - rid: 1041286212195188799
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 1041286212195188799
+      type: {class: StatAdditive, ns: Configs.Attributes, asm: Assembly-CSharp}
+      data:
+        Stat: 1
+        Value: 20

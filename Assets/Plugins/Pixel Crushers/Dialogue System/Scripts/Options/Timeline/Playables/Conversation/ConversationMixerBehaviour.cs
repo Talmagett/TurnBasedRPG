@@ -29,7 +29,8 @@ namespace PixelCrushers.DialogueSystem
                 if (inputWeight > 0.001f && !played.Contains(i))
                 {
                     played.Add(i);
-                    ScriptPlayable<StartConversationBehaviour> inputPlayable = (ScriptPlayable<StartConversationBehaviour>)playable.GetInput(i);
+                    ScriptPlayable<StartConversationBehaviour> inputPlayable =
+ (ScriptPlayable<StartConversationBehaviour>)playable.GetInput(i);
                     StartConversationBehaviour input = inputPlayable.GetBehaviour();
                     if (Application.isPlaying)
                     {
@@ -48,7 +49,8 @@ namespace PixelCrushers.DialogueSystem
                     }
                     else
                     {
-                        var message = "Conversation (" + DialogueActor.GetActorName(actorTransform) + "->" + DialogueActor.GetActorName(input.conversant) + "): [" + input.conversation + "] '" + input.GetEditorDialogueText() + "' (may vary)";
+                        var message =
+ "Conversation (" + DialogueActor.GetActorName(actorTransform) + "->" + DialogueActor.GetActorName(input.conversant) + "): [" + input.conversation + "] '" + input.GetEditorDialogueText() + "' (may vary)";
                         PreviewUI.ShowMessage(message, 2, 0);
                     }
                 }

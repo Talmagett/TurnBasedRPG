@@ -1,8 +1,8 @@
 using Character.Enemies;
 using Cysharp.Threading.Tasks;
-using Entities;
 using EventBus.Events;
 using JetBrains.Annotations;
+using Modules.Entities.Scripts;
 
 namespace EventBus.Handlers.Turn
 {

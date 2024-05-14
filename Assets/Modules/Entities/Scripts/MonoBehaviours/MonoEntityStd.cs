@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Modules.Entities.Scripts.Base;
 using UnityEngine;
 
-namespace Entities
+namespace Modules.Entities.Scripts.MonoBehaviours
 {
     [AddComponentMenu("Entities/Entity")]
     public class MonoEntityStd : MonoEntity, ISerializationCallbackReceiver

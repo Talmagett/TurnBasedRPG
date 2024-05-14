@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Entities
+namespace Modules.Entities.Scripts.Base
 {
     public class ListEntity : IEntity
     {

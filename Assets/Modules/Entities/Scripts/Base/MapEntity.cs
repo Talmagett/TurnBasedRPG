@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Entities
+namespace Modules.Entities.Scripts.Base
 {
     public class MapEntity : IEntity
     {

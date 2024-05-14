@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Modules.Entities.Scripts.Base;
 using UnityEngine;
 
-namespace Entities
+namespace Modules.Entities.Scripts.MonoBehaviours
 {
     public abstract class MonoEntityBase : MonoEntity
     {

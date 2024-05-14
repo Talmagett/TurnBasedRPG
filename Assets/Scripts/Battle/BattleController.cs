@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Character;
 using Character.Components;
 using Configs;
+using Configs.Character;
 using Configs.Enums;
 using EventBus.Events;
 using Game.Heroes;
@@ -83,9 +84,10 @@ namespace Battle
             {
                 var unitData = _heroParty.HeroDataArray[i];
                 var position = -(_heroParty.HeroDataArray.Length - 1) / 2f + i;
-                var unit = SpawnUnit(unitData.Prefab, environment.PlayerSpawnPosition, Owner.Player, unitData.Name,
-                    unitData.CharacterConfig.Icon,
-                    unitData.Stats.GetAllStats());
+                var characterConfig = unitData.Get<HeroCharacterConfig>();
+                var unit = SpawnUnit(characterConfig.Prefab, environment.PlayerSpawnPosition, Owner.Player, characterConfig.Name,
+                    unitData.Get<SharedCharacterStats>().GetAllStats());
+                unit.Add(characterConfig);
                 unit.transform.position += Vector3.forward * position * 2;
                 _battleContainer.AddUnit(unit);
             }
@@ -95,7 +97,6 @@ namespace Battle
                 var unitData = enemyRiftConfig.Enemies[i];
                 var position = -(enemyRiftConfig.Enemies.Length - 1) / 2f + i;
                 var unit = SpawnUnit(unitData.Prefab, environment.EnemySpawnPosition, Owner.Enemy, unitData.Name,
-                    unitData.Icon,
                     unitData.Stats.CloneStats());
                 unit.transform.position += Vector3.forward * position * 2;
                 _battleContainer.AddUnit(unit);
@@ -104,8 +105,7 @@ namespace Battle
             Tween.Delay(1).OnComplete(() => { EventBus.EventBus.RaiseEvent(new NextTurnEvent()); });
         }
 
-        private CharacterEntity SpawnUnit(CharacterEntity prefab, Transform parent, Owner owner, string characterName,
-            Sprite icon, Dictionary<StatKey, float> stats)
+        private CharacterEntity SpawnUnit(CharacterEntity prefab, Transform parent, Owner owner, string characterName, Dictionary<StatKey, float> stats)
         {
             var actorData = _diContainer.InstantiatePrefab(prefab, parent).GetComponent<CharacterEntity>();
             actorData.Add(new Component_Owner(owner));

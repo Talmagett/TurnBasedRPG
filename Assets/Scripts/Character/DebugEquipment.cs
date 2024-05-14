@@ -21,14 +21,14 @@ namespace Character
         public void EquipItem(int index, ItemConfig itemConfig)
         {
             var item = itemConfig.item.Clone();
-            _heroParty.HeroDataArray[index].Equipment.EquipItem(item);
+            _heroParty.HeroDataArray[index].Get<Equipment>().EquipItem(item);
         }
 
         [Button]
         public void UnequipItem(int index, ItemConfig itemConfig)
         {
             var item = itemConfig.item.Clone();
-            _heroParty.HeroDataArray[index].Equipment.UnequipItem(item);
+            _heroParty.HeroDataArray[index].Get<Equipment>().UnequipItem(item);
         }
     }
 }
