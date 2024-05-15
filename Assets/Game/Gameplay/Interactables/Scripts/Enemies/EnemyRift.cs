@@ -1,4 +1,4 @@
-using Game.Configs.Configs;
+using Game.Gameplay.Environment.Scripts;
 using Game.Gameplay.Game;
 using Game.Gameplay.Player;
 using UnityEngine;

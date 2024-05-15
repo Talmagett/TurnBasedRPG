@@ -17,16 +17,13 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 5ca649c84aae84d33b66600f77b5764f, type: 3}
     flags: 12
     components:
-    - rid: 1041286217044852736
     - rid: 1041286217044852836
+    - rid: -2
   references:
     version: 2
     RefIds:
-    - rid: 1041286217044852736
-      type: {class: StatAdditive, ns: Game.Configs.Configs.Attributes, asm: Assembly-CSharp}
-      data:
-        Stat: 2
-        Value: 240
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 1041286217044852836
       type: {class: Component_EquipmentType, ns: Game.Meta.Inventory.Equipment, asm: Equipment}
       data:

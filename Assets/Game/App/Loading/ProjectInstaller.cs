@@ -1,12 +1,10 @@
 using Game.App.SaveSystem.GameEngine.Systems;
 using Game.App.SaveSystem.SaveSystem;
-using Game.Configs.Configs.Character;
-using Game.Gameplay.Game.Control;
+using Game.Gameplay.Characters.Scripts.SO;
 using Game.Gameplay.Game.Heroes;
 using Game.Meta.Inventory.Inventory;
 using Game.Meta.Items.Scripts.ItemModule;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Game.App.Loading

@@ -2,6 +2,7 @@ using Atomic.Elements;
 
 namespace Game.Gameplay.Characters.Scripts.Components
 {
+    [System.Serializable]
     public class Component_Defense
     {
         public AtomicVariable<float> defense;

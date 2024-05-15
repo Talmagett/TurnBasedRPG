@@ -1,5 +1,5 @@
-using Game.Configs.Configs.Abilities;
 using Game.GameEngine.Entities.Scripts;
+using Game.Gameplay.Abilities.Scripts;
 
 namespace Game.Gameplay.EventBus.Events
 {

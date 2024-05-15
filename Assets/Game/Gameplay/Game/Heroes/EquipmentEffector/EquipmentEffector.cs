@@ -1,7 +1,6 @@
 using System;
-using Game.Configs.Configs;
-using Game.Configs.Configs.Attributes;
 using Game.GameEngine.Entities.Scripts;
+using Game.Gameplay.Abilities.Scripts;
 using Game.Meta.Inventory.Equipment;
 using Game.Meta.Items.Scripts.ItemModule;
 using UnityEngine;
@@ -30,16 +29,15 @@ namespace Game.Gameplay.Game.Heroes.EquipmentEffector
 
         private void AddEffectToCharacter(Item obj)
         {
-            Debug.Log("onITemEquipped");
             var itemStats = obj.GetComponents<StatAdditive>();
             if (itemStats.Length == 0)
                 return;
-            var heroStats = _character.Get<SharedCharacterStats>();
+            /*var heroStats = _character.Get<SharedCharacterStats>();
             foreach (var stat in itemStats)
             {
                 var heroStat = heroStats.GetStat(stat.Stat);
                 heroStats.SetStat(stat.Stat, heroStat.Value + stat.Value);
-            }
+            }*/
         }
 
         private void RemoveEffectFromCharacter(Item obj)
@@ -47,12 +45,12 @@ namespace Game.Gameplay.Game.Heroes.EquipmentEffector
             var itemStats = obj.GetComponents<StatAdditive>();
             if (itemStats.Length == 0)
                 return;
-            var heroStats = _character.Get<SharedCharacterStats>();
+            /*var heroStats = _character.Get<SharedCharacterStats>();
             foreach (var stat in itemStats)
             {
                 var heroStat = heroStats.GetStat(stat.Stat);
                 heroStats.SetStat(stat.Stat, heroStat.Value - stat.Value);
-            }
+            }*/
         }
     }
 }

@@ -1,10 +1,10 @@
 using System;
-using Game.Configs.Configs.Abilities;
-using Game.Configs.Configs.Character;
-using Game.Configs.Configs.Enums;
 using Game.GameEngine.Entities.Scripts;
+using Game.Gameplay.Abilities.Scripts;
 using Game.Gameplay.Characters.Scripts;
 using Game.Gameplay.Characters.Scripts.Components;
+using Game.Gameplay.Characters.Scripts.Keys;
+using Game.Gameplay.Characters.Scripts.SO;
 using Game.Gameplay.EventBus.Events;
 using Game.Gameplay.Game.Control;
 using Game.UI.Scripts;

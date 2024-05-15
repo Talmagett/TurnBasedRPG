@@ -1,6 +1,6 @@
 ﻿using System;
 using Atomic.Elements;
-using Game.Configs.Configs.Abilities;
+using Game.Gameplay.Abilities.Scripts;
 
 namespace Game.Gameplay.Characters.Scripts.Components
 {

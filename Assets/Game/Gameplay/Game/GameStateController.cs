@@ -1,6 +1,6 @@
 using System;
-using Game.Configs.Configs;
 using Game.Gameplay.Battle;
+using Game.Gameplay.Environment.Scripts;
 using Game.Gameplay.Game.Heroes;
 using Game.UI.Scripts.Views;
 using UnityEngine;

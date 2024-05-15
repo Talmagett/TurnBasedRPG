@@ -1,4 +1,4 @@
-using Game.Configs.Configs.Abilities;
+using Game.Gameplay.Abilities.Scripts;
 using Game.Gameplay.Characters.Scripts.Components;
 using Game.Gameplay.EventBus.Events;
 using UnityEngine;

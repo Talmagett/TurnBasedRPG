@@ -1,4 +1,4 @@
-using Game.Configs.Configs.Character;
+using Game.Gameplay.Characters.Scripts.SO;
 using Game.Gameplay.Game.Heroes;
 using UnityEngine;
 using Zenject;

@@ -1,5 +1,5 @@
 using System;
-using Game.Configs.Configs.Abilities;
+using Game.Gameplay.Abilities.Scripts;
 using Game.UI.Scripts.Views.Map;
 using UnityEngine;
 using UnityEngine.UI;

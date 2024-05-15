@@ -1,6 +1,6 @@
 using System;
 using Atomic.Elements;
-using Game.Configs.Configs.Enums;
+using Game.Gameplay.Characters.Scripts.Keys;
 
 namespace Game.Gameplay.Characters.Scripts.Components
 {

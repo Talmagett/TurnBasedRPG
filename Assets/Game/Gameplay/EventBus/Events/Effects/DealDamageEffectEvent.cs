@@ -1,6 +1,6 @@
 ﻿using System;
-using Game.Configs.Configs.Attributes;
 using Game.GameEngine.Entities.Scripts;
+using Game.Gameplay.Abilities.Scripts;
 using Game.Gameplay.Characters.Scripts.BodyParts;
 using UnityEngine;
 

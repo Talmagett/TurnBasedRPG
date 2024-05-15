@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Game.Configs.Configs.Enums;
 using Game.GameEngine.Entities.Scripts;
 using Game.Gameplay.Characters.Scripts.Components;
+using Game.Gameplay.Characters.Scripts.Keys;
 using JetBrains.Annotations;
 using Random = UnityEngine.Random;
 

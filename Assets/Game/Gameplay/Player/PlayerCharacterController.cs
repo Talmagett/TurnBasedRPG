@@ -1,4 +1,4 @@
-using Game.Configs.Configs.Enums;
+using Game.Gameplay.Characters.Scripts.Keys;
 using Game.Gameplay.Interactables.Scripts.Environment;
 using Sirenix.OdinInspector;
 using UnityEngine;

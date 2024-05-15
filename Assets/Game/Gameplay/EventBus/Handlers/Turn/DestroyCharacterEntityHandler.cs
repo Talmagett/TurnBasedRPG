@@ -1,5 +1,5 @@
-﻿using Game.Configs.Configs.Enums;
-using Game.Gameplay.Battle;
+﻿using Game.Gameplay.Battle;
+using Game.Gameplay.Characters.Scripts.Keys;
 using Game.Gameplay.EventBus.Events;
 using JetBrains.Annotations;
 using UnityEngine;
