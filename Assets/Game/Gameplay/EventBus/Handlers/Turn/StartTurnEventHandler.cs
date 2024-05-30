@@ -9,6 +9,10 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
     [UsedImplicitly]
     public class StartTurnEventHandler : BaseHandler<StartTurnEvent>
     {
+        public StartTurnEventHandler(EventBus eventBus) : base(eventBus)
+        {
+        }
+
         protected override void HandleEvent(StartTurnEvent evt)
         {
             Run(evt.Source).Forget();

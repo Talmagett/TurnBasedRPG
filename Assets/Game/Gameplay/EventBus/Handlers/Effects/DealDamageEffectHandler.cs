@@ -11,14 +11,22 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
     [UsedImplicitly]
     public sealed class DealDamageEffectHandler : IInitializable, IDisposable
     {
+        private readonly EventBus _eventBus;
+
+        [Inject]
+        public DealDamageEffectHandler(EventBus eventBus)
+        {
+            _eventBus = eventBus;
+        }
+
         void IDisposable.Dispose()
         {
-            EventBus.Unsubscribe<DealDamageEffectEvent>(OnDealDamage);
+            _eventBus.Unsubscribe<DealDamageEffectEvent>(OnDealDamage);
         }
 
         void IInitializable.Initialize()
         {
-            EventBus.Subscribe<DealDamageEffectEvent>(OnDealDamage);
+            _eventBus.Subscribe<DealDamageEffectEvent>(OnDealDamage);
         }
 
         private void OnDealDamage(DealDamageEffectEvent evt)
@@ -26,9 +34,9 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
             var statValue = evt.Source.Get<Component_Attack>().attackPower;
             var damage = (int)(evt.DamageAmount.BaseValue + evt.DamageAmount.MultValue * statValue.Value);
 
-            EventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, damage));
+            _eventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, damage));
             var effectPoint = evt.Target.Get<BodyParts>().GetPoint(evt.HitEffectPoint);
-            EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, evt.HitEffect));
+            _eventBus.RaiseEvent(new VisualParticleEvent(effectPoint, evt.HitEffect));
         }
     }
 }

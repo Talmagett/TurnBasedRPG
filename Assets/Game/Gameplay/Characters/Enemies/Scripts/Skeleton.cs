@@ -14,7 +14,7 @@ namespace Game.Gameplay.Characters.Enemies.Scripts
             var target = BattleContainer.GetRandomEnemy(CharacterEntity);
             Debug.Log(CharacterEntity.Get<Component_Owner>().owner);
             Debug.Log(target.Get<Component_Owner>().owner);
-            EventBus.EventBus.RaiseEvent(new CastAbilityEvent(CharacterEntity, target, dealDamageAbility));
+            EventBus.RaiseEvent(new CastAbilityEvent(CharacterEntity, target, dealDamageAbility));
         }
     }
 }

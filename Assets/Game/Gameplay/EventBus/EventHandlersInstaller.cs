@@ -15,6 +15,8 @@ namespace Game.Gameplay.EventBus
         } // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureTurn(DiContainer builder)
         {
+            builder.BindInterfacesAndSelfTo<EventBus>().AsSingle().NonLazy();
+            
             builder.BindInterfacesAndSelfTo<StartTurnEventHandler>().AsSingle().NonLazy();
 
             //Abilities

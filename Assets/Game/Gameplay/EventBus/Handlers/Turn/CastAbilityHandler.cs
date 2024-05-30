@@ -2,13 +2,16 @@ using Game.Gameplay.Characters.Scripts;
 using Game.Gameplay.Characters.Scripts.Components;
 using Game.Gameplay.Characters.Scripts.Keys;
 using Game.Gameplay.EventBus.Events;
-using Game.Gameplay.EventBus.Events.Effects;
 using UnityEngine;
 
 namespace Game.Gameplay.EventBus.Handlers.Turn
 {
     public class CastAbilityHandler : BaseHandler<CastAbilityEvent>
     {
+        public CastAbilityHandler(EventBus eventBus) : base(eventBus)
+        {
+        }
+        
         protected override void HandleEvent(CastAbilityEvent evt)
         {
             evt.Source.Get<Component_Mana>().mana.Value -= evt.AbilityConfig.ManaCost;
@@ -30,5 +33,6 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
 
             EventBus.RaiseEvent(new DelayedEvent(new FinishTurnEvent(evt.Source), evt.AbilityConfig.TurnProcessTime));
         }
+
     }
 }

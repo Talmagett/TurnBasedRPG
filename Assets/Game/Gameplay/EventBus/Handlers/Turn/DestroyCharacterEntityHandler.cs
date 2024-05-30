@@ -11,7 +11,7 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
     {
         private readonly BattleContainer _battleContainer;
 
-        public DestroyCharacterEntityHandler(BattleContainer battleContainer)
+        public DestroyCharacterEntityHandler(EventBus eventBus, BattleContainer battleContainer) : base(eventBus)
         {
             _battleContainer = battleContainer;
         }

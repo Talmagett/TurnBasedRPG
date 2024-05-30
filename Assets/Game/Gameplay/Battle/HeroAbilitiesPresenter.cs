@@ -25,11 +25,14 @@ namespace Game.Gameplay.Battle
         private IEntity _hero;
         private bool _isChoosing;
 
+        private EventBus.EventBus _eventBus;
+        
         [Inject]
-        public void Construct(CursorController cursorController)
+        public void Construct(CursorController cursorController, EventBus.EventBus eventBus)
         {
             _cursorController = cursorController;
             transform.localScale = Vector3.zero;
+            _eventBus = eventBus;
         }
         
         private void Update()
@@ -63,12 +66,12 @@ namespace Game.Gameplay.Battle
 
         private void OnEnable()
         {
-            EventBus.EventBus.Subscribe<CharacterTurnEvent>(OnCharacterChanged);
+            _eventBus.Subscribe<CharacterTurnEvent>(OnCharacterChanged);
         }
 
         private void OnDisable()
         {
-            EventBus.EventBus.Unsubscribe<CharacterTurnEvent>(OnCharacterChanged);
+            _eventBus.Unsubscribe<CharacterTurnEvent>(OnCharacterChanged);
         }
 
 
@@ -146,7 +149,7 @@ namespace Game.Gameplay.Battle
         private void CastAbility(AbilityConfig abilityConfig, IEntity characterEntity)
         {
             _isChoosing = false;
-            EventBus.EventBus.RaiseEvent(new CastAbilityEvent(_hero, characterEntity, abilityConfig));
+            _eventBus.RaiseEvent(new CastAbilityEvent(_hero, characterEntity, abilityConfig));
             _cursorController.SetCursor(CursorType.None);
             Hide();
         }

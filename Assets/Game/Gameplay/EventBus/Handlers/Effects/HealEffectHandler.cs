@@ -11,14 +11,22 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
     [UsedImplicitly]
     public sealed class HealEffectHandler : IInitializable, IDisposable
     {
+        private readonly EventBus _eventBus;
+        
+        [Inject]
+        public HealEffectHandler(EventBus eventBus)
+        {
+            _eventBus = eventBus;
+        }
+
         void IDisposable.Dispose()
         {
-            EventBus.Unsubscribe<HealEffectEvent>(OnDealDamage);
+            _eventBus.Unsubscribe<HealEffectEvent>(OnDealDamage);
         }
 
         void IInitializable.Initialize()
         {
-            EventBus.Subscribe<HealEffectEvent>(OnDealDamage);
+            _eventBus.Subscribe<HealEffectEvent>(OnDealDamage);
         }
 
         private void OnDealDamage(HealEffectEvent evt)
@@ -28,9 +36,9 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
 
             var amount = -(int)(evt.HealingAmount.BaseValue + evt.HealingAmount.MultValue * statValue.Value);
 
-            EventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, amount));
+            _eventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, amount));
             var effectPoint = evt.Target.Get<BodyParts>().GetPoint(evt.HitEffectPoint);
-            EventBus.RaiseEvent(new VisualParticleEvent(effectPoint, evt.HitEffect));
+            _eventBus.RaiseEvent(new VisualParticleEvent(effectPoint, evt.HitEffect));
         }
     }
 }

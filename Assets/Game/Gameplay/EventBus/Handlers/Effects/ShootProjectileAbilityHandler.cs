@@ -10,14 +10,21 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
 {
     public class ShootProjectileAbilityHandler : IInitializable, IDisposable
     {
+        private readonly EventBus _eventBus;
+        
+        [Inject]
+        public ShootProjectileAbilityHandler(EventBus eventBus)
+        {
+            _eventBus = eventBus;
+        }
         void IDisposable.Dispose()
         {
-            EventBus.Unsubscribe<ShootProjectileEffectEvent>(OnShoot);
+            _eventBus.Unsubscribe<ShootProjectileEffectEvent>(OnShoot);
         }
 
         void IInitializable.Initialize()
         {
-            EventBus.Subscribe<ShootProjectileEffectEvent>(OnShoot);
+            _eventBus.Subscribe<ShootProjectileEffectEvent>(OnShoot);
         }
 
         private void OnShoot(ShootProjectileEffectEvent evt)
@@ -40,7 +47,7 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
             {
                 effect.Source = evt.Source;
                 effect.Target = evt.Target;
-                EventBus.RaiseEvent(effect);
+                _eventBus.RaiseEvent(effect);
             }
         }
     }

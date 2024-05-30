@@ -5,6 +5,10 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
 {
     public class DelayedHandler : BaseHandler<DelayedEvent>
     {
+        public DelayedHandler(EventBus eventBus) : base(eventBus)
+        {
+        }
+
         protected override void HandleEvent(DelayedEvent evt)
         {
             RaiseEvent(evt.NextEvent, evt.Delay).Forget();

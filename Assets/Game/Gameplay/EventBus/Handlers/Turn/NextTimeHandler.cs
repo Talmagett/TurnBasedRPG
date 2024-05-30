@@ -9,7 +9,7 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
     {
         private readonly BattleContainer _battleContainer;
 
-        public NextTimeHandler(BattleContainer battleContainer)
+        public NextTimeHandler(EventBus eventBus, BattleContainer battleContainer) : base(eventBus)
         {
             _battleContainer = battleContainer;
         }

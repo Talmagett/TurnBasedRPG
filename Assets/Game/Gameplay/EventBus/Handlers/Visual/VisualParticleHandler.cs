@@ -7,6 +7,10 @@ namespace Game.Gameplay.EventBus.Handlers.Visual
     [UsedImplicitly]
     public sealed class VisualParticleHandler : BaseHandler<VisualParticleEvent>
     {
+        public VisualParticleHandler(EventBus eventBus) : base(eventBus)
+        {
+        }
+
         protected override void HandleEvent(VisualParticleEvent evt)
         {
             if (evt.Particle == null)

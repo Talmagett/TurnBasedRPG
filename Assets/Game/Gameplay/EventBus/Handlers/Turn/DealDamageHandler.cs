@@ -7,6 +7,10 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
     [UsedImplicitly]
     public sealed class DealDamageHandler : BaseHandler<DealDamageEvent>
     {
+        public DealDamageHandler(EventBus eventBus) : base(eventBus)
+        {
+        }
+
         protected override void HandleEvent(DealDamageEvent evt)
         {
             var health = evt.Target.Get<Component_Life>().health;

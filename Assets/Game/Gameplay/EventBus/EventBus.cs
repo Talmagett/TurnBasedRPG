@@ -5,15 +5,15 @@ using UnityEngine;
 
 namespace Game.Gameplay.EventBus
 {
-    public static class EventBus
+    public class EventBus
     {
-        private static readonly Dictionary<Type, IEventHandlerCollection> _handlers = new();
+        private readonly Dictionary<Type, IEventHandlerCollection> _handlers = new();
 
-        private static readonly Queue<IEvent> _queue = new();
+        private readonly Queue<IEvent> _queue = new();
 
-        private static bool _isRunning;
+        private bool _isRunning;
 
-        public static void Subscribe<T>(Action<T> handler)
+        public void Subscribe<T>(Action<T> handler)
         {
             var eventType = typeof(T);
 
@@ -22,14 +22,14 @@ namespace Game.Gameplay.EventBus
             _handlers[eventType].Subscribe(handler);
         }
 
-        public static void Unsubscribe<T>(Action<T> handler)
+        public void Unsubscribe<T>(Action<T> handler)
         {
             var eventType = typeof(T);
 
             if (_handlers.TryGetValue(eventType, out var handlers)) handlers.Unsubscribe(handler);
         }
 
-        public static void RaiseEvent<T>(T evt) where T : IEvent
+        public void RaiseEvent<T>(T evt) where T : IEvent
         {
             if (_isRunning)
             {

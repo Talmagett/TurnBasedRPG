@@ -31,7 +31,7 @@ namespace Game.Gameplay.Battle
         private BattleContainer _battleContainer;
         private DiContainer _diContainer;
         private HeroParty _heroParty;
-        
+        private EventBus.EventBus _eventBus;
         public event Action<BattleState> OnStateChanged;
 
         [Inject]
@@ -40,6 +40,7 @@ namespace Game.Gameplay.Battle
             _diContainer = diContainer;
             _battleContainer = _diContainer.Resolve<BattleContainer>();
             _heroParty = _diContainer.Resolve<HeroParty>();
+            _eventBus = _diContainer.Resolve<EventBus.EventBus>();
         }
         
         private void OnEnable()
@@ -98,7 +99,7 @@ namespace Game.Gameplay.Battle
                 _battleContainer.AddUnit(unit);
             }
 
-            Tween.Delay(1).OnComplete(() => { EventBus.EventBus.RaiseEvent(new NextTurnEvent()); });
+            Tween.Delay(1).OnComplete(() => { _eventBus.RaiseEvent(new NextTurnEvent()); });
         }
 
         private CharacterEntity SpawnUnit(CharacterEntity prefab, Transform parent)

@@ -9,21 +9,23 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
     public class MultiDamageEffectHandler : IInitializable, IDisposable
     {
         private readonly BattleContainer _battleContainer;
+        private readonly EventBus _eventBus;
 
         [Inject]
-        public MultiDamageEffectHandler(BattleContainer battleContainer)
+        public MultiDamageEffectHandler(BattleContainer battleContainer, EventBus eventBus)
         {
             _battleContainer = battleContainer;
+            _eventBus = eventBus;
         }
 
         public void Dispose()
         {
-            EventBus.Unsubscribe<MultiDamageEffectEvent>(OnCast);
+            _eventBus.Unsubscribe<MultiDamageEffectEvent>(OnCast);
         }
 
         public void Initialize()
         {
-            EventBus.Subscribe<MultiDamageEffectEvent>(OnCast);
+            _eventBus.Subscribe<MultiDamageEffectEvent>(OnCast);
         }
 
         private void OnCast(MultiDamageEffectEvent data)
@@ -34,7 +36,7 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
             {
                 var randomEnemy = _battleContainer.GetRandomEnemy(data.Source);
                 effect.Target = randomEnemy;
-                EventBus.RaiseEvent(new DelayedEvent(effect, data.Delay * i));
+                _eventBus.RaiseEvent(new DelayedEvent(effect, data.Delay * i));
             }
         }
     }
