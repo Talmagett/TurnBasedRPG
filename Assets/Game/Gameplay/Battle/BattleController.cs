@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Game.Gameplay.Characters.Scripts;
 using Game.Gameplay.Characters.Scripts.Components;
 using Game.Gameplay.Characters.Scripts.Keys;
@@ -11,7 +12,6 @@ using PrimeTween;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace Game.Gameplay.Battle
 {
@@ -26,15 +26,22 @@ namespace Game.Gameplay.Battle
         }
 
         [Title("Configs")] [SerializeField] private Transform environmentParent;
-
-        private BattleContainer _battleContainer;
-
+        
         private BattleState _battleState;
-
+        private BattleContainer _battleContainer;
         private DiContainer _diContainer;
-
         private HeroParty _heroParty;
+        
+        public event Action<BattleState> OnStateChanged;
 
+        [Inject]
+        public void Construct(DiContainer diContainer)
+        {
+            _diContainer = diContainer;
+            _battleContainer = _diContainer.Resolve<BattleContainer>();
+            _heroParty = _diContainer.Resolve<HeroParty>();
+        }
+        
         private void OnEnable()
         {
             _battleContainer.OnUnitsCleared += OnBattleFinished;
@@ -45,32 +52,21 @@ namespace Game.Gameplay.Battle
             _battleContainer.OnUnitsCleared -= OnBattleFinished;
         }
 
-        //TODO: add UI to battle state changed
-        public event Action<BattleState> OnStateChanged;
-
-        [Inject]
-        public void Construct(DiContainer diContainer)
-        {
-            _diContainer = diContainer;
-            _battleContainer = _diContainer.Resolve<BattleContainer>();
-            _heroParty = _diContainer.Resolve<HeroParty>();
-        }
-
         private void OnBattleFinished(Owner owner)
         {
             _battleState = owner == Owner.Enemy ? BattleState.Win : BattleState.Lose;
+            FinishBattle().Forget();
+        }
+
+        private async UniTask FinishBattle()
+        {
+            await UniTask.Delay(1000);
             OnStateChanged?.Invoke(_battleState);
         }
 
-        public void ExitBattle()
+        public async UniTask ClearBattle()
         {
-            ClearBattle();
-            _battleState = BattleState.Exit;
-            OnStateChanged?.Invoke(_battleState);
-        }
-
-        public void ClearBattle()
-        {
+            await UniTask.Delay(1000);
             while (environmentParent.childCount > 0) DestroyImmediate(environmentParent.GetChild(0).gameObject);
         }
 

@@ -5,6 +5,7 @@ using Game.GameEngine.Entities.Scripts;
 using Game.Gameplay.Characters.Scripts.Components;
 using Game.Gameplay.Characters.Scripts.Keys;
 using JetBrains.Annotations;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Game.Gameplay.Battle
@@ -24,10 +25,18 @@ namespace Game.Gameplay.Battle
         public void RemoveUnit(IEntity unit)
         {
             _units.Remove(unit);
-            if (_units.Count(t => t.Get<Component_Owner>().owner.Value == unit.Get<Component_Owner>().owner.Value) == 0)
-                OnUnitsCleared?.Invoke(unit.Get<Component_Owner>().owner.Value);
         }
 
+        public bool CheckForFinish()
+        {
+            var units = _units.GroupBy(t => t.Get<Component_Owner>().owner.Value).ToArray();
+            Debug.Log(units.Length+"units"+units.FirstOrDefault().Key);
+            if (units.Length != 1) return false;
+            
+            OnUnitsCleared?.Invoke(units.FirstOrDefault()!.Key);
+            return true;
+        }
+        
         public IEntity GetRandomEnemy(IEntity characterEntity)
         {
             var owner = characterEntity.Get<Component_Owner>();

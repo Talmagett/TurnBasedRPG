@@ -1,6 +1,6 @@
 using System;
 using Game.Gameplay.Characters.Scripts.Keys;
-
+using Sirenix.OdinInspector;
 namespace Game.Gameplay.Abilities.Scripts
 {
     [Serializable]

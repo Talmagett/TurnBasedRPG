@@ -17,12 +17,10 @@ namespace Game.Gameplay.Abilities.Scripts
         [field: SerializeField] public Sprite Icon { get; private set; }
 
         [field: SerializeField]
-        [field: Title("Configs")]
-        public int EnergyCost { get; private set; }
-
-        [field: SerializeField] public float TurnTime { get; private set; }
+        [field: Title("Configs")] public int TurnEnergyCost { get; private set; }
+        [field: SerializeField] public float TurnProcessTime { get; private set; }
+        [field: SerializeField] public int ManaCost { get; private set; }
         [field: SerializeField] public AbilityTargetType TargetType { get; private set; }
-
         [field: SerializeField] public AnimationKey.Animation AnimationKey { get; private set; }
 
         [Title("Effects")] [SerializeReference]

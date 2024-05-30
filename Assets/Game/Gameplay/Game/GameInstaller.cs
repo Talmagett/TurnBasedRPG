@@ -17,6 +17,7 @@ namespace Game.Gameplay.Game
         // ReSharper disable Unity.PerformanceAnalysis
         public override void InstallBindings()
         {
+            //Container.BindInterfacesAndSelfTo<EventBus>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<BattleContainer>().AsSingle().NonLazy();
             Container.BindInstance(gameStateController).AsSingle();
             Container.BindInstance(battleController).AsSingle();

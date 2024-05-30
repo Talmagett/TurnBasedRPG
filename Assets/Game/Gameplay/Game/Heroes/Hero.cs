@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Game.GameEngine.Entities.Scripts.Base;
-using Game.Gameplay.Characters.Scripts.Keys;
 using Game.Gameplay.Characters.Scripts.SO;
 using Game.Meta.Inventory.Equipment;
 

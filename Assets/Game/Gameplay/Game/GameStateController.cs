@@ -1,7 +1,9 @@
 using System;
+using Cysharp.Threading.Tasks;
 using Game.Gameplay.Battle;
 using Game.Gameplay.Environment.Scripts;
 using Game.Gameplay.Game.Heroes;
+using Game.Meta.Inventory.Inventory;
 using Game.UI.Scripts.Views;
 using UnityEngine;
 using Zenject;
@@ -11,8 +13,18 @@ namespace Game.Gameplay.Game
     public class GameStateController : MonoBehaviour
     {
         private BattleController _battleController;
-        private UIController _uiController;
+        private EnemyRiftConfig _enemyRiftConfig;
+        private Inventory _inventory;
+        
+        public event Action<GameState> OnGameStateChanged;
 
+        [Inject]
+        public void Construct(BattleController battleController, Inventory inventory)
+        {
+            _battleController = battleController;
+            _inventory = inventory;
+        }
+        
         private void Awake()
         {
             OnGameStateChanged?.Invoke(GameState.Map);
@@ -23,26 +35,16 @@ namespace Game.Gameplay.Game
             _battleController.OnStateChanged += OnBattleStateChanged;
         }
 
-        public event Action<GameState> OnGameStateChanged;
-
-        [Inject]
-        public void Construct(BattleController battleController, HeroParty heroParty, UIController uiController)
-        {
-            _battleController = battleController;
-            _uiController = uiController;
-        }
-
         private void OnBattleStateChanged(BattleController.BattleState battleState)
         {
-            Debug.Log(battleState);
             switch (battleState)
             {
                 case BattleController.BattleState.Going:
                     break;
                 case BattleController.BattleState.Exit:
-                    ExitBattle();
                     break;
                 case BattleController.BattleState.Win:
+                    GivePlayerLoot();
                     ExitBattle();
                     break;
                 case BattleController.BattleState.Lose:
@@ -56,15 +58,23 @@ namespace Game.Gameplay.Game
         public void EnterBattle(EnemyRiftConfig enemyRiftConfig)
         {
             OnGameStateChanged?.Invoke(GameState.Battle);
-            _battleController.SetupBattle(enemyRiftConfig);
-            //_uiController.Open();
-        }
+            _enemyRiftConfig = enemyRiftConfig;
 
+            _battleController.SetupBattle(enemyRiftConfig);
+        }
+        
         public void ExitBattle()
         {
             OnGameStateChanged?.Invoke(GameState.Map);
-            _battleController.ClearBattle();
-            //_uiController.Close();
+            _battleController.ClearBattle().Forget();
+        }
+        
+        private void GivePlayerLoot()
+        {
+            foreach (var itemConfig in _enemyRiftConfig.LootItems)
+            {
+                _inventory.AddItem(itemConfig.item);
+            }
         }
     }
 }

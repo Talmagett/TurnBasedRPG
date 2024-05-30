@@ -19,3 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6d4f80cfdadfe384fa10088305501cfd, type: 2}
   - {fileID: 11400000, guid: 6d4f80cfdadfe384fa10088305501cfd, type: 2}
   - {fileID: 11400000, guid: 6d4f80cfdadfe384fa10088305501cfd, type: 2}
+  <LootItems>k__BackingField:
+  - {fileID: 11400000, guid: 807a04a42969e5f4cb6246186cc96061, type: 2}
+  - {fileID: 11400000, guid: c74341c466e997f4fa7a37c19200b737, type: 2}

@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game.Meta.Items.Scripts.ItemModule
@@ -6,7 +7,7 @@ namespace Game.Meta.Items.Scripts.ItemModule
         fileName = "ItemConfig",
         menuName = "SO/Inventory/New InventoryItemConfig"
     )]
-    public sealed class ItemConfig : ScriptableObject
+    public sealed class ItemConfig : SerializedScriptableObject
     {
         [SerializeField] public Item item;
     }

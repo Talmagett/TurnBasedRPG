@@ -20,8 +20,6 @@ namespace Game.Gameplay.EventBus
             //Abilities
             builder.BindInterfacesAndSelfTo<CastAbilityHandler>().AsSingle().NonLazy();
 
-            builder.BindInterfacesAndSelfTo<ConsumeActionHandler>().AsSingle().NonLazy();
-
             builder.BindInterfacesAndSelfTo<NextTurnHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<NextTimeHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DelayedHandler>().AsSingle().NonLazy();

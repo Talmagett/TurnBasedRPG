@@ -20,6 +20,9 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
         {
             if (evt.CurrentActor != null) EventBus.RaiseEvent(new TurnSelectionEvent(evt.CurrentActor, false));
 
+            if (_battleContainer.CheckForFinish())
+                return;
+            
             var movingUnits = _battleContainer
                 .GetAllCharacters()
                 .Where(t => t.Get<Component_Turn>().energy.Value <= 0)
