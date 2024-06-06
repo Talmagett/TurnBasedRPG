@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
+  m_Name: Knight_Sword 1
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: MeleeAttack
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 9cddedba9b8f2e74fbd7d909e0d98843,
+    type: 3}
+  <TurnEnergyCost>k__BackingField: 4
+  <TurnProcessTime>k__BackingField: 2
+  <ManaCost>k__BackingField: 0
+  <TargetType>k__BackingField: 2
+  <AnimationKey>k__BackingField: 0
+  Effects:
+  - rid: 1041286217044852844
+  references:
+    version: 2
+    RefIds:
+    - rid: 1041286217044852844
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <HitEffect>k__BackingField: {fileID: 5307725082430527653, guid: 18d69cc11ae74294aac3f0c1b92d192d,
+          type: 3}
+        <HitEffectPoint>k__BackingField: 0
+        <DamageAmount>k__BackingField:
+          Stat: 4
+          BaseValue: 0
+          MultValue: 1

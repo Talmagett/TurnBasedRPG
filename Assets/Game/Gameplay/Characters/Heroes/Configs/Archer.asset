@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61fe4b59dca6472db9382f0a8ebdecdb, type: 3}
+  m_Name: Archer
+  m_EditorClassIdentifier: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 3fd9d307296c6444cbac48674d27613c,
+    type: 3}
+  <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: 02889ad076064f94f8db2e9cb1b38bb6,
+    type: 3}
+  <ComponentID>k__BackingField:
+    id:
+      value: 
+  <ComponentLife>k__BackingField:
+    isDead:
+      value: 0
+    maxHealth:
+      value: 100
+    health:
+      value: 0
+  <ComponentMana>k__BackingField:
+    maxMana:
+      value: 45
+    mana:
+      value: 0
+  <ComponentAttack>k__BackingField:
+    weapon:
+      value: {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
+    attackPower:
+      value: 12
+    criticalChance:
+      value: 0
+    criticalRate:
+      value: 0
+  <ComponentDefense>k__BackingField:
+    defense:
+      value: 12
+    evasion:
+      value: 0
+  <ComponentOwner>k__BackingField:
+    owner:
+      value: 0
+  <EquippedItems>k__BackingField:
+  - {fileID: 11400000, guid: 8149a8f61066f874dadd22f7462f6703, type: 2}
+  - {fileID: 11400000, guid: f76bd4d0013238d45b50cc4c846de7d9, type: 2}
+  <AbilitiesPack>k__BackingField:
+    abilities:
+    - abilities:
+      - ability: {fileID: 11400000, guid: f8a0d40f08f2044429f37adaa471a5b1, type: 2}
+        cost: 0
+      - ability: {fileID: 11400000, guid: 005aa02686783df4fb2d285c43aa6a33, type: 2}
+        cost: 200
+      - ability: {fileID: 11400000, guid: 83cae38bebff9a84c900be9b95f5725d, type: 2}
+        cost: 500
+      defaultLevel: 1
+      maxLevel: 3
+    - abilities:
+      - ability: {fileID: 11400000, guid: 8308e51559033e442bcddd596cf3833a, type: 2}
+        cost: 0
+      defaultLevel: 1
+      maxLevel: 1

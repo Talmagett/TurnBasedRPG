@@ -17,7 +17,6 @@ namespace Game.Gameplay.Characters.Scripts.SO
         [field: SerializeField] public Component_Attack ComponentAttack { get; private set; }
         [field: SerializeField] public Component_Defense ComponentDefense { get; private set; }
         [field: SerializeField] public Component_Owner ComponentOwner { get; private set; }
-        //[field: SerializeField] public Component_Turn ComponentTurn { get; private set; }
         
         public IList<object> CloneComponents()
         {

@@ -11,7 +11,6 @@ namespace Game.Gameplay.Characters.Scripts.SO
     public class HeroCharacterConfig : CharacterConfig
     {
         [field: SerializeField] public ItemConfig[] EquippedItems { get; private set; }
-        [field: SerializeField] public AbilityConfig[] Abilities { get; private set; }
-
+        [field: SerializeField] public HeroAbilityPack AbilitiesPack { get; private set; }
     }
 }

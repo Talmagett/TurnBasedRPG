@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
+  m_Name: Mage_Attack
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: FireBall
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 33556251f01a04443a27d557c874eab4,
+    type: 3}
+  <TurnEnergyCost>k__BackingField: 4
+  <TurnProcessTime>k__BackingField: 2
+  <ManaCost>k__BackingField: 10
+  <TargetType>k__BackingField: 2
+  <AnimationKey>k__BackingField: 3
+  Effects:
+  - rid: 1041286217044852751
+  references:
+    version: 2
+    RefIds:
+    - rid: 1041286217044852751
+      type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
+          type: 3}
+        <ProjectileShootPoint>k__BackingField: 2
+        <HitEffectPoint>k__BackingField: 2
+        <EffectsOnHit>k__BackingField:
+        - rid: 1041286217044852846
+    - rid: 1041286217044852846
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <HitEffect>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
+          type: 3}
+        <HitEffectPoint>k__BackingField: 2
+        <DamageAmount>k__BackingField:
+          Stat: 4
+          BaseValue: 20
+          MultValue: 1.2
