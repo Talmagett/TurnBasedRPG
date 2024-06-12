@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 3fd9d307296c6444cbac48674d27613c,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 404c9b7cc03c3ab4fb5e58bfcc7f83c0,
     type: 3}
   <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: 02889ad076064f94f8db2e9cb1b38bb6,
     type: 3}
   <ComponentID>k__BackingField:
     id:
-      value: 
+      value: archer
   <ComponentLife>k__BackingField:
     isDead:
       value: 0
@@ -55,16 +55,20 @@ MonoBehaviour:
   <AbilitiesPack>k__BackingField:
     abilities:
     - abilities:
-      - ability: {fileID: 11400000, guid: f8a0d40f08f2044429f37adaa471a5b1, type: 2}
+      - abilityConfig: {fileID: 11400000, guid: f8a0d40f08f2044429f37adaa471a5b1,
+          type: 2}
         cost: 0
-      - ability: {fileID: 11400000, guid: 005aa02686783df4fb2d285c43aa6a33, type: 2}
+      - abilityConfig: {fileID: 11400000, guid: 005aa02686783df4fb2d285c43aa6a33,
+          type: 2}
         cost: 200
-      - ability: {fileID: 11400000, guid: 83cae38bebff9a84c900be9b95f5725d, type: 2}
+      - abilityConfig: {fileID: 11400000, guid: 83cae38bebff9a84c900be9b95f5725d,
+          type: 2}
         cost: 500
       defaultLevel: 1
       maxLevel: 3
     - abilities:
-      - ability: {fileID: 11400000, guid: 8308e51559033e442bcddd596cf3833a, type: 2}
+      - abilityConfig: {fileID: 11400000, guid: 8308e51559033e442bcddd596cf3833a,
+          type: 2}
         cost: 0
       defaultLevel: 1
       maxLevel: 1

@@ -81,10 +81,9 @@ namespace Game.Gameplay.Battle
             {
                 var unitData = _heroParty.HeroDataArray[i];
                 var position = -(_heroParty.HeroDataArray.Length - 1) / 2f + i;
-                var characterConfig = unitData.Get<HeroCharacterConfig>();
-                var unit = SpawnUnit(characterConfig.Prefab, environment.PlayerSpawnPosition);
-                unit.AddRange(characterConfig.CloneComponents());
-                unit.Add(characterConfig);
+                var prefab = unitData.Get<CharacterEntity>();
+                var unit = SpawnUnit(prefab, environment.PlayerSpawnPosition);
+                unit.AddRange(unitData.GetComponents());
                 unit.transform.position += Vector3.forward * position * 2;
                 _battleContainer.AddUnit(unit);
             }
@@ -94,7 +93,7 @@ namespace Game.Gameplay.Battle
                 var unitData = enemyRiftConfig.Enemies[i];
                 var position = -(enemyRiftConfig.Enemies.Length - 1) / 2f + i;
                 var unit = SpawnUnit(unitData.Prefab, environment.EnemySpawnPosition);
-                unit.AddRange(unitData.CloneComponents());
+                unit.AddRange(unitData.Clone());
                 unit.transform.position += Vector3.forward * position * 2;
                 _battleContainer.AddUnit(unit);
             }

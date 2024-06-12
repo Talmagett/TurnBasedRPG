@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: 
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 97701f4e22a0a6643a86510c70843aff,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 292f5b91dbe2204498b5dcff8acaea5a,
     type: 3}
   <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: ad16fc65bace7e64a821c7ec41eb96cf,
     type: 3}
   <ComponentID>k__BackingField:
     id:
-      value: 
+      value: knight
   <ComponentLife>k__BackingField:
     isDead:
       value: 0
@@ -55,16 +55,20 @@ MonoBehaviour:
   <AbilitiesPack>k__BackingField:
     abilities:
     - abilities:
-      - ability: {fileID: 11400000, guid: 57bdfcfa0c67df4439e190a267b00afe, type: 2}
+      - abilityConfig: {fileID: 11400000, guid: 57bdfcfa0c67df4439e190a267b00afe,
+          type: 2}
         cost: 0
-      - ability: {fileID: 11400000, guid: 53fba19523fad2c4c876a036c0e21ce6, type: 2}
+      - abilityConfig: {fileID: 11400000, guid: 53fba19523fad2c4c876a036c0e21ce6,
+          type: 2}
         cost: 200
-      - ability: {fileID: 11400000, guid: 37ee07ff46ddcfe4b8e4e6d1df86f745, type: 2}
+      - abilityConfig: {fileID: 11400000, guid: 37ee07ff46ddcfe4b8e4e6d1df86f745,
+          type: 2}
         cost: 500
       defaultLevel: 1
       maxLevel: 3
     - abilities:
-      - ability: {fileID: 11400000, guid: 8308e51559033e442bcddd596cf3833a, type: 2}
+      - abilityConfig: {fileID: 11400000, guid: 8308e51559033e442bcddd596cf3833a,
+          type: 2}
         cost: 0
       defaultLevel: 1
       maxLevel: 1
