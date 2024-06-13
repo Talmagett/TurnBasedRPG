@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game.Meta.Items.Scripts.ItemModule
@@ -8,7 +9,7 @@ namespace Game.Meta.Items.Scripts.ItemModule
     public sealed class Item
     {
         [SerializeField] private string name;
-        [SerializeField] private Sprite icon;
+        [SerializeField][PreviewField(128,ObjectFieldAlignment.Center)] private Sprite icon;
         [SerializeField] private ItemFlags flags;
 
         [SerializeReference] private object[] components;

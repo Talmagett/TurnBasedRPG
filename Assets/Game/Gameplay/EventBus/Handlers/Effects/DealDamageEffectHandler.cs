@@ -34,7 +34,7 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
             var statValue = evt.Source.Get<Component_Attack>().attackPower;
             var damage = (int)(evt.DamageAmount.BaseValue + evt.DamageAmount.MultValue * statValue.Value);
 
-            _eventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, damage));
+            _eventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, damage, evt.PenetrationPercent));
             var effectPoint = evt.Target.Get<BodyParts>().GetPoint(evt.HitEffectPoint);
             _eventBus.RaiseEvent(new VisualParticleEvent(effectPoint, evt.HitEffect));
         }

@@ -12,8 +12,6 @@ namespace Game.Gameplay.Characters.Enemies.Scripts
         public override void Run()
         {
             var target = BattleContainer.GetRandomEnemy(CharacterEntity);
-            Debug.Log(CharacterEntity.Get<Component_Owner>().owner);
-            Debug.Log(target.Get<Component_Owner>().owner);
             EventBus.RaiseEvent(new CastAbilityEvent(CharacterEntity, target, dealDamageAbility));
         }
     }

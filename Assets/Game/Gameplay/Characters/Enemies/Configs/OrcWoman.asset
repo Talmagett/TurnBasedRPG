@@ -12,14 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8080e51a88486da961815da53317a7, type: 3}
   m_Name: OrcWoman
   m_EditorClassIdentifier: 
-  <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 74b64a1a152c9244fb40bc04a180efb4,
-    type: 3}
   <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: c6492d8049af7af4ea712467dec2cfb5,
     type: 3}
   <ComponentID>k__BackingField:
     id:
-      value: 
+      value: OrcWoman
   <ComponentLife>k__BackingField:
     isDead:
       value: 0

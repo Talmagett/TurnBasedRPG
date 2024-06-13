@@ -42,7 +42,7 @@ namespace Game.Gameplay.EventBus
         private void ConfigureAbilities(DiContainer builder)
         {
             builder.BindInterfacesAndSelfTo<DealDamageHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<MultiDamageEffectHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<MultiEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<HealEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<ShootProjectileAbilityHandler>().AsSingle().NonLazy();
         }

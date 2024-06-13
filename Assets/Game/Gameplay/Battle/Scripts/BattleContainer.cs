@@ -58,6 +58,23 @@ namespace Game.Gameplay.Battle
             return _units;
         }
 
+        public IEntity[] GetAllEnemies(IEntity characterEntity)
+        {
+            var owner = characterEntity.Get<Component_Owner>();
+            var enemies = _units.Where(t => t.Get<Component_Owner>().owner.Value != owner.owner.Value).ToArray();
+            Debug.Log(enemies.Length+"::::");
+
+            return enemies;
+        }
+        
+        
+        public IEntity[] GetAllAllies(IEntity characterEntity)
+        {
+            var owner = characterEntity.Get<Component_Owner>();
+            var enemies = _units.Where(t => t.Get<Component_Owner>().owner.Value != owner.owner.Value).ToArray();
+            return enemies;
+        }
+        
         public void ClearField()
         {
             _units.Clear();

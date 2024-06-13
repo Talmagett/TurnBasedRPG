@@ -14,7 +14,7 @@ namespace Game.Gameplay.Abilities.Scripts
 
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public string Description { get; private set; }
-        [field: SerializeField] public Sprite Icon { get; private set; }
+        [field: SerializeField, PreviewField(128,ObjectFieldAlignment.Center)] public Sprite Icon { get; private set; }
 
         [field: SerializeField]
         [field: Title("Configs")] public int TurnEnergyCost { get; private set; }

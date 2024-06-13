@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61fe4b59dca6472db9382f0a8ebdecdb, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: 
-  <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 404c9b7cc03c3ab4fb5e58bfcc7f83c0,
-    type: 3}
   <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: 02889ad076064f94f8db2e9cb1b38bb6,
     type: 3}
   <ComponentID>k__BackingField:
@@ -34,7 +31,7 @@ MonoBehaviour:
       value: 0
   <ComponentAttack>k__BackingField:
     weapon:
-      value: {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
+      value: {fileID: 11400000, guid: 823d042e51b75f94fa4ed84fb478d871, type: 2}
     attackPower:
       value: 12
     criticalChance:
@@ -49,6 +46,13 @@ MonoBehaviour:
   <ComponentOwner>k__BackingField:
     owner:
       value: 0
+  <ComponentData>k__BackingField:
+    name:
+      value: "\u0413\u04AF\u043B\u0431\u0430\u0440\u0430"
+    description:
+      value: "\u0416\u0430\u0430\u0447\u044B"
+    icon:
+      value: {fileID: 21300000, guid: 404c9b7cc03c3ab4fb5e58bfcc7f83c0, type: 3}
   <EquippedItems>k__BackingField:
   - {fileID: 11400000, guid: 8149a8f61066f874dadd22f7462f6703, type: 2}
   - {fileID: 11400000, guid: f76bd4d0013238d45b50cc4c846de7d9, type: 2}

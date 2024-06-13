@@ -38,7 +38,7 @@ MonoBehaviour:
   - id: 1
     fields:
     - title: Name
-      value: Player
+      value: "\u041E\u044E\u043D\u0447\u0443"
       type: 0
       typeString: CustomFieldType_Text
     - title: Pictures
@@ -60,7 +60,7 @@ MonoBehaviour:
   - id: 2
     fields:
     - title: Name
-      value: Trainer
+      value: "\u041C\u0443\u0433\u0430\u043B\u0438\u043C"
       type: 0
       typeString: CustomFieldType_Text
     - title: Pictures
@@ -221,7 +221,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hello
+        value: "\u0421\u0430\u043B\u0430\u043C"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -278,11 +278,11 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
-        value: Hello
+        value: "\u0421\u0430\u043B\u0430\u043C"
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hello
+        value: "\u0421\u0430\u043B\u0430\u043C"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -337,7 +337,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: How can I help you?
+        value: "\u041A\u0430\u043D\u0442\u0438\u043F \u0436\u0430\u0440\u0434\u0430\u043C
+          \u0431\u0435\u0440\u0435\u0439\u0438\u043D?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -367,7 +368,7 @@ MonoBehaviour:
       - originConversationID: 1
         originDialogueID: 6
         destinationConversationID: 1
-        destinationDialogueID: 9
+        destinationDialogueID: 14
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -400,11 +401,13 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
-        value: Where can I buy item
+        value: "\u0411\u0443\u044E\u043C\u0434\u0430\u0440\u0434\u044B \u043A\u0430\u0439\u0441\u044B
+          \u0436\u0430\u043A\u0442\u0430\u043D \u0430\u043B\u0441\u0430\u043C \u0431\u043E\u043B\u043E\u0442?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Where can I buy item
+        value: "\u0411\u0443\u044E\u043C\u0434\u0430\u0440\u0434\u044B \u043A\u0430\u0439\u0441\u044B
+          \u0436\u0430\u043A\u0442\u0430\u043D \u0430\u043B\u0441\u0430\u043C \u0431\u043E\u043B\u043E\u0442?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -455,11 +458,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Actor
       - title: Menu Text
-        value: Where can I find the teachers
+        value: "\u041C\u0443\u0433\u0430\u043B\u0438\u043C\u0434\u0435\u0440 \u043A\u0430\u044F\u043A\u0442\u0430?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Where can I find the teachers
+        value: "\u041C\u0443\u0433\u0430\u043B\u0438\u043C\u0434\u0435\u0440 \u043A\u0430\u044F\u043A\u0442\u0430?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -491,55 +494,6 @@ MonoBehaviour:
         y: 386
         width: 160
         height: 30
-    - id: 9
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Description
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Actor
-        value: 1
-        type: 0
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 2
-        type: 0
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: Nope
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Dialogue Text
-        value: Nope
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      conversationID: 1
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks: []
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 496
-        y: 386
-        width: 160
-        height: 30
     - id: 10
       fields:
       - title: Title
@@ -563,15 +517,19 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: You can find them by the way
+        value: "\u041A\u0438\u0439\u0438\u043D\u043A\u0438 \u0448\u0430\u0430\u0440\u0434\u0430"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: aa
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       - title: Response Menu Sequence
-        value: aaaaa
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: EventGuid
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -618,11 +576,11 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
-        value: Thanks
+        value: "\u0420\u0430\u0445\u043C\u0430\u0442"
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Thanks
+        value: "\u0420\u0430\u0445\u043C\u0430\u0442"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -667,7 +625,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
-        value: Bye
+        value: "\u0416\u0430\u043A\u0448\u044B \u043A\u0430\u043B\u044B\u04A3\u044B\u0437"
         type: 0
         typeString: 
       - title: Dialogue Text
@@ -693,13 +651,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 704
-        y: 218
+        x: 580.76587
+        y: 376.19574
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.99999994
+    canvasScrollPosition: {x: 78.29791, y: 0}
+    canvasZoom: 0.94
   - id: 2
     fields:
     - title: Title

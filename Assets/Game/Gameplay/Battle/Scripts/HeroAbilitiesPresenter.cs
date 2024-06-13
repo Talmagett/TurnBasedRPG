@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Game.GameEngine.Entities.Scripts;
 using Game.Gameplay.Abilities.Scripts;
@@ -107,10 +108,9 @@ namespace Game.Gameplay.Battle
         {
             _isChoosing = false;
             _hero = hero;
-            var heroAbilities = _hero.Get<HeroAbilityPack>().GetAbilitiesWithCurrentLevel();
-            if (heroAbilities == null)
-                throw new NullReferenceException($"No ability pack with this id {_hero.Get<Component_ID>()}");
-            heroAbilities.ToList().Add(_hero.Get<Component_Attack>().weapon.Value);
+            List<AbilityConfig> heroAbilities = new ();
+            heroAbilities.Add(_hero.Get<Component_Attack>().weapon.Value);
+            heroAbilities.AddRange(_hero.Get<HeroAbilityPack>().GetAbilitiesWithCurrentLevel().ToList());
             foreach (var ability in heroAbilities)
             {
                 var abilityView = Instantiate(battleAbilityView, spellsViewParent);

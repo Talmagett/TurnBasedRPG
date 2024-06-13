@@ -12,8 +12,10 @@ namespace Game.Gameplay.Characters.Scripts.Components
         public AtomicVariable<float> criticalChance;
         public AtomicVariable<float> criticalRate;
 
-        public Component_Attack(int baseAttackPower, float baseCriticalChance, float baseCriticalRate)
+        public Component_Attack(AbilityConfig weaponValue, int baseAttackPower, float baseCriticalChance,
+            float baseCriticalRate)
         {
+            weapon = new AtomicVariable<AbilityConfig>(weaponValue);
             attackPower = new AtomicVariable<float>(baseAttackPower);
             criticalChance = new AtomicVariable<float>(baseCriticalChance);
             criticalRate = new AtomicVariable<float>(baseCriticalRate);

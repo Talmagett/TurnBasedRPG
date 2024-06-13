@@ -13,5 +13,9 @@ namespace Game.Gameplay.EventBus.Events.Effects
 
         public IEntity Source { get; set; }
         public IEntity Target { get; set; }
+        public IEffect Clone()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

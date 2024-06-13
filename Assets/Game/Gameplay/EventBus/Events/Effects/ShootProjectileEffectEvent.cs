@@ -10,6 +10,19 @@ namespace Game.Gameplay.EventBus.Events.Effects
     {
         public IEntity Source { get; set; }
         public IEntity Target { get; set; }
+        public IEffect Clone()
+        {
+            var effect = new ShootProjectileEffectEvent
+            {
+                Source = Source,
+                Target = Target,
+                Projectile = Projectile,
+                ProjectileShootPoint = ProjectileShootPoint,
+                HitEffectPoint = HitEffectPoint,
+                EffectsOnHit = EffectsOnHit
+            };
+            return effect;
+        }
 
         [field: SerializeField] public GameObject Projectile { get; private set; }
         [field: SerializeField] public BodyParts.Key ProjectileShootPoint { get; private set; }

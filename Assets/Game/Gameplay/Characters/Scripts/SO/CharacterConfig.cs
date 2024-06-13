@@ -7,8 +7,6 @@ namespace Game.Gameplay.Characters.Scripts.SO
     [CreateAssetMenu(fileName = "CharacterConfig", menuName = "SO/CharacterConfig", order = 0)]
     public abstract class CharacterConfig : ScriptableObject
     {
-        [field: SerializeField] public string Description { get; private set; }
-        [field: SerializeField] public Sprite Icon { get; private set; }
         [field: SerializeField] [field: Space] public CharacterEntity Prefab { get; private set; }
         [field: Space]
         [field: SerializeField] public Component_ID ComponentID { get; private set; }

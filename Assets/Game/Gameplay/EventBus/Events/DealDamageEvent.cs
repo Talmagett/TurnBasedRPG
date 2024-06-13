@@ -7,12 +7,13 @@ namespace Game.Gameplay.EventBus.Events
         public readonly IEntity Source;
         public readonly IEntity Target;
         public readonly int Damage;
-
-        public DealDamageEvent(IEntity source, IEntity target, int damage)
+        public readonly float Penetration;
+        public DealDamageEvent(IEntity source, IEntity target, int damage, float penetration)
         {
             Source = source;
             Target = target;
             Damage = damage;
+            Penetration = penetration;
         }
     }
 }

@@ -20,24 +20,40 @@ MonoBehaviour:
   <TurnEnergyCost>k__BackingField: 4
   <TurnProcessTime>k__BackingField: 2
   <ManaCost>k__BackingField: 10
-  <TargetType>k__BackingField: 0
+  <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 1041286580875034629
+  - rid: 3125923962019381318
   references:
     version: 2
     RefIds:
-    - rid: 1041286580875034629
-      type: {class: MultiDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+    - rid: 3125923962019381286
+      type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
+        <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
+          type: 3}
+        <ProjectileShootPoint>k__BackingField: 2
+        <HitEffectPoint>k__BackingField: 2
+        <EffectsOnHit>k__BackingField:
+        - rid: 3125923962019381293
+    - rid: 3125923962019381293
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <HitEffect>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
+          type: 3}
+        <HitEffectPoint>k__BackingField: 2
+        <DamageAmount>k__BackingField:
+          Stat: 4
+          BaseValue: 2
+          MultValue: 0.2
+        <PenetrationPercent>k__BackingField: 0
+    - rid: 3125923962019381318
+      type: {class: MultiEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
         Count: 5
         Delay: 0.3
-        DealDamageEffectEvent:
-          <HitEffect>k__BackingField: {fileID: 5337203621404181406, guid: 334ccdade87a4194b9f1855c484967dc,
-            type: 3}
-          <HitEffectPoint>k__BackingField: 0
-          <DamageAmount>k__BackingField:
-            Stat: 4
-            BaseValue: 3
-            MultValue: 100
+        Effects:
+        - rid: 3125923962019381286

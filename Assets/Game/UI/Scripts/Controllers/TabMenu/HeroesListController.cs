@@ -9,10 +9,11 @@ namespace Game.UI.Scripts.Controllers.TabMenu
         [SerializeField] private SelectHeroView selectHeroView;
         [SerializeField] private Transform parent;
 
-        public void Create(Sprite icon, Action action)
+        public void Create(string characterName,Sprite icon, Action action)
         {
             var view = Instantiate(selectHeroView, parent);
             view.SetIcon(icon, action);
+            view.SetName(characterName);
         }
 
         public void Clear()

@@ -36,7 +36,7 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
 
             var amount = -(int)(evt.HealingAmount.BaseValue + evt.HealingAmount.MultValue * statValue.Value);
 
-            _eventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, amount));
+            _eventBus.RaiseEvent(new DealDamageEvent(evt.Source, evt.Target, amount,1));
             var effectPoint = evt.Target.Get<BodyParts>().GetPoint(evt.HitEffectPoint);
             _eventBus.RaiseEvent(new VisualParticleEvent(effectPoint, evt.HitEffect));
         }

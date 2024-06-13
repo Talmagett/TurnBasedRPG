@@ -1,3 +1,4 @@
+using Game.Gameplay.Characters.Scripts.Components;
 using Game.Gameplay.Characters.Scripts.SO;
 using Game.Gameplay.Game.Heroes;
 using UnityEngine;
@@ -33,7 +34,9 @@ namespace Game.UI.Scripts.Controllers.TabMenu
             for (var i = 0; i < _heroParty.HeroDataArray.Length; i++)
             {
                 var index = i;
-                heroesListController.Create(_heroParty.HeroDataArray[index].Get<CharacterConfig>().Icon,
+                var heroData = _heroParty.HeroDataArray[index].Get<Component_Data>();
+                heroesListController.Create(heroData.name.Value,
+                    heroData.icon.Value,
                     () => ShowCharacterPanel(_heroParty.HeroDataArray[index]));
             }
         }

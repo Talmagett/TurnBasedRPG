@@ -25,8 +25,8 @@ namespace Game.Gameplay.Game.Heroes
 
         public IEnumerable<object> GetComponents()
         {
-            yield return Get<string>();
-            yield return Get<Sprite>();
+            yield return Get<Component_ID>();
+            yield return Get<Component_Data>();
             yield return Get<CharacterEntity>();
             yield return Get<Component_Life>();
             yield return Get<Component_Mana>();

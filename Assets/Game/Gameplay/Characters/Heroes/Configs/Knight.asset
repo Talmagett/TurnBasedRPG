@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61fe4b59dca6472db9382f0a8ebdecdb, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
-  <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 292f5b91dbe2204498b5dcff8acaea5a,
-    type: 3}
   <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: ad16fc65bace7e64a821c7ec41eb96cf,
     type: 3}
   <ComponentID>k__BackingField:
@@ -34,7 +31,7 @@ MonoBehaviour:
       value: 0
   <ComponentAttack>k__BackingField:
     weapon:
-      value: {fileID: 11400000, guid: 1d2bb84b268a88f4c8a7ba92e75a3ca3, type: 2}
+      value: {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
     attackPower:
       value: 35
     criticalChance:
@@ -49,23 +46,18 @@ MonoBehaviour:
   <ComponentOwner>k__BackingField:
     owner:
       value: 0
+  <ComponentData>k__BackingField:
+    name:
+      value: "\u0422\u0435\u043C\u0438\u0440\u0431\u0435\u043A"
+    description:
+      value: "\u0410\u0441\u043A\u0435\u0440"
+    icon:
+      value: {fileID: 21300000, guid: 292f5b91dbe2204498b5dcff8acaea5a, type: 3}
   <EquippedItems>k__BackingField:
   - {fileID: 11400000, guid: 7b7312186a510f14dbc677c2b7e99b9b, type: 2}
   - {fileID: 11400000, guid: df998298e15e094409aba230b3b0f88a, type: 2}
   <AbilitiesPack>k__BackingField:
     abilities:
-    - abilities:
-      - abilityConfig: {fileID: 11400000, guid: 57bdfcfa0c67df4439e190a267b00afe,
-          type: 2}
-        cost: 0
-      - abilityConfig: {fileID: 11400000, guid: 53fba19523fad2c4c876a036c0e21ce6,
-          type: 2}
-        cost: 200
-      - abilityConfig: {fileID: 11400000, guid: 37ee07ff46ddcfe4b8e4e6d1df86f745,
-          type: 2}
-        cost: 500
-      defaultLevel: 1
-      maxLevel: 3
     - abilities:
       - abilityConfig: {fileID: 11400000, guid: 8308e51559033e442bcddd596cf3833a,
           type: 2}

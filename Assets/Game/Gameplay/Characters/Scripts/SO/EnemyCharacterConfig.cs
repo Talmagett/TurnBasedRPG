@@ -14,13 +14,11 @@ namespace Game.Gameplay.Characters.Scripts.SO
         {
             return new List<object>()
             {
-                Description,
-                Icon,
                 Prefab,
                 new Component_ID(ComponentID.id.Value),
                 new Component_Life(ComponentLife.maxHealth.Value),
                 new Component_Mana(ComponentMana.maxMana.Value),
-                new Component_Attack((int)ComponentAttack.attackPower.Value,ComponentAttack.criticalChance.Value,ComponentAttack.criticalRate.Value),
+                new Component_Attack(ComponentAttack.weapon.Value,(int)ComponentAttack.attackPower.Value,ComponentAttack.criticalChance.Value,ComponentAttack.criticalRate.Value),
                 new Component_Defense((int)ComponentDefense.defense.Value,ComponentDefense.evasion.Value),
                 new Component_Owner(ComponentOwner.owner.Value),
                 new Component_Turn(Random.Range(1, 6)),

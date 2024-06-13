@@ -22,12 +22,13 @@ namespace Game.Gameplay.Abilities.Scripts
         
         public AbilityConfig[] GetAbilitiesWithCurrentLevel()
         {
-            return abilities.Select(t => t.GetAbility()).ToArray();
+            var levelMax =  abilities.Where(t=>t.Level>0);
+            var abilitiesToReturn = levelMax.Select(t => t.GetAbility()).ToArray();
+            return abilitiesToReturn;
         }
 
         public HeroAbilityPack Clone()
         {
-
             return new HeroAbilityPack(abilities.Select(t => t.Clone()).ToArray());
         }
     }
@@ -44,14 +45,20 @@ namespace Game.Gameplay.Abilities.Scripts
             abilities = upgrades;
             this.defaultLevel = defaultLevel;
             this.maxLevel = maxLevel;
+            Level = this.defaultLevel;
         }
 
         public int Level { get; private set; }
-        public bool IsMaxLevel() => Level >= maxLevel;
+        public bool IsMaxLevel() => Level >= maxLevel-1;
+
+        public void SetupLevel(int level)
+        {
+            Level = level;
+        }
         
         public AbilityConfig GetAbility()
         {
-            return abilities[Level].GetAbility();
+            return abilities[Level-1].GetAbility();
         }
         
         public bool TryUpgradeLevel(int money)
@@ -65,10 +72,10 @@ namespace Game.Gameplay.Abilities.Scripts
             return true;
         }
         
-        [System.Serializable]
+        [Serializable]
         public class AbilityUpgrade
         {
-            [FormerlySerializedAs("ability")] [SerializeField] private AbilityConfig abilityConfig;
+            [SerializeField] private AbilityConfig abilityConfig;
             [SerializeField] private int cost;
 
             private AbilityUpgrade(AbilityConfig abilityConfig, int cost)
