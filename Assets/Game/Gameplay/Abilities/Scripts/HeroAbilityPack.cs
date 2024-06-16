@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -37,8 +38,8 @@ namespace Game.Gameplay.Abilities.Scripts
     public class HeroAbility
     {
         [SerializeField] private AbilityUpgrade[] abilities;
-        [SerializeField] private int defaultLevel;
-        [SerializeField] private int maxLevel;
+        [SerializeField, MinValue(0)] private int defaultLevel;
+        [SerializeField, MinValue(1)] private int maxLevel;
 
         private HeroAbility(AbilityUpgrade[] upgrades, int defaultLevel, int maxLevel)
         {

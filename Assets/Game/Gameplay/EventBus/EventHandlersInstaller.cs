@@ -25,6 +25,7 @@ namespace Game.Gameplay.EventBus
             builder.BindInterfacesAndSelfTo<NextTurnHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<NextTimeHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DelayedHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<DealDamageHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DestroyCharacterEntityHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<FinishTurnEventHandler>().AsSingle().NonLazy();
             //builder.BindInterfacesAndSelfTo<DestroyHandler>().AsSingle().NonLazy();
@@ -34,30 +35,28 @@ namespace Game.Gameplay.EventBus
             builder.BindInterfacesAndSelfTo<MoveHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<ForceDirectionHandler>().AsSingle().NonLazy();
 */
-            builder.BindInterfacesAndSelfTo<DealDamageEffectHandler>().AsSingle().NonLazy();
-            //          builder.BindInterfacesAndSelfTo<PushEffectHandler>().AsSingle().NonLazy();*/
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureAbilities(DiContainer builder)
         {
-            builder.BindInterfacesAndSelfTo<DealDamageHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<DealDamageEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<MultiEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<HealEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<ShootProjectileAbilityHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<StunEffectHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<HasteEffectHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<DoTEffectHandler>().AsSingle().NonLazy();
+            
+            builder.BindInterfacesAndSelfTo<DotEffectTickerHandler>().AsSingle().NonLazy();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureVisual(DiContainer builder)
         {
             builder.BindInterfacesAndSelfTo<TurnSelectionHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<VisualParticleHandler>().AsSingle().NonLazy();
-
-/*
-            builder.BindInterfacesAndSelfTo<MoveVisualHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<DealDamageVisualHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<AttackVisualHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<CollideVisualHandler>().AsSingle().NonLazy();*/
+            builder.BindInterfacesAndSelfTo<ParticleEffectHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<AudioEffectHandler>().AsSingle().NonLazy();
         }
     }
 }

@@ -48,14 +48,20 @@ namespace Game.Gameplay.Battle
         public IEntity GetRandomAlly(IEntity characterEntity)
         {
             var owner = characterEntity.Get<Component_Owner>();
-            var enemies = _units.Where(t => t.Get<Component_Owner>().owner.Value != owner.owner.Value).ToArray();
+            var enemies = _units.Where(t => t.Get<Component_Owner>().owner.Value == owner.owner.Value).ToArray();
             var rand = Random.Range(0, enemies.Length);
             return enemies[rand];
         }
 
-        public IEnumerable<IEntity> GetAllCharacters()
+        public IEntity[] GetAllCharacters()
         {
-            return _units;
+            return _units.ToArray();
+        }
+        
+        public IEntity GetRandomCharacter()
+        {
+            var rand = Random.Range(0, _units.Count);
+            return _units[rand];
         }
 
         public IEntity[] GetAllEnemies(IEntity characterEntity)
@@ -71,7 +77,7 @@ namespace Game.Gameplay.Battle
         public IEntity[] GetAllAllies(IEntity characterEntity)
         {
             var owner = characterEntity.Get<Component_Owner>();
-            var enemies = _units.Where(t => t.Get<Component_Owner>().owner.Value != owner.owner.Value).ToArray();
+            var enemies = _units.Where(t => t.Get<Component_Owner>().owner.Value == owner.owner.Value).ToArray();
             return enemies;
         }
         

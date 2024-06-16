@@ -21,7 +21,7 @@ MonoBehaviour:
     isDead:
       value: 0
     maxHealth:
-      value: 100
+      value: 98
     health:
       value: 0
   <ComponentMana>k__BackingField:

@@ -30,7 +30,7 @@ namespace Game.UI.Scripts.Battle
 
         private void UpdateCooldownText(int turn)
         {
-            characterTurnView.SetTurn(turn.ToString(), turn == 0);
+            characterTurnView.SetTurn(turn.ToString(), turn <= 0);
         }
     }
 }

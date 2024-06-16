@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using Game.GameEngine.Entities.Scripts;
+using Game.Gameplay.Abilities.Scripts;
 using Game.Gameplay.Battle;
 using Game.Gameplay.Characters.Scripts.Components;
 using Game.Gameplay.EventBus.Events;
@@ -42,6 +44,7 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
                 _eventBus.RaiseEvent(new DelayedEvent(effect, dataDelay));
             }
         }
+        
         private void OnCast(MultiEffectEvent data)
         {
             switch (data.TargetType)
@@ -55,17 +58,59 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
                 case MultiEffectEvent.MultiType.Random:
                     for (var i = 0; i < data.Count; i++)
                     {
-                        var randomEnemy=_battleContainer.GetRandomEnemy(data.Source);
-                        Cast(data.Effects.Clone() as IEffect[], data.Source, randomEnemy,data.Delay * i);
+                        IEntity randomTarget;
+                        switch (data.AbilityTargetType)
+                        {
+                            case AbilityTargetType.Self:
+                                throw new Exception($"Wrong spell with Self {data.AbilityTargetType}");
+                            case AbilityTargetType.Enemy:
+                                randomTarget =_battleContainer.GetRandomEnemy(data.Source);
+                                break;
+                            case AbilityTargetType.AllyOnly:
+                                do
+                                {
+                                    randomTarget = _battleContainer.GetRandomAlly(data.Source);
+                                } while (randomTarget == data.Source);
+                                break;
+                            case AbilityTargetType.AllyAndSelf:
+                                randomTarget =_battleContainer.GetRandomAlly(data.Source);
+                                break;
+                            case AbilityTargetType.Any:
+                                randomTarget =_battleContainer.GetRandomCharacter();
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                        Cast(data.Effects.Clone() as IEffect[], data.Source, randomTarget,data.Delay * i);
                     }
                     break;
                 case MultiEffectEvent.MultiType.All:
-                    var enemies = _battleContainer.GetAllEnemies(data.Source);
-                    var enemiesCount = data.Count < enemies.Length ? data.Count : enemies.Length;
+                    IEntity[] targets;
+                    switch (data.AbilityTargetType)
+                    {
+                        case AbilityTargetType.Self:
+                            throw new Exception($"Wrong spell with Self {data.AbilityTargetType}");
+                        case AbilityTargetType.Enemy:
+                            targets = _battleContainer.GetAllEnemies(data.Source);
+                            break;
+                        case AbilityTargetType.AllyOnly:
+                            targets =_battleContainer.GetAllAllies(data.Source);
+                            targets.ToList().Remove(data.Source);
+                            break;
+                        case AbilityTargetType.AllyAndSelf:
+                            targets =_battleContainer.GetAllAllies(data.Source);
+                            break;
+                        case AbilityTargetType.Any:
+                            targets =_battleContainer.GetAllCharacters();
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                    var enemiesCount = data.Count < targets.Length ? data.Count : targets.Length;
                     for (var i = 0; i < enemiesCount; i++)
                     {
-                        var enemy = enemies[i];
-                        Cast(data.Effects.Clone() as IEffect[], data.Source, enemy,data.Delay * i);
+                        var target = targets[i];
+                        Cast(data.Effects.Clone() as IEffect[], data.Source, target,data.Delay * i);
                     }
                     break;
             }

@@ -18,7 +18,6 @@ namespace Game.Gameplay.Game.Heroes
             var equipment = new Equipment();
             characterConfig.EquippedItems.Select(t=>t.item.Clone()).ForEach(u=>equipment.EquipItem(u));
             AddRange(characterConfig.Clone());
-            //Add(characterConfig);
             Add(equipment);
             Add(new EquipmentEffector.EquipmentEffector(this, equipment));
         }
@@ -26,6 +25,7 @@ namespace Game.Gameplay.Game.Heroes
         public IEnumerable<object> GetComponents()
         {
             yield return Get<Component_ID>();
+            yield return Get<Component_Effects>();
             yield return Get<Component_Data>();
             yield return Get<CharacterEntity>();
             yield return Get<Component_Life>();

@@ -1,3 +1,4 @@
+using Game.Gameplay.Abilities.Scripts;
 using Game.Gameplay.Characters.Scripts;
 using Game.Gameplay.Characters.Scripts.Components;
 using Game.Gameplay.Characters.Scripts.Keys;
@@ -26,9 +27,10 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
             evt.Source.Get<AnimatorDispatcher>().ClearListeners();
             foreach (var effect in evt.AbilityConfig.Effects)
             {
-                effect.Source = evt.Source;
-                effect.Target = evt.Target;
-                EventBus.RaiseEvent(effect);
+                var clone = effect.Clone();
+                clone.Source = evt.Source;
+                clone.Target = evt.AbilityConfig.TargetType == AbilityTargetType.Self?evt.Source:evt.Target;
+                EventBus.RaiseEvent(clone);
             }
 
             EventBus.RaiseEvent(new DelayedEvent(new FinishTurnEvent(evt.Source), evt.AbilityConfig.TurnProcessTime));

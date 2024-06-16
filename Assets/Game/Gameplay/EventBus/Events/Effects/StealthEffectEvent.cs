@@ -10,7 +10,7 @@ namespace Game.Gameplay.EventBus.Events.Effects
         public IEntity Target { get; set; }
         public IEffect Clone()
         {
-            throw new NotImplementedException();
+            return new StealthEffectEvent { Source = Source, Target = Target };
         }
     }
 }

@@ -23,28 +23,24 @@ MonoBehaviour:
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 1041286217044852751
+  - rid: 3125924005513003016
   references:
     version: 2
     RefIds:
-    - rid: 1041286217044852751
+    - rid: 3125924005513003016
       type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
+        <Projectile>k__BackingField: {fileID: 5894721139240808199, guid: 1b14bde7ae2a951418193c6439754020,
           type: 3}
-        <ProjectileShootPoint>k__BackingField: 2
+        <ProjectileShootPoint>k__BackingField: 3
         <HitEffectPoint>k__BackingField: 2
         <EffectsOnHit>k__BackingField:
-        - rid: 3125923934808571906
-    - rid: 3125923934808571906
+        - rid: 3125924005513003072
+    - rid: 3125924005513003072
       type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <HitEffect>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
-          type: 3}
-        <HitEffectPoint>k__BackingField: 2
-        <DamageAmount>k__BackingField:
-          Stat: 4
-          BaseValue: 0
-          MultValue: 1
+        <BaseDamageAmount>k__BackingField: 10
+        <AttackPowerMultiplication>k__BackingField: 0
+        <PenetrationPercent>k__BackingField: 1

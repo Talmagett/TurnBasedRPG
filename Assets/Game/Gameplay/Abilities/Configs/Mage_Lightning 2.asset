@@ -27,16 +27,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3125923962019381284
-      type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
-          type: 3}
-        <ProjectileShootPoint>k__BackingField: 2
-        <HitEffectPoint>k__BackingField: 2
-        <EffectsOnHit>k__BackingField:
-        - rid: 3125923962019381292
     - rid: 3125923962019381292
       type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
@@ -56,4 +46,14 @@ MonoBehaviour:
         Count: 5
         Delay: 0.3
         Effects:
-        - rid: 3125923962019381284
+        - rid: 3125924005513003015
+    - rid: 3125924005513003015
+      type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Projectile>k__BackingField: {fileID: 5964134297576388765, guid: c4026839b4979a24ab1acfca78aa1cfa,
+          type: 3}
+        <ProjectileShootPoint>k__BackingField: 2
+        <HitEffectPoint>k__BackingField: 2
+        <EffectsOnHit>k__BackingField:
+        - rid: 3125923962019381292

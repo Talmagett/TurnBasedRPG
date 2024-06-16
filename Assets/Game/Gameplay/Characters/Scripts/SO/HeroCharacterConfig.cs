@@ -19,6 +19,7 @@ namespace Game.Gameplay.Characters.Scripts.SO
             return new List<object>()
             {
                 Prefab,
+                new Component_Effects(),
                 new Component_Data(ComponentData.name,ComponentData.description,ComponentData.icon),
                 new Component_ID(ComponentID.id.Value),
                 new Component_Life(ComponentLife.maxHealth.Value),

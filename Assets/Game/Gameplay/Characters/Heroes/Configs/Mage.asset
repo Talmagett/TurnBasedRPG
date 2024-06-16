@@ -21,7 +21,7 @@ MonoBehaviour:
     isDead:
       value: 0
     maxHealth:
-      value: 100
+      value: 72
     health:
       value: 0
   <ComponentMana>k__BackingField:
@@ -85,7 +85,13 @@ MonoBehaviour:
       defaultLevel: 2
       maxLevel: 4
     - abilities:
-      - abilityConfig: {fileID: 11400000, guid: 8308e51559033e442bcddd596cf3833a,
+      - abilityConfig: {fileID: 11400000, guid: 6c89d5af21791d1448d31db744df14ea,
+          type: 2}
+        cost: 0
+      defaultLevel: 1
+      maxLevel: 1
+    - abilities:
+      - abilityConfig: {fileID: 11400000, guid: 369ec3d223568194184efdcf1c03040e,
           type: 2}
         cost: 0
       defaultLevel: 1

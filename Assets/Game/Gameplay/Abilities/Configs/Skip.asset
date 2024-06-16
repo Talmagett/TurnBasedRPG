@@ -18,16 +18,18 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 21300000, guid: ca2d9c24897e8c34b94dedbaa32f70d7,
     type: 3}
   <TurnEnergyCost>k__BackingField: 3
-  <TurnProcessTime>k__BackingField: 2
+  <TurnProcessTime>k__BackingField: 1
   <ManaCost>k__BackingField: 0
   <TargetType>k__BackingField: 0
   <AnimationKey>k__BackingField: 0
   Effects:
-  - rid: 3125923793753604096
+  - rid: 3125924005513003069
   references:
     version: 2
     RefIds:
-    - rid: 3125923793753604096
+    - rid: 3125924005513003069
       type: {class: ShieldEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
-      data: 
+      data:
+        <Amount>k__BackingField: 10
+        <Duration>k__BackingField: 3

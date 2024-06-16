@@ -10,9 +10,15 @@ namespace Game.Gameplay.EventBus.Events.Effects
     {
         public IEntity Source { get; set; }
         public IEntity Target { get; set; }
+       
+        [field: SerializeField] public GameObject Projectile { get; private set; }
+        [field: SerializeField] public BodyParts.Key ProjectileShootPoint { get; private set; }
+        [field: SerializeField] public BodyParts.Key HitEffectPoint { get; private set; }
+        [field: SerializeReference] public IEffect[] EffectsOnHit { get; private set; }
+        
         public IEffect Clone()
         {
-            var effect = new ShootProjectileEffectEvent
+            return new ShootProjectileEffectEvent
             {
                 Source = Source,
                 Target = Target,
@@ -21,12 +27,7 @@ namespace Game.Gameplay.EventBus.Events.Effects
                 HitEffectPoint = HitEffectPoint,
                 EffectsOnHit = EffectsOnHit
             };
-            return effect;
         }
 
-        [field: SerializeField] public GameObject Projectile { get; private set; }
-        [field: SerializeField] public BodyParts.Key ProjectileShootPoint { get; private set; }
-        [field: SerializeField] public BodyParts.Key HitEffectPoint { get; private set; }
-        [field: SerializeReference] public IEffect[] EffectsOnHit { get; private set; }
     }
 }
