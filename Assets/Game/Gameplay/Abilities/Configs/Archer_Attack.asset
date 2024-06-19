@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
+  m_Name: Archer_Attack
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: Archer_Attack
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: c99d0d71a6b4d484a8e30293dd1d40b4,
+    type: 3}
+  <TurnEnergyCost>k__BackingField: 4
+  <TurnProcessTime>k__BackingField: 2
+  <ManaCost>k__BackingField: 0
+  <TargetType>k__BackingField: 2
+  <AnimationKey>k__BackingField: 0
+  Effects:
+  - rid: 3125924070724206672
+  references:
+    version: 2
+    RefIds:
+    - rid: 3125924070724206621
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <BaseDamageAmount>k__BackingField: 0
+        <AttackPowerMultiplication>k__BackingField: 1
+        <PenetrationPercent>k__BackingField: 0
+    - rid: 3125924070724206668
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 198824816094080230, guid: 21710859533a00746ad2bdd323061a2d,
+          type: 3}
+        <SpawnPoint>k__BackingField: 2
+        <Duration>k__BackingField: 2
+    - rid: 3125924070724206672
+      type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Projectile>k__BackingField: {fileID: 5894721139240808199, guid: 1b14bde7ae2a951418193c6439754020,
+          type: 3}
+        <ProjectileShootPoint>k__BackingField: 3
+        <HitEffectPoint>k__BackingField: 2
+        <ProjectileFlySpeed>k__BackingField: 0.6
+        <EffectsOnHit>k__BackingField:
+        - rid: 3125924070724206621
+        - rid: 3125924070724206668
+        - rid: 3125924070724206674
+    - rid: 3125924070724206674
+      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <AudioClip>k__BackingField: {fileID: 8300000, guid: 12eb3013d9edb1340aa491f446adf8a0,
+          type: 3}

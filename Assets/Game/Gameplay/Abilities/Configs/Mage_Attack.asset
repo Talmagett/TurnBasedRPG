@@ -12,32 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
   m_Name: Mage_Attack
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: FireBall
+  <ID>k__BackingField: Mage_Attack
   <Name>k__BackingField: 
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 33556251f01a04443a27d557c874eab4,
+  <Icon>k__BackingField: {fileID: 21300000, guid: fba90a83debdef046be4eb72b199cb30,
     type: 3}
   <TurnEnergyCost>k__BackingField: 4
   <TurnProcessTime>k__BackingField: 2
-  <ManaCost>k__BackingField: 10
+  <ManaCost>k__BackingField: -10
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 3125924005513003046
+  - rid: 3125924070724206769
   references:
     version: 2
     RefIds:
-    - rid: 3125924005513003046
-      type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
-          type: 3}
-        <ProjectileShootPoint>k__BackingField: 2
-        <HitEffectPoint>k__BackingField: 2
-        <EffectsOnHit>k__BackingField:
-        - rid: 3125924005513003073
-        - rid: 3125924005513003050
     - rid: 3125924005513003050
       type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
@@ -46,10 +35,36 @@ MonoBehaviour:
           type: 3}
         <SpawnPoint>k__BackingField: 2
         <Duration>k__BackingField: 2
-    - rid: 3125924005513003073
+    - rid: 3125924070724206763
       type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
         <BaseDamageAmount>k__BackingField: 20
-        <AttackPowerMultiplication>k__BackingField: 0
-        <PenetrationPercent>k__BackingField: 0
+        <AttackPowerMultiplication>k__BackingField: 1
+        <PenetrationPercent>k__BackingField: 1
+    - rid: 3125924070724206769
+      type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Projectile>k__BackingField: {fileID: 7591578632183582658, guid: c7ac5dce14de38d47a1152b4e41576c9,
+          type: 3}
+        <ProjectileShootPoint>k__BackingField: 3
+        <HitEffectPoint>k__BackingField: 2
+        <ProjectileFlySpeed>k__BackingField: 0.5
+        <EffectsOnHit>k__BackingField:
+        - rid: 3125924070724206763
+        - rid: 3125924005513003050
+        - rid: 3125924070724206948
+        - rid: 3125924070724206967
+    - rid: 3125924070724206948
+      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <AudioClip>k__BackingField: {fileID: 8300000, guid: f1b038e983a730d44bdebdc23af51ce8,
+          type: 3}
+    - rid: 3125924070724206967
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 0}
+        <SpawnPoint>k__BackingField: 2
+        <Duration>k__BackingField: 2

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
+  m_Name: Boss_Attack
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: Boss_Attack
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 2877471580529523173, guid: c15ba1dcb835b28498cc6239dc893a2e,
+    type: 3}
+  <TurnEnergyCost>k__BackingField: 4
+  <TurnProcessTime>k__BackingField: 2
+  <ManaCost>k__BackingField: 10
+  <TargetType>k__BackingField: 2
+  <AnimationKey>k__BackingField: 3
+  Effects:
+  - rid: 3125924070724207141
+  - rid: 3125924070724206609
+  - rid: 3125924070724207006
+  - rid: 3125924070724206611
+  references:
+    version: 2
+    RefIds:
+    - rid: 3125924070724206607
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <BaseDamageAmount>k__BackingField: 0
+        <AttackPowerMultiplication>k__BackingField: 1.5
+        <PenetrationPercent>k__BackingField: 1
+    - rid: 3125924070724206609
+      type: {class: StunEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 1
+    - rid: 3125924070724206611
+      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <AudioClip>k__BackingField: {fileID: 0}
+    - rid: 3125924070724207006
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 0}
+        <SpawnPoint>k__BackingField: 0
+        <Duration>k__BackingField: 2
+    - rid: 3125924070724207141
+      type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
+          type: 3}
+        <ProjectileShootPoint>k__BackingField: 3
+        <HitEffectPoint>k__BackingField: 2
+        <ProjectileFlySpeed>k__BackingField: 0.3
+        <EffectsOnHit>k__BackingField:
+        - rid: 3125924070724206607

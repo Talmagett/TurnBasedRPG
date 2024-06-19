@@ -34,7 +34,7 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
 
             var projectile = Object.Instantiate(evt.Projectile, shootPoint.position, Quaternion.identity);
             projectile.transform.LookAt(evt.Target.Get<Transform>().position);
-            Tween.Position(projectile.transform, effectPoint.position, 0.7f, Ease.InSine).OnComplete(() =>
+            Tween.Position(projectile.transform, effectPoint.position, evt.ProjectileFlySpeed, Ease.InSine).OnComplete(() =>
             {
                 Object.Destroy(projectile);
                 OnHit(evt);

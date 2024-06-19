@@ -12,18 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
   m_Name: Mage_IcePrison 2
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: IcePrison
+  <ID>k__BackingField: Mage_IcePrison 2
   <Name>k__BackingField: 
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 040b6c24319e73e41aefc8e4cb34c21a,
     type: 3}
   <TurnEnergyCost>k__BackingField: 3
   <TurnProcessTime>k__BackingField: 2
-  <ManaCost>k__BackingField: 10
+  <ManaCost>k__BackingField: 7
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 3
   Effects:
   - rid: 3125924005513003019
+  - rid: 3125924070724206953
+  - rid: 3125924070724206993
   references:
     version: 2
     RefIds:
@@ -31,5 +33,15 @@ MonoBehaviour:
       type: {class: StunEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <Duration>k__BackingField: 3
-        <HitEffect>k__BackingField: {fileID: 7386986889835085215, guid: 33b9fa22636e1434e824f648a7fa0e0e,
+    - rid: 3125924070724206953
+      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <AudioClip>k__BackingField: {fileID: 8300000, guid: 168b7154c2d19b841a66f9f8391f0cd9,
           type: 3}
+    - rid: 3125924070724206993
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 0}
+        <SpawnPoint>k__BackingField: 2
+        <Duration>k__BackingField: 2

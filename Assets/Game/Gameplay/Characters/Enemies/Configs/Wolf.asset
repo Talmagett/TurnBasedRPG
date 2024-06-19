@@ -31,7 +31,7 @@ MonoBehaviour:
       value: 0
   <ComponentAttack>k__BackingField:
     weapon:
-      value: {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
+      value: {fileID: 11400000, guid: e3047b836a434924ba22cdcbaaac9d9f, type: 2}
     attackPower:
       value: 32
     criticalChance:
@@ -40,7 +40,7 @@ MonoBehaviour:
       value: 0
   <ComponentDefense>k__BackingField:
     defense:
-      value: 12
+      value: 16
     evasion:
       value: 0
   <ComponentOwner>k__BackingField:

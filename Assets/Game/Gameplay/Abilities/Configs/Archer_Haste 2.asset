@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
+  m_Name: Archer_Haste 2
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: Archer_Haste 2
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 44f3f521bf18ab0478e503d9c2b160e7,
+    type: 3}
+  <TurnEnergyCost>k__BackingField: 5
+  <TurnProcessTime>k__BackingField: 2
+  <ManaCost>k__BackingField: 15
+  <TargetType>k__BackingField: 0
+  <AnimationKey>k__BackingField: 4
+  Effects:
+  - rid: 3125924070724206682
+  references:
+    version: 2
+    RefIds:
+    - rid: 3125924070724206602
+      type: {class: HasteEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 2
+    - rid: 3125924070724206660
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 198064705231385314, guid: 3e4e9c6a4ac7e10418454a21dd359975,
+          type: 3}
+        <SpawnPoint>k__BackingField: 0
+        <Duration>k__BackingField: 2
+    - rid: 3125924070724206682
+      type: {class: MultiEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        AbilityTargetType: 3
+        Count: 99
+        Delay: 0
+        Effects:
+        - rid: 3125924070724206602
+        - rid: 3125924070724206660
+        - rid: 3125924070724206685
+    - rid: 3125924070724206685
+      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <AudioClip>k__BackingField: {fileID: 8300000, guid: c81e565c6d063e44f99edd228404c571,
+          type: 3}

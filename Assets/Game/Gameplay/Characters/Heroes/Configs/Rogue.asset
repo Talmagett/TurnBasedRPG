@@ -57,10 +57,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8149a8f61066f874dadd22f7462f6703, type: 2}
   - {fileID: 11400000, guid: f76bd4d0013238d45b50cc4c846de7d9, type: 2}
   <AbilitiesPack>k__BackingField:
-    abilities:
-    - abilities:
-      - abilityConfig: {fileID: 11400000, guid: 8308e51559033e442bcddd596cf3833a,
-          type: 2}
-        cost: 0
-      defaultLevel: 1
-      maxLevel: 1
+    abilities: []

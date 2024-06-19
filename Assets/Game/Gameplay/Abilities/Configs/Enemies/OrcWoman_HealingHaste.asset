@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
+  m_Name: OrcWoman_HealingHaste
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: OrcWoman_HealingHaste
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 2877471580529523173, guid: c15ba1dcb835b28498cc6239dc893a2e,
+    type: 3}
+  <TurnEnergyCost>k__BackingField: 4
+  <TurnProcessTime>k__BackingField: 2
+  <ManaCost>k__BackingField: 10
+  <TargetType>k__BackingField: 3
+  <AnimationKey>k__BackingField: 0
+  Effects:
+  - rid: 3125924070724207145
+  references:
+    version: 2
+    RefIds:
+    - rid: 3125924070724207128
+      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <AudioClip>k__BackingField: {fileID: 8300000, guid: 55c745a0fc7464e448b6120951de8779,
+          type: 3}
+    - rid: 3125924070724207134
+      type: {class: HealEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <BaseHealingAmount>k__BackingField: 10
+        <MaxHealthMultiplication>k__BackingField: 0.05
+    - rid: 3125924070724207135
+      type: {class: HasteEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 1
+    - rid: 3125924070724207136
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 0}
+        <SpawnPoint>k__BackingField: 2
+        <Duration>k__BackingField: 2
+    - rid: 3125924070724207145
+      type: {class: MultiEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        AbilityTargetType: 3
+        Count: 99
+        Delay: 0
+        Effects:
+        - rid: 3125924070724207128
+        - rid: 3125924070724207136
+        - rid: 3125924070724207135
+        - rid: 3125924070724207134

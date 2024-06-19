@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c427751722cc483097f5add3687284eb, type: 3}
+  m_Name: Rogue_PoisonStrike 1
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: Rogue_PoisonStrike 1
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: c370ab185ab9cb145acd0fc412e9d056,
+    type: 3}
+  <TurnEnergyCost>k__BackingField: 3
+  <TurnProcessTime>k__BackingField: 2
+  <ManaCost>k__BackingField: 6
+  <TargetType>k__BackingField: 2
+  <AnimationKey>k__BackingField: 0
+  Effects:
+  - rid: 3125924070724206887
+  - rid: 3125924070724206956
+  - rid: 3125924070724207000
+  - rid: 3125924070724206884
+  references:
+    version: 2
+    RefIds:
+    - rid: 3125924070724206884
+      type: {class: DoTEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 2
+        <Damage>k__BackingField: 10
+        <ProcEffect>k__BackingField: {fileID: 0}
+    - rid: 3125924070724206887
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <BaseDamageAmount>k__BackingField: 0
+        <AttackPowerMultiplication>k__BackingField: 1
+        <PenetrationPercent>k__BackingField: 0
+    - rid: 3125924070724206956
+      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <AudioClip>k__BackingField: {fileID: 8300000, guid: 6464c7724f1fd3743aaee0a1294259b1,
+          type: 3}
+    - rid: 3125924070724207000
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 0}
+        <SpawnPoint>k__BackingField: 2
+        <Duration>k__BackingField: 2

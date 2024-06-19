@@ -21,26 +21,26 @@ MonoBehaviour:
     isDead:
       value: 0
     maxHealth:
-      value: 120
+      value: 40
     health:
       value: 0
   <ComponentMana>k__BackingField:
     maxMana:
-      value: 45
+      value: 34
     mana:
       value: 0
   <ComponentAttack>k__BackingField:
     weapon:
-      value: {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
+      value: {fileID: 11400000, guid: 2cf4d8f43d9f8654abcf0ffc8b42d97e, type: 2}
     attackPower:
-      value: 32
+      value: 8
     criticalChance:
       value: 0
     criticalRate:
       value: 0
   <ComponentDefense>k__BackingField:
     defense:
-      value: 12
+      value: 7
     evasion:
       value: 0
   <ComponentOwner>k__BackingField:

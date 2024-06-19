@@ -14,6 +14,7 @@ namespace Game.Gameplay.EventBus.Events.Effects
         [field: SerializeField] public GameObject Projectile { get; private set; }
         [field: SerializeField] public BodyParts.Key ProjectileShootPoint { get; private set; }
         [field: SerializeField] public BodyParts.Key HitEffectPoint { get; private set; }
+        [field: SerializeField] public float ProjectileFlySpeed { get; private set; }
         [field: SerializeReference] public IEffect[] EffectsOnHit { get; private set; }
         
         public IEffect Clone()
@@ -24,6 +25,7 @@ namespace Game.Gameplay.EventBus.Events.Effects
                 Target = Target,
                 Projectile = Projectile,
                 ProjectileShootPoint = ProjectileShootPoint,
+                ProjectileFlySpeed = ProjectileFlySpeed,
                 HitEffectPoint = HitEffectPoint,
                 EffectsOnHit = EffectsOnHit
             };

@@ -59,14 +59,26 @@ MonoBehaviour:
   <AbilitiesPack>k__BackingField:
     abilities:
     - abilities:
-      - abilityConfig: {fileID: 11400000, guid: 8308e51559033e442bcddd596cf3833a,
-          type: 2}
-        cost: 0
-      defaultLevel: 1
-      maxLevel: 1
-    - abilities:
       - abilityConfig: {fileID: 11400000, guid: c28dcac1371f20b4fb246981641d1308,
           type: 2}
         cost: 0
+      - abilityConfig: {fileID: 11400000, guid: e7726848247e18c49b9eeea7019ecc54,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: 28655ed3e3526d147a6ed9881834c739,
+          type: 2}
+        cost: 0
       defaultLevel: 1
-      maxLevel: 1
+      maxLevel: 3
+    - abilities:
+      - abilityConfig: {fileID: 11400000, guid: bcf2eb0a0b05fa64ab295d6f078b9429,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: 579f71b4ae92f9647ae01b34f7710e5a,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: de95b1f2ff485db40a38c5f5bb4e1f15,
+          type: 2}
+        cost: 0
+      defaultLevel: 1
+      maxLevel: 3
