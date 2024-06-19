@@ -18,8 +18,6 @@ MonoBehaviour:
     id:
       value: archer
   <ComponentLife>k__BackingField:
-    isDead:
-      value: 0
     maxHealth:
       value: 94
     health:
@@ -33,7 +31,7 @@ MonoBehaviour:
     weapon:
       value: {fileID: 11400000, guid: 823d042e51b75f94fa4ed84fb478d871, type: 2}
     attackPower:
-      value: 12
+      value: 10
     criticalChance:
       value: 0
     criticalRate:

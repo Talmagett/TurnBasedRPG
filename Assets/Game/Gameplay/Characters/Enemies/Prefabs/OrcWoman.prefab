@@ -56,7 +56,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 1b8d97d2bb614c045bc575d744f43cca,
+      objectReference: {fileID: 22100000, guid: 50f194f4dcb2ae44db5ceb151a6ef648,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -253,7 +253,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6005569666195928798, guid: 00eb47580f7af8147a76369fe7bf55b6,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2793376408102897320}
+      addedObject: {fileID: 9143088198489984212}
   m_SourcePrefab: {fileID: 100100000, guid: 00eb47580f7af8147a76369fe7bf55b6, type: 3}
 --- !u!4 &1322645727579665181 stripped
 Transform:
@@ -279,7 +279,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7641726366124903732}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2793376408102897320
+--- !u!114 &9143088198489984212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,7 +288,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4131151533454965738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5480b360c70490497d4423830c286be, type: 3}
+  m_Script: {fileID: 11500000, guid: d6f4f1b112d64ee8b8c9f39dde25235c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dealDamageAbility: {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
+  dealDamageAbility: {fileID: 11400000, guid: 2c42a396488ac89478a11496114d1015, type: 2}
+  healingHasteAbility: {fileID: 11400000, guid: bc448cae32cbad642a576b596f6ebb5c,
+    type: 2}

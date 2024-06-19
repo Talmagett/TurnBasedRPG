@@ -27,7 +27,7 @@ MonoBehaviour:
     flags: 12
     components:
     - rid: 1041286217044852836
-    - rid: 1041286575896395842
+    - rid: 3125924070724207359
   references:
     version: 2
     RefIds:
@@ -35,9 +35,8 @@ MonoBehaviour:
       type: {class: Component_EquipmentType, ns: Game.Meta.Inventory.Equipment, asm: Equipment}
       data:
         <Type>k__BackingField: 5
-    - rid: 1041286575896395842
-      type: {class: AbilityStat, ns: Game.Gameplay.Abilities.Scripts, asm: Assembly-CSharp}
+    - rid: 3125924070724207359
+      type: {class: StatAdditive, ns: Game.Gameplay.Abilities.Scripts, asm: Assembly-CSharp}
       data:
         Stat: 0
-        BaseValue: 0
-        MultValue: 0
+        Value: 33

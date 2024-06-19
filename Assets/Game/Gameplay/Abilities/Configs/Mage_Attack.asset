@@ -19,30 +19,20 @@ MonoBehaviour:
     type: 3}
   <TurnEnergyCost>k__BackingField: 4
   <TurnProcessTime>k__BackingField: 2
-  <ManaCost>k__BackingField: -10
+  <ManaCost>k__BackingField: 0
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 3125924070724206769
+  - rid: 3125924070724207162
   references:
     version: 2
     RefIds:
-    - rid: 3125924005513003050
-      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
+    - rid: 3125924070724206948
+      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
-        <Particle>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
+        <AudioClip>k__BackingField: {fileID: 8300000, guid: f1b038e983a730d44bdebdc23af51ce8,
           type: 3}
-        <SpawnPoint>k__BackingField: 2
-        <Duration>k__BackingField: 2
-    - rid: 3125924070724206763
-      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <BaseDamageAmount>k__BackingField: 20
-        <AttackPowerMultiplication>k__BackingField: 1
-        <PenetrationPercent>k__BackingField: 1
-    - rid: 3125924070724206769
+    - rid: 3125924070724207162
       type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
@@ -52,19 +42,21 @@ MonoBehaviour:
         <HitEffectPoint>k__BackingField: 2
         <ProjectileFlySpeed>k__BackingField: 0.5
         <EffectsOnHit>k__BackingField:
-        - rid: 3125924070724206763
-        - rid: 3125924005513003050
+        - rid: 3125924070724207216
+        - rid: 3125924070724207164
         - rid: 3125924070724206948
-        - rid: 3125924070724206967
-    - rid: 3125924070724206948
-      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
-      data:
-        <AudioClip>k__BackingField: {fileID: 8300000, guid: f1b038e983a730d44bdebdc23af51ce8,
-          type: 3}
-    - rid: 3125924070724206967
+    - rid: 3125924070724207164
       type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <Particle>k__BackingField: {fileID: 0}
+        <Particle>k__BackingField: {fileID: 198477826158454734, guid: 800cddb992d3f5e4eb2348b90447f4a7,
+          type: 3}
         <SpawnPoint>k__BackingField: 2
         <Duration>k__BackingField: 2
+    - rid: 3125924070724207216
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <BaseDamageAmount>k__BackingField: 0
+        <AttackPowerMultiplication>k__BackingField: 1
+        <PenetrationPercent>k__BackingField: 0.5

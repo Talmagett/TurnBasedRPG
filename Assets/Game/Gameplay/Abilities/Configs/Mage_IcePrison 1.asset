@@ -17,7 +17,7 @@ MonoBehaviour:
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 040b6c24319e73e41aefc8e4cb34c21a,
     type: 3}
-  <TurnEnergyCost>k__BackingField: 3
+  <TurnEnergyCost>k__BackingField: 5
   <TurnProcessTime>k__BackingField: 2
   <ManaCost>k__BackingField: 7
   <TargetType>k__BackingField: 2
@@ -25,7 +25,8 @@ MonoBehaviour:
   Effects:
   - rid: 3125924005513003019
   - rid: 3125924070724206952
-  - rid: 3125924070724206992
+  - rid: 3125924070724207170
+  - rid: 3125924070724207289
   references:
     version: 2
     RefIds:
@@ -38,10 +39,18 @@ MonoBehaviour:
       data:
         <AudioClip>k__BackingField: {fileID: 8300000, guid: 168b7154c2d19b841a66f9f8391f0cd9,
           type: 3}
-    - rid: 3125924070724206992
+    - rid: 3125924070724207170
       type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <Particle>k__BackingField: {fileID: 0}
-        <SpawnPoint>k__BackingField: 2
+        <Particle>k__BackingField: {fileID: 7386986889835085215, guid: 33b9fa22636e1434e824f648a7fa0e0e,
+          type: 3}
+        <SpawnPoint>k__BackingField: 0
         <Duration>k__BackingField: 2
+    - rid: 3125924070724207289
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <BaseDamageAmount>k__BackingField: 10
+        <AttackPowerMultiplication>k__BackingField: 0.4
+        <PenetrationPercent>k__BackingField: 1

@@ -12,35 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8080e51a88486da961815da53317a7, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: 8151d22b0b8b67b409b93ae07adb5078,
+  <Prefab>k__BackingField: {fileID: 2181775178617024246, guid: 3b8d6c7bfd582f44bbeec77b77f41bc3,
     type: 3}
   <ComponentID>k__BackingField:
     id:
       value: Boss
   <ComponentLife>k__BackingField:
-    isDead:
-      value: 0
     maxHealth:
-      value: 183
+      value: 120
     health:
       value: 0
   <ComponentMana>k__BackingField:
     maxMana:
-      value: 120
+      value: 115
     mana:
       value: 0
   <ComponentAttack>k__BackingField:
     weapon:
       value: {fileID: 11400000, guid: 8201ca5297d477d4fb0aeabccf2d3b87, type: 2}
     attackPower:
-      value: 24
+      value: 12
     criticalChance:
       value: 0
     criticalRate:
       value: 0
   <ComponentDefense>k__BackingField:
     defense:
-      value: 25
+      value: 15
     evasion:
       value: 0
   <ComponentOwner>k__BackingField:

@@ -16,8 +16,8 @@ MonoBehaviour:
   <Environment>k__BackingField: {fileID: 2006802663614620264, guid: 079c97de789523e439e29a2cee1eb6b4,
     type: 3}
   <Enemies>k__BackingField:
-  - {fileID: 11400000, guid: bf514bff871d9054ca10e7c6b9b96e7a, type: 2}
+  - {fileID: 11400000, guid: 6d4f80cfdadfe384fa10088305501cfd, type: 2}
+  - {fileID: 11400000, guid: d390d0ea08454cc44a1d3a978560d651, type: 2}
   - {fileID: 11400000, guid: d390d0ea08454cc44a1d3a978560d651, type: 2}
   <LootItems>k__BackingField:
   - {fileID: 11400000, guid: 807a04a42969e5f4cb6246186cc96061, type: 2}
-  - {fileID: 11400000, guid: c74341c466e997f4fa7a37c19200b737, type: 2}

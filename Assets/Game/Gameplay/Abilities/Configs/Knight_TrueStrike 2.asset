@@ -23,19 +23,12 @@ MonoBehaviour:
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 0
   Effects:
-  - rid: 3125924070724206754
+  - rid: 3125924070724207213
   - rid: 3125924070724206946
   - rid: 3125924070724207150
   references:
     version: 2
     RefIds:
-    - rid: 3125924070724206754
-      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <BaseDamageAmount>k__BackingField: 0
-        <AttackPowerMultiplication>k__BackingField: 1.5
-        <PenetrationPercent>k__BackingField: 1
     - rid: 3125924070724206946
       type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
@@ -49,3 +42,10 @@ MonoBehaviour:
           type: 3}
         <SpawnPoint>k__BackingField: 2
         <Duration>k__BackingField: 2
+    - rid: 3125924070724207213
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <BaseDamageAmount>k__BackingField: 0
+        <AttackPowerMultiplication>k__BackingField: 1.6
+        <PenetrationPercent>k__BackingField: 1

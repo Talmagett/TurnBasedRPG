@@ -23,18 +23,10 @@ MonoBehaviour:
   <TargetType>k__BackingField: 2
   <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 3125924070724207140
+  - rid: 3125924070724207344
   references:
     version: 2
     RefIds:
-    - rid: 3125924005513003050
-      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <Particle>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
-          type: 3}
-        <SpawnPoint>k__BackingField: 2
-        <Duration>k__BackingField: 2
     - rid: 3125924005513003073
       type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
@@ -42,20 +34,29 @@ MonoBehaviour:
         <BaseDamageAmount>k__BackingField: 20
         <AttackPowerMultiplication>k__BackingField: 0
         <PenetrationPercent>k__BackingField: 0
-    - rid: 3125924070724207138
+    - rid: 3125924070724207312
       type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
-        <AudioClip>k__BackingField: {fileID: 0}
-    - rid: 3125924070724207140
+        <AudioClip>k__BackingField: {fileID: 8300000, guid: 2c4b4be36545b8241ba9ac14147378e6,
+          type: 3}
+    - rid: 3125924070724207343
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 198339608736465228, guid: 33cfc2755a55b7e4c86c9d7018efbaaa,
+          type: 3}
+        <SpawnPoint>k__BackingField: 2
+        <Duration>k__BackingField: 2
+    - rid: 3125924070724207344
       type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <Projectile>k__BackingField: {fileID: 1843736964102595771, guid: aadd7c0fe95bad546a1c9fa3506412f7,
+        <Projectile>k__BackingField: {fileID: 4653950197896148669, guid: 96efc9b5b5738584ea8ca446b616efc4,
           type: 3}
         <ProjectileShootPoint>k__BackingField: 2
         <HitEffectPoint>k__BackingField: 2
         <ProjectileFlySpeed>k__BackingField: 0.7
         <EffectsOnHit>k__BackingField:
         - rid: 3125924005513003073
-        - rid: 3125924005513003050
-        - rid: 3125924070724207138
+        - rid: 3125924070724207343
+        - rid: 3125924070724207312

@@ -25,6 +25,7 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
         private void Cast(CastAbilityEvent evt)
         {
             evt.Source.Get<AnimatorDispatcher>().ClearListeners();
+
             foreach (var effect in evt.AbilityConfig.Effects)
             {
                 var clone = effect.Clone();

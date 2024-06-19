@@ -21,37 +21,39 @@ MonoBehaviour:
   <TurnProcessTime>k__BackingField: 2
   <ManaCost>k__BackingField: 6
   <TargetType>k__BackingField: 2
-  <AnimationKey>k__BackingField: 0
+  <AnimationKey>k__BackingField: 3
   Effects:
-  - rid: 3125924070724206888
+  - rid: 3125924070724207245
   - rid: 3125924070724206957
-  - rid: 3125924070724207001
-  - rid: 3125924070724206885
+  - rid: 3125924070724207190
+  - rid: 3125924070724207295
   references:
     version: 2
     RefIds:
-    - rid: 3125924070724206885
-      type: {class: DoTEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
-      data:
-        <Duration>k__BackingField: 2
-        <Damage>k__BackingField: 10
-        <ProcEffect>k__BackingField: {fileID: 0}
-    - rid: 3125924070724206888
-      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <BaseDamageAmount>k__BackingField: 0
-        <AttackPowerMultiplication>k__BackingField: 1
-        <PenetrationPercent>k__BackingField: 0
     - rid: 3125924070724206957
       type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <AudioClip>k__BackingField: {fileID: 8300000, guid: 6464c7724f1fd3743aaee0a1294259b1,
           type: 3}
-    - rid: 3125924070724207001
+    - rid: 3125924070724207190
       type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <Particle>k__BackingField: {fileID: 0}
-        <SpawnPoint>k__BackingField: 2
+        <Particle>k__BackingField: {fileID: 4442523183756723818, guid: aa012f4fcb21b954dae9e754465d7a6a,
+          type: 3}
+        <SpawnPoint>k__BackingField: 0
         <Duration>k__BackingField: 2
+    - rid: 3125924070724207245
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <BaseDamageAmount>k__BackingField: 7
+        <AttackPowerMultiplication>k__BackingField: 0
+        <PenetrationPercent>k__BackingField: 0
+    - rid: 3125924070724207295
+      type: {class: DoTEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 2
+        <Damage>k__BackingField: 5
+        <ProcEffect>k__BackingField: {fileID: 9194204278519012135, guid: cdcab912c9194cd47a19c3de9e22691c,
+          type: 3}

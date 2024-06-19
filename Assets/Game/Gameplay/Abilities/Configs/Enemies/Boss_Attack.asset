@@ -25,33 +25,15 @@ MonoBehaviour:
   Effects:
   - rid: 3125924070724207141
   - rid: 3125924070724206609
-  - rid: 3125924070724207006
-  - rid: 3125924070724206611
+  - rid: 3125924070724207329
+  - rid: 3125924070724207328
   references:
     version: 2
     RefIds:
-    - rid: 3125924070724206607
-      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <BaseDamageAmount>k__BackingField: 0
-        <AttackPowerMultiplication>k__BackingField: 1.5
-        <PenetrationPercent>k__BackingField: 1
     - rid: 3125924070724206609
       type: {class: StunEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <Duration>k__BackingField: 1
-    - rid: 3125924070724206611
-      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
-      data:
-        <AudioClip>k__BackingField: {fileID: 0}
-    - rid: 3125924070724207006
-      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <Particle>k__BackingField: {fileID: 0}
-        <SpawnPoint>k__BackingField: 0
-        <Duration>k__BackingField: 2
     - rid: 3125924070724207141
       type: {class: ShootProjectileEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
@@ -62,4 +44,24 @@ MonoBehaviour:
         <HitEffectPoint>k__BackingField: 2
         <ProjectileFlySpeed>k__BackingField: 0.3
         <EffectsOnHit>k__BackingField:
-        - rid: 3125924070724206607
+        - rid: 3125924070724207361
+    - rid: 3125924070724207328
+      type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <AudioClip>k__BackingField: {fileID: 8300000, guid: bfca528ec585a864ebff437b4ab6d80e,
+          type: 3}
+    - rid: 3125924070724207329
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 198342838203166320, guid: aab2daf1fd2b23f4a9bdbbb38fc95704,
+          type: 3}
+        <SpawnPoint>k__BackingField: 0
+        <Duration>k__BackingField: 2
+    - rid: 3125924070724207361
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <BaseDamageAmount>k__BackingField: 0
+        <AttackPowerMultiplication>k__BackingField: 1
+        <PenetrationPercent>k__BackingField: 0

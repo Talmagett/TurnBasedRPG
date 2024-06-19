@@ -18,5 +18,4 @@ MonoBehaviour:
   <Enemies>k__BackingField:
   - {fileID: 11400000, guid: d3271481c2649a04bad7ee937ddc0eb1, type: 2}
   <LootItems>k__BackingField:
-  - {fileID: 11400000, guid: 807a04a42969e5f4cb6246186cc96061, type: 2}
-  - {fileID: 11400000, guid: c74341c466e997f4fa7a37c19200b737, type: 2}
+  - {fileID: 11400000, guid: f76bd4d0013238d45b50cc4c846de7d9, type: 2}

@@ -18,8 +18,6 @@ MonoBehaviour:
     id:
       value: rogue
   <ComponentLife>k__BackingField:
-    isDead:
-      value: 0
     maxHealth:
       value: 98
     health:
@@ -31,9 +29,9 @@ MonoBehaviour:
       value: 0
   <ComponentAttack>k__BackingField:
     weapon:
-      value: {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
+      value: {fileID: 11400000, guid: eebc8299e3b97e643bc0f743e57579c3, type: 2}
     attackPower:
-      value: 12
+      value: 11
     criticalChance:
       value: 0
     criticalRate:
@@ -57,4 +55,28 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8149a8f61066f874dadd22f7462f6703, type: 2}
   - {fileID: 11400000, guid: f76bd4d0013238d45b50cc4c846de7d9, type: 2}
   <AbilitiesPack>k__BackingField:
-    abilities: []
+    abilities:
+    - abilities:
+      - abilityConfig: {fileID: 11400000, guid: 68af5ce42a620544eacff63c14ab3901,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: dc9ca3e9f7de3f340b36e4b7d5ddf293,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: 126b5db9e2d187742a688f1571217c42,
+          type: 2}
+        cost: 0
+      defaultLevel: 1
+      maxLevel: 3
+    - abilities:
+      - abilityConfig: {fileID: 11400000, guid: fc50351164bca7e4eaca234c103f6a0e,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: 6d6fdb23cd724ed45938de6f56964b0a,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: 4de4f2d4fe5f7184cbaebdb610b7e915,
+          type: 2}
+        cost: 0
+      defaultLevel: 3
+      maxLevel: 3

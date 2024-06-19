@@ -11,6 +11,7 @@ namespace Game.Gameplay.Characters.Scripts
             var animatorDispatcher = animator.GetComponent<AnimatorDispatcher>();
 
             Add(transform);
+            print(Get<Transform>().transform.name);
             Add(gameObject);
             Add(animator);
             Add(animatorDispatcher);

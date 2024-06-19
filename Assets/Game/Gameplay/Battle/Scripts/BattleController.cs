@@ -73,6 +73,7 @@ namespace Game.Gameplay.Battle
 
         public void SetupBattle(EnemyRiftConfig enemyRiftConfig)
         {
+            _battleContainer.ClearField();
             _battleState = BattleState.Going;
             OnStateChanged?.Invoke(_battleState);
             var environment = Instantiate(enemyRiftConfig.Environment, environmentParent);

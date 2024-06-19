@@ -26,15 +26,18 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
             foreach (var componentEffects in componentEffectsEnumerable)
             {
                 if (!componentEffects.TryGetEffect(out DoTEffect[] effectDots)) continue;
-                
+
                 foreach (var effect in effectDots)
                 {
-                    EventBus.RaiseEvent(new DealDamageEvent(effect.Source, effect.Target, effect.Damage, 1));
+                    EventBus.RaiseEvent(new DealDamageEffectEvent { 
+                        Source = effect.Source, 
+                        Target = effect.Target,
+                        BaseDamageAmount = effect.Damage,
+                        AttackPowerMultiplication = 0,
+                        PenetrationPercent = 1
+                        });
                     EventBus.RaiseEvent(new ParticleEvent(effect.Source,effect.Target,effect.ProcEffect,BodyParts.Key.Chest,2));
                     Debug.Log("tick poison");
-                    effect.Duration--;
-                    if (effect.Duration <= 0)
-                        componentEffects.RemoveEffect(effect);
                 }
             }
         }

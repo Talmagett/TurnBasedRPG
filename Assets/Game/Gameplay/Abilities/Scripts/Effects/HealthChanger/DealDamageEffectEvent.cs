@@ -9,9 +9,9 @@ namespace Game.Gameplay.EventBus.Events.Effects
     [Serializable]
     public struct DealDamageEffectEvent : IEffect
     {
-        [field: SerializeField] public int BaseDamageAmount { get; private set; }
-        [field: SerializeField] public float AttackPowerMultiplication { get; private set; }
-        [field: SerializeField] public float PenetrationPercent { get; private set; }
+        [field: SerializeField] public int BaseDamageAmount { get; set; }
+        [field: SerializeField] public float AttackPowerMultiplication { get; set; }
+        [field: SerializeField] public float PenetrationPercent { get; set; }
 
         public IEntity Source { get; set; }
         public IEntity Target { get; set; }

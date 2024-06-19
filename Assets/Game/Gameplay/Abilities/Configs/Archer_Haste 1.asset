@@ -19,7 +19,7 @@ MonoBehaviour:
     type: 3}
   <TurnEnergyCost>k__BackingField: 5
   <TurnProcessTime>k__BackingField: 2
-  <ManaCost>k__BackingField: 15
+  <ManaCost>k__BackingField: 4
   <TargetType>k__BackingField: 0
   <AnimationKey>k__BackingField: 4
   Effects:

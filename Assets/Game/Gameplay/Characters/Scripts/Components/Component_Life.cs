@@ -8,9 +8,6 @@ namespace Game.Gameplay.Characters.Scripts.Components
     [Serializable]
     public sealed class Component_Life
     {
-        [ReadOnly]
-        public AtomicVariable<bool> isDead = new(false);
-
         public AtomicVariable<int> maxHealth;
         [ReadOnly]
         public AtomicVariable<int> health;

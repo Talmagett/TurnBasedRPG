@@ -18,8 +18,6 @@ MonoBehaviour:
     id:
       value: knight
   <ComponentLife>k__BackingField:
-    isDead:
-      value: 0
     maxHealth:
       value: 114
     health:
@@ -33,7 +31,7 @@ MonoBehaviour:
     weapon:
       value: {fileID: 11400000, guid: 43558c6b6a4a8de489ff7a41ab366289, type: 2}
     attackPower:
-      value: 35
+      value: 14
     criticalChance:
       value: 0
     criticalRate:

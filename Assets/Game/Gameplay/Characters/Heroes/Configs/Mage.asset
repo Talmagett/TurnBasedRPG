@@ -18,8 +18,6 @@ MonoBehaviour:
     id:
       value: mage
   <ComponentLife>k__BackingField:
-    isDead:
-      value: 0
     maxHealth:
       value: 72
     health:
@@ -33,7 +31,7 @@ MonoBehaviour:
     weapon:
       value: {fileID: 11400000, guid: bbe60b761ddcc4348bcd788b5a5171a0, type: 2}
     attackPower:
-      value: 12
+      value: 9
     criticalChance:
       value: 0
     criticalRate:
@@ -58,14 +56,26 @@ MonoBehaviour:
   <AbilitiesPack>k__BackingField:
     abilities:
     - abilities:
-      - abilityConfig: {fileID: 11400000, guid: 6c89d5af21791d1448d31db744df14ea,
+      - abilityConfig: {fileID: 11400000, guid: 95ec1935e29a1e94e88887bd74bdc515,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: 6546a44b1c04cf34dae93ffbe7f1ba56,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: bd916df112d148740814b7d6a4d5b7c9,
           type: 2}
         cost: 0
       defaultLevel: 1
-      maxLevel: 1
+      maxLevel: 3
     - abilities:
       - abilityConfig: {fileID: 11400000, guid: 369ec3d223568194184efdcf1c03040e,
           type: 2}
         cost: 0
+      - abilityConfig: {fileID: 11400000, guid: 3233ebee38e8a5a4b9c0d69ce6c359c3,
+          type: 2}
+        cost: 0
+      - abilityConfig: {fileID: 11400000, guid: 9c483452f01c8304b93287ae17a0dfaf,
+          type: 2}
+        cost: 0
       defaultLevel: 1
-      maxLevel: 1
+      maxLevel: 3

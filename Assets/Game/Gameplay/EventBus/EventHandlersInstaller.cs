@@ -12,7 +12,9 @@ namespace Game.Gameplay.EventBus
             ConfigureTurn(Container);
             ConfigureAbilities(Container);
             ConfigureVisual(Container);
-        } // ReSharper disable Unity.PerformanceAnalysis
+        } 
+        
+        // ReSharper disable Unity.PerformanceAnalysis
         private void ConfigureTurn(DiContainer builder)
         {
             builder.BindInterfacesAndSelfTo<EventBus>().AsSingle().NonLazy();
@@ -25,16 +27,8 @@ namespace Game.Gameplay.EventBus
             builder.BindInterfacesAndSelfTo<NextTurnHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<NextTimeHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DelayedHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<DealDamageHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DestroyCharacterEntityHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<FinishTurnEventHandler>().AsSingle().NonLazy();
-            //builder.BindInterfacesAndSelfTo<DestroyHandler>().AsSingle().NonLazy();
-            /*builder.BindInterfacesAndSelfTo<ApplyDirectionHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<AttackHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<CollideHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<MoveHandler>().AsSingle().NonLazy();
-            builder.BindInterfacesAndSelfTo<ForceDirectionHandler>().AsSingle().NonLazy();
-*/
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -47,8 +41,10 @@ namespace Game.Gameplay.EventBus
             builder.BindInterfacesAndSelfTo<StunEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<HasteEffectHandler>().AsSingle().NonLazy();
             builder.BindInterfacesAndSelfTo<DoTEffectHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<ShieldEffectHandler>().AsSingle().NonLazy();
             
             builder.BindInterfacesAndSelfTo<DotEffectTickerHandler>().AsSingle().NonLazy();
+            builder.BindInterfacesAndSelfTo<EffectTickerHandler>().AsSingle().NonLazy();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis

@@ -8,6 +8,11 @@ namespace Game.Gameplay.EventBus.Handlers.Turn
     public class DoTEffect : IComponent_Effect
     {
         public int Duration { get; set; }
+        public void Tick()
+        {
+            Duration--;
+        }
+
         public readonly int Damage;
         public readonly ParticleSystem ProcEffect;
         public readonly IEntity Source;

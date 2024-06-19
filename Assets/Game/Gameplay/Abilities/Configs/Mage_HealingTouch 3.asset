@@ -19,30 +19,31 @@ MonoBehaviour:
     type: 3}
   <TurnEnergyCost>k__BackingField: 4
   <TurnProcessTime>k__BackingField: 2
-  <ManaCost>k__BackingField: 4
+  <ManaCost>k__BackingField: 8
   <TargetType>k__BackingField: 3
   <AnimationKey>k__BackingField: 0
   Effects:
   - rid: 3125924070724206951
-  - rid: 3125924070724206988
-  - rid: 3125924070724206848
+  - rid: 3125924070724207175
+  - rid: 3125924070724207220
   references:
     version: 2
     RefIds:
-    - rid: 3125924070724206848
-      type: {class: HealEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
-      data:
-        <BaseHealingAmount>k__BackingField: 20
-        <MaxHealthMultiplication>k__BackingField: 0.4
     - rid: 3125924070724206951
       type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <AudioClip>k__BackingField: {fileID: 8300000, guid: a47041ed6119c6b4ab6f9895fe260a60,
           type: 3}
-    - rid: 3125924070724206988
+    - rid: 3125924070724207175
       type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <Particle>k__BackingField: {fileID: 0}
-        <SpawnPoint>k__BackingField: 2
+        <Particle>k__BackingField: {fileID: 6480104881521334907, guid: 691aacc936f27dc47a9ca2034c9934ae,
+          type: 3}
+        <SpawnPoint>k__BackingField: 0
         <Duration>k__BackingField: 2
+    - rid: 3125924070724207220
+      type: {class: HealEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <BaseHealingAmount>k__BackingField: 30
+        <MaxHealthMultiplication>k__BackingField: 0.5

@@ -21,7 +21,7 @@ MonoBehaviour:
   <TurnProcessTime>k__BackingField: 2
   <ManaCost>k__BackingField: 10
   <TargetType>k__BackingField: 3
-  <AnimationKey>k__BackingField: 0
+  <AnimationKey>k__BackingField: 3
   Effects:
   - rid: 3125924070724207145
   references:
@@ -41,13 +41,6 @@ MonoBehaviour:
       type: {class: HasteEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <Duration>k__BackingField: 1
-    - rid: 3125924070724207136
-      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <Particle>k__BackingField: {fileID: 0}
-        <SpawnPoint>k__BackingField: 2
-        <Duration>k__BackingField: 2
     - rid: 3125924070724207145
       type: {class: MultiEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
@@ -57,6 +50,14 @@ MonoBehaviour:
         Delay: 0
         Effects:
         - rid: 3125924070724207128
-        - rid: 3125924070724207136
+        - rid: 3125924070724207339
         - rid: 3125924070724207135
         - rid: 3125924070724207134
+    - rid: 3125924070724207339
+      type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <Particle>k__BackingField: {fileID: 85822702401769372, guid: 4d250c8258f61594d8986010bb394b05,
+          type: 3}
+        <SpawnPoint>k__BackingField: 2
+        <Duration>k__BackingField: 2

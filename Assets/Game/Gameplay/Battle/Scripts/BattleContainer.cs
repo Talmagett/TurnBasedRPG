@@ -40,7 +40,7 @@ namespace Game.Gameplay.Battle
         public IEntity GetRandomEnemy(IEntity characterEntity)
         {
             var owner = characterEntity.Get<Component_Owner>();
-            var enemies = _units.Where(t => t.Get<Component_Owner>().owner.Value != owner.owner.Value).ToArray();
+            var enemies = _units.Where(t=>t.Get<Component_Life>().health.Value>0).Where(t => t.Get<Component_Owner>().owner.Value != owner.owner.Value).ToArray();
             var rand = Random.Range(0, enemies.Length);
             return enemies[rand];
         }
@@ -48,7 +48,7 @@ namespace Game.Gameplay.Battle
         public IEntity GetRandomAlly(IEntity characterEntity)
         {
             var owner = characterEntity.Get<Component_Owner>();
-            var enemies = _units.Where(t => t.Get<Component_Owner>().owner.Value == owner.owner.Value).ToArray();
+            var enemies = _units.Where(t=>t.Get<Component_Life>().health.Value>0).Where(t => t.Get<Component_Owner>().owner.Value == owner.owner.Value).ToArray();
             var rand = Random.Range(0, enemies.Length);
             return enemies[rand];
         }
@@ -68,8 +68,6 @@ namespace Game.Gameplay.Battle
         {
             var owner = characterEntity.Get<Component_Owner>();
             var enemies = _units.Where(t => t.Get<Component_Owner>().owner.Value != owner.owner.Value).ToArray();
-            Debug.Log(enemies.Length+"::::");
-
             return enemies;
         }
         

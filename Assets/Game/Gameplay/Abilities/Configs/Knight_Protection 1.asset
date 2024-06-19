@@ -23,7 +23,7 @@ MonoBehaviour:
   <TargetType>k__BackingField: 0
   <AnimationKey>k__BackingField: 4
   Effects:
-  - rid: 3125924070724206747
+  - rid: 3125924070724207204
   references:
     version: 2
     RefIds:
@@ -33,17 +33,6 @@ MonoBehaviour:
       data:
         <Amount>k__BackingField: 10
         <Duration>k__BackingField: 2
-    - rid: 3125924070724206747
-      type: {class: MultiEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 2
-        AbilityTargetType: 3
-        Count: 9
-        Delay: 0
-        Effects:
-        - rid: 3125924070724206729
-        - rid: 3125924070724206942
-        - rid: 3125924070724207161
     - rid: 3125924070724206942
       type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
@@ -57,3 +46,14 @@ MonoBehaviour:
           type: 3}
         <SpawnPoint>k__BackingField: 0
         <Duration>k__BackingField: 2
+    - rid: 3125924070724207204
+      type: {class: MultiEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        AbilityTargetType: 3
+        Count: 99
+        Delay: 0
+        Effects:
+        - rid: 3125924070724206729
+        - rid: 3125924070724206942
+        - rid: 3125924070724207161

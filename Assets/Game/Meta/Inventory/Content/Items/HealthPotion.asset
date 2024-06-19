@@ -25,7 +25,13 @@ MonoBehaviour:
     name: HealthPotion
     icon: {fileID: 21300000, guid: 145f1ff5930e646d5a94fb3443f087cd, type: 3}
     flags: 10
-    components: []
+    components:
+    - rid: 3125924070724207358
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3125924070724207358
+      type: {class: StatAdditive, ns: Game.Gameplay.Abilities.Scripts, asm: Assembly-CSharp}
+      data:
+        Stat: 1
+        Value: 12

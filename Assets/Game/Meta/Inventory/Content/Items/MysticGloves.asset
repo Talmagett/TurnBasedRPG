@@ -12,14 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22487d842414666b12f9ae5a7f89099, type: 3}
   m_Name: MysticGloves
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   item:
     name: MysticGloves
     icon: {fileID: 21300000, guid: c4550c49b87864e6fa713c5050fff80c, type: 3}
     flags: 12
     components:
     - rid: 1041286217044852838
-    - rid: 1041286217044852839
-    - rid: 1041286217044852840
+    - rid: 3125924070724207354
+    - rid: 3125924070724207355
   references:
     version: 2
     RefIds:
@@ -27,13 +36,13 @@ MonoBehaviour:
       type: {class: Component_EquipmentType, ns: Game.Meta.Inventory.Equipment, asm: Equipment}
       data:
         <Type>k__BackingField: 4
-    - rid: 1041286217044852839
-      type: {class: StatAdditive, ns: Game.Configs.Configs.Attributes, asm: Assembly-CSharp}
+    - rid: 3125924070724207354
+      type: {class: StatAdditive, ns: Game.Gameplay.Abilities.Scripts, asm: Assembly-CSharp}
       data:
         Stat: 5
-        Value: 312
-    - rid: 1041286217044852840
-      type: {class: StatAdditive, ns: Game.Configs.Configs.Attributes, asm: Assembly-CSharp}
+        Value: 4
+    - rid: 3125924070724207355
+      type: {class: StatAdditive, ns: Game.Gameplay.Abilities.Scripts, asm: Assembly-CSharp}
       data:
         Stat: 0
-        Value: 222
+        Value: 14

@@ -25,7 +25,7 @@ MonoBehaviour:
   Effects:
   - rid: 3125924070724207026
   - rid: 3125924070724207033
-  - rid: 3125924070724207149
+  - rid: 3125924070724207341
   references:
     version: 2
     RefIds:
@@ -41,11 +41,11 @@ MonoBehaviour:
       data:
         <AudioClip>k__BackingField: {fileID: 8300000, guid: 5d293b35c0cf0f04ebe57ebbec1fb0d8,
           type: 3}
-    - rid: 3125924070724207149
+    - rid: 3125924070724207341
       type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <Particle>k__BackingField: {fileID: 7387437107980395211, guid: 925a78b268236dd46bdad2cad6362171,
+        <Particle>k__BackingField: {fileID: 5943710107455532142, guid: 98609b75f6dca3040ae1c07409f353e5,
           type: 3}
         <SpawnPoint>k__BackingField: 2
         <Duration>k__BackingField: 2

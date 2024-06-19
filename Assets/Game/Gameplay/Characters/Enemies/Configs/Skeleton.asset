@@ -18,8 +18,6 @@ MonoBehaviour:
     id:
       value: Skeleton
   <ComponentLife>k__BackingField:
-    isDead:
-      value: 0
     maxHealth:
       value: 20
     health:
@@ -46,5 +44,4 @@ MonoBehaviour:
   <ComponentOwner>k__BackingField:
     owner:
       value: 1
-  <LootItems>k__BackingField:
-  - {fileID: 11400000, guid: c74341c466e997f4fa7a37c19200b737, type: 2}
+  <LootItems>k__BackingField: []

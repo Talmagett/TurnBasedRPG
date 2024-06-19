@@ -20,40 +20,41 @@ MonoBehaviour:
   <TurnEnergyCost>k__BackingField: 4
   <TurnProcessTime>k__BackingField: 2
   <ManaCost>k__BackingField: 7
-  <TargetType>k__BackingField: 2
+  <TargetType>k__BackingField: 0
   <AnimationKey>k__BackingField: 0
   Effects:
-  - rid: 3125924070724206933
+  - rid: 3125924070724207261
   references:
     version: 2
     RefIds:
-    - rid: 3125924070724206933
-      type: {class: MultiEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 1
-        AbilityTargetType: 2
-        Count: 4
-        Delay: 0.3
-        Effects:
-        - rid: 3125924070724206960
-        - rid: 3125924070724207004
-        - rid: 3125924070724206939
-    - rid: 3125924070724206939
-      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
-        asm: Assembly-CSharp}
-      data:
-        <BaseDamageAmount>k__BackingField: 0
-        <AttackPowerMultiplication>k__BackingField: 0.7
-        <PenetrationPercent>k__BackingField: 1
     - rid: 3125924070724206960
       type: {class: AudioEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
       data:
         <AudioClip>k__BackingField: {fileID: 8300000, guid: 5d293b35c0cf0f04ebe57ebbec1fb0d8,
           type: 3}
-    - rid: 3125924070724207004
+    - rid: 3125924070724207181
       type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
       data:
-        <Particle>k__BackingField: {fileID: 0}
+        <Particle>k__BackingField: {fileID: 1845547041625330139, guid: 5f28f1875aa0dbd4f9dd229da2007c6e,
+          type: 3}
         <SpawnPoint>k__BackingField: 2
         <Duration>k__BackingField: 2
+    - rid: 3125924070724207248
+      type: {class: DealDamageEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
+        asm: Assembly-CSharp}
+      data:
+        <BaseDamageAmount>k__BackingField: 0
+        <AttackPowerMultiplication>k__BackingField: 0.5
+        <PenetrationPercent>k__BackingField: 1
+    - rid: 3125924070724207261
+      type: {class: MultiEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        AbilityTargetType: 2
+        Count: 6
+        Delay: 0.2
+        Effects:
+        - rid: 3125924070724206960
+        - rid: 3125924070724207181
+        - rid: 3125924070724207248

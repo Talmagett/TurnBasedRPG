@@ -14,8 +14,10 @@ namespace Game.Gameplay.Interactables.Scripts.Enemies
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out PlayerCharacterController characterController))
-                _gameStateController.EnterBattle(enemyRiftConfig);
+            if (!other.TryGetComponent(out PlayerCharacterController characterController))
+                return;
+            _gameStateController.EnterBattle(enemyRiftConfig);
+            gameObject.SetActive(false);
         }
 
         [Inject]

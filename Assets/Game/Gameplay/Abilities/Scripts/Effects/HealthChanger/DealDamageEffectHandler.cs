@@ -33,11 +33,25 @@ namespace Game.Gameplay.EventBus.Handlers.Effects
         {
             var componentAttack = evt.Source.Get<Component_Attack>().attackPower;
             var damage = evt.BaseDamageAmount + evt.AttackPowerMultiplication * componentAttack.Value;
-            
+            var effectsContainer = evt.Target.Get<Component_Effects>();
+
             var health = evt.Target.Get<Component_Life>().health;
             var defense = evt.Target.Get<Component_Defense>().defense;
             var currentHealth = health.Value;
             damage *=100 / (100 + defense.Value * (1 - evt.PenetrationPercent));
+            
+            if (effectsContainer.TryGetEffect(out ShieldEffectEvent[] shieldEffectEvents))
+            {
+                foreach (var shield in shieldEffectEvents)
+                {
+                    shield.ReduceShield((int)damage);
+                    if (shield.Amount > 0)
+                        return;
+                    damage += shield.Amount;
+                    effectsContainer.RemoveEffect(shield);
+                }
+            }
+            
             currentHealth -= (int)damage;
             health.Value = currentHealth;
             if (health.Value <= 0)

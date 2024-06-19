@@ -19,7 +19,7 @@ MonoBehaviour:
     type: 3}
   <TurnEnergyCost>k__BackingField: 5
   <TurnProcessTime>k__BackingField: 2
-  <ManaCost>k__BackingField: 15
+  <ManaCost>k__BackingField: 4
   <TargetType>k__BackingField: 0
   <AnimationKey>k__BackingField: 4
   Effects:
@@ -27,10 +27,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3125924070724206602
-      type: {class: HasteEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
-      data:
-        <Duration>k__BackingField: 2
     - rid: 3125924070724206662
       type: {class: ParticleEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects,
         asm: Assembly-CSharp}
@@ -47,7 +43,7 @@ MonoBehaviour:
         Count: 99
         Delay: 0
         Effects:
-        - rid: 3125924070724206602
+        - rid: 3125924070724207196
         - rid: 3125924070724206662
         - rid: 3125924070724206686
     - rid: 3125924070724206686
@@ -55,3 +51,7 @@ MonoBehaviour:
       data:
         <AudioClip>k__BackingField: {fileID: 8300000, guid: c81e565c6d063e44f99edd228404c571,
           type: 3}
+    - rid: 3125924070724207196
+      type: {class: HasteEffectEvent, ns: Game.Gameplay.EventBus.Events.Effects, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 4
