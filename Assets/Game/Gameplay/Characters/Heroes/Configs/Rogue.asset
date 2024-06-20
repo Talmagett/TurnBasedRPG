@@ -78,5 +78,5 @@ MonoBehaviour:
       - abilityConfig: {fileID: 11400000, guid: 4de4f2d4fe5f7184cbaebdb610b7e915,
           type: 2}
         cost: 0
-      defaultLevel: 3
+      defaultLevel: 1
       maxLevel: 3
